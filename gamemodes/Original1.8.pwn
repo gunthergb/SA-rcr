@@ -6230,6 +6230,48 @@ CMD:robcasino(playerid, params[])
 	return 1;
 }
 
+CMD:mechanic(playerid, params[])
+{
+	new string[128];
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+    if(gTeam[playerid] == TEAM_CARFIX)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You are a mechanic. Use /fixme to fix your car");
+	    return 1;
+    }
+    if(RecentAskedMechanic[playerid] == 1)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"Please wait before asking for a mechanic again");
+	    return 1;
+    }
+    for(new i=0;i<MAX_PLAYERS;i++)
+	{
+    	if(IsPlayerConnected(i))
+		{
+			if(gTeam[i] == TEAM_CARFIX)
+			{
+				new pname[24], giveplayerid;
+			    GetPlayerName(playerid,pname, 24);
+			    new current_zone;
+			    current_zone = player_zone[playerid];
+			    format(string, sizeof(string), "%s(%d) is looking for a mechanic. Location: %s", pname,giveplayerid,zones[current_zone][zone_name]);
+			    SendClientMessage(i,COLOR_BLUE, string);
+			    SendClientMessage(playerid,COLOR_DODGERBLUE,"You have called a mechanic");
+			    RecentAskedMechanic[playerid] =1;
+    		}
+			else
+			{
+    			SendClientMessage(playerid,COLOR_DODGERBLUE,"not any mechanic");
+    		}
+    	}
+    }
+	return 1;
+}
+
 CMD:ejself(playerid, params[])
 {
 	if(isKidnapped[playerid] == 1)
@@ -26646,46 +26688,6 @@ public OnPlayerCommandPerformed(playerid, cmdtext[], success)
 	cmd = strtok(cmdtext, idx);
 
 
-    if(strcmp(cmd, "/mechanic", true) == 0)
-	{
-	    if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-		    }
-	    if(gTeam[playerid] == TEAM_CARFIX)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You are a mechanic. Use /fixme to fix your car");
-		    return 1;
-	    }
-	    if(RecentAskedMechanic[playerid] == 1)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"Please wait before asking for a mechanic again");
-		    return 1;
-	    }
-	    for(new i=0;i<MAX_PLAYERS;i++)
-		{
-	    	if(IsPlayerConnected(i))
-			{
-				if(gTeam[i] == TEAM_CARFIX)
-				{
-					new pname[24];
-				    GetPlayerName(playerid,pname, 24);
-				    new current_zone;
-				    current_zone = player_zone[playerid];
-				    format(string, sizeof(string), "%s(%d) is looking for a mechanic. Location: %s", pname,giveplayerid,zones[current_zone][zone_name]);
-				    SendClientMessage(i,COLOR_BLUE, string);
-				    SendClientMessage(playerid,COLOR_DODGERBLUE,"You have called a mechanic");
-				    RecentAskedMechanic[playerid] =1;
-	    		}
-				else
-				{
-	    			SendClientMessage(playerid,COLOR_DODGERBLUE,"not any mechanic");
-	    		}
-	    	}
-	    }
-		return 1;
-	}
     if(strcmp(cmd, "/fixme", true) == 0)
 	{
 	    if(IsSpawned[playerid] == 0)
