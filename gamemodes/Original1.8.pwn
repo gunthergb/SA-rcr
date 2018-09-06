@@ -16,6 +16,7 @@ Byrner scripted 1.7 && 1.8 etc
 #include <dutils>
 #include <dudb>
 #include <RemoveBuilding>
+#include <discord-connector>
 
 #define MAX_STRIPS 200
 // Uhm..
@@ -90,6 +91,8 @@ Byrner scripted 1.7 && 1.8 etc
 #define TEAM_BOUNTY 21
 #define TEAM_KIDNAP 22
 #define TEAM_PILOT  23
+
+#define DISCORD_CHANNEL_ID "487093414756876302"
 
 // IRC Defines
 #define BOT_1_NICKNAME "[SArcr]Chode"
@@ -700,6 +703,9 @@ new SWATRustler1, SWATRustler2;
 new SWATPredator1, SWATPredator2, SWATPredator3, SWATPredator4, SWATPredator5, SWATPredator6;
 new SWATMaverick1, SWATMaverick2, SWATMaverick3, SWATMaverick4;
 
+
+//Discord
+new DCC_Channel:discordChannel;
 
 enum sInfo
 {
@@ -6585,7 +6591,7 @@ CMD:robhall(playerid, params[])
 CMD:locate(playerid, params[])
 {
 	new giveplayerid, current_zone;
-	if(sscanf(params, "u", giveplayerid))
+ 	if(sscanf(params, "u", giveplayerid))
 	{
 		SendClientMessage(playerid,COLOR_ERROR,"USAGE: /locate (Player Name/ID)");
 		return 1;
@@ -6595,9 +6601,9 @@ CMD:locate(playerid, params[])
 		SendClientMessage(playerid,COLOR_ERROR,"That player is dead");
 		return 1;
 	}
-	current_zone = player_zone[giveplayerid];
+ current_zone = player_zone[giveplayerid];
 	//printf("D1: %d %d",target,current_zone);
-	if(current_zone != -1 && IsPlayerConnected(giveplayerid))
+ if(current_zone != -1 && IsPlayerConnected(giveplayerid))
 	{
 		new playername[MAX_PLAYER_NAME],message2[256];
 		GetPlayerName(giveplayerid,playername,MAX_PLAYER_NAME);
@@ -6610,6 +6616,74 @@ CMD:locate(playerid, params[])
 		SendClientMessage(playerid,COLOR_ERROR,"Invalid Player ID");
 	}
   	return 1;
+}
+
+CMD:gc(playerid, params[])
+{
+	new giveplayerid, Amount, string[128];
+    if(sscanf(params, "uu", giveplayerid, Amount))
+	{
+		SendClientMessage(playerid,COLOR_ERROR,"USAGE: /gc (id) (amount)");
+		return 1;
+	}
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+    if(cuffed[playerid] == 1)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You are handcuffed. You cannot use this command");
+	    return 1;
+    }
+    if(giveplayerid == playerid)
+	{
+	    SendClientMessage(playerid, COLOR_ERROR, "You cannot send cash to yourself");
+	    return 1;
+    }
+    if(sscanf(params, "ii", giveplayerid, Amount))
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"USAGE: /adgc [Playerid] [Amount]");
+	    return 1;
+	}
+ 	if(!IsPlayerConnected(giveplayerid))
+	{
+		format(string,sizeof(string),"The Player ID (%d) is not connected to the server. You cannot give money to him.",giveplayerid);
+        SendClientMessage(playerid,COLOR_ERROR,string);
+		return 1;
+	}
+	if(Amount <= 0 || Amount >= 150000)
+	{
+	    SendClientMessage(playerid, COLOR_ERROR, "USAGE: Minimum $1 / Maximum $100000");
+	}
+   	else if(GetPlayerMoney(playerid) < Amount)
+	{
+	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Send Failed_|");
+	    format(string, sizeof(string), "You cannot afford to send $%d",Amount);
+	    SendClientMessage(playerid, COLOR_ERROR, string);
+    }
+    new sendername[24];
+    new receivername[24];
+    GetPlayerName(playerid,sendername, 24);
+	GetPlayerName(giveplayerid,receivername, 24);
+    GivePlayerMoney(giveplayerid,Amount);
+    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Sent_|");
+	format(string, sizeof(string), "You have sent $%d to %s(%d)",Amount,receivername,giveplayerid);
+    SendClientMessage(playerid, 0x00C7FFAA, string);
+    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_Cash Received From Admin_|");
+	format(string, sizeof(string), "%s(%d) Has sent you $%d",sendername,playerid,Amount);
+    SendClientMessage(giveplayerid, 0x00C7FFAA, string);
+    format(string, sizeof(string), "Admin %s(%d) Has sent $%d to receiver %s(%d)",sendername,playerid,Amount,receivername,giveplayerid);
+    printf("%s",string);
+    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+    if(GetPlayerMoney(giveplayerid) + Amount >= 1000001)
+	{
+	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Send Failed_|");
+		format(string, sizeof(string), "%s(%d) Does not have enough pockets to carry that ammount of cash ",receivername,giveplayerid);
+	    SendClientMessage(playerid, 0x00C7FFAA, string);
+	    return 1;
+   	}
+	return 1;
 }
 
 CMD:ejself(playerid, params[])
@@ -15547,7 +15621,7 @@ public Float:GetDistanceBetweenPlayers(p1,p2)
 	return floatsqroot(floatpower(floatabs(floatsub(x2,x1)),2)+floatpower(floatabs(floatsub(y2,y1)),2)+floatpower(floatabs(floatsub(z2,z1)),2));
 }
 
-IsNumeric(const string[])
+/**IsNumeric(const string[])
 {
 	for (new i = 0, j = strlen(string); i < j; i++)
 	{
@@ -15557,7 +15631,7 @@ IsNumeric(const string[])
 		}
 	}
 	return 1;
-}
+}*/
 
 forward commitedcrimerecent();
 public commitedcrimerecent()
@@ -23191,6 +23265,22 @@ public OnPlayerLeaveDynamicCP(playerid, checkpointid)
 }
 // End of Terrorist
 
+public DCC_OnChannelMessage(DCC_Channel:channel, DCC_User:author, const message[])
+{
+	new channel_name[100 + 1];
+    if(!DCC_GetChannelName(channel, channel_name))
+        return 0;
+
+    new user_name[32 + 1];
+    if (!DCC_GetUserName(author, user_name))
+        return 0;
+
+    new msg[128];
+    format(msg, sizeof(msg), "{7289DA}[Discord] %s: {FFFFFF}%s", user_name, message);
+    SendClientMessageToAll(-1, msg); // This works correctly
+    return 1;
+}
+
 public OnPlayerSpawn(playerid)
 {
 	SetCameraBehindPlayer(playerid);
@@ -23210,6 +23300,16 @@ public OnPlayerSpawn(playerid)
     SetPlayerWantedLevel(playerid, 0);
     SetPlayerInterior(playerid,0);
     SetPlayerToTeamColour(playerid);
+    
+    new name[MAX_PLAYER_NAME + 1];
+	GetPlayerName(playerid, name, sizeof name);
+    if (_:discordChannel == 0)
+		discordChannel = DCC_FindChannelById(DISCORD_CHANNEL_ID); // Discord channel ID
+
+	new str[128];
+	format(str, sizeof str, "Player %s joined the server.", name);
+	DCC_SendChannelMessage(discordChannel, str);
+
     if(gTeam[playerid] >= TEAM_CIVIL)
 	{
 	 	new rnd;
@@ -23345,7 +23445,7 @@ public OnPlayerSpawn(playerid)
 	}
     if(udb_Exists(PlayerName(playerid)) && PLAYERLIST_authed[playerid])
 	{
-		new str[100];
+		//new str[100];
 		/*new isbanned =0;
 		isbanned =dUserINT(PlayerName(playerid)).("Banned");
 		if(isbanned == 1)
@@ -27031,103 +27131,9 @@ public OnPlayerExitedMenu(playerid)
 public OnPlayerCommandPerformed(playerid, cmdtext[], success)
 {
     new string[256];
-	new cmd[256];
-	new giveplayerid, idx;
-	new tmp[256];
-	cmd = strtok(cmdtext, idx);
+	//new cmd[256];
+	//cmd = strtok(cmdtext, idx);
 
-	if(strcmp(cmd, "/gc", true) == 0)
-	{
-	    if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-	    }
-	    if(cuffed[playerid] == 1)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You are handcuffed. You cannot use this command");
-		    return 1;
-	    }
-	    tmp = strtok(cmdtext, idx);
-	    if(!strlen(tmp))
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "USAGE: /gc (id) (amount)");
-		    return 1;
-	    }
-	    if(!IsNumeric(tmp))
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "USAGE: /gc (id) (amount) ID Must be a number");
-		    return 1;
-	    }
-	    if(strval(tmp) == playerid)
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "You cannot send cash to yourself");
-		    return 1;
-	    }
-	    giveplayerid = strval(tmp);
-	    if(!IsPlayerConnected(giveplayerid))
-		{
-		    format(string, sizeof(string), "ID (%d) is not an active player", giveplayerid);
-		    SendClientMessage(playerid, COLOR_ERROR, string);
-		    return 1;
-	    }
-	    new sendername[24];
-	    new receivername[24];
-	    GetPlayerName(playerid,sendername, 24);
-		GetPlayerName(giveplayerid,receivername, 24);
-	    if(GetDistanceBetweenPlayers(playerid,giveplayerid) > 8)
-		{
-		    format(string, sizeof(string), "%s(%d) Is not close enough. You cannot give cash to that player",receivername,giveplayerid);
-		    SendClientMessage(playerid, COLOR_ERROR, string);
-		    return 1;
-	    }
-	    tmp = strtok(cmdtext, idx);
-	    if(!strlen(tmp))
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "USAGE: /gc (id) (amount)");
-		    return 1;
-	    }
-	    if(!IsNumeric(tmp))
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "USAGE: /gc (id) (amount) Amount must be a number");
-		    return 1;
-	    }
-	    new cashsend = strval(tmp);
-	    if(cashsend <= 0 || cashsend >= 100001)
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "USAGE: Minimum $1 / Maximum $100000");
-		    return 1;
-	    }
-	    if(GetPlayerMoney(giveplayerid) + cashsend >= 1000001)
-		{
-		    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Send Failed_|");
-			format(string, sizeof(string), "%s(%d) Does not have enough pockets to carry that ammount of cash ",receivername,giveplayerid);
-		    SendClientMessage(playerid, 0x00C7FFAA, string);
-		    return 1;
-	    }
-	    if(GetPlayerMoney(playerid) >= cashsend)
-		{
-		    GivePlayerMoney(playerid,-cashsend);
-		    GivePlayerMoney(giveplayerid,cashsend);
-		    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Sent_|");
-			format(string, sizeof(string), "You have sent $%d to %s(%d)",cashsend,receivername,giveplayerid);
-		    SendClientMessage(playerid, 0x00C7FFAA, string);
-		    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_Cash Received_|");
-		    SendClientMessage(giveplayerid, 0xA9A9A9AA, "If you think that this might be hacked cash then inform a Server Admin asap! /report (id) (reason)");
-			format(string, sizeof(string), "%s(%d) Has sent you $%d",sendername,playerid,cashsend);
-		    SendClientMessage(giveplayerid, 0x00C7FFAA, string);
-		    format(string, sizeof(string), "Sender %s(%d) Has sent $%d to receiver %s(%d)",sendername,playerid,cashsend,receivername,giveplayerid);
-		    printf("%s",string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
-		}
-	    else if(GetPlayerMoney(playerid) < cashsend)
-		{
-		    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Send Failed_|");
-		    format(string, sizeof(string), "You cannot afford to send $%d",cashsend);
-		    SendClientMessage(playerid, COLOR_ERROR, string);
-	    }
-	    return 1;
-	}
     if(strcmp(cmdtext, "/robskill", true) == 0)
 	{
 		SendClientMessage(playerid, 0xA9A9A9AA, "|_Robber Skill Information_|");

@@ -1,0 +1,12 @@
+[23:41:36] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[23:41:37] [INFO] successfully created channel with id '1'
+[23:41:37] [INFO] successfully created guild with id '1'
+[23:42:06] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[23:42:06] [INFO] PAWN callback successfully executed.
+[23:47:28] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[23:47:29] [INFO] successfully created channel with id '1'
+[23:47:29] [INFO] successfully created guild with id '1'
+[23:47:53] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[23:47:53] [INFO] PAWN callback successfully executed.
+[23:48:07] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[23:48:07] [INFO] PAWN callback successfully executed.
