@@ -4937,3 +4937,273 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [17:54:29] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
 [17:54:29] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
 [17:54:34] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $9645 (9645) (0)
+[18:53:14] [connection] 47.202.112.133:64025 requests connection cookie.
+[18:53:15] [connection] incoming connection: 47.202.112.133:64025 id: 1
+[18:53:15] [join] Bob has joined the server (1:47.202.112.133)
+[18:53:15] 47.202.112.133(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[18:53:21] **(CASH INCREASE)** Bob(1) money has increased from $0 to $997662 (997662) (0)
+[18:54:48] [part] Bob has left the server (1:0)
+[18:55:23] [connection] 47.202.112.133:60123 requests connection cookie.
+[18:55:24] [connection] incoming connection: 47.202.112.133:60123 id: 1
+[18:55:24] [join] Bob has joined the server (1:47.202.112.133)
+[18:55:24] 47.202.112.133(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[18:55:37] **(CASH INCREASE)** Bob(1) money has increased from $0 to $997662 (997662) (0)
+[18:57:45] [part] Bob has left the server (1:0)
+[18:57:58] [connection] 47.202.112.133:50768 requests connection cookie.
+[18:57:59] [connection] incoming connection: 47.202.112.133:50768 id: 1
+[18:57:59] [join] Bob has joined the server (1:47.202.112.133)
+[18:57:59] 47.202.112.133(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[18:58:04] **(CASH INCREASE)** Bob(1) money has increased from $0 to $997662 (997662) (0)
+[19:01:53] **(SKY DIVE)** Bob(1) has payed the AirPort owner $15000 to sky dive.
+[19:02:05] Admin [Lvrcr]Natox(0) Has sent $15000 to receiver [Lvrcr]Natox(0)
+[19:02:06] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $9645 to $24645 (15000) (14)
+[19:02:08] **(SKY DIVE)** [Lvrcr]Natox(0) has payed the AirPort owner $15000 to sky dive.
+[19:02:42] [death] [Lvrcr]Natox died 54
+[19:02:43] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $9745 (9745) (14)
+[19:06:32] [Lvrcr]Natox(0) has given [Lvrcr]Natox(0) 3 blocks of C4. 
+[19:07:25] [death] [Lvrcr]Natox died 255
+[19:07:25] [death] Bob died 255
+[19:07:26] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $9745 (9745) (0)
+[19:07:26] **(CASH INCREASE)** Bob(1) money has increased from $0 to $982762 (982762) (0)
+[19:09:00] [Lvrcr]Natox(0) has given [Lvrcr]Natox(0) 3 blocks of C4. 
+[19:11:38] [death] Bob died 255
+[19:11:39] **(CASH INCREASE)** Bob(1) money has increased from $0 to $982760 (982760) (0)
+[19:16:02] * [Lvrcr]Natox Starting robbery 
+[19:16:09] * Bob robbery 
+[19:23:18] [death] [Lvrcr]Natox died 255
+[19:23:18] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $9793 (9793) (0)
+[19:23:20] [death] Bob died 255
+[19:23:20] **(CASH INCREASE)** Bob(1) money has increased from $0 to $982807 (982807) (0)
+[19:25:36] Bob(1) has started a Sexshop robbery
+[19:26:07] Bob(1) has robbed $32682 in a Sexshop Robbery
+[19:26:07] **(CASH INCREASE)** Bob(1) money has increased from $982807 to $1015389 (32582) (3)
+[19:26:11] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1014389)
+[19:26:19] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1013389)
+[19:26:23] [kill] [Lvrcr]Natox killed Bob Desert Eagle
+[19:26:25] **(CASH INCREASE)** Bob(1) money has increased from $0 to $1013489 (1013489) (0)
+[19:26:34] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1012389)
+[19:26:42] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1011389)
+[19:26:49] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1010389)
+[19:26:57] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1009389)
+[19:27:04] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1008389)
+[19:27:51] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1007389)
+[19:29:46] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1006389)
+[19:29:54] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1005389)
+[19:30:01] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1004389)
+[19:30:09] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1003389)
+[19:30:16] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1002389)
+[19:30:24] **(CASH DROP)** Bob(1) Has Dropped $1000 ($1001389)
+[19:30:24] **(Bank Transaction)** Bob(1) Has made a deposit of $900000 into bank account
+[19:36:22] [death] Bob died 255
+[19:36:24] **(CASH INCREASE)** Bob(1) money has increased from $0 to $101489 (101489) (0)
+[19:40:13] [part] Bob has left the server (1:1)
+[19:50:58] [connection] 35.141.26.204:61011 requests connection cookie.
+[19:50:59] [connection] incoming connection: 35.141.26.204:61011 id: 1
+[19:50:59] [join] [Lvrcr]Sc0pe has joined the server (1:35.141.26.204)
+[19:50:59] 35.141.26.204(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[19:51:11] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $80416 (80416) (0)
+[19:51:30] [death] [Lvrcr]Sc0pe died 255
+[19:51:31] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $80516 (80516) (0)
+[19:52:23] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $80516 to $130416 (49900) (0)
+[19:54:31] [death] [Lvrcr]Sc0pe died 255
+[19:54:33] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130516 (130516) (0)
+[19:58:20] [death] [Lvrcr]Sc0pe died 255
+[19:58:20] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130516 (130516) (0)
+[20:07:13] [part] [Lvrcr]Sc0pe has left the server (1:0)
+[20:08:14] [connection] 35.141.26.204:55780 requests connection cookie.
+[20:08:15] [connection] incoming connection: 35.141.26.204:55780 id: 1
+[20:08:16] [join] [Lvrcr]Sc0pe has joined the server (1:35.141.26.204)
+[20:08:16] 35.141.26.204(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[20:08:28] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130516 (130516) (0)
+[20:15:59] [death] [Lvrcr]Sc0pe died 255
+[20:16:00] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130616 (130616) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[20:21:12] 
+[20:21:12] Server Plugins
+[20:21:12] --------------
+[20:21:12]  Loading plugin: irc
+[20:21:12] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[20:21:12]   Loaded.
+[20:21:12]  Loading plugin: streamer
+[20:21:12] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[20:21:12]   Loaded.
+[20:21:12]  Loading plugin: sscanf
+[20:21:12] 
+
+[20:21:12]  ===============================
+
+[20:21:12]       sscanf plugin loaded.     
+
+[20:21:12]    (c) 2009 Alex "Y_Less" Cole
+
+[20:21:12]  ===============================
+
+[20:21:12]   Loaded.
+[20:21:12]  Loading plugin: Whirlpool
+[20:21:12]  
+[20:21:12]  ==================
+[20:21:12]  
+[20:21:12]   Whirlpool loaded
+[20:21:12]  
+[20:21:12]  ==================
+[20:21:12]  
+[20:21:12]   Loaded.
+[20:21:12]  Loading plugin: crashdetect
+[20:21:12]   crashdetect v4.8.3 is OK.
+[20:21:12]   Loaded.
+[20:21:12]  Loaded 5 plugins.
+
+[20:21:12] 
+[20:21:12] Filterscripts
+[20:21:12] ---------------
+[20:21:12]   Loading filterscript 'Ironman.amx'...
+[20:21:12]   Loading filterscript 'SpikeStrip.amx'...
+[20:21:12]   Loading filterscript 'CarMenu_v1.2.amx'...
+[20:21:12] ===============================================
+[20:21:12] Vehicle Selection Menu By [03]Garsino Loaded...
+[20:21:12] ===============================================
+[20:21:12]   Loading filterscript 'Teleports.amx'...
+[20:21:12] 
+  Go to LS, SF or LV.
+
+[20:21:12]   Loading filterscript 'IntMenu.amx'...
+[20:21:12] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[20:21:12]   Loaded 5 filterscripts.
+
+[20:21:12] 
+#############################
+[20:21:12] #                           #
+[20:21:12] #          [Sarcr]          #
+[20:21:12] #        San Andreas        #
+[20:21:12] #   Roleplay/Cops/Robbers   #
+[20:21:12] #                           #
+[20:21:12] #############################
+
+[20:21:12] Number of vehicle models: 164
+[20:21:25] [connection] 35.141.26.204:51000 requests connection cookie.
+[20:21:26] [connection] incoming connection: 35.141.26.204:51000 id: 0
+[20:21:26] [join] [Lvrcr]Sc0pe has joined the server (0:35.141.26.204)
+[20:21:26] 35.141.26.204(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[20:21:28] [connection] 47.195.228.90:1025 requests connection cookie.
+[20:21:29] [connection] incoming connection: 47.195.228.90:1025 id: 1
+[20:21:29] [join] [Lvrcr]Natox has joined the server (1:47.195.228.90)
+[20:21:29] 47.195.228.90(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[20:21:32] **(CASH INCREASE)** [Lvrcr]Natox(1) money has increased from $0 to $9645 (9645) (0)
+[20:21:32] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[20:21:39] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130516 (130516) (0)
+[20:21:42] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[20:21:42] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:21:52] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:21:52] [death] [Lvrcr]Sc0pe died 255
+[20:21:54] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130616 (130616) (0)
+[20:22:01] [death] [Lvrcr]Sc0pe died 255
+[20:22:02] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[20:22:03] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130616 (130616) (0)
+[20:22:07] [death] [Lvrcr]Sc0pe died 255
+[20:22:07] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130616 (130616) (0)
+[20:22:12] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:22:22] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[20:22:31] [kill] [Lvrcr]Natox killed [Lvrcr]Sc0pe Colt 45
+[20:22:32] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[20:22:32] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:22:33] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130616 (130616) (0)
+[20:22:41] [death] [Lvrcr]Sc0pe died 255
+[20:22:42] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130616 (130616) (0)
+[20:22:42] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:23:02] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[20:23:02] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[20:23:12] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:23:12] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:23:32] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[20:23:42] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:23:42] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[20:23:52] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:24:02] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[20:24:12] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:24:22] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[20:24:32] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[20:24:32] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[20:24:42] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:25:02] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[20:25:02] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[20:25:12] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:25:12] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:25:13] [death] [Lvrcr]Sc0pe died 255
+[20:25:14] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130616 (130616) (0)
+[20:25:32] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[20:25:42] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:25:42] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[20:25:52] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:26:02] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[20:26:12] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:26:22] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[20:26:32] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:27:02] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[20:27:12] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:27:42] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[20:27:52] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[20:28:56] [chat] [[Lvrcr]Natox]: eject
+[20:32:18] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $130616 to $130633 (17) (0)
+[20:32:44] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $130633 to $130651 (18) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[20:34:11] 
+[20:34:11] Server Plugins
+[20:34:11] --------------
+[20:34:11]  Loading plugin: irc
+[20:34:11] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[20:34:11]   Loaded.
+[20:34:11]  Loading plugin: streamer
+[20:34:11] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[20:34:11]   Loaded.
+[20:34:11]  Loading plugin: sscanf
+[20:34:11] 
+
+[20:34:11]  ===============================
+
+[20:34:11]       sscanf plugin loaded.     
+
+[20:34:11]    (c) 2009 Alex "Y_Less" Cole
+
+[20:34:11]  ===============================
+
+[20:34:11]   Loaded.
+[20:34:11]  Loading plugin: Whirlpool
+[20:34:11]  
+[20:34:11]  ==================
+[20:34:11]  
+[20:34:11]   Whirlpool loaded
+[20:34:11]  
+[20:34:11]  ==================
+[20:34:11]  
+[20:34:11]   Loaded.
+[20:34:11]  Loading plugin: crashdetect

@@ -4726,6 +4726,71 @@ CMD:bounty(playerid, params[])
 	return 1;
 }
 
+CMD:reqvisit(playerid, params[])
+{
+	new giveplayerid, string[128];
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+	}
+   	if(Jailed[playerid] == 0 && InAlcatraz[playerid] == 0)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You are not in jail. You can only use this command while you are in jail (Alcatraz)");
+	    return 1;
+    }
+    if(Jailed[playerid] == 1 && InAlcatraz[playerid] == 0)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You can only request a visit if you are in jail on Alcatraz Island");
+	    return 1;
+    }
+    if(isnull(params)) return SendClientMessage(playerid, COLOR_ERROR, "USAGE: /reqvisit (id)");
+    if(!IsPlayerConnected(giveplayerid))
+	{
+	    format(string, sizeof(string), "ID (%d) is not an active player", giveplayerid);
+	    SendClientMessage(playerid, COLOR_ERROR, string);
+	    return 1;
+    }
+    new sendername[24];
+    new receivername[24];
+    GetPlayerName(playerid,sendername, 24);
+	GetPlayerName(giveplayerid,receivername, 24);
+    if(gTeam[giveplayerid] <= 2)
+	{
+	    SendClientMessage(playerid, COLOR_ERROR, "You cannot send a visiting pass to Police or Army Officers");
+	    return 1;
+    }
+    if(IsSpawned[giveplayerid] == 0)
+	{
+		format(string, sizeof(string), "%s(%d) is dead. You cannot give a visiting pass to a dead body",receivername,giveplayerid);
+	    SendClientMessage(playerid, COLOR_ERROR, string);
+	    return 1;
+    }
+    if(Jailed[giveplayerid] == 1)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"That player is in jail. You cannot give a visiting pass to a prisoner");
+	    return 1;
+    }
+    if(VisitReq[giveplayerid] == 1)
+	{
+	    format(string, sizeof(string), "%s(%d) Already has a visiting pass from you or another inmate",receivername,giveplayerid);
+	    SendClientMessage(playerid, COLOR_ERROR, string);
+    }
+    else if(VisitReq[giveplayerid] == 0)
+	{
+	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_Alcatraz Island Visit Pass Received_|");
+	    format(string, sizeof(string), "Alcatraz prisoner %s(%d) has sent you a visiting pass",sendername,playerid);
+	    SendClientMessage(giveplayerid, 0x00C7FFAA, string);
+	    SendClientMessage(giveplayerid, 0x00C7FFAA, "This pass will get you inside Alcatraz building. The pass is valid for 5 game hours");
+	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Alcatraz Island Visit Pass Sent_|");
+	    format(string, sizeof(string), "You have sent a Alcatraz visiting pass to %s(%d) - This pass is valid for 5 game hours",receivername,giveplayerid);
+	    SendClientMessage(playerid, 0x00C7FFAA, string);
+	    VisitReq[giveplayerid] =1;
+	    VisitReqExpires[giveplayerid] =300;
+	}
+    return 1;
+}
+
 CMD:loc(playerid, params[])
 {
     new string[128];
@@ -6520,7 +6585,11 @@ CMD:robhall(playerid, params[])
 CMD:locate(playerid, params[])
 {
 	new giveplayerid, current_zone;
-	if(isnull(params)) return SendClientMessage(playerid, COLOR_ERROR, "USAGE: /loc (id) ID Must be a number)");
+	if(sscanf(params, "u", giveplayerid))
+	{
+		SendClientMessage(playerid,COLOR_ERROR,"USAGE: /locate (Player Name/ID)");
+		return 1;
+	}
 	if(GetPlayerColor(giveplayerid) == COLOR_DEADCONNECT)
 	{
 		SendClientMessage(playerid,COLOR_ERROR,"That player is dead");
@@ -6566,13 +6635,18 @@ CMD:ejself(playerid, params[])
 
 CMD:eject(playerid, params[])
 {
-	new string[128], giveplayerid;
-	if(!IsPlayerConnected(giveplayerid))
+	new string[128] , ID;
+	if(!IsPlayerConnected(ID))
 	{
-	    format(string, sizeof(string), "ID (%d) is not an active player", giveplayerid);
+	    format(string, sizeof(string), "ID (%d) is not an active player", ID);
 	    SendClientMessage(playerid, COLOR_ERROR, string);
 	    return 1;
     }
+    if(sscanf(params, "u", ID))
+	{
+		SendClientMessage(playerid,COLOR_ERROR,"USAGE: /eject (Player Name/ID)");
+		return 1;
+	}
 	if(!IsPlayerInAnyVehicle(playerid))
 	{
 		SendClientMessage(playerid, COLOR_ERROR, "You must be driving a vehicle to use this command");
@@ -6583,21 +6657,21 @@ CMD:eject(playerid, params[])
 		SendClientMessage(playerid, COLOR_ERROR, "You are not the driver of this vehicle. Only the driver can eject players");
 	    return 1;
     }
-    if(!IsPlayerInAnyVehicle(giveplayerid))
+    if(!IsPlayerInAnyVehicle(ID))
 	{
-		GetPlayerName(giveplayerid, string, 24);
-	    format(string, 100, "%s(%d) Is not in any vehicle", string,giveplayerid);
+		GetPlayerName(ID, string, 24);
+	    format(string, 100, "%s(%d) Is not in any vehicle", string,ID);
 	    return 1;
     }
     new kar = GetPlayerVehicleID(playerid);
-	if(GetPlayerVehicleID(giveplayerid) != kar)
+	if(GetPlayerVehicleID(ID) != kar)
 	{
-		GetPlayerName(giveplayerid, string, 24);
-	    format(string, 100, "%s(%d) Is not in your vehicle. You cannot eject that player", string,giveplayerid);
+		GetPlayerName(ID, string, 24);
+	    format(string, 100, "%s(%d) Is not in your vehicle. You cannot eject that player", string,ID);
 	    return 1;
     }
-    RemovePlayerFromVehicle(giveplayerid);
-	GameTextForPlayer(giveplayerid,"EJECTED",7000,3);
+    RemovePlayerFromVehicle(ID);
+	GameTextForPlayer(ID,"EJECTED",7000,3);
 	SendClientMessage(playerid,0x00C7FFAA,"Player Ejected..");
 	return 1;
 }
@@ -7594,7 +7668,11 @@ CMD:disarm(playerid, params[])
     if(PlayerInfo[playerid][AdminLevel] == 1337)
 	{
 	    new giveplayerid, string[128];
-	    if(sscanf(params, "u", giveplayerid)) return SendClientMessage(playerid,COLOR_ERROR, "/disarm [PlayerID]");
+	    if(sscanf(params, "u", giveplayerid))
+		{
+	    	SendClientMessage(playerid,COLOR_ERROR,"USAGE: /disarm [PlayerID]");
+	    	return 1;
+		}
 		else
 		{
 		    if(giveplayerid == INVALID_PLAYER_ID)  return SendClientMessage(playerid,COLOR_ERROR, "Player not connected!");
@@ -26958,85 +27036,6 @@ public OnPlayerCommandPerformed(playerid, cmdtext[], success)
 	new tmp[256];
 	cmd = strtok(cmdtext, idx);
 
-    if(strcmp(cmd, "/reqvisit", true) == 0)
-	{
-    	if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-   		}
-    	if(Jailed[playerid] == 0 && InAlcatraz[playerid] == 0)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You are not in jail. You can only use this command while you are in jail (Alcatraz)");
-		    return 1;
-	    }
-	    if(Jailed[playerid] == 1 && InAlcatraz[playerid] == 0)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You can only request a visit if you are in jail on Alcatraz Island");
-		    return 1;
-	    }
-	    tmp = strtok(cmdtext, idx);
-	    if(!strlen(tmp))
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "USAGE: /reqvisit (id)");
-		    return 1;
-	    }
-	    if(!IsNumeric(tmp))
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "USAGE: /reqvisit (id) ID Must be a number");
-		    return 1;
-	    }
-	    if(strval(tmp) == playerid)
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "You cannot give yourself a visiting pass");
-		    return 1;
-	    }
-	    giveplayerid = strval(tmp);
-	    if(!IsPlayerConnected(giveplayerid))
-		{
-		    format(string, sizeof(string), "ID (%d) is not an active player", giveplayerid);
-		    SendClientMessage(playerid, COLOR_ERROR, string);
-		    return 1;
-	    }
-	    new sendername[24];
-	    new receivername[24];
-	    GetPlayerName(playerid,sendername, 24);
-		GetPlayerName(giveplayerid,receivername, 24);
-	    if(gTeam[giveplayerid] <= 2)
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "You cannot send a visiting pass to Police or Army Officers");
-		    return 1;
-	    }
-	    if(IsSpawned[giveplayerid] == 0)
-		{
-			format(string, sizeof(string), "%s(%d) is dead. You cannot give a visiting pass to a dead body",receivername,giveplayerid);
-		    SendClientMessage(playerid, COLOR_ERROR, string);
-		    return 1;
-	    }
-	    if(Jailed[giveplayerid] == 1)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"That player is in jail. You cannot give a visiting pass to a prisoner");
-		    return 1;
-	    }
-	    if(VisitReq[giveplayerid] == 1)
-		{
-		    format(string, sizeof(string), "%s(%d) Already has a visiting pass from you or another inmate",receivername,giveplayerid);
-		    SendClientMessage(playerid, COLOR_ERROR, string);
-	    }
-	    else if(VisitReq[giveplayerid] == 0)
-		{
-		    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_Alcatraz Island Visit Pass Received_|");
-		    format(string, sizeof(string), "Alcatraz prisoner %s(%d) has sent you a visiting pass",sendername,playerid);
-		    SendClientMessage(giveplayerid, 0x00C7FFAA, string);
-		    SendClientMessage(giveplayerid, 0x00C7FFAA, "This pass will get you inside Alcatraz building. The pass is valid for 5 game hours");
-		    SendClientMessage(playerid, 0xA9A9A9AA, "|_Alcatraz Island Visit Pass Sent_|");
-		    format(string, sizeof(string), "You have sent a Alcatraz visiting pass to %s(%d) - This pass is valid for 5 game hours",receivername,giveplayerid);
-		    SendClientMessage(playerid, 0x00C7FFAA, string);
-		    VisitReq[giveplayerid] =1;
-		    VisitReqExpires[giveplayerid] =300;
- 		}
-	    return 1;
-   }
 	if(strcmp(cmd, "/gc", true) == 0)
 	{
 	    if(IsSpawned[playerid] == 0)
