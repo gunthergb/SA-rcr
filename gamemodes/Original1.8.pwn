@@ -2493,10 +2493,10 @@ public OnGameModeInit()
 	// Player Classes
 	AddPlayerClass(280,1568.6383,-1690.4099,5.8906,179.2937,3,1,22,50,29,500); // LS Cop 1
 	AddPlayerClass(267,1568.6383,-1690.4099,5.8906,179.2937,3,1,22,50,29,500); // LS Cop 2
-	AddPlayerClass(282,2281.3210,2429.7224,3.2734,359.5055,3,1,22,50,29,500); // LV Cop 1
-	AddPlayerClass(283,2281.3210,2429.7224,3.2734,359.5055,3,1,22,50,29,500); // LV Cop 2
 	AddPlayerClass(281,-1590.9023,716.0693,-5.2422,270,3,1,22,50,29,500); // SF Cop 1
 	AddPlayerClass(284,-1590.9023,716.0693,-5.2422,270,3,1,22,50,29,500); // SF Cop 2
+	AddPlayerClass(282,2281.3210,2429.7224,3.2734,359.5055,3,1,22,50,29,500); // LV Cop 1
+	AddPlayerClass(283,2281.3210,2429.7224,3.2734,359.5055,3,1,22,50,29,500); // LV Cop 2
 	AddPlayerClass(285,682.8952,-2060.6851,10.2929,90,24,2000,29,2000,31,2000); // S.W.A.T.
 	AddPlayerClass(286,-2891.5051,441.4344,4.9796,354.9593,24,2000,29,2000,31,2000); // FBI
 	AddPlayerClass(287,158.5695,1903.1151,18.7089,266.8676,24,2000,29,2000,31,2000);// Army
@@ -6270,6 +6270,277 @@ CMD:mechanic(playerid, params[])
     	}
     }
 	return 1;
+}
+
+CMD:fixme(playerid, params[])
+{
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+    if(GetPlayerWantedLevel(playerid) >= 4)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You cannot use this command while you have a warrant (Orange/Red)");
+	    return 1;
+    }
+    if(InDerby[playerid] == 1)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You cannot use this command while you are in the stadium");
+	    return 1;
+    }
+    if(gTeam[playerid] != TEAM_CARFIX)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You are not a mechanic");
+	    return 1;
+    }
+    if(!IsPlayerInAnyVehicle(playerid))
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You are not in a vehicle");
+	    return 1;
+    }
+    if(fixedcarrecent[playerid] >=1)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"Command used recently. Please wait");
+	    return 1;
+    }
+    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
+	{
+	    new tofix = GetPlayerVehicleID(playerid);
+	    SetVehicleHealth(tofix, 1000);
+	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Vehicle Engine Repaired_|");
+	    SendClientMessage(playerid, 0x00C7FFAA, "You have fixed your vehicle engine");
+	    fixedcarrecent[playerid] =60;
+    }
+    else
+    SendClientMessage(playerid, COLOR_ERROR, "You need to be driver to fix your own car");
+    return 1;
+}
+
+CMD:ccomands(playerid, params[])
+{
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "Criminal Commands");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/rob  (id) - Attempt to rob another player");
+    SendClientMessage(playerid,COLOR_ROYALBLUE, "/rape (id) - Attempt to rape another player");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robcasino - Attempt to rob a casino");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robbank - Attempt to rob LV City Bank");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robatm - Attempt to rob a ATM Machine");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robstore - Attempt to rob a 24/7 Store");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robhall - Attempt to rob LV City Hall");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robab - Attempt to rob AutoBahn");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/takedrugs (grams) - Use drugs");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/sur - Surrender when wanted");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/giveC4 - Give a player C4");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/ta - Throws away any illegal items");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "See /gcommands for general gameplay commands");
+    return 1;
+}
+
+CMD:gcomands(playerid, params[])
+{
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+   	SendClientMessage(playerid,COLOR_ROYALBLUE, "General Gameplay Commands");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/food - Call a food delivery worker");
+    SendClientMessage(playerid,COLOR_ROYALBLUE, "/drugs - Call a drugs dealer");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/hit (id) (amount) - Place a hit contract on another player");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/gc (id) (amount) - Give another player cash");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/pm (id) (msg) - Send a Personal Message /pmoff - Refuse PMs");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/ej - Eject you from vehicle /ejall - Eject all from vehicle");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/ej (id) - Eject a player from your vehicle");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/cry - Cry like a big girl");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/foff (ID)- Tell a player to Fuck Off");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/bail (ID) bail a player from prision for 25k");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "/rc - Speak so only Regular Players can see");
+	SendClientMessage(playerid,COLOR_ROYALBLUE, "See /ccommands for criminal commands");
+    return 1;
+}
+
+CMD:credits(playerid, params[])
+{
+	SendClientMessage(playerid, 0xA9A9A9AA, "|_San Andreas Roleplay/Cops/Robbers -(CREDITS)-_|");
+	SendClientMessage(playerid,COLOR_WHITE, "The people mentioned here are thanked and are given due credit!");
+    SendClientMessage(playerid,COLOR_YELLOW, "1 - BMUK - Creating the original GM");
+	SendClientMessage(playerid,COLOR_YELLOW, "2 - Sc0pe - Scripted 2.0.1 and Mapped out Yugoslavia.");
+	SendClientMessage(playerid,COLOR_YELLOW, "3 - Natox - Scripted 2.0.1 and Mapping out various places.");
+	SendClientMessage(playerid,COLOR_YELLOW, "4 - Time - Mapping out the SWAT base.");
+	SendClientMessage(playerid,COLOR_YELLOW, "5 - All the admins");
+	SendClientMessage(playerid,COLOR_LIGHTBLUE, "A more in-depth look at our server's credits is on the forums at www.sa-rcr.com");
+	SendClientMessage(playerid,COLOR_DEADCONNECT, "If you think your name should be in the Credits... Visit the forums: www.sa-rcr.com");
+   	return 1;
+}
+
+CMD:cutrope(playerid, params[])
+{
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+    if(gTeam[playerid] <= 2)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"Law Enforcement agents cannot use this command");
+	    return 1;
+    }
+    if(Jailed[playerid] == 1)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You cannot use this command in jail");
+	    return 1;
+    }
+    if(isKidnapped[playerid] == 0)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You are not tied. You cannot use this command");
+	    return 1;
+    }
+    if(CuffedTime[playerid] >= 1)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "Please wait before trying to cut the rope");
+	    return 1;
+    }
+	if(gotSissors[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You have no rusty scissors!");
+		return 1;
+	}
+    new breakcuffsrand = random(100);
+ 	if(breakcuffsrand >=26 && breakcuffsrand <=100) // Failed
+	{
+		new escapedname[24];
+		GetPlayerName(playerid,escapedname,24);
+	 	SendClientMessage(playerid,COLOR_ERROR,"The rusty scissors broke when trying to use them! Escape failed.");
+		gotSissors[playerid] =0;
+	    return 1;
+    }
+    else if(breakcuffsrand >=0 && breakcuffsrand <=25) // complete
+	{
+		TogglePlayerControllable(playerid, 1);
+		isKidnapped[playerid] =0;
+		new escapedname[24], string[128];
+		GetPlayerName(playerid,escapedname,24);
+		GameTextForPlayer(playerid,"~r~ESCAPED~n~FROM ROPE",6000,3);
+		format(string, sizeof(string), "%s(%d) Has escaped from rope",escapedname,playerid);
+		printf("%s",string);
+		for(new i=0;i<MAX_PLAYERS;i++)
+		{
+			if(HasKidnapped[i] == 1)
+			{
+			    format(string, sizeof(string), "%s(%d) has escaped ",escapedname,playerid);
+			    SendClientMessage(i,COLOR_ROYALBLUE,string);
+			    HasKidnapped[i]=0;
+   			}
+    	}
+    }
+    return 1;
+}
+
+CMD:robhall(playerid, params[])
+{
+	if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+    if(Jailed[playerid] == 1)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+    }
+    if(cuffed[playerid] == 1)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You cannot use this command while you are handcuffed");
+	    return 1;
+    }
+	if(!IsPlayerInDynamicCP(playerid, RobCityHall))
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You are not in the LV City Hall robbing checkpoint");
+	    return 1;
+    }
+    if(gTeam[playerid] == TEAM_COP || gTeam[playerid] == TEAM_ARMY || gTeam[playerid] == TEAM_SWAT || gTeam[playerid] == TEAM_FBI || gTeam[playerid] == TEAM_MEDIC || gTeam[playerid] == TEAM_CASSEC || gTeam[playerid] == TEAM_JAILTK)
+	{
+		SendClientMessage(playerid,COLOR_ERROR,"You cannot rob LV City Hall");
+		return 1;
+ 	}
+ 	if(AbleToRobCityHall[playerid] == 1)
+    {
+    	if(cityhallrobbedrecent >= 1)
+		{
+		    SendClientMessage(playerid,COLOR_ERROR,"LV City Hall has been robbed recently. Try again later");
+			return 1;
+ 		}
+ 		new challrand = random(100);
+ 		if(challrand >=0 && challrand <=10)
+	 	{
+		 	SendClientMessage(playerid, 0xA9A9A9AA, "|_LV City Hall Robbery Failed_|");
+		 	SendClientMessage(playerid,COLOR_ERROR,"Your attempt to rob LV City Hall has failed");
+		 	return 1;
+ 		}
+    	if(challrand >=11 && challrand <=100)
+		{
+		    new string[128];
+	        new hallrobbber[30];
+	        new pcol = GetPlayerColor(playerid);
+	        GetPlayerName(playerid,hallrobbber,30);
+	        new plwl = GetPlayerWantedLevel(playerid);
+		    SetPlayerWantedLevel(playerid, plwl +4);
+			robbinghall[playerid] =30;
+			SendClientMessage(playerid,0x00C7FFAA,"You are now robbing LV City Hall. The Police have been dispatched and will be on route right now");
+			SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+			plwl = GetPlayerWantedLevel(playerid);
+			cityhallrobbedrecent = 240;
+			SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+			format(string, sizeof(string), "(LV CITY HALL ROBBERY) Wanted Level %d",plwl);
+			SendClientMessage(playerid,pcol,string);
+			commitedcrimerecently[playerid] +=120;
+			printf("%s(%d) has started a LV City Hall robbery",hallrobbber,playerid);
+			for(new i=0;i<MAX_PLAYERS;i++)
+			{
+        		if(LawEnforcementRadio[i] == 1)
+				{
+			        new string1[256];
+			        new string2[256];
+					format(string1, sizeof(string1), "DISPATCH: (ROBBERY IN PROGRESS) Suspect: %s(%d)",hallrobbber,playerid);
+					format(string2, sizeof(string2), "ALL UNITS: Please respond to LV City Hall and arrest %s(%d)",hallrobbber,playerid);
+					SendClientMessage(i, COLOR_ROYALBLUE, string1);
+					SendClientMessage(i, COLOR_ROYALBLUE, string2);
+	    		}
+	    	}
+	    }
+    }
+	return 1;
+}
+
+CMD:locate(playerid, params[])
+{
+	new giveplayerid, current_zone;
+	if(isnull(params)) return SendClientMessage(playerid, COLOR_ERROR, "USAGE: /loc (id) ID Must be a number)");
+	if(GetPlayerColor(giveplayerid) == COLOR_DEADCONNECT)
+	{
+		SendClientMessage(playerid,COLOR_ERROR,"That player is dead");
+		return 1;
+	}
+	current_zone = player_zone[giveplayerid];
+	//printf("D1: %d %d",target,current_zone);
+	if(current_zone != -1 && IsPlayerConnected(giveplayerid))
+	{
+		new playername[MAX_PLAYER_NAME],message2[256];
+		GetPlayerName(giveplayerid,playername,MAX_PLAYER_NAME);
+		format(message2,sizeof(message2),"%s(%d)'s current location: %s",playername,giveplayerid,zones[current_zone][zone_name]);
+		SendClientMessage(playerid,0x00C7FFAA,message2);
+	//printf("D2: %s %s",playername,message);
+  	}
+  	else
+  	{
+		SendClientMessage(playerid,COLOR_ERROR,"Invalid Player ID");
+	}
+  	return 1;
 }
 
 CMD:ejself(playerid, params[])
@@ -26687,206 +26958,6 @@ public OnPlayerCommandPerformed(playerid, cmdtext[], success)
 	new tmp[256];
 	cmd = strtok(cmdtext, idx);
 
-
-    if(strcmp(cmd, "/fixme", true) == 0)
-	{
-	    if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-	    }
-	    if(GetPlayerWantedLevel(playerid) >= 4)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You cannot use this command while you have a warrant (Orange/Red)");
-		    return 1;
-	    }
-	    if(InDerby[playerid] == 1)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You cannot use this command while you are in the stadium");
-		    return 1;
-	    }
-	    if(gTeam[playerid] != TEAM_CARFIX)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You are not a mechanic");
-		    return 1;
-	    }
-	    if(!IsPlayerInAnyVehicle(playerid))
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You are not in a vehicle");
-		    return 1;
-	    }
-	    if(fixedcarrecent[playerid] >=1)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"Command used recently. Please wait");
-		    return 1;
-	    }
-	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
-		{
-		    new tofix = GetPlayerVehicleID(playerid);
-		    SetVehicleHealth(tofix, 1000);
-		    SendClientMessage(playerid, 0xA9A9A9AA, "|_Vehicle Engine Repaired_|");
-		    SendClientMessage(playerid, 0x00C7FFAA, "You have fixed your vehicle engine");
-		    fixedcarrecent[playerid] =60;
-	    }
-	    else
-	    SendClientMessage(playerid, COLOR_ERROR, "You need to be driver to fix your own car");
-	    return 1;
-	}
-    if(strcmp(cmd, "/ccommands", true) == 0)
-	{
-	    if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-	    }
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Criminal Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/rob  (id) - Attempt to rob another player");
-	    SendClientMessage(playerid,COLOR_ROYALBLUE, "/rape (id) - Attempt to rape another player");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/robcasino - Attempt to rob a casino");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/robbank - Attempt to rob LV City Bank");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/robatm - Attempt to rob a ATM Machine");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/robstore - Attempt to rob a 24/7 Store");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/robhall - Attempt to rob LV City Hall");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/robab - Attempt to rob AutoBahn");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/takedrugs (grams) - Use drugs");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/sur - Surrender when wanted");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/giveC4 - Give a player C4");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/ta - Throws away any illegal items");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See /gcommands for general gameplay commands");
-	    return 1;
-	}
-    if(strcmp(cmd, "/gcommands", true) == 0)
-	{
-	    if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-	    }
-     	SendClientMessage(playerid,COLOR_ROYALBLUE, "General Gameplay Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/food - Call a food delivery worker");
-	    SendClientMessage(playerid,COLOR_ROYALBLUE, "/drugs - Call a drugs dealer");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/hit (id) (amount) - Place a hit contract on another player");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/gc (id) (amount) - Give another player cash");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/pm (id) (msg) - Send a Personal Message /pmoff - Refuse PMs");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/ej - Eject you from vehicle /ejall - Eject all from vehicle");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/ej (id) - Eject a player from your vehicle");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cry - Cry like a big girl");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/foff (ID)- Tell a player to Fuck Off");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/bail (ID) bail a player from prision for 25k");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/rc - Speak so only Regular Players can see");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See /ccommands for criminal commands");
-	    return 1;
-	}
-    if(strcmp(cmd, "/credits", true) == 0)
-	{
-		SendClientMessage(playerid, 0xA9A9A9AA, "|_San Andreas Roleplay/Cops/Robbers -(CREDITS)-_|");
-		SendClientMessage(playerid,COLOR_WHITE, "The people mentioned here are thanked and are given due credit!");
-        SendClientMessage(playerid,COLOR_YELLOW, "1 - BMUK - Creating the original GM");
-		SendClientMessage(playerid,COLOR_YELLOW, "2 - Sc0pe - Scripted 2.0.1 and Mapped out Yugoslavia.");
-		SendClientMessage(playerid,COLOR_YELLOW, "3 - Natox - Scripted 2.0.1 and Mapping out various places.");
-		SendClientMessage(playerid,COLOR_YELLOW, "4 - Time - Mapping out the SWAT base.");
-		SendClientMessage(playerid,COLOR_YELLOW, "5 - All the admins");
-		SendClientMessage(playerid,COLOR_LIGHTBLUE, "A more in-depth look at our server's credits is on the forums at www.sa-rcr.com");
-		SendClientMessage(playerid,COLOR_DEADCONNECT, "If you think your name should be in the Credits... Visit the forums: www.sa-rcr.com");
-    	return 1;
-    }
-	if(strcmp(cmd, "/cutrope") == 0)
-	{
-	    if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-	    }
-	    if(gTeam[playerid] <= 2)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"Law Enforcement agents cannot use this command");
-		    return 1;
-	    }
-	    if(Jailed[playerid] == 1)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You cannot use this command in jail");
-		    return 1;
-	    }
-	    if(isKidnapped[playerid] == 0)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You are not tied. You cannot use this command");
-		    return 1;
-	    }
-	    if(CuffedTime[playerid] >= 1)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "Please wait before trying to cut the rope");
-		    return 1;
-	    }
-		if(gotSissors[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You have no rusty scissors!");
-			return 1;
-		}
-	    new breakcuffsrand = random(100);
-	 	if(breakcuffsrand >=26 && breakcuffsrand <=100) // Failed
-		{
-			new escapedname[24];
-			GetPlayerName(playerid,escapedname,24);
-		 	SendClientMessage(playerid,COLOR_ERROR,"The rusty scissors broke when trying to use them! Escape failed.");
-			gotSissors[playerid] =0;
-		    return 1;
-	    }
-	    else if(breakcuffsrand >=0 && breakcuffsrand <=25) // complete
-		{
-			TogglePlayerControllable(playerid, 1);
-			isKidnapped[playerid] =0;
-			new escapedname[24];
-			GetPlayerName(playerid,escapedname,24);
-			GameTextForPlayer(playerid,"~r~ESCAPED~n~FROM ROPE",6000,3);
-			format(string, sizeof(string), "%s(%d) Has escaped from rope",escapedname,playerid);
-			printf("%s",string);
-			for(new i=0;i<MAX_PLAYERS;i++)
-			{
- 				if(HasKidnapped[i] == 1)
-				{
-				    format(string, sizeof(string), "%s(%d) has escaped ",escapedname,playerid);
-				    SendClientMessage(i,COLOR_ROYALBLUE,string);
-				    HasKidnapped[i]=0;
-	   			}
-	    	}
-	    }
-	    return 1;
-    }
-	if(strcmp(cmdtext,"/loc ",true,5) == 0 && strlen(cmdtext) > 5)
-	{
-		new target, current_zone;
-		target = strval(cmdtext[5]);
-		if(!IsNumeric(cmdtext[5]))
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "USAGE: /loc (id) ID Must be a number");
-			return 1;
-      	}
-		if(GetPlayerColor(target) == COLOR_DEADCONNECT)
-		{
-			SendClientMessage(playerid,COLOR_ERROR,"That player is dead");
-			return 1;
-		}
-		current_zone = player_zone[target];
-		//printf("D1: %d %d",target,current_zone);
-		if(current_zone != -1 && IsPlayerConnected(target))
-		{
-			new playername[MAX_PLAYER_NAME],message2[256];
-			GetPlayerName(target,playername,MAX_PLAYER_NAME);
-			format(message2,sizeof(message2),"%s(%d)'s current location: %s",playername,target,zones[current_zone][zone_name]);
-			SendClientMessage(playerid,0x00C7FFAA,message2);
-		//printf("D2: %s %s",playername,message);
-	  	}
-	  	else
-	  	{
-			SendClientMessage(playerid,COLOR_ERROR,"Invalid Player ID");
-		}
-	  	return 1;
-	}
-	else if(strcmp(cmdtext,"/loc",true,4) == 0 && strlen(cmdtext) <= 4)
-	{
-		SendClientMessage(playerid,COLOR_ERROR,"USAGE: /loc (id)");
-		return 1;
-	}
     if(strcmp(cmd, "/reqvisit", true) == 0)
 	{
     	if(IsSpawned[playerid] == 0)
@@ -27861,80 +27932,7 @@ public OnPlayerCommandPerformed(playerid, cmdtext[], success)
 		 }
 		return 1;
 	}
-	if(strcmp(cmdtext, "/robhall", true) == 0)
-	{
-		if(IsSpawned[playerid] == 0)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-	    }
-	    if(Jailed[playerid] == 1)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-		    return 1;
-	    }
-	    if(cuffed[playerid] == 1)
-		{
-			SendClientMessage(playerid, COLOR_ERROR, "You cannot use this command while you are handcuffed");
-		    return 1;
-	    }
-		if(!IsPlayerInDynamicCP(playerid, RobCityHall))
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You are not in the LV City Hall robbing checkpoint");
-		    return 1;
-	    }
-	    if(gTeam[playerid] == TEAM_COP || gTeam[playerid] == TEAM_ARMY || gTeam[playerid] == TEAM_SWAT || gTeam[playerid] == TEAM_FBI || gTeam[playerid] == TEAM_MEDIC || gTeam[playerid] == TEAM_CASSEC || gTeam[playerid] == TEAM_JAILTK)
-		{
-			SendClientMessage(playerid,COLOR_ERROR,"You cannot rob LV City Hall");
-			return 1;
-	 	}
-	 	if(AbleToRobCityHall[playerid] == 1)
-	    {
-	    	if(cityhallrobbedrecent >= 1)
-			{
-			    SendClientMessage(playerid,COLOR_ERROR,"LV City Hall has been robbed recently. Try again later");
-				return 1;
-	 		}
-	 		new challrand = random(100);
-	 		if(challrand >=0 && challrand <=10)
-		 	{
-			 	SendClientMessage(playerid, 0xA9A9A9AA, "|_LV City Hall Robbery Failed_|");
-			 	SendClientMessage(playerid,COLOR_ERROR,"Your attempt to rob LV City Hall has failed");
-			 	return 1;
-	 		}
-	    	if(challrand >=11 && challrand <=100)
-			{
-		        new hallrobbber[30];
-		        new pcol = GetPlayerColor(playerid);
-		        GetPlayerName(playerid,hallrobbber,30);
-		        new plwl = GetPlayerWantedLevel(playerid);
-			    SetPlayerWantedLevel(playerid, plwl +4);
-				robbinghall[playerid] =30;
-				SendClientMessage(playerid,0x00C7FFAA,"You are now robbing LV City Hall. The Police have been dispatched and will be on route right now");
-				SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
-				plwl = GetPlayerWantedLevel(playerid);
-				cityhallrobbedrecent = 240;
-				SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
-				format(string, sizeof(string), "(LV CITY HALL ROBBERY) Wanted Level %d",plwl);
-				SendClientMessage(playerid,pcol,string);
-				commitedcrimerecently[playerid] +=120;
-				printf("%s(%d) has started a LV City Hall robbery",hallrobbber,playerid);
-				for(new i=0;i<MAX_PLAYERS;i++)
-				{
-	        		if(LawEnforcementRadio[i] == 1)
-					{
-				        new string1[256];
-				        new string2[256];
-						format(string1, sizeof(string1), "DISPATCH: (ROBBERY IN PROGRESS) Suspect: %s(%d)",hallrobbber,playerid);
-						format(string2, sizeof(string2), "ALL UNITS: Please respond to LV City Hall and arrest %s(%d)",hallrobbber,playerid);
-						SendClientMessage(i, COLOR_ROYALBLUE, string1);
-						SendClientMessage(i, COLOR_ROYALBLUE, string2);
-		    		}
-		    	}
-		    }
-	    }
-		return 1;
- 	}
+
 	/*if(strcmp("/sell", cmdtext, true, 6) == 0) // sellcar
 	{
 		if(IsPlayerInDynamicCP(playerid, CPAutobahn) && GetPlayerVehicleID(playerid) == 1 && GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
