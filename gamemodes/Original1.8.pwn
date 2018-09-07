@@ -706,6 +706,7 @@ new SWATMaverick1, SWATMaverick2, SWATMaverick3, SWATMaverick4;
 
 //Discord
 new DCC_Channel:discordChannel;
+new DiscordStats[MAX_PLAYERS];
 
 enum sInfo
 {
@@ -20725,6 +20726,14 @@ public OnPlayerConnect(playerid)
     SendClientMessage(playerid,0x87CEEBAA, "Visit our website to report bugs/suggestions/complaints etc");
 	SendClientMessage(playerid,0x87CEEBAA, "There is a full list of commands/rules and other information on our website" );
 	SendClientMessage(playerid,0x87CEEBAA, "Visit our website at www.sa-rcr.com");
+	
+	new namer[MAX_PLAYER_NAME + 1];
+	GetPlayerName(playerid, namer, sizeof namer);
+    if (_:discordChannel == 0)
+		discordChannel = DCC_FindChannelById(DISCORD_CHANNEL_ID); // Discord channel ID
+		
+	format(str, sizeof str, "Player %s joined the server.", namer);
+	DCC_SendChannelMessage(discordChannel, str);
 
     if(udb_Exists(PlayerName(playerid)))
 	{
@@ -20939,6 +20948,13 @@ public OnPlayerDisconnect(playerid, reason)
 		case 1: reasonMsg = "Leaving";
 		case 2: reasonMsg = "Kicked";
 	}
+	GetPlayerName(playerid, name, sizeof name);
+    if (_:discordChannel == 0)
+		discordChannel = DCC_FindChannelById(DISCORD_CHANNEL_ID); // Discord channel ID
+
+	format(leaveMsg, sizeof leaveMsg, "Player %s has left the server. (%s)", name, reasonMsg);
+	DCC_SendChannelMessage(discordChannel, leaveMsg);
+	
 	GetPlayerName(playerid, name, sizeof(name));
 	format(leaveMsg, sizeof(leaveMsg), "02[%d] 03*** %s has left the server. (%s)", playerid, name, reasonMsg);
 	IRC_GroupSay(gGroupID, IRC_CHANNEL, leaveMsg);
@@ -23267,6 +23283,7 @@ public OnPlayerLeaveDynamicCP(playerid, checkpointid)
 
 public DCC_OnChannelMessage(DCC_Channel:channel, DCC_User:author, const message[])
 {
+	new Bot_Name[] = "RoboCop";
 	new channel_name[100 + 1];
     if(!DCC_GetChannelName(channel, channel_name))
         return 0;
@@ -23275,10 +23292,19 @@ public DCC_OnChannelMessage(DCC_Channel:channel, DCC_User:author, const message[
     if (!DCC_GetUserName(author, user_name))
         return 0;
 
-    new msg[128];
-    format(msg, sizeof(msg), "{7289DA}[Discord] %s: {FFFFFF}%s", user_name, message);
-    SendClientMessageToAll(-1, msg); // This works correctly
-    return 1;
+	//if(author != "RoboCop") return 0;
+    //if(!strcmp(author, "RoboCop", true) || channel != discordChannel)) return 0;
+    
+	if(!strcmp(user_name, Bot_Name))
+	{
+	    return 0;
+	}
+	new str [128];
+	format(str, sizeof str, "{7289DA}[Discord] %s: {FFFFFF}%s: %s", channel_name, user_name, message);
+    for(new i = 0; i < MAX_PLAYERS; i++) {
+    if (DiscordStats[i]==0) continue;
+    SendClientMessage(i, -1, str); }
+	return 1;
 }
 
 public OnPlayerSpawn(playerid)
@@ -23301,14 +23327,6 @@ public OnPlayerSpawn(playerid)
     SetPlayerInterior(playerid,0);
     SetPlayerToTeamColour(playerid);
     
-    new name[MAX_PLAYER_NAME + 1];
-	GetPlayerName(playerid, name, sizeof name);
-    if (_:discordChannel == 0)
-		discordChannel = DCC_FindChannelById(DISCORD_CHANNEL_ID); // Discord channel ID
-
-	new str[128];
-	format(str, sizeof str, "Player %s joined the server.", name);
-	DCC_SendChannelMessage(discordChannel, str);
 
     if(gTeam[playerid] >= TEAM_CIVIL)
 	{
@@ -23445,7 +23463,7 @@ public OnPlayerSpawn(playerid)
 	}
     if(udb_Exists(PlayerName(playerid)) && PLAYERLIST_authed[playerid])
 	{
-		//new str[100];
+		new str[100];
 		/*new isbanned =0;
 		isbanned =dUserINT(PlayerName(playerid)).("Banned");
 		if(isbanned == 1)
@@ -24089,12 +24107,16 @@ public OnPlayerText(playerid, text[])
     {
     	return 0;
     }
-    new name[MAX_PLAYER_NAME], ircMsg[256];
-    GetPlayerName(playerid, name, sizeof(name));
+    
+    new name[MAX_PLAYER_NAME + 1];
+	GetPlayerName(playerid, name, sizeof name);
+
+	new str[128];
+	format(str, sizeof str, "%s (%d): %s", name, playerid, text);
+	DCC_SendChannelMessage(discordChannel, str);
+	DiscordStats[playerid]=1;
 	SpamStrings[playerid] ++;
-	format(ircMsg, sizeof(ircMsg), "02[%d] 07%s: %s", playerid, name, text);
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, ircMsg);
-	return SendPlayerMessageToAll(playerid, ColouredText(text)), 0;
+	return 1;
 }
 
 forward OnPlayerPrivateMessage(playerid, recieverid, text[]);
