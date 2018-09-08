@@ -10440,3 +10440,52 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [06:51:15]  
 [06:51:15]   Loaded.
 [06:51:15]  Loading plugin: crashdetect
+[06:51:15]   crashdetect v4.8.3 is OK.
+[06:51:15]   Loaded.
+[06:51:15]  Loaded 6 plugins.
+
+[06:51:15] 
+[06:51:15] Filterscripts
+[06:51:15] ---------------
+[06:51:15]   Loading filterscript 'Ironman.amx'...
+[06:51:15]   Loading filterscript 'SpikeStrip.amx'...
+[06:51:15]   Loading filterscript 'CarMenu_v1.2.amx'...
+[06:51:15] ===============================================
+[06:51:15] Vehicle Selection Menu By [03]Garsino Loaded...
+[06:51:15] ===============================================
+[06:51:15]   Loading filterscript 'Teleports.amx'...
+[06:51:15] 
+  Go to LS, SF or LV.
+
+[06:51:15]   Loading filterscript 'IntMenu.amx'...
+[06:51:15] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[06:51:15]   Loaded 5 filterscripts.
+
+[06:51:15] 
+#############################
+[06:51:15] #                           #
+[06:51:15] #          [Sarcr]          #
+[06:51:15] #        San Andreas        #
+[06:51:15] #   Roleplay/Cops/Robbers   #
+[06:51:15] #                           #
+[06:51:15] #############################
+
+[06:51:15] Number of vehicle models: 164
+[06:51:29] [connection] 47.195.228.90:1024 requests connection cookie.
+[06:51:30] [connection] incoming connection: 47.195.228.90:1024 id: 0
+[06:51:30] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[06:51:30] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[06:51:35] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[06:51:35] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[06:51:37] [chat] [[Lvrcr]Natox]: lies
+[06:51:45] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[06:51:45] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:51:55] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:52:05] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[06:52:11] [chat] [[Lvrcr]Natox]: IT WORKS
+[06:52:15] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:52:25] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[06:52:35] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[06:52:35] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)

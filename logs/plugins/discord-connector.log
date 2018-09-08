@@ -521,3 +521,61 @@
 [06:51:44] [INFO] PAWN callback successfully executed.
 [06:52:11] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
 [06:52:11] [INFO] PAWN callback successfully executed.
+[07:05:21] [ERROR] can't update guild member presence: guild id "idle" not cached
+[07:27:41] [ERROR] Discord terminated websocket connection; reason:  (1001)
+[07:27:41] [INFO] websocket gateway connection terminated, attempting reconnect...
+[07:27:41] [WARNING] Error while sending WS close frame: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[08:36:27] [ERROR] Discord terminated websocket connection; reason:  (1001)
+[08:36:27] [INFO] websocket gateway connection terminated, attempting reconnect...
+[08:36:27] [WARNING] Error while sending WS close frame: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[11:43:33] [ERROR] can't update guild member presence: guild id "online" not cached
+[11:45:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[12:43:43] [ERROR] can't update guild member presence: guild id "online" not cached
+[12:45:43] [ERROR] can't update guild member presence: guild id "idle" not cached
+[12:57:15] [WARNING] Unknown gateway event 'PRESENCES_REPLACE'
+[13:32:49] [ERROR] can't update guild member presence: guild id "online" not cached
+[13:34:49] [ERROR] can't update guild member presence: guild id "idle" not cached
+[17:10:48] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[17:10:48] [INFO] trying reconnect #1...
+[17:10:48] [INFO] reconnect succeeded, resending request
+[17:11:00] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:11:00] [INFO] PAWN callback successfully executed.
+[17:11:07] [ERROR] can't update guild member presence: guild id "online" not cached
+[17:13:07] [ERROR] can't update guild member presence: guild id "idle" not cached
+[17:21:14] [WARNING] Unknown gateway event 'PRESENCES_REPLACE'
+[18:17:27] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[18:17:27] [INFO] trying reconnect #1...
+[18:17:27] [INFO] reconnect succeeded, resending request
+[18:17:27] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:17:27] [INFO] PAWN callback successfully executed.
+[18:17:45] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:17:45] [INFO] PAWN callback successfully executed.
+[18:18:42] [ERROR] can't update guild member presence: guild id "online" not cached
+[18:18:45] [WARNING] Unknown gateway event 'PRESENCES_REPLACE'
+[18:19:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:19:15] [INFO] PAWN callback successfully executed.
+[18:29:47] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[18:29:47] [INFO] trying reconnect #1...
+[18:29:48] [INFO] reconnect succeeded, resending request
+[18:29:48] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:29:48] [INFO] PAWN callback successfully executed.
+[18:31:35] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:31:35] [INFO] PAWN callback successfully executed.
+[18:32:50] [ERROR] can't update guild member presence: guild id "idle" not cached
+[18:33:36] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:33:36] [INFO] PAWN callback successfully executed.
+[18:33:59] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:33:59] [INFO] PAWN callback successfully executed.
+[18:59:58] [ERROR] can't update guild member presence: guild id "online" not cached
+[19:00:03] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:00:03] [INFO] PAWN callback successfully executed.
+[19:10:20] [ERROR] can't update guild member presence: guild id "idle" not cached
+[19:11:20] [WARNING] Unknown gateway event 'PRESENCES_REPLACE'
+[19:12:57] [ERROR] can't update guild member presence: guild id "online" not cached
+[19:17:41] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[19:17:41] [INFO] trying reconnect #1...
+[19:17:41] [INFO] reconnect succeeded, resending request
+[19:17:42] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:17:42] [INFO] PAWN callback successfully executed.
+[19:19:55] [WARNING] Unknown gateway event 'PRESENCES_REPLACE'
+[19:25:20] [ERROR] can't update guild member presence: guild id "idle" not cached
