@@ -540,6 +540,8 @@ new YugoBomb5;
 new YugoBomb6;
 new YugoBarricade1;
 new YugoBarricade2;
+//Yugo Commercial Building
+new CommercialBuilding;
 //Hospital CP
 new LVHospital;
 new AbleToUseLVHospital[MAX_PLAYERS];
@@ -1849,7 +1851,7 @@ public OnGameModeInit()
 	NukeDoor = 0;
 	MissileCanLaunch = 1;
 	//Commercial Building
-	CreateDynamicObject(4564,1024.31127930,3727.24169922,119.52521515,0.00000000,0.00000000,0.00000000); //object(laskyscrap2_lan) (1)
+	CommercialBuilding = CreateDynamicObject(4564,1024.31127930,3727.24169922,119.52521515,0.00000000,0.00000000,0.00000000); //object(laskyscrap2_lan) (1)
 	//Yugoslavia
 	CreateDynamicObject(4866,2159.86230469,3471.11914062,9.93737030,0.00000000,0.00000000,90.00000000); //object(lasrnway1_las) (1)
 	CreateDynamicObject(7978,2128.41894531,3548.66796875,28.50000000,0.00000000,0.00000000,180.00000000); //object(airport01_LVs) (1)
@@ -8395,17 +8397,12 @@ CMD:adgoto(playerid, params[])
 		    if(giveplayerid == playerid)  return SendClientMessage(playerid,COLOR_ERROR,"Player entered is you!");
 
 		    new Float: Pos[4];
-		    if(IsPlayerInAnyVehicle(playerid))
-		    {
-				new vehicleid = GetPlayerVehicleID(playerid);
-		        LinkVehicleToInterior(vehicleid, GetPlayerInterior(giveplayerid));
-				SetVehicleVirtualWorld(vehicleid, GetPlayerVirtualWorld(giveplayerid));
 
-                GetVehicleZAngle(vehicleid, Pos[3]);
-				GetVehiclePos(vehicleid, Pos[0], Pos[1], Pos[2]);
-				SetVehiclePos(vehicleid, Pos[0] + 2, Pos[1] + 2, Pos[2] + 1);
-				SetVehicleZAngle(vehicleid, Pos[3]);
-		    }
+		    if(IsPlayerInAnyVehicle(playerid))
+			{
+				GetPlayerPos(giveplayerid, Pos[0], Pos[1], Pos[2]);
+			    SetVehiclePosEx(playerid, Pos[0], Pos[1] + 2, Pos[2] + 0.5, 0);
+			}
 		    else
 		    {
 		        GetPlayerFacingAngle(giveplayerid, Pos[3]);
@@ -9977,8 +9974,8 @@ CMD:adbring(playerid, params[])
 		    }
 		    else
 		    {
-		    	SetPlayerPos(playerid, Pos[0], (Pos[1] + 2), Pos[2] + 0.5);
-		    	SetPlayerFacingAngle(playerid, Pos[3]);
+		    	SetPlayerPos(Player, Pos[0], (Pos[1] + 2), Pos[2] + 0.5);
+		    	SetPlayerFacingAngle(Player, Pos[3]);
 		    }
 		    SetPlayerVirtualWorld(Player, GetPlayerVirtualWorld(playerid));
 		    SetPlayerInterior(Player, GetPlayerInterior(playerid));
@@ -14104,12 +14101,12 @@ CMD:plantbomb(playerid, params[])
 		{
 		    if(LawEnforcementRadio[i] == 1)
 			{
-    			format(string,sizeof(string),"DISPATCH: (TERRORISM) %s(%d) has blown up the Yugoslavian Bridge!",PlayerName(playerid),playerid);
+    			format(string,sizeof(string),"DISPATCH: (TERRORISM) %s(%d) has blown up the Autobahn!",PlayerName(playerid),playerid);
 				SendClientMessage(i, COLOR_ROYALBLUE, string);
 			}
 			if(FiremanRadio[i] == 1)
 			{
-    			format(string,sizeof(string),"DISPATCH: (TERRORISM) %s(%d) has blown up the Yugoslavian Bridge!",PlayerName(playerid),playerid);
+    			format(string,sizeof(string),"DISPATCH: (TERRORISM) %s(%d) has blown up the Autobahn!",PlayerName(playerid),playerid);
 				SendClientMessage(i, COLOR_GREEN, string);
 			}
 		}
@@ -21536,8 +21533,7 @@ public OnPlayerConnect(playerid)
 	new string[128], ipstring;
 	new name[24], str[128];
     GetPlayerName(playerid, name, 24);
-    GetPlayerIp(playerid, name, 24);
-    format(str, 128, "%s(%d) Has Joined San Andreas Roleplay/Cops/Robbers v%s", name,playerid,sversion);
+    format(str, sizeof str, "%s(%d) Has Joined San Andreas Roleplay/Cops/Robbers v%s", name, playerid, sversion);
     SendClientMessageToAll(0x808080AA, str);
 	IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
 	printf("%s(%d) Has Joined San Andreas Roleplay/Cops/Robbers v%s (IP: %s)", str,playerid,sversion,ipstring);
@@ -21556,7 +21552,7 @@ public OnPlayerConnect(playerid)
     if (_:discordChannel == 0)
 		discordChannel = DCC_FindChannelById(DISCORD_CHANNEL_ID); // Discord channel ID
 		
-	format(str, sizeof str, "Player %s joined the server.", namer);
+	format(str, sizeof str, "Player %s(%d) joined the server.", namer, playerid);
 	DCC_SendChannelMessage(discordChannel, str);
 
     if(udb_Exists(PlayerName(playerid)))
@@ -23025,7 +23021,6 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
         }
 	    else
 	    {
-	        TogglePlayerControllable(playerid, 0);
 			GetPlayerVirtualWorld(playerid);
 			SetPlayerVirtualWorld(playerid, 2);
   			SetPlayerPos(playerid,-100.0426,-16.7138,1000.7188);
@@ -28011,6 +28006,19 @@ public VehicleTimer(playerid)
 	return 1;
 }
 
+public OnPlayerEnterRaceCheckpoint(playerid)
+{
+	new vehicleid = GetPlayerVehicleID(playerid);
+	new ispassenger = GetPlayerVehicleSeat(playerid);
+	if(GetVehicleModel(vehicleid) == 592 && ispassenger == 0)
+	{
+		MoveDynamicObject(CommercialBuilding,1024.31127930,3727.24169922,-200,15);
+		DisablePlayerRaceCheckpoint(playerid);
+	}
+    printf("Player %d entered a race checkpoint!",playerid);
+    return 1;
+}
+
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 {
 	if(GetVehicleModel(vehicleid) == shamal && ispassenger)
@@ -28027,7 +28035,16 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
         SetPlayerPos(playerid, 315.856170,1024.496459,1949.797363);
         SetCameraBehindPlayer(playerid);
         InAndrom[playerid]=1;
-	}
+   	}
+
+   	if(GetVehicleModel(vehicleid) == 592 && ispassenger == 0)
+    {
+    	if(gTeam[playerid] == TEAM_TERRORIST && PlayerInfo[playerid][TerroristRank] >= 25)
+	   	{
+	   		SetPlayerRaceCheckpoint(playerid,3,1053.7516,3722.6768,125.2184,998.3999,3723.0686,127.0148,10);
+	   	}
+   	}
+
     new str[100];
     if(GetPlayerMoney(playerid) < -20000)
 	{
@@ -29756,6 +29773,35 @@ CMD:setwanted(playerid, params[])
 	}
 	return 1;
 }
+
+
+CMD:adjetpack(playerid, params[])
+{
+	if(PlayerInfo[playerid][AdminLevel] == 1337)
+	{
+		if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK)
+		{
+			SendClientMessage(playerid,0xFF0000AA,"ERROR: You are already using the jetpack.");
+			return 1;
+		}
+		else if(IsPlayerInAnyVehicle(playerid))
+		{
+			SendClientMessage(playerid,0xFF0000AA,"ERROR: You cannot use the jetpack while inside a vehicle.");
+			return 1;
+		}
+		else
+		{
+			SetPlayerSpecialAction(playerid, SPECIAL_ACTION_USEJETPACK);
+			return 1;
+		}
+	}
+	else
+	{
+		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
+	}
+	return 1;
+}
+
 
 CMD:sellweapon(playerid, params[])
 {

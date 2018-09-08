@@ -10489,3 +10489,1701 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [06:52:25] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
 [06:52:35] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
 [06:52:35] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:52:45] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:53:05] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[06:53:05] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[06:53:15] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:53:15] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:53:35] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[06:53:45] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[06:53:45] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:53:55] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:54:05] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[06:54:15] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:54:25] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[06:54:35] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[06:54:35] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[06:54:45] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:55:05] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[06:55:05] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[06:55:15] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:55:15] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:55:35] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[06:55:45] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[06:55:45] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:55:55] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:56:05] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[06:56:15] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:56:25] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[06:56:35] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:57:05] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[06:57:15] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[06:57:45] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[06:57:55] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:11:00] 
+#############################
+[17:11:00] #                           #
+[17:11:00] #          [Sarcr]          #
+[17:11:00] #        San Andreas        #
+[17:11:00] #   Roleplay/Cops/Robbers   #
+[17:11:00] #                           #
+[17:11:00] #############################
+
+[17:11:00] Number of vehicle models: 164
+[17:11:00] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[17:11:20] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[17:11:30] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[17:11:30] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:11:40] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:11:50] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[17:12:00] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:12:10] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[17:12:20] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:12:20] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[17:12:30] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:12:50] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[17:12:50] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[17:13:00] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:13:00] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:13:20] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[17:13:30] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[17:13:30] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:13:40] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:13:50] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[17:14:00] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:14:10] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[17:14:20] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[17:14:20] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[17:14:30] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:14:50] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[17:14:50] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[17:15:00] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:15:00] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:15:20] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[17:15:30] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[17:15:30] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:15:40] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:15:50] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[17:16:00] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:16:10] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[17:16:20] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:16:50] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[17:17:00] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[17:17:30] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[17:17:40] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[18:17:26] [connection] 47.202.112.133:54913 requests connection cookie.
+[18:17:27] [connection] incoming connection: 47.202.112.133:54913 id: 1
+[18:17:27] [join] Bob has joined the server (1:47.202.112.133)
+[18:17:27] 47.202.112.133(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[18:17:33] **(CASH INCREASE)** Bob(1) money has increased from $0 to $101552 (101552) (0)
+[18:17:45] [chat] [Bob]: trash
+[18:22:14] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[18:24:44] **(CAR PURCHASE)** Bob(1) has purchased a Super GT car from AutoBahn ($90000)
+[18:29:47] [chat] [Bob]: plantbomb
+[18:29:58] **(ADMIN INFO)** Server Admin [Lvrcr]Natox(0) has requested to view the information of Bob(1)
+[18:30:36] [kill] [Lvrcr]Natox killed Bob Fire Extinguisher
+[18:30:37] **(CASH INCREASE)** Bob(1) money has increased from $0 to $11651 (11651) (1)
+[18:31:07] **(ADMIN INFO)** Server Admin [Lvrcr]Natox(0) has requested to view the information of Bob(1)
+[18:31:35] [chat] [[Lvrcr]Natox]:  /commands
+[18:32:03] [death] Bob died 255
+[18:32:03] **(CASH INCREASE)** Bob(1) money has increased from $0 to $11651 (11651) (0)
+[18:32:40] (WHISPER): [Lvrcr]Natox(0) you are poop
+[18:32:53] **[Lvrcr]Natox(0): bob can suck it
+[18:33:36] [chat] [[Lvrcr]Natox]:  /terroskills
+[18:33:59] [chat] [[Lvrcr]Natox]:  /terskill
+[18:41:35] [kill] Bob killed [Lvrcr]Natox Desert Eagle
+[18:41:36] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $6242 (6242) (1)
+[18:42:36] [death] [Lvrcr]Natox died 54
+[18:42:37] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $6242 (6242) (0)
+[18:45:17] [death] Bob died 54
+[18:45:18] **(CASH INCREASE)** Bob(1) money has increased from $0 to $9151 (9151) (0)
+[18:46:04] **(ADMIN INFO)** Server Admin [Lvrcr]Natox(0) has requested to view the information of [Lvrcr]Natox(0)
+[18:46:11] **(ADMIN INFO)** Server Admin [Lvrcr]Natox(0) has requested to view the information of Bob(1)
+[18:53:33] [death] Bob died 255
+[18:53:34] **(CASH INCREASE)** Bob(1) money has increased from $0 to $6651 (6651) (0)
+[18:59:33] [death] Bob died 54
+[18:59:34] **(CASH INCREASE)** Bob(1) money has increased from $0 to $4151 (4151) (0)
+[19:01:12] **(ADMIN INFO)** Server Admin [Lvrcr]Natox(0) has requested to view the information of Bob(1)
+[19:01:35] [death] [Lvrcr]Natox died 255
+[19:01:35] [death] Bob died 255
+[19:01:36] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $6242 (6242) (0)
+[19:01:36] **(CASH INCREASE)** Bob(1) money has increased from $0 to $1651 (1651) (0)
+[19:07:38] [kill] [Lvrcr]Natox killed Bob 
+[19:07:39] **(CASH INCREASE)** Bob(1) money has increased from $0 to $1651 (1651) (0)
+[19:08:25] [death] [Lvrcr]Natox died 255
+[19:08:27] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $6242 (6242) (0)
+[19:09:34] [death] [Lvrcr]Natox died 54
+[19:09:35] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $6242 (6242) (0)
+[19:10:28] [kill] [Lvrcr]Natox killed Bob Spray Can
+[19:10:30] **(CASH INCREASE)** Bob(1) money has increased from $0 to $1651 (1651) (0)
+[19:11:03] [kill] Bob killed [Lvrcr]Natox 
+[19:11:05] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $6242 (6242) (0)
+[19:17:41] [part] Bob has left the server (1:1)
+[19:26:15] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $6242 to $306142 (299900) (6)
+[20:33:55] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $306142 to $606142 (300000) (6)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[21:28:38] 
+[21:28:38] Server Plugins
+[21:28:38] --------------
+[21:28:38]  Loading plugin: irc
+[21:28:38] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[21:28:38]   Loaded.
+[21:28:38]  Loading plugin: streamer
+[21:28:38] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[21:28:38]   Loaded.
+[21:28:38]  Loading plugin: sscanf
+[21:28:38] 
+
+[21:28:38]  ===============================
+
+[21:28:38]       sscanf plugin loaded.     
+
+[21:28:38]          Version:  2.8.1        
+
+[21:28:38]    (c) 2012 Alex "Y_Less" Cole  
+
+[21:28:38]  ===============================
+
+[21:28:38]   Loaded.
+[21:28:38]  Loading plugin: discord-connector
+[21:28:40]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[21:28:40]   Loaded.
+[21:28:40]  Loading plugin: Whirlpool
+[21:28:40]  
+[21:28:40]  ==================
+[21:28:40]  
+[21:28:40]   Whirlpool loaded
+[21:28:40]  
+[21:28:40]  ==================
+[21:28:40]  
+[21:28:40]   Loaded.
+[21:28:40]  Loading plugin: crashdetect
+[21:28:40]   crashdetect v4.8.3 is OK.
+[21:28:40]   Loaded.
+[21:28:40]  Loaded 6 plugins.
+
+[21:28:40] 
+[21:28:40] Filterscripts
+[21:28:40] ---------------
+[21:28:40]   Loading filterscript 'Ironman.amx'...
+[21:28:40]   Loading filterscript 'SpikeStrip.amx'...
+[21:28:40]   Loading filterscript 'CarMenu_v1.2.amx'...
+[21:28:40] ===============================================
+[21:28:40] Vehicle Selection Menu By [03]Garsino Loaded...
+[21:28:40] ===============================================
+[21:28:40]   Loading filterscript 'Teleports.amx'...
+[21:28:40] 
+  Go to LS, SF or LV.
+
+[21:28:40]   Loading filterscript 'IntMenu.amx'...
+[21:28:40] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[21:28:40]   Loaded 5 filterscripts.
+
+[21:28:40] 
+#############################
+[21:28:40] #                           #
+[21:28:40] #          [Sarcr]          #
+[21:28:40] #        San Andreas        #
+[21:28:40] #   Roleplay/Cops/Robbers   #
+[21:28:40] #                           #
+[21:28:40] #############################
+
+[21:28:40] Number of vehicle models: 164
+[21:29:00] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[21:29:10] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[21:29:10] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:29:20] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:29:30] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[21:29:40] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:29:50] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[21:30:00] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:30:00] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[21:30:10] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:30:30] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[21:30:30] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[21:30:40] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:30:40] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:31:00] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[21:31:10] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[21:31:10] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:31:20] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:31:30] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[21:31:40] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:31:50] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[21:32:00] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[21:32:00] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[21:32:10] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:32:30] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[21:32:30] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[21:32:40] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:32:40] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:33:00] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[21:33:10] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[21:33:10] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:33:20] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:33:30] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[21:33:40] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:33:50] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[21:34:00] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:34:30] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[21:34:40] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[21:35:10] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[21:35:20] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[00:57:09] [connection] 35.141.26.204:56293 requests connection cookie.
+[00:57:10] [connection] incoming connection: 35.141.26.204:56293 id: 0
+[00:57:10] [join] [Lvrcr]Sc0pe has joined the server (0:35.141.26.204)
+[00:57:10] 35.141.26.204(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[00:57:24] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130516 (130516) (0)
+[00:59:36] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $130516 to $130578 (62) (0)
+[01:03:11] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $130578 to $130619 (41) (0)
+[01:04:17] [part] [Lvrcr]Sc0pe has left the server (0:1)
+[06:59:56] [connection] 47.195.228.90:1024 requests connection cookie.
+[06:59:57] [connection] incoming connection: 47.195.228.90:1024 id: 0
+[06:59:57] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[06:59:57] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[07:00:15] [part] [Lvrcr]Natox has left the server (0:2)
+[07:01:16] [connection] 47.195.228.90:1024 requests connection cookie.
+[07:01:17] [connection] incoming connection: 47.195.228.90:1024 id: 0
+[07:01:17] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[07:01:17] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[07:01:22] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[07:05:37] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $8645 to $8723 (78) (0)
+[07:11:32] [connection] 49.147.152.146:60611 requests connection cookie.
+[07:11:33] [connection] incoming connection: 49.147.152.146:60611 id: 1
+[07:11:34] [join] Camos has joined the server (1:49.147.152.146)
+[07:11:34] 49.147.152.146(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[07:11:40] **(CASH INCREASE)** Camos(1) money has increased from $0 to $7500 (7500) (0)
+[07:11:44] [chat] [[Lvrcr]Natox]: hi
+[07:12:07] [chat] [Camos]: Hello
+[07:12:14] [chat] [[Lvrcr]Natox]: how are you brother
+[07:12:19] [chat] [Camos]: Who owner
+[07:12:22] [chat] [[Lvrcr]Natox]: you can join our discord
+[07:12:37] [chat] [Camos]: Who Owner ThiS Server
+[07:12:46] [chat] [[Lvrcr]Natox]: https://discord.gg/TP8r2z
+[07:12:55] [chat] [Camos]: I Said Who Owner
+[07:13:00] [chat] [[Lvrcr]Natox]: Someone important
+[07:13:05] [chat] [[Lvrcr]Natox]: and with money
+[07:13:09] [chat] [[Lvrcr]Natox]: type /credits
+[07:13:23] [chat] [Camos]: k
+[07:13:31] [chat] [[Lvrcr]Natox]: is there something you need?
+[07:13:31] [chat] [Camos]:  Bye
+[07:13:41] [chat] [Camos]: Gtg
+[07:13:45] [chat] [[Lvrcr]Natox]: Okay
+[07:13:48] [chat] [[Lvrcr]Natox]: bye bye
+[07:13:48] [part] Camos has left the server (1:1)
+[07:15:12] sscanf warning: 'z' is deprecated, consider using 'S' instead.
+[07:15:12] sscanf warning: No default value found.
+[07:15:12] sscanf warning: Unknown format specifier '[', skipping.
+[07:15:12] sscanf warning: Unknown format specifier '1', skipping.
+[07:15:12] sscanf warning: Unknown format specifier '2', skipping.
+[07:15:12] sscanf warning: Unknown format specifier '8', skipping.
+[07:15:12] sscanf warning: Unknown format specifier ']', skipping.
+[07:15:12] sscanf warning: Format specifier does not match parameter count.
+[07:15:12] **(ADMIN KILL)** [Lvrcr]Natox(0) 
+[07:15:12] [death] [Lvrcr]Natox died 54
+[07:15:13] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8521 (8521) (1)
+[07:17:09] [Lvrcr]Natox(0) has given [Lvrcr]Natox(0) 3 blocks of C4. 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[07:22:45] 
+[07:22:45] Server Plugins
+[07:22:45] --------------
+[07:22:45]  Loading plugin: irc
+[07:22:45] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[07:22:45]   Loaded.
+[07:22:45]  Loading plugin: streamer
+[07:22:45] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[07:22:45]   Loaded.
+[07:22:45]  Loading plugin: sscanf
+[07:22:45] 
+
+[07:22:45]  ===============================
+
+[07:22:45]       sscanf plugin loaded.     
+
+[07:22:45]          Version:  2.8.1        
+
+[07:22:45]    (c) 2012 Alex "Y_Less" Cole  
+
+[07:22:45]  ===============================
+
+[07:22:45]   Loaded.
+[07:22:45]  Loading plugin: discord-connector
+[07:22:47]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[07:22:47]   Loaded.
+[07:22:47]  Loading plugin: Whirlpool
+[07:22:47]  
+[07:22:47]  ==================
+[07:22:47]  
+[07:22:47]   Whirlpool loaded
+[07:22:47]  
+[07:22:47]  ==================
+[07:22:47]  
+[07:22:47]   Loaded.
+[07:22:47]  Loading plugin: crashdetect
+[07:22:47]   crashdetect v4.8.3 is OK.
+[07:22:47]   Loaded.
+[07:22:47]  Loaded 6 plugins.
+
+[07:22:47] 
+[07:22:47] Filterscripts
+[07:22:47] ---------------
+[07:22:47]   Loading filterscript 'Ironman.amx'...
+[07:22:47]   Loading filterscript 'SpikeStrip.amx'...
+[07:22:47]   Loading filterscript 'CarMenu_v1.2.amx'...
+[07:22:47] ===============================================
+[07:22:47] Vehicle Selection Menu By [03]Garsino Loaded...
+[07:22:47] ===============================================
+[07:22:47]   Loading filterscript 'Teleports.amx'...
+[07:22:47] 
+  Go to LS, SF or LV.
+
+[07:22:47]   Loading filterscript 'IntMenu.amx'...
+[07:22:47] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[07:22:47]   Loaded 5 filterscripts.
+
+[07:22:47] 
+#############################
+[07:22:47] #                           #
+[07:22:47] #          [Sarcr]          #
+[07:22:47] #        San Andreas        #
+[07:22:47] #   Roleplay/Cops/Robbers   #
+[07:22:47] #                           #
+[07:22:47] #############################
+
+[07:22:47] Number of vehicle models: 164
+[07:23:00] [connection] 47.195.228.90:1025 requests connection cookie.
+[07:23:01] [connection] incoming connection: 47.195.228.90:1025 id: 0
+[07:23:01] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[07:23:01] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[07:23:05] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[07:23:07] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[07:23:17] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[07:23:17] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:23:27] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:23:37] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[07:23:47] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:23:57] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[07:24:07] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[07:24:07] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:24:17] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:24:34] [Lvrcr]Natox(0) has given [Lvrcr]Natox(0) 3 blocks of C4. 
+[07:24:37] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[07:24:37] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[07:24:43] [death] [Lvrcr]Natox died 255
+[07:24:44] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8745 (8745) (1)
+[07:24:47] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:24:47] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:25:07] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[07:25:17] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[07:25:17] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:25:27] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:25:37] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[07:25:47] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:25:57] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[07:26:06] [Lvrcr]Natox(0) has given [Lvrcr]Natox(0) 3 blocks of C4. 
+[07:26:07] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[07:26:07] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[07:26:17] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:26:32] explosion1
+[07:26:33] explosion2beforedestroy
+[07:26:33] explosion2afterdestroy
+[07:26:33] explosion3
+[07:26:33] [Lvrcr]Natox(0) Has blown the door off Caligulas Casino vault with C4
+[07:26:37] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[07:26:37] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[07:26:47] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:26:47] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:26:49] [Lvrcr]Natox(0) Has robbed $125441 from Caligulas casino
+[07:26:51] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $8745 to $134086 (125341) (1)
+[07:27:07] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[07:27:17] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[07:27:17] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:27:27] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:27:37] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[07:27:47] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:27:57] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[07:27:59] [death] [Lvrcr]Natox died 54
+[07:27:59] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $134186 (134186) (0)
+[07:28:07] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:28:37] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[07:28:47] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:28:58] [connection] 35.141.26.204:65407 requests connection cookie.
+[07:28:59] [connection] incoming connection: 35.141.26.204:65407 id: 1
+[07:28:59] [join] [Lvrcr]Sc0pe has joined the server (1:35.141.26.204)
+[07:28:59] 35.141.26.204(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[07:29:03] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130619 (130619) (0)
+[07:29:17] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[07:29:27] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[07:32:23] [Lvrcr]Natox(0) has given [Lvrcr]Natox(0) Regular Player status. 
+[07:32:23] [Lvrcr]Natox(0) has given [Lvrcr]Natox(0) Regular Player status. 
+[07:32:23] [Lvrcr]Sc0pe(1) has given [Lvrcr]Natox(0) Regular Player status. 
+[07:32:23] [Lvrcr]Sc0pe(1) has given [Lvrcr]Natox(0) Regular Player status. 
+[07:32:24] [Lvrcr]Natox(0) has given [Lvrcr]Sc0pe(1) Regular Player status. 
+[07:32:24] [Lvrcr]Natox(0) has given [Lvrcr]Sc0pe(1) Regular Player status. 
+[07:35:31] [Lvrcr]Natox(0) Has raped [Lvrcr]Sc0pe(1)
+[07:35:31] [debug] Run time error 4: "Array index out of bounds"
+[07:35:31] [debug]  Accessing element at negative index -1
+[07:35:31] [debug] AMX backtrace:
+[07:35:31] [debug] #0 000a1930 in public cmd_rape () from Original1.8.amx
+[07:35:31] [debug] #1 native CallLocalFunction () [004743b0] from samp-server.exe
+[07:35:31] [debug] #2 00007cec in public OnPlayerCommandText () from Original1.8.amx
+[07:36:13] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $130619 to $130675 (56) (0)
+[07:47:18] Admin [Lvrcr]Sc0pe(1) Has sent $10000 to receiver [Lvrcr]Natox(0)
+[07:47:20] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $134186 to $144164 (9978) (0)
+[07:47:26] Admin [Lvrcr]Sc0pe(1) Has sent $10000 to receiver [Lvrcr]Natox(0)
+[07:47:26] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $144164 to $154164 (10000) (0)
+[07:47:51] Admin [Lvrcr]Natox(0) Has sent $100 to receiver [Lvrcr]Sc0pe(1)
+[07:47:53] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $130675 to $130775 (100) (14)
+[07:47:58] Admin [Lvrcr]Natox(0) Has sent $100 to receiver [Lvrcr]Sc0pe(1)
+[07:47:59] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $130775 to $130875 (100) (14)
+[07:48:19] **(SKY DIVE)** [Lvrcr]Sc0pe(1) has payed the AirPort owner $15000 to sky dive.
+[07:48:19] **(SKY DIVE)** [Lvrcr]Natox(0) has payed the AirPort owner $15000 to sky dive.
+[07:48:49] [death] [Lvrcr]Natox died 54
+[07:48:50] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $139264 (139264) (0)
+[07:49:39] [debug] Run time error 4: "Array index out of bounds"
+[07:49:39] [debug]  Accessing element at negative index -1
+[07:49:39] [debug] AMX backtrace:
+[07:49:39] [debug] #0 000768c8 in public cmd_medic () from Original1.8.amx
+[07:49:39] [debug] #1 native CallLocalFunction () [004743b0] from samp-server.exe
+[07:49:39] [debug] #2 00007be8 in public OnPlayerCommandText () from Original1.8.amx
+[07:50:16] [debug] Run time error 4: "Array index out of bounds"
+[07:50:16] [debug]  Accessing element at negative index -1
+[07:50:16] [debug] AMX backtrace:
+[07:50:16] [debug] #0 000768c8 in public cmd_medic () from Original1.8.amx
+[07:50:16] [debug] #1 native CallLocalFunction () [004743b0] from samp-server.exe
+[07:50:16] [debug] #2 00007be8 in public OnPlayerCommandText () from Original1.8.amx
+[07:52:01] [kill] [Lvrcr]Sc0pe killed [Lvrcr]Natox AK47
+[07:52:03] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $139264 (139264) (0)
+[07:52:32] Medic / Private Medic [Lvrcr]Natox(0) has used /healme
+[07:52:52] [debug] Run time error 4: "Array index out of bounds"
+[07:52:52] [debug]  Accessing element at negative index -1
+[07:52:52] [debug] AMX backtrace:
+[07:52:52] [debug] #0 000768c8 in public cmd_medic () from Original1.8.amx
+[07:52:52] [debug] #1 native CallLocalFunction () [004743b0] from samp-server.exe
+[07:52:52] [debug] #2 00007be8 in public OnPlayerCommandText () from Original1.8.amx
+[07:54:54] [kill] [Lvrcr]Sc0pe killed [Lvrcr]Natox AK47
+[07:54:56] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $139264 (139264) (0)
+[07:55:33] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $139264 to $139516 (252) (0)
+[08:00:49] [death] [Lvrcr]Sc0pe died 255
+[08:00:51] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $115623 (115623) (0)
+[08:01:17] [death] [Lvrcr]Sc0pe died 255
+[08:01:18] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $115623 (115623) (0)
+[08:01:25] [death] [Lvrcr]Sc0pe died 255
+[08:01:26] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $115624 (115624) (0)
+[08:01:42] [death] [Lvrcr]Sc0pe died 255
+[08:01:44] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $115624 (115624) (0)
+[08:03:05] [death] [Lvrcr]Sc0pe died 255
+[08:03:05] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $115624 (115624) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[08:04:01] 
+[08:04:01] Server Plugins
+[08:04:01] --------------
+[08:04:01]  Loading plugin: irc
+[08:04:01] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[08:04:01]   Loaded.
+[08:04:01]  Loading plugin: streamer
+[08:04:01] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[08:04:01]   Loaded.
+[08:04:01]  Loading plugin: sscanf
+[08:04:01] 
+
+[08:04:01]  ===============================
+
+[08:04:01]       sscanf plugin loaded.     
+
+[08:04:01]          Version:  2.8.1        
+
+[08:04:01]    (c) 2012 Alex "Y_Less" Cole  
+
+[08:04:01]  ===============================
+
+[08:04:01]   Loaded.
+[08:04:01]  Loading plugin: discord-connector
+[08:04:03]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[08:04:03]   Loaded.
+[08:04:03]  Loading plugin: Whirlpool
+[08:04:03]  
+[08:04:03]  ==================
+[08:04:03]  
+[08:04:03]   Whirlpool loaded
+[08:04:03]  
+[08:04:03]  ==================
+[08:04:03]  
+[08:04:03]   Loaded.
+[08:04:03]  Loading plugin: crashdetect
+[08:04:03]   crashdetect v4.8.3 is OK.
+[08:04:03]   Loaded.
+[08:04:03]  Loaded 6 plugins.
+
+[08:04:03] 
+[08:04:03] Filterscripts
+[08:04:03] ---------------
+[08:04:03]   Loading filterscript 'Ironman.amx'...
+[08:04:03]   Loading filterscript 'SpikeStrip.amx'...
+[08:04:03]   Loading filterscript 'CarMenu_v1.2.amx'...
+[08:04:03] ===============================================
+[08:04:03] Vehicle Selection Menu By [03]Garsino Loaded...
+[08:04:03] ===============================================
+[08:04:03]   Loading filterscript 'Teleports.amx'...
+[08:04:03] 
+  Go to LS, SF or LV.
+
+[08:04:03]   Loading filterscript 'IntMenu.amx'...
+[08:04:03] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[08:04:03]   Loaded 5 filterscripts.
+
+[08:04:03] 
+#############################
+[08:04:03] #                           #
+[08:04:03] #          [Sarcr]          #
+[08:04:03] #        San Andreas        #
+[08:04:03] #   Roleplay/Cops/Robbers   #
+[08:04:03] #                           #
+[08:04:03] #############################
+
+[08:04:03] Number of vehicle models: 164
+[08:04:23] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:04:33] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:04:33] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:04:35] [connection] 47.195.228.90:1024 requests connection cookie.
+[08:04:36] [connection] incoming connection: 47.195.228.90:1024 id: 0
+[08:04:36] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[08:04:36] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[08:04:42] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[08:04:43] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:04:53] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:05:03] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:05:13] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:05:23] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:05:23] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:05:33] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:05:53] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:05:53] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:06:03] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:06:03] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:06:23] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:06:33] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:06:33] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:06:43] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:06:53] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:07:03] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:07:13] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:07:23] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:07:23] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:07:33] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:07:53] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:07:53] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:08:03] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:08:03] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:08:23] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:08:33] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:08:33] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:08:43] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:08:53] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:09:03] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:09:13] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:09:23] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[08:09:52] 
+[08:09:52] Server Plugins
+[08:09:52] --------------
+[08:09:52]  Loading plugin: streamer
+[08:09:52] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[08:09:52]   Loaded.
+[08:09:52]  Loading plugin: sscanf
+[08:09:52] 
+
+[08:09:52]  ===============================
+
+[08:09:52]       sscanf plugin loaded.     
+
+[08:09:52]          Version:  2.8.1        
+
+[08:09:52]    (c) 2012 Alex "Y_Less" Cole  
+
+[08:09:52]  ===============================
+
+[08:09:52]   Loaded.
+[08:09:52]  Loading plugin: discord-connector
+[08:09:54]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[08:09:54]   Loaded.
+[08:09:54]  Loading plugin: Whirlpool
+[08:09:54]  
+[08:09:54]  ==================
+[08:09:54]  
+[08:09:54]   Whirlpool loaded
+[08:09:54]  
+[08:09:54]  ==================
+[08:09:54]  
+[08:09:54]   Loaded.
+[08:09:54]  Loading plugin: crashdetect
+[08:09:54]   crashdetect v4.8.3 is OK.
+[08:09:54]   Loaded.
+[08:09:54]  Loaded 5 plugins.
+
+[08:09:54] 
+[08:09:54] Filterscripts
+[08:09:54] ---------------
+[08:09:54]   Loading filterscript 'Ironman.amx'...
+[08:09:54]   Loading filterscript 'SpikeStrip.amx'...
+[08:09:54]   Loading filterscript 'CarMenu_v1.2.amx'...
+[08:09:54] ===============================================
+[08:09:54] Vehicle Selection Menu By [03]Garsino Loaded...
+[08:09:54] ===============================================
+[08:09:54]   Loading filterscript 'Teleports.amx'...
+[08:09:54] 
+  Go to LS, SF or LV.
+
+[08:09:54]   Loading filterscript 'IntMenu.amx'...
+[08:09:54] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[08:09:54]   Loaded 5 filterscripts.
+
+[08:09:54] [debug] Run time error 19: "File or function is not found"
+[08:09:54] [debug]  IRC_GetUserChannelMode
+[08:09:54] [debug]  IRC_Connect
+[08:09:54] [debug]  IRC_SetIntData
+[08:09:54] [debug]  IRC_CreateGroup
+[08:09:54] [debug]  IRC_GroupSay
+[08:09:54] [debug]  IRC_Quit
+[08:09:54] [debug]  IRC_DestroyGroup
+[08:09:54] [debug]  IRC_JoinChannel
+[08:09:54] [debug]  IRC_AddToGroup
+[08:09:54] [debug]  IRC_RemoveFromGroup
+[08:09:54] [debug]  IRC_Say
+[08:09:54] [debug]  IRC_Notice
+[08:09:54] [debug]  IRC_ReplyCTCP
+[08:09:54] Script[gamemodes/Original1.8.amx]: Run time error 19: "File or function is not found"
+[08:09:54] Number of vehicle models: 0
+[08:09:58] [connection] 35.141.26.204:59939 requests connection cookie.
+[08:09:59] [connection] incoming connection: 35.141.26.204:59939 id: 0
+[08:09:59] [join] [Lvrcr]Sc0pe has joined the server (0:35.141.26.204)
+[08:09:59] [debug] Run time error 19: "File or function is not found"
+[08:09:59] [debug]  IRC_GetUserChannelMode
+[08:09:59] [debug]  IRC_Connect
+[08:09:59] [debug]  IRC_SetIntData
+[08:09:59] [debug]  IRC_CreateGroup
+[08:09:59] [debug]  IRC_GroupSay
+[08:09:59] [debug]  IRC_Quit
+[08:09:59] [debug]  IRC_DestroyGroup
+[08:09:59] [debug]  IRC_JoinChannel
+[08:09:59] [debug]  IRC_AddToGroup
+[08:09:59] [debug]  IRC_RemoveFromGroup
+[08:09:59] [debug]  IRC_Say
+[08:09:59] [debug]  IRC_Notice
+[08:09:59] [debug]  IRC_ReplyCTCP
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[08:10:14] 
+[08:10:14] Server Plugins
+[08:10:14] --------------
+[08:10:14]  Loading plugin: irc
+[08:10:14] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[08:10:14]   Loaded.
+[08:10:14]  Loading plugin: streamer
+[08:10:14] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[08:10:14]   Loaded.
+[08:10:14]  Loading plugin: sscanf
+[08:10:14] 
+
+[08:10:14]  ===============================
+
+[08:10:14]       sscanf plugin loaded.     
+
+[08:10:14]          Version:  2.8.1        
+
+[08:10:14]    (c) 2012 Alex "Y_Less" Cole  
+
+[08:10:14]  ===============================
+
+[08:10:14]   Loaded.
+[08:10:14]  Loading plugin: discord-connector
+[08:10:16]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[08:10:16]   Loaded.
+[08:10:16]  Loading plugin: Whirlpool
+[08:10:16]  
+[08:10:16]  ==================
+[08:10:16]  
+[08:10:16]   Whirlpool loaded
+[08:10:16]  
+[08:10:16]  ==================
+[08:10:16]  
+[08:10:16]   Loaded.
+[08:10:16]  Loading plugin: crashdetect
+[08:10:16]   crashdetect v4.8.3 is OK.
+[08:10:16]   Loaded.
+[08:10:16]  Loaded 6 plugins.
+
+[08:10:16] 
+[08:10:16] Filterscripts
+[08:10:16] ---------------
+[08:10:16]   Loading filterscript 'Ironman.amx'...
+[08:10:16]   Loading filterscript 'SpikeStrip.amx'...
+[08:10:16]   Loading filterscript 'CarMenu_v1.2.amx'...
+[08:10:16] ===============================================
+[08:10:16] Vehicle Selection Menu By [03]Garsino Loaded...
+[08:10:16] ===============================================
+[08:10:16]   Loading filterscript 'Teleports.amx'...
+[08:10:16] 
+  Go to LS, SF or LV.
+
+[08:10:16]   Loading filterscript 'IntMenu.amx'...
+[08:10:16] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[08:10:16]   Loaded 5 filterscripts.
+
+[08:10:16] 
+#############################
+[08:10:16] #                           #
+[08:10:16] #          [Sarcr]          #
+[08:10:16] #        San Andreas        #
+[08:10:16] #   Roleplay/Cops/Robbers   #
+[08:10:16] #                           #
+[08:10:16] #############################
+
+[08:10:16] Number of vehicle models: 164
+[08:10:21] [connection] 35.141.26.204:62831 requests connection cookie.
+[08:10:22] [connection] incoming connection: 35.141.26.204:62831 id: 0
+[08:10:22] [join] [Lvrcr]Sc0pe has joined the server (0:35.141.26.204)
+[08:10:22] 35.141.26.204(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[08:10:27] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130619 (130619) (0)
+[08:10:30] [connection] 47.195.228.90:1025 requests connection cookie.
+[08:10:31] [connection] incoming connection: 47.195.228.90:1025 id: 1
+[08:10:31] [join] [Lvrcr]Natox has joined the server (1:47.195.228.90)
+[08:10:31] 47.195.228.90(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[08:10:36] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:10:38] **(CASH INCREASE)** [Lvrcr]Natox(1) money has increased from $0 to $8645 (8645) (0)
+[08:10:46] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:10:46] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:10:56] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:11:06] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:11:16] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:11:26] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:11:36] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:11:36] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:11:46] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:12:06] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:12:06] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:12:16] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:12:16] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:12:19] **(CAR PURCHASE)** [Lvrcr]Sc0pe(0) has purchased a Freeway bike car from AutoBahn ($75000)
+[08:12:36] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:12:46] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:12:46] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:12:56] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:13:04] Admin [Lvrcr]Sc0pe(0) Has sent $100000 to receiver [Lvrcr]Sc0pe(0)
+[08:13:05] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $130619 to $155619 (25000) (0)
+[08:13:06] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:13:10] **(CAR PURCHASE)** [Lvrcr]Sc0pe(0) has purchased a NRG-500 motorbike from AutoBahn ($140000)
+[08:13:16] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:13:26] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:13:36] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:13:36] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:13:46] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:14:06] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:14:06] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:14:16] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:14:16] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:14:36] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:14:46] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:14:46] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:14:56] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:15:06] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:15:16] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:15:26] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:15:36] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:16:06] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:16:16] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:16:46] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:16:56] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[08:34:56] 
+[08:34:56] Server Plugins
+[08:34:56] --------------
+[08:34:56]  Loading plugin: irc
+[08:34:56] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[08:34:56]   Loaded.
+[08:34:56]  Loading plugin: streamer
+[08:34:56] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[08:34:56]   Loaded.
+[08:34:56]  Loading plugin: sscanf
+[08:34:56] 
+
+[08:34:56]  ===============================
+
+[08:34:56]       sscanf plugin loaded.     
+
+[08:34:56]          Version:  2.8.1        
+
+[08:34:56]    (c) 2012 Alex "Y_Less" Cole  
+
+[08:34:56]  ===============================
+
+[08:34:56]   Loaded.
+[08:34:56]  Loading plugin: discord-connector
+[08:34:57]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[08:34:57]   Loaded.
+[08:34:57]  Loading plugin: Whirlpool
+[08:34:57]  
+[08:34:57]  ==================
+[08:34:57]  
+[08:34:57]   Whirlpool loaded
+[08:34:57]  
+[08:34:57]  ==================
+[08:34:57]  
+[08:34:57]   Loaded.
+[08:34:57]  Loading plugin: crashdetect
+[08:34:57]   crashdetect v4.8.3 is OK.
+[08:34:57]   Loaded.
+[08:34:57]  Loaded 6 plugins.
+
+[08:34:57] 
+[08:34:57] Filterscripts
+[08:34:57] ---------------
+[08:34:57]   Loading filterscript 'Ironman.amx'...
+[08:34:57]   Loading filterscript 'SpikeStrip.amx'...
+[08:34:57]   Loading filterscript 'CarMenu_v1.2.amx'...
+[08:34:57] ===============================================
+[08:34:57] Vehicle Selection Menu By [03]Garsino Loaded...
+[08:34:57] ===============================================
+[08:34:57]   Loading filterscript 'Teleports.amx'...
+[08:34:57] 
+  Go to LS, SF or LV.
+
+[08:34:57]   Loading filterscript 'IntMenu.amx'...
+[08:34:57] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[08:34:57]   Loaded 5 filterscripts.
+
+[08:34:57] 
+#############################
+[08:34:57] #                           #
+[08:34:57] #          [Sarcr]          #
+[08:34:57] #        San Andreas        #
+[08:34:57] #   Roleplay/Cops/Robbers   #
+[08:34:57] #                           #
+[08:34:57] #############################
+
+[08:34:57] Number of vehicle models: 164
+[08:35:10] [connection] 35.141.26.204:58503 requests connection cookie.
+[08:35:11] [connection] incoming connection: 35.141.26.204:58503 id: 0
+[08:35:11] [join] [Lvrcr]Sc0pe has joined the server (0:35.141.26.204)
+[08:35:11] 35.141.26.204(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[08:35:15] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130619 (130619) (0)
+[08:35:17] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:35:19] [connection] 47.195.228.90:1024 requests connection cookie.
+[08:35:21] [connection] incoming connection: 47.195.228.90:1024 id: 1
+[08:35:21] [join] [Lvrcr]Natox has joined the server (1:47.195.228.90)
+[08:35:21] 47.195.228.90(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[08:35:24] **(CASH INCREASE)** [Lvrcr]Natox(1) money has increased from $0 to $8645 (8645) (0)
+[08:35:27] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:35:27] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:35:37] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:35:47] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:35:57] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:36:07] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:36:17] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:36:17] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:36:27] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:36:47] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:36:47] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:36:57] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:36:57] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:37:17] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[08:37:27] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:37:27] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:37:37] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:37:47] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:37:57] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:38:07] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[08:38:17] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[08:38:17] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:38:27] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:38:47] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:38:47] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:38:57] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:38:57] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:39:17] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:39:27] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:39:27] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:39:37] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:39:47] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[08:39:54] [chat] [[Lvrcr]Natox]: 3
+[08:39:57] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:39:58] [chat] [[Lvrcr]Natox]: 4
+[08:40:07] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:40:17] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:40:47] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:40:57] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[08:41:27] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[08:41:37] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[09:31:12] 
+[09:31:12] Server Plugins
+[09:31:12] --------------
+[09:31:12]  Loading plugin: irc
+[09:31:12] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[09:31:12]   Loaded.
+[09:31:12]  Loading plugin: streamer
+[09:31:12] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[09:31:12]   Loaded.
+[09:31:12]  Loading plugin: sscanf
+[09:31:12] 
+
+[09:31:12]  ===============================
+
+[09:31:12]       sscanf plugin loaded.     
+
+[09:31:12]          Version:  2.8.1        
+
+[09:31:12]    (c) 2012 Alex "Y_Less" Cole  
+
+[09:31:12]  ===============================
+
+[09:31:12]   Loaded.
+[09:31:12]  Loading plugin: discord-connector
+[09:31:13]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[09:31:13]   Loaded.
+[09:31:13]  Loading plugin: Whirlpool
+[09:31:13]  
+[09:31:13]  ==================
+[09:31:13]  
+[09:31:13]   Whirlpool loaded
+[09:31:13]  
+[09:31:13]  ==================
+[09:31:13]  
+[09:31:13]   Loaded.
+[09:31:13]  Loading plugin: crashdetect
+[09:31:13]   crashdetect v4.8.3 is OK.
+[09:31:13]   Loaded.
+[09:31:13]  Loaded 6 plugins.
+
+[09:31:13] 
+[09:31:13] Filterscripts
+[09:31:13] ---------------
+[09:31:13]   Loading filterscript 'Ironman.amx'...
+[09:31:13]   Loading filterscript 'SpikeStrip.amx'...
+[09:31:13]   Loading filterscript 'CarMenu_v1.2.amx'...
+[09:31:13] ===============================================
+[09:31:13] Vehicle Selection Menu By [03]Garsino Loaded...
+[09:31:13] ===============================================
+[09:31:13]   Loading filterscript 'Teleports.amx'...
+[09:31:13] 
+  Go to LS, SF or LV.
+
+[09:31:13]   Loading filterscript 'IntMenu.amx'...
+[09:31:13] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[09:31:13]   Loaded 5 filterscripts.
+
+[09:31:13] 
+#############################
+[09:31:13] #                           #
+[09:31:13] #          [Sarcr]          #
+[09:31:13] #        San Andreas        #
+[09:31:13] #   Roleplay/Cops/Robbers   #
+[09:31:13] #                           #
+[09:31:13] #############################
+
+[09:31:13] Number of vehicle models: 164
+[09:31:21] [connection] 47.195.228.90:1025 requests connection cookie.
+[09:31:22] [connection] incoming connection: 47.195.228.90:1025 id: 0
+[09:31:23] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[09:31:23] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[09:31:26] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[09:31:30] [connection] 35.141.26.204:58878 requests connection cookie.
+[09:31:31] [connection] incoming connection: 35.141.26.204:58878 id: 1
+[09:31:31] [join] [Lvrcr]Sc0pe has joined the server (1:35.141.26.204)
+[09:31:31] 35.141.26.204(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[09:31:33] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:31:35] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130619 (130619) (0)
+[09:31:43] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:31:43] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:31:44] [death] [Lvrcr]Sc0pe died 255
+[09:31:46] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:31:53] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:32:03] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:32:13] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:32:23] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:32:33] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:32:33] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:32:43] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:33:03] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:33:03] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:33:13] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:33:13] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:33:33] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:33:43] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:33:43] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:33:53] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:33:54] [death] [Lvrcr]Sc0pe died 255
+[09:33:56] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:34:03] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:34:13] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:34:23] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:34:33] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:34:33] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:34:43] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:35:03] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:35:03] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:35:13] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:35:13] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:35:33] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:35:43] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:35:43] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:35:53] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:36:03] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:36:13] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:36:23] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:36:33] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:36:55] [death] [Lvrcr]Sc0pe died 255
+[09:36:56] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:37:03] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:37:13] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:37:43] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:37:51] [death] [Lvrcr]Sc0pe died 255
+[09:37:53] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:37:53] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[09:38:37] 
+[09:38:37] Server Plugins
+[09:38:37] --------------
+[09:38:37]  Loading plugin: irc
+[09:38:37] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[09:38:37]   Loaded.
+[09:38:37]  Loading plugin: streamer
+[09:38:37] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[09:38:37]   Loaded.
+[09:38:37]  Loading plugin: sscanf
+[09:38:37] 
+
+[09:38:37]  ===============================
+
+[09:38:37]       sscanf plugin loaded.     
+
+[09:38:37]          Version:  2.8.1        
+
+[09:38:37]    (c) 2012 Alex "Y_Less" Cole  
+
+[09:38:37]  ===============================
+
+[09:38:37]   Loaded.
+[09:38:37]  Loading plugin: discord-connector
+[09:38:38]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[09:38:38]   Loaded.
+[09:38:38]  Loading plugin: Whirlpool
+[09:38:38]  
+[09:38:38]  ==================
+[09:38:38]  
+[09:38:38]   Whirlpool loaded
+[09:38:38]  
+[09:38:38]  ==================
+[09:38:38]  
+[09:38:38]   Loaded.
+[09:38:38]  Loading plugin: crashdetect
+[09:38:38]   crashdetect v4.8.3 is OK.
+[09:38:38]   Loaded.
+[09:38:38]  Loaded 6 plugins.
+
+[09:38:38] 
+[09:38:38] Filterscripts
+[09:38:38] ---------------
+[09:38:38]   Loading filterscript 'Ironman.amx'...
+[09:38:39]   Loading filterscript 'SpikeStrip.amx'...
+[09:38:39]   Loading filterscript 'CarMenu_v1.2.amx'...
+[09:38:39] ===============================================
+[09:38:39] Vehicle Selection Menu By [03]Garsino Loaded...
+[09:38:39] ===============================================
+[09:38:39]   Loading filterscript 'Teleports.amx'...
+[09:38:39] 
+  Go to LS, SF or LV.
+
+[09:38:39]   Loading filterscript 'IntMenu.amx'...
+[09:38:39] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[09:38:39]   Loaded 5 filterscripts.
+
+[09:38:39] 
+#############################
+[09:38:39] #                           #
+[09:38:39] #          [Sarcr]          #
+[09:38:39] #        San Andreas        #
+[09:38:39] #   Roleplay/Cops/Robbers   #
+[09:38:39] #                           #
+[09:38:39] #############################
+
+[09:38:39] Number of vehicle models: 164
+[09:38:52] [connection] 47.195.228.90:1024 requests connection cookie.
+[09:38:53] [connection] incoming connection: 47.195.228.90:1024 id: 0
+[09:38:53] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[09:38:53] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[09:38:58] [connection] 35.141.26.204:58600 requests connection cookie.
+[09:38:59] [connection] incoming connection: 35.141.26.204:58600 id: 1
+[09:38:59] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:38:59] [join] [Lvrcr]Sc0pe has joined the server (1:35.141.26.204)
+[09:38:59] 35.141.26.204(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[09:39:03] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[09:39:03] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130619 (130619) (0)
+[09:39:09] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:39:09] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:39:19] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:39:29] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:39:39] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:39:49] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:39:59] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:39:59] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:40:09] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:40:29] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:40:29] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:40:39] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:40:39] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:40:59] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[09:41:09] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:41:09] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:41:19] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:41:21] [death] [Lvrcr]Sc0pe died 255
+[09:41:21] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:41:29] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:41:39] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:41:49] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[09:41:59] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:41:59] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[09:42:09] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:42:29] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:42:29] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:42:30] [death] [Lvrcr]Sc0pe died 54
+[09:42:31] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:42:39] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:42:39] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:42:43] [part] [Lvrcr]Sc0pe has left the server (1:1)
+[09:42:59] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:43:09] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:43:09] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:43:19] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:43:29] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[09:43:39] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:43:43] [connection] 35.141.26.204:60195 requests connection cookie.
+[09:43:44] [connection] incoming connection: 35.141.26.204:60195 id: 1
+[09:43:44] [join] [Lvrcr]Sc0pe has joined the server (1:35.141.26.204)
+[09:43:44] 35.141.26.204(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[09:43:48] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130619 (130619) (0)
+[09:43:49] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:43:59] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:44:29] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:44:39] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:45:09] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[09:45:19] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[09:48:04] [death] [Lvrcr]Natox died 255
+[09:48:05] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8745 (8745) (0)
+[09:49:41] Player 0 entered a race checkpoint!
+[09:49:49] Player 0 entered a race checkpoint!
+[09:49:52] Player 0 entered a race checkpoint!
+[09:50:02] [death] [Lvrcr]Sc0pe died 255
+[09:50:04] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:51:00] [death] [Lvrcr]Sc0pe died 255
+[09:51:01] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:53:47] Player 1 entered a race checkpoint!
+[09:53:47] [death] [Lvrcr]Sc0pe died 255
+[09:53:48] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:55:15] [death] [Lvrcr]Sc0pe died 255
+[09:55:16] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:55:25] [death] [Lvrcr]Sc0pe died 255
+[09:55:27] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130719 (130719) (0)
+[09:57:51] Player 1 entered a race checkpoint!
+[09:58:17] Player 0 entered a race checkpoint!
+[09:58:29] [part] [Lvrcr]Sc0pe has left the server (1:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[10:00:23] 
+[10:00:23] Server Plugins
+[10:00:23] --------------
+[10:00:23]  Loading plugin: irc
+[10:00:23] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[10:00:23]   Loaded.
+[10:00:23]  Loading plugin: streamer
+[10:00:23] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[10:00:23]   Loaded.
+[10:00:23]  Loading plugin: sscanf
+[10:00:23] 
+
+[10:00:23]  ===============================
+
+[10:00:23]       sscanf plugin loaded.     
+
+[10:00:23]          Version:  2.8.1        
+
+[10:00:23]    (c) 2012 Alex "Y_Less" Cole  
+
+[10:00:23]  ===============================
+
+[10:00:23]   Loaded.
+[10:00:23]  Loading plugin: discord-connector
+[10:00:24]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[10:00:24]   Loaded.
+[10:00:24]  Loading plugin: Whirlpool
+[10:00:24]  
+[10:00:24]  ==================
+[10:00:24]  
+[10:00:24]   Whirlpool loaded
+[10:00:24]  
+[10:00:24]  ==================
+[10:00:24]  
+[10:00:24]   Loaded.
+[10:00:24]  Loading plugin: crashdetect
+[10:00:24]   crashdetect v4.8.3 is OK.
+[10:00:24]   Loaded.
+[10:00:24]  Loaded 6 plugins.
+
+[10:00:24] 
+[10:00:24] Filterscripts
+[10:00:24] ---------------
+[10:00:24]   Loading filterscript 'Ironman.amx'...
+[10:00:24]   Loading filterscript 'SpikeStrip.amx'...
+[10:00:24]   Loading filterscript 'CarMenu_v1.2.amx'...
+[10:00:24] ===============================================
+[10:00:24] Vehicle Selection Menu By [03]Garsino Loaded...
+[10:00:24] ===============================================
+[10:00:24]   Loading filterscript 'Teleports.amx'...
+[10:00:24] 
+  Go to LS, SF or LV.
+
+[10:00:24]   Loading filterscript 'IntMenu.amx'...
+[10:00:24] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[10:00:24]   Loaded 5 filterscripts.
+
+[10:00:24] 
+#############################
+[10:00:24] #                           #
+[10:00:24] #          [Sarcr]          #
+[10:00:24] #        San Andreas        #
+[10:00:24] #   Roleplay/Cops/Robbers   #
+[10:00:24] #                           #
+[10:00:24] #############################
+
+[10:00:24] Number of vehicle models: 164
+[10:00:32] [connection] 47.195.228.90:1025 requests connection cookie.
+[10:00:33] [connection] incoming connection: 47.195.228.90:1025 id: 0
+[10:00:33] [join] [Lvrcr]Natox has joined the server (0:47.195.228.90)
+[10:00:33] 47.195.228.90(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[10:00:39] [connection] 35.141.26.204:59583 requests connection cookie.
+[10:00:39] **(CASH INCREASE)** [Lvrcr]Natox(0) money has increased from $0 to $8645 (8645) (0)
+[10:00:40] [connection] incoming connection: 35.141.26.204:59583 id: 1
+[10:00:40] [join] [Lvrcr]Sc0pe has joined the server (1:35.141.26.204)
+[10:00:40] 35.141.26.204(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[10:00:44] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:00:50] **(CASH INCREASE)** [Lvrcr]Sc0pe(1) money has increased from $0 to $130619 (130619) (0)
+[10:00:54] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:00:54] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:01:04] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:01:14] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:01:24] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:01:34] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:01:44] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:01:44] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:01:54] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:02:14] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:02:14] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:02:24] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:02:24] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:02:44] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:02:54] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:02:54] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:03:04] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:03:14] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:03:24] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:03:34] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:03:44] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:03:44] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:03:54] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:04:14] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:04:14] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:04:24] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:04:24] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:04:27] Player 1 entered a race checkpoint!
+[10:04:44] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:04:54] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:04:54] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:05:04] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:05:14] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:05:24] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:05:34] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:05:44] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:06:01] [Lvrcr]Natox(0) Has raped [Lvrcr]Sc0pe(1)
+[10:06:14] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:06:24] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:06:54] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:07:04] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:07:24] Player 1 entered a race checkpoint!
+[10:07:37] Player 1 entered a race checkpoint!
+[10:07:51] [part] [Lvrcr]Sc0pe has left the server (1:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[10:11:05] 
+[10:11:05] Server Plugins
+[10:11:05] --------------
+[10:11:05]  Loading plugin: irc
+[10:11:05] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[10:11:05]   Loaded.
+[10:11:05]  Loading plugin: streamer
+[10:11:05] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[10:11:05]   Loaded.
+[10:11:05]  Loading plugin: sscanf
+[10:11:05] 
+
+[10:11:05]  ===============================
+
+[10:11:05]       sscanf plugin loaded.     
+
+[10:11:05]          Version:  2.8.1        
+
+[10:11:05]    (c) 2012 Alex "Y_Less" Cole  
+
+[10:11:05]  ===============================
+
+[10:11:05]   Loaded.
+[10:11:05]  Loading plugin: discord-connector
+[10:11:07]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[10:11:07]   Loaded.
+[10:11:07]  Loading plugin: Whirlpool
+[10:11:07]  
+[10:11:07]  ==================
+[10:11:07]  
+[10:11:07]   Whirlpool loaded
+[10:11:07]  
+[10:11:07]  ==================
+[10:11:07]  
+[10:11:07]   Loaded.
+[10:11:07]  Loading plugin: crashdetect
+[10:11:07]   crashdetect v4.8.3 is OK.
+[10:11:07]   Loaded.
+[10:11:07]  Loaded 6 plugins.
+
+[10:11:07] 
+[10:11:07] Filterscripts
+[10:11:07] ---------------
+[10:11:07]   Loading filterscript 'Ironman.amx'...
+[10:11:07]   Loading filterscript 'SpikeStrip.amx'...
+[10:11:07]   Loading filterscript 'CarMenu_v1.2.amx'...
+[10:11:07] ===============================================
+[10:11:07] Vehicle Selection Menu By [03]Garsino Loaded...
+[10:11:07] ===============================================
+[10:11:07]   Loading filterscript 'Teleports.amx'...
+[10:11:07] 
+  Go to LS, SF or LV.
+
+[10:11:07]   Loading filterscript 'IntMenu.amx'...
+[10:11:07] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[10:11:07]   Loaded 5 filterscripts.
+
+[10:11:07] 
+#############################
+[10:11:07] #                           #
+[10:11:07] #          [Sarcr]          #
+[10:11:07] #        San Andreas        #
+[10:11:07] #   Roleplay/Cops/Robbers   #
+[10:11:07] #                           #
+[10:11:07] #############################
+
+[10:11:07] Number of vehicle models: 164
+[10:11:27] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:11:28] [connection] 35.141.26.204:60601 requests connection cookie.
+[10:11:29] [connection] incoming connection: 35.141.26.204:60601 id: 0
+[10:11:30] [join] [Lvrcr]Sc0pe has joined the server (0:35.141.26.204)
+[10:11:30] 35.141.26.204(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[10:11:33] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130619 (130619) (0)
+[10:11:37] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:11:37] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:11:47] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:11:57] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:12:07] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:12:17] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:12:27] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:12:27] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:12:37] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:12:53] [connection] 47.195.228.90:1024 requests connection cookie.
+[10:12:54] [connection] incoming connection: 47.195.228.90:1024 id: 1
+[10:12:54] [join] [Lvrcr]Natox has joined the server (1:47.195.228.90)
+[10:12:54] 47.195.228.90(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(1) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[10:12:57] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:12:57] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:12:59] **(CASH INCREASE)** [Lvrcr]Natox(1) money has increased from $0 to $8645 (8645) (0)
+[10:13:07] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:13:07] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:13:27] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 52.5.230.6:6667...
+[10:13:37] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:13:37] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:13:47] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:13:48] [death] [Lvrcr]Sc0pe died 255
+[10:13:49] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130719 (130719) (0)
+[10:13:53] [death] [Lvrcr]Natox died 54
+[10:13:54] **(CASH INCREASE)** [Lvrcr]Natox(1) money has increased from $0 to $8745 (8745) (0)
+[10:13:57] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:14:07] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:14:17] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 52.5.230.6:6667...
+[10:14:27] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 52.5.230.6:6667 (Connection timed out)
+[10:14:27] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:14:37] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:14:57] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:14:57] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:15:07] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:15:07] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:15:27] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:15:37] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:15:37] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:15:47] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:15:57] *** IRC_OnConnectAttempt: Bot ID 1 attempting to connect to 54.227.195.116:6667...
+[10:16:04] Player 0 entered a race checkpoint!
+[10:16:04] [death] [Lvrcr]Sc0pe died 255
+[10:16:05] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $0 to $130719 (130719) (0)
+[10:16:07] *** IRC_OnConnectAttemptFail: Bot ID 1 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:16:10] [death] [Lvrcr]Natox died 255
+[10:16:10] **(CASH INCREASE)** [Lvrcr]Natox(1) money has increased from $0 to $8745 (8745) (0)
+[10:16:17] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:16:27] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:16:57] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:17:07] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:17:37] *** IRC_OnConnectAttempt: Bot ID 2 attempting to connect to 54.227.195.116:6667...
+[10:17:47] *** IRC_OnConnectAttemptFail: Bot ID 2 failed to connect to 54.227.195.116:6667 (Connection timed out)
+[10:23:01] **(ADMIN UNFREEZE)** [Lvrcr]Sc0pe(0) 0
+[10:23:15] [Lvrcr]Sc0pe(0) has started a Sexshop robbery
+[10:23:46] [Lvrcr]Sc0pe(0) has robbed $22819 in a Sexshop Robbery
+[10:23:46] **(CASH INCREASE)** [Lvrcr]Sc0pe(0) money has increased from $130719 to $153438 (22719) (3)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[10:26:02] 
+[10:26:02] Server Plugins
+[10:26:02] --------------
+[10:26:02]  Loading plugin: irc
+[10:26:02] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[10:26:02]   Loaded.
+[10:26:02]  Loading plugin: streamer
+[10:26:02] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[10:26:02]   Loaded.
+[10:26:02]  Loading plugin: sscanf
+[10:26:02] 
+
+[10:26:02]  ===============================
+
+[10:26:02]       sscanf plugin loaded.     
+
+[10:26:02]          Version:  2.8.1        
+
+[10:26:02]    (c) 2012 Alex "Y_Less" Cole  
+
+[10:26:02]  ===============================
+
+[10:26:02]   Loaded.
+[10:26:02]  Loading plugin: discord-connector
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[10:26:10] 
+[10:26:10] Server Plugins
+[10:26:10] --------------
+[10:26:10]  Loading plugin: irc
+[10:26:10] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[10:26:10]   Loaded.
+[10:26:10]  Loading plugin: streamer
+[10:26:10] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[10:26:10]   Loaded.
+[10:26:10]  Loading plugin: sscanf
+[10:26:10] 
+
+[10:26:10]  ===============================
+
+[10:26:10]       sscanf plugin loaded.     
+
+[10:26:11]          Version:  2.8.1        
+
+[10:26:11]    (c) 2012 Alex "Y_Less" Cole  
+
+[10:26:11]  ===============================
+
+[10:26:11]   Loaded.
+[10:26:11]  Loading plugin: discord-connector
+[10:26:12]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[10:26:12]   Loaded.
+[10:26:12]  Loading plugin: Whirlpool
+[10:26:12]  
+[10:26:12]  ==================
+[10:26:12]  
+[10:26:12]   Whirlpool loaded
+[10:26:12]  
+[10:26:12]  ==================
+[10:26:12]  
+[10:26:12]   Loaded.
+[10:26:12]  Loading plugin: crashdetect
