@@ -16696,7 +16696,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed1 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -16782,7 +16782,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed3 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -16823,7 +16823,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed4 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -16866,7 +16866,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed5 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -16909,7 +16909,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed6 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -16952,7 +16952,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed7 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -16995,7 +16995,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed8 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -17038,7 +17038,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed9 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -17080,7 +17080,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed10 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -17122,7 +17122,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed11 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -17163,7 +17163,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed12 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
@@ -17205,7 +17205,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						        new plwl = GetPlayerWantedLevel(playerid);
 							    SetPlayerWantedLevel(playerid, plwl +4);
 								robbingstore[playerid] =20;
-								twofoursevenrobbed2 = 240;
+								twofoursevenrobbed13 = 240;
 								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
 								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
 								plwl = GetPlayerWantedLevel(playerid);
