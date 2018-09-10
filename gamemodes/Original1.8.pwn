@@ -601,6 +601,13 @@ new twofoursevenrobbed3 =0;
 new twofoursevenrobbed4 =0;
 new twofoursevenrobbed5 =0;
 new twofoursevenrobbed6 =0;
+new twofoursevenrobbed7 =0;
+new twofoursevenrobbed8 =0;
+new twofoursevenrobbed9 =0;
+new twofoursevenrobbed10 =0;
+new twofoursevenrobbed11 =0;
+new twofoursevenrobbed12 =0;
+new twofoursevenrobbed13 =0;
 new CaligsRobbed =0;
 new RedsandsRobbed =0;
 new FourDragsRobbed =0;
@@ -16676,12 +16683,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}*/
 
 					 		// Yugoslavia
-					 		if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed1 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed1 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16762,12 +16769,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// Emerald Isle
-					 		if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed3 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed3 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16803,12 +16810,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						    	}
 								return 1;
 					 		}
-					 		if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed4 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed4 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16846,12 +16853,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// Redsands East
-					 		if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed5 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed5 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16889,12 +16896,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// Redsands West
-					 		if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed6 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed6 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16932,12 +16939,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// LV Strip
-					 		if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed7 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed7 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16975,12 +16982,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// LV Strip - South
-					 		if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed8 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed8 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -17018,12 +17025,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// SE LV
-					 		if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed9 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed9 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -17060,12 +17067,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								return 1;
 					 		}
 					 		// Roca Escalante
-					 		if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed10 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed10 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -17102,12 +17109,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								return 1;
 					 		}
 					 		// Old Venturas Strip
-					 		if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed11 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed11 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -17143,12 +17150,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						    	}
 								return 1;
 					 		}
-					 		if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed12 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed12 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -17185,12 +17192,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								return 1;
 					 		}
 					 		// Creek
-					 		if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed13 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed13 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -19672,6 +19679,34 @@ public storerobbedrecent()
 	if(twofoursevenrobbed6 >= 1)
 	{
 		twofoursevenrobbed6 --;
+	}
+	if(twofoursevenrobbed7 >= 1)
+	{
+		twofoursevenrobbed7 --;
+	}
+	if(twofoursevenrobbed8 >= 1)
+	{
+		twofoursevenrobbed8 --;
+	}
+	if(twofoursevenrobbed9 >= 1)
+	{
+		twofoursevenrobbed9 --;
+	}
+	if(twofoursevenrobbed10 >= 1)
+	{
+		twofoursevenrobbed10 --;
+	}
+	if(twofoursevenrobbed11 >= 1)
+	{
+		twofoursevenrobbed11 --;
+	}
+	if(twofoursevenrobbed12 >= 1)
+	{
+		twofoursevenrobbed12 --;
+	}
+	if(twofoursevenrobbed13 >= 1)
+	{
+		twofoursevenrobbed13 --;
 	}
 	if(cityhallrobbedrecent >= 1)
 	{
