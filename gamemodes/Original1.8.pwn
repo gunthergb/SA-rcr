@@ -298,10 +298,17 @@ new cp_rob247; // 24/7 Menu/Rob CP
 new cp_yugo247; // Yugoslavia 24/7
 new cp_lv2471; // Spinybed 24/7
 new cp_lv2472; // Emerald Isle 24/7
-new cp_lv2473; // Redsands West 24/7
-new cp_lv2474; // LV Strip 24/7
-new cp_lv2475; // LV Strip South 24/7
-new cp_lv2476; // SE LV 24/7
+new cp_lv2473; // Emerald Isle 24/7
+new cp_lv2474; // Redsands East 24/7
+new cp_lv2475; // Redsands West 24/7
+new cp_lv2476; // LV Strip 24/7
+new cp_lv2477; // LV Strip South 24/7
+new cp_lv2478; // SE LV 24/7
+new cp_lv2479; // Roca Escalante 24/7
+new cp_lv24710; // Old Venturas Strip 24/7
+new cp_lv24711; // Old Venturas Strip 24/7
+new cp_lv24712; // Creek 24/7
+
 //YugoNude
 new YugoNude;
 new YugoNudeExit;
@@ -1732,10 +1739,16 @@ public OnGameModeInit()
 	cp_yugo247 = CreateDynamicCP(1410.7700,3262.2939,11.1141, 1.5, -1, -1, -1, 50.0); //Yugoslavia
 	cp_lv2471 = CreateDynamicCP(2150.7839,2733.8667,11.1763, 1.5, -1, -1, -1, 50.0); //Spinybed
 	cp_lv2472 = CreateDynamicCP(2187.7136,2469.5935,11.2422, 1.5, -1, -1, -1, 50.0); //Emerald Isle
-	cp_lv2473 = CreateDynamicCP(1599.0454,2221.7930,11.0625, 1.5, -1, -1, -1, 50.0); //Redsands West
-	cp_lv2474 = CreateDynamicCP(2194.3848,1991.1100,12.2969, 1.5, -1, -1, -1, 50.0); //LV Strip
-	cp_lv2475 = CreateDynamicCP(2117.5315,896.7755,11.1797, 1.5, -1, -1, -1, 50.0); //LV Strip South
-	cp_lv2476 = CreateDynamicCP(2637.2629,1129.6779,11.1797, 1.5, -1, -1, -1, 50.0); //Southeast LV
+	cp_lv2473 = CreateDynamicCP(2097.5925,2224.7014,11.0234, 1.5, -1, -1, -1, 50.0); //Emerald Isle
+	cp_lv2474 = CreateDynamicCP(1937.8253,2307.3196,10.8203, 1.5, -1, -1, -1, 50.0); //Redsands East
+	cp_lv2475 = CreateDynamicCP(1599.0454,2221.7930,11.0625, 1.5, -1, -1, -1, 50.0); //Redsands West
+	cp_lv2476 = CreateDynamicCP(2194.3848,1991.1100,12.2969, 1.5, -1, -1, -1, 50.0); //LV Strip
+	cp_lv2477 = CreateDynamicCP(2117.5315,896.7755,11.1797, 1.5, -1, -1, -1, 50.0); //LV Strip South
+	cp_lv2478 = CreateDynamicCP(2637.2629,1129.6779,11.1797, 1.5, -1, -1, -1, 50.0); //Southeast LV
+	cp_lv2479 = CreateDynamicCP(2247.6829,2396.1680,10.8203, 1.5, -1, -1, -1, 50.0); //Roca Escalante
+	cp_lv24710 = CreateDynamicCP(2546.5081,1972.6678,10.8203, 1.5, -1, -1, -1, 50.0); //Old Venturas Strip
+	cp_lv24711 = CreateDynamicCP(2452.4282,2065.1899,10.8203, 1.5, -1, -1, -1, 50.0); //Old Venturas Strip
+	cp_lv24712 = CreateDynamicCP(2884.5618,2454.0547,11.0690, 1.5, -1, -1, -1, 50.0); //Creek
 	//Csino CP
 	//Casino = CreateDynamicCP(1548.6815,3235.0647,11.0785, 5, -1, -1, -1, 100.0);
 	//Admin Base
@@ -16790,14 +16803,98 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						    	}
 								return 1;
 					 		}
-
-					 		// Redsands West
 					 		if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed2 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
 					        if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Emerald Isle",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Emerald Isle and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// Redsands East
+					 		if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Redsands West",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Redsands East and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// Redsands West
+					 		if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16835,12 +16932,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// LV Strip
-					 		if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16877,13 +16974,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								return 1;
 					 		}
 
-					 		// LV Strip
-					 		if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 >= 1)
+					 		// LV Strip - South
+					 		if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed2 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed2 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16921,12 +17018,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					 		}
 
 					 		// SE LV
-					 		if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 >= 1)
+					 		if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed2 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
 					 		}
-					        if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 == 0)
+					        if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed2 == 0)
 							{
 						        new robbber[30];
 						        new pcol = GetPlayerColor(playerid);
@@ -16956,6 +17053,173 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								        new string2[256];
 										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
 										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Southeast LV and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+					 		// Roca Escalante
+					 		if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Roca Escalante",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Roca Escalante and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+					 		// Old Venturas Strip
+					 		if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery on the Old Venturas Strip",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store on the Old Venturas Strip and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+					 		if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery on the Old Venturas Strip",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store on the Old Venturas Strip and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+					 		// Creek
+					 		if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Creek",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Creek and arrest %s(%d)", robbber,playerid);
 										SendClientMessage(i, COLOR_ROYALBLUE, string1);
 										SendClientMessage(i, COLOR_ROYALBLUE, string2);
 						    		}
@@ -23432,7 +23696,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	}
 	if(checkpointid == cp_exit247)
 	{
-			 	// Yugoslavia
+		// Yugoslavia
 	 	if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed1 >= 1)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
@@ -23495,8 +23759,49 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
 	 		SetCameraBehindPlayer(playerid);
 	 	}
-	 	// Redsands West
 	 	if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2097.8296,2221.3987,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2097.8296,2221.3987,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// Redsands East
+	 	if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 1933.8395,2307.1409,10.8203);
+	   		SetPlayerFacingAngle(playerid,90);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 1933.8395,2307.1409,10.8203);
+	   		SetPlayerFacingAngle(playerid,90);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// Redsands West
+	 	if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed1 >= 1)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23506,7 +23811,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
 	 		SetCameraBehindPlayer(playerid);
 	 	}
-	 	if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed1 == 0)
+	 	if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed1 == 0)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23517,7 +23822,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SetCameraBehindPlayer(playerid);
 	 	}
 	 	// LV Strip
-	 	if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed1 >= 1)
+	 	if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed1 >= 1)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23527,7 +23832,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
 	 		SetCameraBehindPlayer(playerid);
 	 	}
-	 	if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed1 == 0)
+	 	if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed1 == 0)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23538,7 +23843,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SetCameraBehindPlayer(playerid);
 	 	}
 	 	// LV Strip South
-	 	if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed1 >= 1)
+	 	if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed1 >= 1)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23548,7 +23853,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
 	 		SetCameraBehindPlayer(playerid);
 	 	}
-	 	if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed1 == 0)
+	 	if(GetPlayerVirtualWorld(playerid) == 11 && twofoursevenrobbed1 == 0)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23559,7 +23864,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SetCameraBehindPlayer(playerid);
 	 	}
 	 	// SE LV
-	 	if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed1 >= 1)
+	 	if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed1 >= 1)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23569,7 +23874,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
 	 		SetCameraBehindPlayer(playerid);
 	 	}
-	 	if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed1 == 0)
+	 	if(GetPlayerVirtualWorld(playerid) == 12 && twofoursevenrobbed1 == 0)
 	 	{
 	 		GetPlayerVirtualWorld(playerid);
 	 		SetPlayerVirtualWorld(playerid, 0);
@@ -23579,7 +23884,89 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
 	 		SetCameraBehindPlayer(playerid);
 	 	}
-	 	
+	 	// Roca Escalante
+	 	if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2247.6169,2399.4451,10.8203);
+	   		SetPlayerFacingAngle(playerid,0);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 13 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2247.6169,2399.4451,10.8203);
+	   		SetPlayerFacingAngle(playerid,0);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// Old Venturas Strip
+	 	if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2546.5513,1965.0031,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 14 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2546.5513,1965.0031,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2452.6008,2060.4355,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 15 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2452.6008,2060.4355,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// Creek
+	 	if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2886.4221,2450.9949,11.0690);
+	   		SetPlayerFacingAngle(playerid,225);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 16 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2886.4221,2450.9949,11.0690);
+	   		SetPlayerFacingAngle(playerid,225);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}	 	
 	}
 	if(checkpointid == cp_rob247)
 	{
@@ -24237,41 +24624,41 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
   			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
   			SetPlayerFacingAngle(playerid, 0);
 			SetPlayerInterior(playerid, 6);
-			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Redsands West 24/7");
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Emerald Isle 24/7");
 			SetCameraBehindPlayer(playerid);
 		}
 	}
 	if(checkpointid == cp_lv2474)
 	{
-		if(IsPlayerInAnyVehicle(playerid))
+	    if(IsPlayerInAnyVehicle(playerid))
 		{
 	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
         }
-	 	else
-	 	{
-	 		GetPlayerVirtualWorld(playerid);
-		 	SetPlayerVirtualWorld(playerid, 8);
-			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-			SetPlayerFacingAngle(playerid, 0);
+	    else
+	    {
+			GetPlayerVirtualWorld(playerid);
+			SetPlayerVirtualWorld(playerid, 8);
+  			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+  			SetPlayerFacingAngle(playerid, 0);
 			SetPlayerInterior(playerid, 6);
-			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - The Strip 24/7 store");
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Redsands East 24/7");
 			SetCameraBehindPlayer(playerid);
 		}
 	}
 	if(checkpointid == cp_lv2475)
 	{
-		if(IsPlayerInAnyVehicle(playerid))
+	    if(IsPlayerInAnyVehicle(playerid))
 		{
 	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
         }
-	 	else
-	 	{
-	 		GetPlayerVirtualWorld(playerid);
-		 	SetPlayerVirtualWorld(playerid, 9);
-			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-			SetPlayerFacingAngle(playerid, 0);
+	    else
+	    {
+			GetPlayerVirtualWorld(playerid);
+			SetPlayerVirtualWorld(playerid, 9);
+  			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+  			SetPlayerFacingAngle(playerid, 0);
 			SetPlayerInterior(playerid, 6);
-			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - The Strip South 24/7 store");
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Redsands West 24/7");
 			SetCameraBehindPlayer(playerid);
 		}
 	}
@@ -24288,7 +24675,109 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
 			SetPlayerFacingAngle(playerid, 0);
 			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - The Strip 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2477)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 11);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - The Strip (South) 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2478)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 12);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
 			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Southeast 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2479)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 13);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Roca Escalante 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv24710)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 14);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Old Venturas Strip 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv24711)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 15);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Old Venturas Strip 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv24712)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 16);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Creek 24/7 store");
 			SetCameraBehindPlayer(playerid);
 		}
 	}
@@ -28470,10 +28959,13 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 {
 	new vehicleid = GetPlayerVehicleID(playerid);
 	new ispassenger = GetPlayerVehicleSeat(playerid);
+	new Float:X, Float:Y, Float:Z;
 	if(GetVehicleModel(vehicleid) == 592 && ispassenger == 0)
 	{
 		MoveDynamicObject(CommercialBuilding,1024.31127930,3727.24169922,-200,15);
 		DisablePlayerRaceCheckpoint(playerid);
+		GetPlayerPos(playerid, X, Y, Z);
+		CreateExplosion(X,Y,Z, 5, 10.0);
 	}
     printf("Player %d entered a race checkpoint!",playerid);
     return 1;

@@ -9584,3 +9584,413 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [00:32:37] #############################
 
 [00:32:37] Number of vehicle models: 164
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[02:45:19] 
+[02:45:19] Server Plugins
+[02:45:19] --------------
+[02:45:19]  Loading plugin: irc
+[02:45:19] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[02:45:19]   Loaded.
+[02:45:19]  Loading plugin: streamer
+[02:45:19] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[02:45:19]   Loaded.
+[02:45:19]  Loading plugin: sscanf
+[02:45:19] 
+
+[02:45:19]  ===============================
+
+[02:45:19]       sscanf plugin loaded.     
+
+[02:45:19]          Version:  2.8.1        
+
+[02:45:19]    (c) 2012 Alex "Y_Less" Cole  
+
+[02:45:19]  ===============================
+
+[02:45:19]   Loaded.
+[02:45:19]  Loading plugin: discord-connector
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[02:45:29] 
+[02:45:29] Server Plugins
+[02:45:29] --------------
+[02:45:29]  Loading plugin: irc
+[02:45:29] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[02:45:29]   Loaded.
+[02:45:29]  Loading plugin: streamer
+[02:45:29] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[02:45:29]   Loaded.
+[02:45:29]  Loading plugin: sscanf
+[02:45:29] 
+
+[02:45:29]  ===============================
+
+[02:45:29]       sscanf plugin loaded.     
+
+[02:45:29]          Version:  2.8.1        
+
+[02:45:29]    (c) 2012 Alex "Y_Less" Cole  
+
+[02:45:29]  ===============================
+
+[02:45:29]   Loaded.
+[02:45:29]  Loading plugin: discord-connector
+[02:45:30]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[02:45:30]   Loaded.
+[02:45:30]  Loading plugin: Whirlpool
+[02:45:30]  
+[02:45:30]  ==================
+[02:45:30]  
+[02:45:30]   Whirlpool loaded
+[02:45:30]  
+[02:45:30]  ==================
+[02:45:30]  
+[02:45:30]   Loaded.
+[02:45:30]  Loading plugin: crashdetect
+[02:45:30]   crashdetect v4.8.3 is OK.
+[02:45:30]   Loaded.
+[02:45:30]  Loaded 6 plugins.
+
+[02:45:30] 
+[02:45:30] Filterscripts
+[02:45:30] ---------------
+[02:45:30]   Loading filterscript 'CarMenu_v1.2.amx'...
+[02:45:30] ===============================================
+[02:45:30] Vehicle Selection Menu By [03]Garsino Loaded...
+[02:45:30] ===============================================
+[02:45:30]   Loading filterscript 'Teleports.amx'...
+[02:45:30] 
+  Go to LS, SF or LV.
+
+[02:45:30]   Loading filterscript 'IntMenu.amx'...
+[02:45:30] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[02:45:30]   Loaded 3 filterscripts.
+
+[02:45:30] 
+#############################
+[02:45:30] #                           #
+[02:45:30] #          [Sarcr]          #
+[02:45:30] #        San Andreas        #
+[02:45:30] #   Roleplay/Cops/Robbers   #
+[02:45:30] #                           #
+[02:45:30] #############################
+
+[02:45:30] Number of vehicle models: 164
+[02:46:04] [connection] 127.0.0.1:54110 requests connection cookie.
+[02:46:05] [connection] incoming connection: 127.0.0.1:54110 id: 0
+[02:46:05] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[02:46:05] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[02:46:09] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809466 (809466) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[02:54:22] 
+[02:54:22] Server Plugins
+[02:54:22] --------------
+[02:54:22]  Loading plugin: irc
+[02:54:22] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[02:54:22]   Loaded.
+[02:54:22]  Loading plugin: streamer
+[02:54:22] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[02:54:22]   Loaded.
+[02:54:22]  Loading plugin: sscanf
+[02:54:22] 
+
+[02:54:22]  ===============================
+
+[02:54:22]       sscanf plugin loaded.     
+
+[02:54:22]          Version:  2.8.1        
+
+[02:54:22]    (c) 2012 Alex "Y_Less" Cole  
+
+[02:54:22]  ===============================
+
+[02:54:22]   Loaded.
+[02:54:22]  Loading plugin: discord-connector
+[02:54:22]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[02:54:22]   Loaded.
+[02:54:22]  Loading plugin: Whirlpool
+[02:54:22]  
+[02:54:22]  ==================
+[02:54:22]  
+[02:54:22]   Whirlpool loaded
+[02:54:22]  
+[02:54:22]  ==================
+[02:54:22]  
+[02:54:22]   Loaded.
+[02:54:22]  Loading plugin: crashdetect
+[02:54:22]   crashdetect v4.8.3 is OK.
+[02:54:22]   Loaded.
+[02:54:22]  Loaded 6 plugins.
+
+[02:54:23] 
+[02:54:23] Filterscripts
+[02:54:23] ---------------
+[02:54:23]   Loading filterscript 'CarMenu_v1.2.amx'...
+[02:54:23] ===============================================
+[02:54:23] Vehicle Selection Menu By [03]Garsino Loaded...
+[02:54:23] ===============================================
+[02:54:23]   Loading filterscript 'Teleports.amx'...
+[02:54:23] 
+  Go to LS, SF or LV.
+
+[02:54:23]   Loading filterscript 'IntMenu.amx'...
+[02:54:23] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[02:54:23]   Loaded 3 filterscripts.
+
+[02:54:23] 
+#############################
+[02:54:23] #                           #
+[02:54:23] #          [Sarcr]          #
+[02:54:23] #        San Andreas        #
+[02:54:23] #   Roleplay/Cops/Robbers   #
+[02:54:23] #                           #
+[02:54:23] #############################
+
+[02:54:23] Number of vehicle models: 164
+[02:54:32] [connection] 127.0.0.1:54069 requests connection cookie.
+[02:54:33] [connection] incoming connection: 127.0.0.1:54069 id: 0
+[02:54:33] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[02:54:33] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[02:54:36] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809466 (809466) (0)
+[02:56:41] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $809466 to $809533 (67) (0)
+[02:57:18] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $809533 to $809564 (31) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[03:00:42] 
+[03:00:42] Server Plugins
+[03:00:42] --------------
+[03:00:42]  Loading plugin: irc
+[03:00:42] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[03:00:42]   Loaded.
+[03:00:42]  Loading plugin: streamer
+[03:00:42] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[03:00:42]   Loaded.
+[03:00:42]  Loading plugin: sscanf
+[03:00:42] 
+
+[03:00:42]  ===============================
+
+[03:00:42]       sscanf plugin loaded.     
+
+[03:00:42]          Version:  2.8.1        
+
+[03:00:42]    (c) 2012 Alex "Y_Less" Cole  
+
+[03:00:42]  ===============================
+
+[03:00:42]   Loaded.
+[03:00:42]  Loading plugin: discord-connector
+[03:00:43]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[03:00:43]   Loaded.
+[03:00:43]  Loading plugin: Whirlpool
+[03:00:43]  
+[03:00:43]  ==================
+[03:00:43]  
+[03:00:43]   Whirlpool loaded
+[03:00:43]  
+[03:00:43]  ==================
+[03:00:43]  
+[03:00:43]   Loaded.
+[03:00:43]  Loading plugin: crashdetect
+[03:00:43]   crashdetect v4.8.3 is OK.
+[03:00:43]   Loaded.
+[03:00:43]  Loaded 6 plugins.
+
+[03:00:43] 
+[03:00:43] Filterscripts
+[03:00:43] ---------------
+[03:00:43]   Loading filterscript 'CarMenu_v1.2.amx'...
+[03:00:43] ===============================================
+[03:00:43] Vehicle Selection Menu By [03]Garsino Loaded...
+[03:00:43] ===============================================
+[03:00:43]   Loading filterscript 'Teleports.amx'...
+[03:00:43] 
+  Go to LS, SF or LV.
+
+[03:00:43]   Loading filterscript 'IntMenu.amx'...
+[03:00:43] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[03:00:43]   Loaded 3 filterscripts.
+
+[03:00:43] 
+#############################
+[03:00:43] #                           #
+[03:00:43] #          [Sarcr]          #
+[03:00:43] #        San Andreas        #
+[03:00:43] #   Roleplay/Cops/Robbers   #
+[03:00:43] #                           #
+[03:00:43] #############################
+
+[03:00:43] Number of vehicle models: 164
+[03:00:58] [connection] 127.0.0.1:52465 requests connection cookie.
+[03:00:59] [connection] incoming connection: 127.0.0.1:52465 id: 0
+[03:00:59] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[03:00:59] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[03:01:05] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809466 (809466) (0)
+[03:04:26] Player 0 entered a race checkpoint!
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[03:07:03] 
+[03:07:03] Server Plugins
+[03:07:03] --------------
+[03:07:03]  Loading plugin: irc
+[03:07:03] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[03:07:03]   Loaded.
+[03:07:03]  Loading plugin: streamer
+[03:07:03] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[03:07:03]   Loaded.
+[03:07:03]  Loading plugin: sscanf
+[03:07:03] 
+
+[03:07:03]  ===============================
+
+[03:07:03]       sscanf plugin loaded.     
+
+[03:07:03]          Version:  2.8.1        
+
+[03:07:03]    (c) 2012 Alex "Y_Less" Cole  
+
+[03:07:03]  ===============================
+
+[03:07:03]   Loaded.
+[03:07:03]  Loading plugin: discord-connector
+[03:07:03]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[03:07:03]   Loaded.
+[03:07:03]  Loading plugin: Whirlpool
+[03:07:03]  
+[03:07:03]  ==================
+[03:07:03]  
+[03:07:03]   Whirlpool loaded
+[03:07:03]  
+[03:07:03]  ==================
+[03:07:03]  
+[03:07:03]   Loaded.
+[03:07:03]  Loading plugin: crashdetect
+[03:07:03]   crashdetect v4.8.3 is OK.
+[03:07:03]   Loaded.
+[03:07:03]  Loaded 6 plugins.
+
+[03:07:03] 
+[03:07:03] Filterscripts
+[03:07:03] ---------------
+[03:07:03]   Loading filterscript 'CarMenu_v1.2.amx'...
+[03:07:03] ===============================================
+[03:07:03] Vehicle Selection Menu By [03]Garsino Loaded...
+[03:07:03] ===============================================
+[03:07:03]   Loading filterscript 'Teleports.amx'...
+[03:07:03] 
+  Go to LS, SF or LV.
+
+[03:07:03]   Loading filterscript 'IntMenu.amx'...
+[03:07:04] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[03:07:04]   Loaded 3 filterscripts.
+
+[03:07:04] 
+#############################
+[03:07:04] #                           #
+[03:07:04] #          [Sarcr]          #
+[03:07:04] #        San Andreas        #
+[03:07:04] #   Roleplay/Cops/Robbers   #
+[03:07:04] #                           #
+[03:07:04] #############################
+
+[03:07:04] Number of vehicle models: 164
+[03:07:46] [connection] 127.0.0.1:60056 requests connection cookie.
+[03:07:47] [connection] incoming connection: 127.0.0.1:60056 id: 0
+[03:07:47] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[03:07:47] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[03:08:07] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809466 (809466) (0)
+[03:08:14] [chat] [[Sarcr]Sc0pe]: adhq
+[03:09:33] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $809466 to $809488 (22) (0)
+[03:11:44] [death] [Sarcr]Sc0pe died 255
+[03:11:46] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809588 (809588) (0)
+[03:13:54] [death] [Sarcr]Sc0pe died 255
+[03:13:55] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809588 (809588) (0)
+[03:15:24] Player 0 entered a race checkpoint!
+[03:15:38] Player 0 entered a race checkpoint!
+[03:15:43] [death] [Sarcr]Sc0pe died 255
+[03:15:45] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809588 (809588) (0)
+[03:18:31] [death] [Sarcr]Sc0pe died 255
+[03:18:31] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809588 (809588) (0)
+[03:20:43] [death] [Sarcr]Sc0pe died 255
+[03:20:44] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809610 (809610) (0)
+[03:21:56] [death] [Sarcr]Sc0pe died 54
+[03:21:57] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809610 (809610) (0)
+[03:24:37] Player 0 entered a race checkpoint!
+[03:24:37] [death] [Sarcr]Sc0pe died 255
+[03:24:39] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809610 (809610) (0)
+[03:24:47] [part] [Sarcr]Sc0pe has left the server (0:1)
