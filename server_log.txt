@@ -8361,3 +8361,1226 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [19:50:44]  
 [19:50:44]   Loaded.
 [19:50:44]  Loading plugin: crashdetect
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[23:37:54] 
+[23:37:54] Server Plugins
+[23:37:54] --------------
+[23:37:54]  Loading plugin: irc
+[23:37:54] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[23:37:54]   Loaded.
+[23:37:54]  Loading plugin: streamer
+[23:37:54] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[23:37:54]   Loaded.
+[23:37:54]  Loading plugin: sscanf
+[23:37:54] 
+
+[23:37:54]  ===============================
+
+[23:37:54]       sscanf plugin loaded.     
+
+[23:37:54]          Version:  2.8.1        
+
+[23:37:54]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:37:54]  ===============================
+
+[23:37:54]   Loaded.
+[23:37:54]  Loading plugin: discord-connector
+[23:37:55]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[23:37:55]   Loaded.
+[23:37:55]  Loading plugin: Whirlpool
+[23:37:55]  
+[23:37:55]  ==================
+[23:37:55]  
+[23:37:55]   Whirlpool loaded
+[23:37:55]  
+[23:37:55]  ==================
+[23:37:55]  
+[23:37:55]   Loaded.
+[23:37:55]  Loading plugin: crashdetect
+[23:37:55]   crashdetect v4.8.3 is OK.
+[23:37:55]   Loaded.
+[23:37:55]  Loaded 6 plugins.
+
+[23:37:55] 
+[23:37:55] Filterscripts
+[23:37:55] ---------------
+[23:37:55]   Loading filterscript 'CarMenu_v1.2.amx'...
+[23:37:56] ===============================================
+[23:37:56] Vehicle Selection Menu By [03]Garsino Loaded...
+[23:37:56] ===============================================
+[23:37:56]   Loading filterscript 'Teleports.amx'...
+[23:37:56] 
+  Go to LS, SF or LV.
+
+[23:37:56]   Loading filterscript 'IntMenu.amx'...
+[23:37:56] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[23:37:56]   Loaded 3 filterscripts.
+
+[23:37:56] 
+#############################
+[23:37:56] #                           #
+[23:37:56] #          [Sarcr]          #
+[23:37:56] #        San Andreas        #
+[23:37:56] #   Roleplay/Cops/Robbers   #
+[23:37:56] #                           #
+[23:37:56] #############################
+
+[23:37:56] Number of vehicle models: 164
+[23:38:57] [connection] 127.0.0.1:52464 requests connection cookie.
+[23:38:58] [connection] incoming connection: 127.0.0.1:52464 id: 0
+[23:38:58] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[23:38:58] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[23:39:32] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $810123 (810123) (0)
+Console input: restart
+Console input: reset
+Console input: gmx
+Console input: /rcon gmx
+Console input: rcon gmx
+[23:42:16] 
+#############################
+[23:42:16] #                           #
+[23:42:16] #          [Sarcr]          #
+[23:42:16] #        San Andreas        #
+[23:42:16] #   Roleplay/Cops/Robbers   #
+[23:42:16] #                           #
+[23:42:16] #############################
+
+[23:42:16] Number of vehicle models: 164
+[23:42:16] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[23:42:40] 
+[23:42:40] Server Plugins
+[23:42:40] --------------
+[23:42:40]  Loading plugin: irc
+[23:42:40] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[23:42:40]   Loaded.
+[23:42:40]  Loading plugin: streamer
+[23:42:40] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[23:42:40]   Loaded.
+[23:42:40]  Loading plugin: sscanf
+[23:42:40] 
+
+[23:42:40]  ===============================
+
+[23:42:40]       sscanf plugin loaded.     
+
+[23:42:40]          Version:  2.8.1        
+
+[23:42:40]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:42:40]  ===============================
+
+[23:42:40]   Loaded.
+[23:42:40]  Loading plugin: discord-connector
+[23:42:41]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[23:42:41]   Loaded.
+[23:42:41]  Loading plugin: Whirlpool
+[23:42:41]  
+[23:42:41]  ==================
+[23:42:41]  
+[23:42:41]   Whirlpool loaded
+[23:42:41]  
+[23:42:41]  ==================
+[23:42:41]  
+[23:42:41]   Loaded.
+[23:42:41]  Loading plugin: crashdetect
+[23:42:41]   crashdetect v4.8.3 is OK.
+[23:42:41]   Loaded.
+[23:42:41]  Loaded 6 plugins.
+
+[23:42:41] 
+[23:42:41] Filterscripts
+[23:42:41] ---------------
+[23:42:41]   Loading filterscript 'CarMenu_v1.2.amx'...
+[23:42:41] ===============================================
+[23:42:41] Vehicle Selection Menu By [03]Garsino Loaded...
+[23:42:41] ===============================================
+[23:42:41]   Loading filterscript 'Teleports.amx'...
+[23:42:41] 
+  Go to LS, SF or LV.
+
+[23:42:41]   Loading filterscript 'IntMenu.amx'...
+[23:42:41] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[23:42:41]   Loaded 3 filterscripts.
+
+[23:42:41] 
+#############################
+[23:42:41] #                           #
+[23:42:41] #          [Sarcr]          #
+[23:42:41] #        San Andreas        #
+[23:42:41] #   Roleplay/Cops/Robbers   #
+[23:42:41] #                           #
+[23:42:41] #############################
+
+[23:42:41] Number of vehicle models: 164
+[23:42:49] [connection] 127.0.0.1:60401 requests connection cookie.
+[23:42:50] [connection] incoming connection: 127.0.0.1:60401 id: 0
+[23:42:50] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[23:42:50] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[23:42:54] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $808623 (808623) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[23:45:32] 
+[23:45:32] Server Plugins
+[23:45:32] --------------
+[23:45:32]  Loading plugin: irc
+[23:45:32] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[23:45:32]   Loaded.
+[23:45:32]  Loading plugin: streamer
+[23:45:32] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[23:45:32]   Loaded.
+[23:45:32]  Loading plugin: sscanf
+[23:45:32] 
+
+[23:45:32]  ===============================
+
+[23:45:32]       sscanf plugin loaded.     
+
+[23:45:32]          Version:  2.8.1        
+
+[23:45:32]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:45:32]  ===============================
+
+[23:45:32]   Loaded.
+[23:45:32]  Loading plugin: discord-connector
+[23:45:33]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[23:45:33]   Loaded.
+[23:45:33]  Loading plugin: Whirlpool
+[23:45:33]  
+[23:45:33]  ==================
+[23:45:33]  
+[23:45:33]   Whirlpool loaded
+[23:45:33]  
+[23:45:33]  ==================
+[23:45:33]  
+[23:45:33]   Loaded.
+[23:45:33]  Loading plugin: crashdetect
+[23:45:33]   crashdetect v4.8.3 is OK.
+[23:45:33]   Loaded.
+[23:45:33]  Loaded 6 plugins.
+
+[23:45:33] 
+[23:45:33] Filterscripts
+[23:45:33] ---------------
+[23:45:33]   Loading filterscript 'CarMenu_v1.2.amx'...
+[23:45:33] ===============================================
+[23:45:33] Vehicle Selection Menu By [03]Garsino Loaded...
+[23:45:33] ===============================================
+[23:45:33]   Loading filterscript 'Teleports.amx'...
+[23:45:33] 
+  Go to LS, SF or LV.
+
+[23:45:33]   Loading filterscript 'IntMenu.amx'...
+[23:45:33] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[23:45:33]   Loaded 3 filterscripts.
+
+[23:45:33] 
+#############################
+[23:45:33] #                           #
+[23:45:33] #          [Sarcr]          #
+[23:45:33] #        San Andreas        #
+[23:45:33] #   Roleplay/Cops/Robbers   #
+[23:45:33] #                           #
+[23:45:33] #############################
+
+[23:45:33] Number of vehicle models: 164
+[23:45:42] [connection] 127.0.0.1:54249 requests connection cookie.
+[23:45:43] [connection] incoming connection: 127.0.0.1:54249 id: 0
+[23:45:43] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[23:45:43] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[23:45:46] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $808623 (808623) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[23:48:40] 
+[23:48:40] Server Plugins
+[23:48:40] --------------
+[23:48:40]  Loading plugin: irc
+[23:48:40] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[23:48:40]   Loaded.
+[23:48:40]  Loading plugin: streamer
+[23:48:40] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[23:48:40]   Loaded.
+[23:48:40]  Loading plugin: sscanf
+[23:48:40] 
+
+[23:48:40]  ===============================
+
+[23:48:40]       sscanf plugin loaded.     
+
+[23:48:40]          Version:  2.8.1        
+
+[23:48:40]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:48:40]  ===============================
+
+[23:48:40]   Loaded.
+[23:48:40]  Loading plugin: discord-connector
+[23:48:41]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[23:48:41]   Loaded.
+[23:48:41]  Loading plugin: Whirlpool
+[23:48:41]  
+[23:48:41]  ==================
+[23:48:41]  
+[23:48:41]   Whirlpool loaded
+[23:48:41]  
+[23:48:41]  ==================
+[23:48:41]  
+[23:48:41]   Loaded.
+[23:48:41]  Loading plugin: crashdetect
+[23:48:41]   crashdetect v4.8.3 is OK.
+[23:48:41]   Loaded.
+[23:48:41]  Loaded 6 plugins.
+
+[23:48:41] 
+[23:48:41] Filterscripts
+[23:48:41] ---------------
+[23:48:41]   Loading filterscript 'CarMenu_v1.2.amx'...
+[23:48:41] ===============================================
+[23:48:41] Vehicle Selection Menu By [03]Garsino Loaded...
+[23:48:41] ===============================================
+[23:48:41]   Loading filterscript 'Teleports.amx'...
+[23:48:41] 
+  Go to LS, SF or LV.
+
+[23:48:41]   Loading filterscript 'IntMenu.amx'...
+[23:48:41] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[23:48:41]   Loaded 3 filterscripts.
+
+[23:48:41] 
+#############################
+[23:48:41] #                           #
+[23:48:41] #          [Sarcr]          #
+[23:48:41] #        San Andreas        #
+[23:48:41] #   Roleplay/Cops/Robbers   #
+[23:48:41] #                           #
+[23:48:41] #############################
+
+[23:48:41] Number of vehicle models: 164
+[23:48:51] [connection] 127.0.0.1:57657 requests connection cookie.
+[23:48:52] [connection] incoming connection: 127.0.0.1:57657 id: 0
+[23:48:52] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[23:48:52] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[23:48:55] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $808623 (808623) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[23:55:01] 
+[23:55:01] Server Plugins
+[23:55:01] --------------
+[23:55:01]  Loading plugin: irc
+[23:55:01] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[23:55:01]   Loaded.
+[23:55:01]  Loading plugin: streamer
+[23:55:01] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[23:55:01]   Loaded.
+[23:55:01]  Loading plugin: sscanf
+[23:55:01] 
+
+[23:55:01]  ===============================
+
+[23:55:01]       sscanf plugin loaded.     
+
+[23:55:01]          Version:  2.8.1        
+
+[23:55:01]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:55:01]  ===============================
+
+[23:55:01]   Loaded.
+[23:55:01]  Loading plugin: discord-connector
+[23:55:02]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[23:55:02]   Loaded.
+[23:55:02]  Loading plugin: Whirlpool
+[23:55:02]  
+[23:55:02]  ==================
+[23:55:02]  
+[23:55:02]   Whirlpool loaded
+[23:55:02]  
+[23:55:02]  ==================
+[23:55:02]  
+[23:55:02]   Loaded.
+[23:55:02]  Loading plugin: crashdetect
+[23:55:02]   crashdetect v4.8.3 is OK.
+[23:55:02]   Loaded.
+[23:55:02]  Loaded 6 plugins.
+
+[23:55:02] 
+[23:55:02] Filterscripts
+[23:55:02] ---------------
+[23:55:02]   Loading filterscript 'CarMenu_v1.2.amx'...
+[23:55:02] ===============================================
+[23:55:02] Vehicle Selection Menu By [03]Garsino Loaded...
+[23:55:02] ===============================================
+[23:55:02]   Loading filterscript 'Teleports.amx'...
+[23:55:02] 
+  Go to LS, SF or LV.
+
+[23:55:02]   Loading filterscript 'IntMenu.amx'...
+[23:55:03] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[23:55:03]   Loaded 3 filterscripts.
+
+[23:55:03] 
+#############################
+[23:55:03] #                           #
+[23:55:03] #          [Sarcr]          #
+[23:55:03] #        San Andreas        #
+[23:55:03] #   Roleplay/Cops/Robbers   #
+[23:55:03] #                           #
+[23:55:03] #############################
+
+[23:55:03] Number of vehicle models: 164
+[23:55:16] [connection] 127.0.0.1:62976 requests connection cookie.
+[23:55:17] [connection] incoming connection: 127.0.0.1:62976 id: 0
+[23:55:17] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[23:55:17] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[23:55:20] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $808623 (808623) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[23:57:10] 
+[23:57:10] Server Plugins
+[23:57:10] --------------
+[23:57:10]  Loading plugin: irc
+[23:57:10] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[23:57:10]   Loaded.
+[23:57:10]  Loading plugin: streamer
+[23:57:10] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[23:57:10]   Loaded.
+[23:57:10]  Loading plugin: sscanf
+[23:57:10] 
+
+[23:57:10]  ===============================
+
+[23:57:10]       sscanf plugin loaded.     
+
+[23:57:10]          Version:  2.8.1        
+
+[23:57:10]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:57:10]  ===============================
+
+[23:57:10]   Loaded.
+[23:57:10]  Loading plugin: discord-connector
+[23:57:31]  >> plugin.dc-connector: timeout while initializing data.
+[23:57:31]   Failed.
+[23:57:31]  Loading plugin: Whirlpool
+[23:57:31]  
+[23:57:31]  ==================
+[23:57:31]  
+[23:57:31]   Whirlpool loaded
+[23:57:31]  
+[23:57:31]  ==================
+[23:57:31]  
+[23:57:31]   Loaded.
+[23:57:31]  Loading plugin: crashdetect
+[23:57:31]   crashdetect v4.8.3 is OK.
+[23:57:31]   Loaded.
+[23:57:31]  Loaded 5 plugins.
+
+[23:57:31] [connection] 127.0.0.1:64728 requests connection cookie.
+[23:57:31] 
+[23:57:31] Filterscripts
+[23:57:31] ---------------
+[23:57:31]   Loading filterscript 'CarMenu_v1.2.amx'...
+[23:57:31] ===============================================
+[23:57:31] Vehicle Selection Menu By [03]Garsino Loaded...
+[23:57:31] ===============================================
+[23:57:31]   Loading filterscript 'Teleports.amx'...
+[23:57:32] 
+  Go to LS, SF or LV.
+
+[23:57:32]   Loading filterscript 'IntMenu.amx'...
+[23:57:32] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[23:57:32]   Loaded 3 filterscripts.
+
+[23:57:32] [debug] Run time error 19: "File or function is not found"
+[23:57:32] [debug]  DCC_SendChannelMessage
+[23:57:32] [debug]  DCC_FindChannelById
+[23:57:32] [debug]  DCC_GetChannelName
+[23:57:32] [debug]  DCC_GetUserName
+[23:57:32] Script[gamemodes/Original1.8.amx]: Run time error 19: "File or function is not found"
+[23:57:32] Number of vehicle models: 0
+[23:57:32] [connection] incoming connection: 127.0.0.1:64728 id: 0
+[23:57:42] [connection] incoming connection: 127.0.0.1:61667 id: 0
+[23:57:58] [connection] incoming connection: 127.0.0.1:61676 id: 0
+[23:57:58] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[23:57:58] [debug] Run time error 19: "File or function is not found"
+[23:57:58] [debug]  DCC_SendChannelMessage
+[23:57:58] [debug]  DCC_FindChannelById
+[23:57:58] [debug]  DCC_GetChannelName
+[23:57:58] [debug]  DCC_GetUserName
+[23:58:08] [debug] Run time error 19: "File or function is not found"
+[23:58:08] [debug]  DCC_SendChannelMessage
+[23:58:08] [debug]  DCC_FindChannelById
+[23:58:08] [debug]  DCC_GetChannelName
+[23:58:08] [debug]  DCC_GetUserName
+[23:58:08] [debug] Run time error 19: "File or function is not found"
+[23:58:08] [debug]  DCC_SendChannelMessage
+[23:58:08] [debug]  DCC_FindChannelById
+[23:58:08] [debug]  DCC_GetChannelName
+[23:58:08] [debug]  DCC_GetUserName
+[23:58:08] [debug] Run time error 19: "File or function is not found"
+[23:58:08] [debug]  DCC_SendChannelMessage
+[23:58:08] [debug]  DCC_FindChannelById
+[23:58:08] [debug]  DCC_GetChannelName
+[23:58:08] [debug]  DCC_GetUserName
+[23:58:08] [debug] Run time error 19: "File or function is not found"
+[23:58:08] [debug]  DCC_SendChannelMessage
+[23:58:08] [debug]  DCC_FindChannelById
+[23:58:08] [debug]  DCC_GetChannelName
+[23:58:08] [debug]  DCC_GetUserName
+[23:58:08] [debug] Run time error 19: "File or function is not found"
+[23:58:08] [debug]  DCC_SendChannelMessage
+[23:58:08] [debug]  DCC_FindChannelById
+[23:58:08] [debug]  DCC_GetChannelName
+[23:58:08] [debug]  DCC_GetUserName
+[23:58:08] [debug] Run time error 19: "File or function is not found"
+[23:58:08] [debug]  DCC_SendChannelMessage
+[23:58:08] [debug]  DCC_FindChannelById
+[23:58:08] [debug]  DCC_GetChannelName
+[23:58:08] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:09] [debug] Run time error 19: "File or function is not found"
+[23:58:09] [debug]  DCC_SendChannelMessage
+[23:58:09] [debug]  DCC_FindChannelById
+[23:58:09] [debug]  DCC_GetChannelName
+[23:58:09] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:10] [debug] Run time error 19: "File or function is not found"
+[23:58:10] [debug]  DCC_SendChannelMessage
+[23:58:10] [debug]  DCC_FindChannelById
+[23:58:10] [debug]  DCC_GetChannelName
+[23:58:10] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:11] [debug] Run time error 19: "File or function is not found"
+[23:58:11] [debug]  DCC_SendChannelMessage
+[23:58:11] [debug]  DCC_FindChannelById
+[23:58:11] [debug]  DCC_GetChannelName
+[23:58:11] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:12] [debug] Run time error 19: "File or function is not found"
+[23:58:12] [debug]  DCC_SendChannelMessage
+[23:58:12] [debug]  DCC_FindChannelById
+[23:58:12] [debug]  DCC_GetChannelName
+[23:58:12] [debug]  DCC_GetUserName
+[23:58:13] [debug] Run time error 19: "File or function is not found"
+[23:58:13] [debug]  DCC_SendChannelMessage
+[23:58:13] [debug]  DCC_FindChannelById
+[23:58:13] [debug]  DCC_GetChannelName
+[23:58:13] [debug]  DCC_GetUserName
+[23:58:14] [debug] Run time error 19: "File or function is not found"
+[23:58:14] [debug]  DCC_SendChannelMessage
+[23:58:14] [debug]  DCC_FindChannelById
+[23:58:14] [debug]  DCC_GetChannelName
+[23:58:14] [debug]  DCC_GetUserName
+[23:58:14] [part] [Sarcr]Sc0pe has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[23:58:23] 
+[23:58:23] Server Plugins
+[23:58:23] --------------
+[23:58:23]  Loading plugin: irc
+[23:58:23] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[23:58:23]   Loaded.
+[23:58:23]  Loading plugin: streamer
+[23:58:23] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[23:58:23]   Loaded.
+[23:58:23]  Loading plugin: sscanf
+[23:58:23] 
+
+[23:58:23]  ===============================
+
+[23:58:23]       sscanf plugin loaded.     
+
+[23:58:23]          Version:  2.8.1        
+
+[23:58:23]    (c) 2012 Alex "Y_Less" Cole  
+
+[23:58:23]  ===============================
+
+[23:58:23]   Loaded.
+[23:58:23]  Loading plugin: discord-connector
+[23:58:24]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[23:58:24]   Loaded.
+[23:58:24]  Loading plugin: Whirlpool
+[23:58:24]  
+[23:58:24]  ==================
+[23:58:24]  
+[23:58:24]   Whirlpool loaded
+[23:58:24]  
+[23:58:24]  ==================
+[23:58:24]  
+[23:58:24]   Loaded.
+[23:58:24]  Loading plugin: crashdetect
+[23:58:24]   crashdetect v4.8.3 is OK.
+[23:58:24]   Loaded.
+[23:58:24]  Loaded 6 plugins.
+
+[23:58:24] 
+[23:58:24] Filterscripts
+[23:58:24] ---------------
+[23:58:24]   Loading filterscript 'CarMenu_v1.2.amx'...
+[23:58:24] ===============================================
+[23:58:24] Vehicle Selection Menu By [03]Garsino Loaded...
+[23:58:24] ===============================================
+[23:58:24]   Loading filterscript 'Teleports.amx'...
+[23:58:24] 
+  Go to LS, SF or LV.
+
+[23:58:24]   Loading filterscript 'IntMenu.amx'...
+[23:58:24] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[23:58:24]   Loaded 3 filterscripts.
+
+[23:58:24] 
+#############################
+[23:58:24] #                           #
+[23:58:24] #          [Sarcr]          #
+[23:58:24] #        San Andreas        #
+[23:58:24] #   Roleplay/Cops/Robbers   #
+[23:58:24] #                           #
+[23:58:24] #############################
+
+[23:58:24] Number of vehicle models: 164
+[23:58:58] [connection] 127.0.0.1:62483 requests connection cookie.
+[23:58:59] [connection] incoming connection: 127.0.0.1:62483 id: 0
+[23:59:00] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[23:59:00] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[23:59:03] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $808623 (808623) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[00:02:03] 
+[00:02:03] Server Plugins
+[00:02:03] --------------
+[00:02:03]  Loading plugin: irc
+[00:02:03] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[00:02:03]   Loaded.
+[00:02:03]  Loading plugin: streamer
+[00:02:03] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[00:02:03]   Loaded.
+[00:02:03]  Loading plugin: sscanf
+[00:02:03] 
+
+[00:02:03]  ===============================
+
+[00:02:03]       sscanf plugin loaded.     
+
+[00:02:03]          Version:  2.8.1        
+
+[00:02:03]    (c) 2012 Alex "Y_Less" Cole  
+
+[00:02:03]  ===============================
+
+[00:02:03]   Loaded.
+[00:02:03]  Loading plugin: discord-connector
+[00:02:24]  >> plugin.dc-connector: timeout while initializing data.
+[00:02:24]   Failed.
+[00:02:24]  Loading plugin: Whirlpool
+[00:02:24]  
+[00:02:24]  ==================
+[00:02:24]  
+[00:02:24]   Whirlpool loaded
+[00:02:24]  
+[00:02:24]  ==================
+[00:02:24]  
+[00:02:24]   Loaded.
+[00:02:24]  Loading plugin: crashdetect
+[00:02:24]   crashdetect v4.8.3 is OK.
+[00:02:24]   Loaded.
+[00:02:24]  Loaded 5 plugins.
+
+[00:02:24] 
+[00:02:24] Filterscripts
+[00:02:24] ---------------
+[00:02:24]   Loading filterscript 'CarMenu_v1.2.amx'...
+[00:02:24] ===============================================
+[00:02:24] Vehicle Selection Menu By [03]Garsino Loaded...
+[00:02:24] ===============================================
+[00:02:24]   Loading filterscript 'Teleports.amx'...
+[00:02:24] 
+  Go to LS, SF or LV.
+
+[00:02:24]   Loading filterscript 'IntMenu.amx'...
+[00:02:24] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[00:02:24]   Loaded 3 filterscripts.
+
+[00:02:24] [debug] Run time error 19: "File or function is not found"
+[00:02:24] [debug]  DCC_SendChannelMessage
+[00:02:24] [debug]  DCC_FindChannelById
+[00:02:24] [debug]  DCC_GetChannelName
+[00:02:24] [debug]  DCC_GetUserName
+[00:02:24] Script[gamemodes/Original1.8.amx]: Run time error 19: "File or function is not found"
+[00:02:24] Number of vehicle models: 0
+[00:02:24] [connection] 127.0.0.1:55439 requests connection cookie.
+[00:02:25] [connection] incoming connection: 127.0.0.1:55439 id: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[00:02:34] 
+[00:02:34] Server Plugins
+[00:02:34] --------------
+[00:02:34]  Loading plugin: irc
+[00:02:34] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[00:02:34]   Loaded.
+[00:02:34]  Loading plugin: streamer
+[00:02:34] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[00:02:34]   Loaded.
+[00:02:34]  Loading plugin: sscanf
+[00:02:34] 
+
+[00:02:34]  ===============================
+
+[00:02:34]       sscanf plugin loaded.     
+
+[00:02:34]          Version:  2.8.1        
+
+[00:02:34]    (c) 2012 Alex "Y_Less" Cole  
+
+[00:02:34]  ===============================
+
+[00:02:34]   Loaded.
+[00:02:34]  Loading plugin: discord-connector
+[00:02:34]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[00:02:34]   Loaded.
+[00:02:34]  Loading plugin: Whirlpool
+[00:02:34]  
+[00:02:34]  ==================
+[00:02:34]  
+[00:02:34]   Whirlpool loaded
+[00:02:34]  
+[00:02:34]  ==================
+[00:02:34]  
+[00:02:34]   Loaded.
+[00:02:34]  Loading plugin: crashdetect
+[00:02:34]   crashdetect v4.8.3 is OK.
+[00:02:34]   Loaded.
+[00:02:34]  Loaded 6 plugins.
+
+[00:02:34] 
+[00:02:34] Filterscripts
+[00:02:34] ---------------
+[00:02:34]   Loading filterscript 'CarMenu_v1.2.amx'...
+[00:02:35] ===============================================
+[00:02:35] Vehicle Selection Menu By [03]Garsino Loaded...
+[00:02:35] ===============================================
+[00:02:35]   Loading filterscript 'Teleports.amx'...
+[00:02:35] 
+  Go to LS, SF or LV.
+
+[00:02:35]   Loading filterscript 'IntMenu.amx'...
+[00:02:35] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[00:02:35]   Loaded 3 filterscripts.
+
+[00:02:35] 
+#############################
+[00:02:35] #                           #
+[00:02:35] #          [Sarcr]          #
+[00:02:35] #        San Andreas        #
+[00:02:35] #   Roleplay/Cops/Robbers   #
+[00:02:35] #                           #
+[00:02:35] #############################
+
+[00:02:35] Number of vehicle models: 164
+[00:02:42] [connection] 127.0.0.1:55449 requests connection cookie.
+[00:02:43] [connection] incoming connection: 127.0.0.1:55449 id: 0
+[00:02:43] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[00:02:43] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[00:02:48] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $808623 (808623) (0)
+[00:03:36] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $808623 to $809466 (843) (0)
+[00:07:04] [part] [Sarcr]Sc0pe has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[00:14:24] 
+[00:14:24] Server Plugins
+[00:14:24] --------------
+[00:14:24]  Loading plugin: irc
+[00:14:24] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[00:14:24]   Loaded.
+[00:14:24]  Loading plugin: streamer
+[00:14:24] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[00:14:24]   Loaded.
+[00:14:24]  Loading plugin: sscanf
+[00:14:24] 
+
+[00:14:24]  ===============================
+
+[00:14:24]       sscanf plugin loaded.     
+
+[00:14:24]          Version:  2.8.1        
+
+[00:14:24]    (c) 2012 Alex "Y_Less" Cole  
+
+[00:14:24]  ===============================
+
+[00:14:24]   Loaded.
+[00:14:24]  Loading plugin: discord-connector
+[00:14:25]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[00:14:25]   Loaded.
+[00:14:25]  Loading plugin: Whirlpool
+[00:14:25]  
+[00:14:25]  ==================
+[00:14:25]  
+[00:14:25]   Whirlpool loaded
+[00:14:25]  
+[00:14:25]  ==================
+[00:14:25]  
+[00:14:25]   Loaded.
+[00:14:25]  Loading plugin: crashdetect
+[00:14:25]   crashdetect v4.8.3 is OK.
+[00:14:25]   Loaded.
+[00:14:25]  Loaded 6 plugins.
+
+[00:14:25] 
+[00:14:25] Filterscripts
+[00:14:25] ---------------
+[00:14:25]   Loading filterscript 'CarMenu_v1.2.amx'...
+[00:14:25] ===============================================
+[00:14:25] Vehicle Selection Menu By [03]Garsino Loaded...
+[00:14:25] ===============================================
+[00:14:25]   Loading filterscript 'Teleports.amx'...
+[00:14:25] 
+  Go to LS, SF or LV.
+
+[00:14:25]   Loading filterscript 'IntMenu.amx'...
+[00:14:25] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[00:14:25]   Loaded 3 filterscripts.
+
+[00:14:25] 
+#############################
+[00:14:25] #                           #
+[00:14:25] #          [Sarcr]          #
+[00:14:25] #        San Andreas        #
+[00:14:25] #   Roleplay/Cops/Robbers   #
+[00:14:25] #                           #
+[00:14:25] #############################
+
+[00:14:25] Number of vehicle models: 164
+[00:14:54] [connection] 127.0.0.1:54974 requests connection cookie.
+[00:14:55] [connection] incoming connection: 127.0.0.1:54974 id: 0
+[00:14:55] [join] [Sarcr]Sc0pe has joined the server (0:127.0.0.1)
+[00:14:55] [Sarcr]Sc0pe(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1(0) Has Joined San Andreas Roleplay/Cops/Robbers v2.0.1 (IP: )
+[00:14:58] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $0 to $809466 (809466) (0)
+[00:17:33] **(CASH INCREASE)** [Sarcr]Sc0pe(0) money has increased from $809466 to $809547 (81) (0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[00:32:35] 
+[00:32:35] Server Plugins
+[00:32:35] --------------
+[00:32:35]  Loading plugin: irc
+[00:32:35] 
+
+*** IRC Plugin v1.4.2 by Incognito loaded ***
+
+[00:32:35]   Loaded.
+[00:32:35]  Loading plugin: streamer
+[00:32:35] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[00:32:35]   Loaded.
+[00:32:35]  Loading plugin: sscanf
+[00:32:35] 
+
+[00:32:35]  ===============================
+
+[00:32:35]       sscanf plugin loaded.     
+
+[00:32:35]          Version:  2.8.1        
+
+[00:32:35]    (c) 2012 Alex "Y_Less" Cole  
+
+[00:32:35]  ===============================
+
+[00:32:35]   Loaded.
+[00:32:35]  Loading plugin: discord-connector
+[00:32:36]  >> plugin.dc-connector: 0.2.3 successfully loaded.
+[00:32:36]   Loaded.
+[00:32:36]  Loading plugin: Whirlpool
+[00:32:36]  
+[00:32:36]  ==================
+[00:32:36]  
+[00:32:36]   Whirlpool loaded
+[00:32:36]  
+[00:32:36]  ==================
+[00:32:36]  
+[00:32:36]   Loaded.
+[00:32:36]  Loading plugin: crashdetect
+[00:32:36]   crashdetect v4.8.3 is OK.
+[00:32:36]   Loaded.
+[00:32:36]  Loaded 6 plugins.
+
+[00:32:36] 
+[00:32:36] Filterscripts
+[00:32:36] ---------------
+[00:32:36]   Loading filterscript 'CarMenu_v1.2.amx'...
+[00:32:36] ===============================================
+[00:32:36] Vehicle Selection Menu By [03]Garsino Loaded...
+[00:32:36] ===============================================
+[00:32:36]   Loading filterscript 'Teleports.amx'...
+[00:32:36] 
+  Go to LS, SF or LV.
+
+[00:32:36]   Loading filterscript 'IntMenu.amx'...
+[00:32:36] 
+		Interior Menu v1.4 By Garsino Loaded!
+
+[00:32:36]   Loaded 3 filterscripts.
+
+[00:32:37] 
+#############################
+[00:32:37] #                           #
+[00:32:37] #          [Sarcr]          #
+[00:32:37] #        San Andreas        #
+[00:32:37] #   Roleplay/Cops/Robbers   #
+[00:32:37] #                           #
+[00:32:37] #############################
+
+[00:32:37] Number of vehicle models: 164

@@ -293,8 +293,15 @@ new entranceAlkCP;
 new exitAlkCP;
 
 //24/7
-new robCP_247;
-new cp_yugo247;
+new cp_exit247; // 24/7 Exit CP
+new cp_rob247; // 24/7 Menu/Rob CP
+new cp_yugo247; // Yugoslavia 24/7
+new cp_lv2471; // Spinybed 24/7
+new cp_lv2472; // Emerald Isle 24/7
+new cp_lv2473; // Redsands West 24/7
+new cp_lv2474; // LV Strip 24/7
+new cp_lv2475; // LV Strip South 24/7
+new cp_lv2476; // SE LV 24/7
 //YugoNude
 new YugoNude;
 new YugoNudeExit;
@@ -623,7 +630,7 @@ new WestCopGate;
 new SouthCopGate;
 // New Variables
 new kidnapTimer[MAX_PLAYERS];
-new gotSissors[MAX_PLAYERS];
+new gotScissors[MAX_PLAYERS];
 new gotRope[MAX_PLAYERS];
 new HasKidnapped[MAX_PLAYERS];
 // Text Draws
@@ -811,7 +818,7 @@ stock Float:restfloat(Float:dividend, Float:divisor)
     return floatstr(s);
 }
 
-stock InteriorVW(playerid)
+/*stock InteriorVW(playerid)
 {
     new Float:PosX, Float:PosY, Float:PosZ; GetPlayerPos(playerid, PosX, PosY, PosZ);
     new Float:PosSum = (PosX + PosY + PosZ) - restfloat((PosX + PosY + PosZ), 1);                       
@@ -826,7 +833,7 @@ stock InteriorVW(playerid)
     }
     new VW = ((PosSumInt/10)%65999)*10;
     return VW;
-}
+}*/
 
 stock SystemMsg(playerid, msg[])
 {
@@ -1623,7 +1630,7 @@ public IsPlayerInArea(playerid, Float:data[4])
 
 public OnGameModeInit()
 {
-	//DisableInteriorEnterExits();
+	DisableInteriorEnterExits();
 	SetGameModeText("[Sarcr] Gamemode");
 	SetTeamCount(1);
 	AllowInteriorWeapons(1);
@@ -1644,10 +1651,6 @@ public OnGameModeInit()
 	YugoNude = CreateDynamicCP(1211.5549,3526.5984,11, 3.0, -1, -1, -1, 50.0);
 	YugoNudeExit = CreateDynamicCP(-100.2406,-22.1767,1000.7188, 3.0, 2, -1, -1, 50.0);
    	// Terrorist
-   	//24/7
-   	//exit_247 = CreateDynamicCP(-27.1926,-58.2670,1003.5469, 3.0, -1, 6, -1, 10.0);
-   	//cp_247 = CreateDynamicCP(2194.3848, 1991.1100, 12.2969, 3.0, -1, -1, -1, 10.0);
-	robCP_247 = CreateDynamicCP(-22.2730, -55.6667, 1003.5469, 3.0, -1, 6, -1, 10.0);
    	//Drug House
    	//LV
    	LVDrughouse = CreateDynamicCP(2447.6409,742.5250,11.4609, 3.5, -1, -1, -1, 50.0);
@@ -1723,8 +1726,16 @@ public OnGameModeInit()
 	CluckBell = CreateDynamicCP(371.7746,-6.4389,1001.8589, 1.5, -1, -1, -1, 50.0);
 	//Nude CP
 	NudeCP = CreateDynamicCP(1207.2336,-31.7025,1000.9531, 1.5, -1, -1, -1, 50.0);
-	//Yugo 247 CP
-	cp_yugo247 = CreateDynamicCP(1410.7700,3262.2939,11.1141, 1.5, -1, -1, -1, 50.0);
+	//24/7 CP
+   	cp_exit247 = CreateDynamicCP(-27.1926,-58.2670,1003.5469, 1.5, -1, 6, -1, 5.0);
+	cp_rob247 = CreateDynamicCP(-22.2730, -55.6667, 1003.5469, 3.0, -1, 6, -1, 5.0);
+	cp_yugo247 = CreateDynamicCP(1410.7700,3262.2939,11.1141, 1.5, -1, -1, -1, 50.0); //Yugoslavia
+	cp_lv2471 = CreateDynamicCP(2150.7839,2733.8667,11.1763, 1.5, -1, -1, -1, 50.0); //Spinybed
+	cp_lv2472 = CreateDynamicCP(2187.7136,2469.5935,11.2422, 1.5, -1, -1, -1, 50.0); //Emerald Isle
+	cp_lv2473 = CreateDynamicCP(1599.0454,2221.7930,11.0625, 1.5, -1, -1, -1, 50.0); //Redsands West
+	cp_lv2474 = CreateDynamicCP(2194.3848,1991.1100,12.2969, 1.5, -1, -1, -1, 50.0); //LV Strip
+	cp_lv2475 = CreateDynamicCP(2117.5315,896.7755,11.1797, 1.5, -1, -1, -1, 50.0); //LV Strip South
+	cp_lv2476 = CreateDynamicCP(2637.2629,1129.6779,11.1797, 1.5, -1, -1, -1, 50.0); //Southeast LV
 	//Csino CP
 	//Casino = CreateDynamicCP(1548.6815,3235.0647,11.0785, 5, -1, -1, -1, 100.0);
 	//Admin Base
@@ -6574,7 +6585,7 @@ CMD:cutrope(playerid, params[])
 		SendClientMessage(playerid, COLOR_ERROR, "Please wait before trying to cut the rope");
 	    return 1;
     }
-	if(gotSissors[playerid] == 0)
+	if(gotScissors[playerid] == 0)
 	{
 		SendClientMessage(playerid, COLOR_ERROR, "You have no rusty scissors!");
 		return 1;
@@ -6585,7 +6596,7 @@ CMD:cutrope(playerid, params[])
 		new escapedname[24];
 		GetPlayerName(playerid,escapedname,24);
 	 	SendClientMessage(playerid,COLOR_ERROR,"The rusty scissors broke when trying to use them! Escape failed.");
-		gotSissors[playerid] =0;
+		gotScissors[playerid] =0;
 	    return 1;
     }
     else if(breakcuffsrand >=0 && breakcuffsrand <=25) // complete
@@ -7438,11 +7449,11 @@ CMD:info(playerid, params[])
 	{
     	SendClientMessage(playerid, 0x00C7FFAA,"Bank Cash Theft Insurance: No");
     }
-	if(gotSissors[playerid] == 0)
+	if(gotScissors[playerid] == 0)
 	{
 		SendClientMessage(playerid, 0x00C7FFAA,"Rusty Scissors: No");
 	}
-	if(gotSissors[playerid] == 1)
+	if(gotScissors[playerid] == 1)
 	{
 		SendClientMessage(playerid, 0x00C7FFAA,"Rusty Scissors: Yes");
 	}
@@ -16280,12 +16291,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				{
 					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 					SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Chainsaw ($2000)");
+					ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 					return 1;
 				}
 				GivePlayerMoney(playerid,-1500);
 				SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
 				SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Chainsaw. You were charged $1500");
 				GivePlayerWeapon(playerid,9,1);
+				ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 1:
 			{
@@ -16293,12 +16306,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				{
 					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 					SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy flowers ($5)");
+					ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 					return 1;
 				}
 				GivePlayerMoney(playerid,-5);
 				SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
 				SendClientMessage(playerid, 0x00C7FFAA, "You have bought flowers. You were charged $5");
 				GivePlayerWeapon(playerid,14,1);
+				ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 2:
 			{
@@ -16306,12 +16321,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    {
 					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 			   		SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Baseball Bat ($100)");
+			   		ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			   		return 1;
 				}
 				GivePlayerMoney(playerid,-100);
 			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
 			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Baseball Bat. You were charged $100");
 			    GivePlayerWeapon(playerid,5,1);
+			    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 3:
 			{
@@ -16319,6 +16336,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				{
 				   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 				   SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy Beer ($20)");
+				   ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 				   return 1;
 				}
 			    GivePlayerMoney(playerid,-20);
@@ -16326,10 +16344,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought Beer. You were charged $20");
 			    new Float:beerhealth;
 		        GetPlayerHealth(playerid,beerhealth);
-			    if(beerhealth <=95)
+		        if(beerhealth <=95)
 			    {
 					SetPlayerHealth(playerid,beerhealth+5);
+					SetPlayerDrunkLevel(playerid,GetPlayerDrunkLevel(playerid)+1000);
     		    }
+    		    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 4:
 			{
@@ -16337,12 +16357,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    {
 				   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 				   SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Wallet ($1000)");
+				   ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 				   return 1;
 				}
                 if(HasWallet[playerid] >= 1)
 			    {
 				   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 				   SendClientMessage(playerid, COLOR_ERROR, "You already have a Wallet");
+				   ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 				   return 1;
 				}
 			    GivePlayerMoney(playerid,-1000);
@@ -16350,6 +16372,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Wallet. You were charged $1000");
 			    SendClientMessage(playerid, 0x00C7FFAA, "You can be robbed upto 3 times and not loose any cash");
 			    HasWallet[playerid] =3;
+			    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 5:
 			{
@@ -16357,12 +16380,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				{
 					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 					SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Parachute ($500)");
+					ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			   		return 1;
 				}
 				GivePlayerMoney(playerid,-500);
 				SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
 				SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Parachute. You were charged $500");
 				GivePlayerWeapon(playerid,46,1);
+				ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 6:
 			{
@@ -16370,49 +16395,58 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    {
 				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 				    SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy some rope ($4000)");
+				    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 				    return 1;
 				}
 				if(gotRope[playerid] == 1)
 				{
 					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 					SendClientMessage(playerid, 0x00C7FFAA, "You already have some rope.");
+					ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
+					return 1;
 				}
 			    GivePlayerMoney(playerid,-4000);
 			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
 			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought some rope. You were charged $4000");
 			    gotRope[playerid] =1;
+			    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 7:
 			{
 			    if(GetPlayerMoney(playerid) <= 999)
 				{
 			   		SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-		   			SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a pair of rusty sissors. ($1000)");
+		   			SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a pair of rusty scissors. ($1000)");
+		   			ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			   		return 1;
 				}
 			    GivePlayerMoney(playerid,-1000);
 			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought rusty sissors.. You were charged $1000");
-			    gotSissors[playerid] =1;
+			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought rusty Scissors... You were charged $1000");
+			    gotScissors[playerid] =1;
+			    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 8:
 			{
-			    if(GetPlayerMoney(playerid) <= 2500000)
+			    if(GetPlayerMoney(playerid) <= 250000)
 			    {
 				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-				    SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Briefcase. ($2500000)");
+				    SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Briefcase. ($250000)");
+				    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 				    return 1;
 				}
                 if(PlayerInfo[playerid][HasBriefcase] == 1)
 				{
 					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
 					SendClientMessage(playerid, COLOR_ERROR, "You already have a Briefcase.");
+					ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 					return 1;
 				}
-			    GivePlayerMoney(playerid,-2500000);
+			    GivePlayerMoney(playerid,-250000);
 			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
 			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Briefcase. You were charged $250000");
 			    PlayerInfo[playerid][HasBriefcase] =1;
+			    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 			}
 			case 9:
 			{
@@ -16436,11 +16470,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			 	}
 			 	else if(roobrand >=51 && roobrand <=5000)
 				{
-			    	if(IsPlayerInDynamicCP(playerid, robCP_247))
+			    	if(IsPlayerInDynamicCP(playerid, cp_rob247))
 			    	{
 			    		for(new x = 0; x < MAX_PLAYERS; x++)
 						{	
-							if(GetPlayerVirtualWorld(playerid) == 4190 && twofoursevenrobbed1 >= 1)
+							/*if(GetPlayerVirtualWorld(playerid) == 4190 && twofoursevenrobbed1 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
 						 		return 1;
@@ -16476,7 +16510,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					    		}
 								return 1;
 				 			}
-
 				 			if(GetPlayerVirtualWorld(playerid) == 4650 && twofoursevenrobbed1 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
@@ -16513,7 +16546,6 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					    		}
 								return 1;
 				 			}
-
 				 			if(GetPlayerVirtualWorld(playerid) == 4529 && twofoursevenrobbed1 >= 1)
 							{
 								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
@@ -16623,6 +16655,307 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 								        new string2[256];
 										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
 										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Emerald Isle and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}*/
+
+					 		// Yugoslavia
+					 		if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Yugoslavia",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Yugoslavia and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// Spinybed
+					 		if(GetPlayerVirtualWorld(playerid) == 5 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 5 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Spinybed",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Spinybed and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// Emerald Isle
+					 		if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Emerald Isle",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Emerald Isle and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// Redsands West
+					 		if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Redsands West",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Redsands West and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// LV Strip
+					 		if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery on the LV Strip",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store on the LV Strip and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// LV Strip
+					 		if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery on the LV Strip - South",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store on the LV Strip - South and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+
+					 		// SE LV
+					 		if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Southeast LV",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Southeast LV and arrest %s(%d)", robbber,playerid);
 										SendClientMessage(i, COLOR_ROYALBLUE, string1);
 										SendClientMessage(i, COLOR_ROYALBLUE, string2);
 						    		}
@@ -21734,7 +22067,7 @@ public OnPlayerConnect(playerid)
     FiremanLastPlayerCuffed[playerid] = 999;
     LeftTwoFourSeven[playerid] = 999;
 	isKidnapped[playerid] = 0;
-   	gotSissors[playerid] = 0;
+   	gotScissors[playerid] = 0;
    	gotRope[playerid] = 0;
    	DrugHouseOwner[playerid] = 0;
    	// Terrorist
@@ -23097,42 +23430,160 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		SetPlayerFacingAngle(playerid,89.9220);
 		SetCameraBehindPlayer(playerid);
 	}
-	// if(checkpointid == cp_247)
-	// {
-	// 	GetPlayerVirtualWorld(playerid);
-	// 	SetPlayerVirtualWorld(playerid, 1);
- //  		SetPlayerPos(playerid, -27.4271,-52.9404,1003.5469);
- //  		SetPlayerFacingAngle(playerid, 355.0557);
-	// 	SetPlayerInterior(playerid, 6);
-	// 	SendClientMessage(playerid, COLOR_GREEN, "Welcome to Natox's 24/7 store");
-	// 	SetCameraBehindPlayer(playerid);
-	// }
-	// if(checkpointid == exit_247)
-	// {
-	// 	if(GetPlayerVirtualWorld(playerid) == 1 && twofoursevenrobbed1 >= 1)
-	// 	{
-	// 		GetPlayerVirtualWorld(playerid);
-	// 		SetPlayerVirtualWorld(playerid, 0);
-	//   		SetPlayerPos(playerid, 2189.1675,1991.4669,10.8203);
-	//   		SetPlayerFacingAngle(playerid,88.4299);
-	// 		SetPlayerInterior(playerid, 0);
-	// 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
-	// 		SetCameraBehindPlayer(playerid);
-	// 	}
-	// 	else
-	// 	{
-	// 		GetPlayerVirtualWorld(playerid);
-	// 		SetPlayerVirtualWorld(playerid, 0);
-	//   		SetPlayerPos(playerid, 2189.1675,1991.4669,10.8203);
-	//   		SetPlayerFacingAngle(playerid,88.4299);
-	// 		SetPlayerInterior(playerid, 0);
-	// 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
-	// 		SetCameraBehindPlayer(playerid);
-	// 	}
-	// }
-	if(checkpointid == robCP_247)
+	if(checkpointid == cp_exit247)
 	{
-	    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Sissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
+			 	// Yugoslavia
+	 	if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 1413.3002,3259.2439,11.1141);
+	   		SetPlayerFacingAngle(playerid,175.7276);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 1413.3002,3259.2439,11.1141);
+	   		SetPlayerFacingAngle(playerid,175.7276);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// Spinybed
+	 	if(GetPlayerVirtualWorld(playerid) == 5 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2150.9541,2737.3953,10.8203);
+	   		SetPlayerFacingAngle(playerid,0);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 5 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2150.9541,2737.3953,10.8203);
+	   		SetPlayerFacingAngle(playerid,0);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// Emerald Isle
+	 	if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2191.5776,2469.6306,10.8203);
+	   		SetPlayerFacingAngle(playerid,270);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2191.5776,2469.6306,10.8203);
+	   		SetPlayerFacingAngle(playerid,270);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// Redsands West
+	 	if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 1602.2605,2216.5720,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 7 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 1602.2605,2216.5720,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// LV Strip
+	 	if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2189.1675,1991.4669,10.8203);
+	   		SetPlayerFacingAngle(playerid,90);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 8 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2189.1675,1991.4669,10.8203);
+	   		SetPlayerFacingAngle(playerid,90);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// LV Strip South
+	 	if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2117.6201,900.4465,10.8130);
+	   		SetPlayerFacingAngle(playerid,0);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 9 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2117.6201,900.4465,10.8130);
+	   		SetPlayerFacingAngle(playerid,0);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	// SE LV
+	 	if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed1 >= 1)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2637.1924,1126.1436,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	if(GetPlayerVirtualWorld(playerid) == 10 && twofoursevenrobbed1 == 0)
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+	 		SetPlayerVirtualWorld(playerid, 0);
+	   		SetPlayerPos(playerid, 2637.1924,1126.1436,10.8203);
+	   		SetPlayerFacingAngle(playerid,180);
+	 		SetPlayerInterior(playerid, 0);
+	 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	 		SetCameraBehindPlayer(playerid);
+	 	}
+	 	
+	}
+	if(checkpointid == cp_rob247)
+	{
+	    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Scissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 	}
 	if(checkpointid == FBIRefill)
 	{
@@ -23733,8 +24184,112 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 			GetPlayerVirtualWorld(playerid);
 			SetPlayerVirtualWorld(playerid, 4);
   			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+  			SetPlayerFacingAngle(playerid, 0);
 			SetPlayerInterior(playerid, 6);
-			SendClientMessage(playerid, COLOR_GREEN, "Welcome to Yugoslavia 24/7");
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Yugoslavia 24/7");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2471)
+	{
+	    if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	    else
+	    {
+			GetPlayerVirtualWorld(playerid);
+			SetPlayerVirtualWorld(playerid, 5);
+  			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+  			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Spinybed 24/7");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2472)
+	{
+	    if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	    else
+	    {
+			GetPlayerVirtualWorld(playerid);
+			SetPlayerVirtualWorld(playerid, 6);
+  			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+  			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Emerald Isle 24/7");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2473)
+	{
+	    if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	    else
+	    {
+			GetPlayerVirtualWorld(playerid);
+			SetPlayerVirtualWorld(playerid, 7);
+  			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+  			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Redsands West 24/7");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2474)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 8);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - The Strip 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2475)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 9);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - The Strip South 24/7 store");
+			SetCameraBehindPlayer(playerid);
+		}
+	}
+	if(checkpointid == cp_lv2476)
+	{
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	 	else
+	 	{
+	 		GetPlayerVirtualWorld(playerid);
+		 	SetPlayerVirtualWorld(playerid, 10);
+			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerFacingAngle(playerid, 0);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to the Las Venturas - Southeast 24/7 store");
+			SetCameraBehindPlayer(playerid);
 		}
 	}
 	if(checkpointid == CluckBell)
@@ -24058,7 +24613,7 @@ public OnPlayerLeaveDynamicCP(playerid, checkpointid)
 	{
 	    AbleToRobCaligsCasino[playerid] = 0;
 	}
-	if(checkpointid == robCP_247)
+	if(checkpointid == cp_rob247)
 	{
 	}
 	if(checkpointid == BlowBank)
@@ -24716,7 +25271,7 @@ public OnPlayerDeath(playerid, killerid, reason)
     GunsDeliveryTime[playerid] =0;
 	DeliveringGuns[playerid] =0;
 	isKidnapped[playerid] =0;
-	gotSissors[playerid] =0;
+	gotScissors[playerid] =0;
 	gotRope[playerid] =0;
 	playerondrugs[playerid] =0;
 	KillTimer(ArmyBaseWanted[playerid]);
@@ -27941,7 +28496,6 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
         SetCameraBehindPlayer(playerid);
         InAndrom[playerid]=1;
    	}
-
    	if(GetVehicleModel(vehicleid) == 592 && ispassenger == 0)
     {
     	if(gTeam[playerid] == TEAM_TERRORIST && PlayerInfo[playerid][TerroristRank] >= 25)
@@ -27949,7 +28503,6 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 	   		SetPlayerRaceCheckpoint(playerid,3,1053.7516,3722.6768,125.2184,998.3999,3723.0686,127.0148,10);
 	   	}
    	}
-
     new str[100];
     if(GetPlayerMoney(playerid) < -20000)
 	{
@@ -27975,12 +28528,12 @@ public OnPlayerExitVehicle(playerid, vehicleid)
 
 public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 {
-	if(oldinteriorid == 0 && newinteriorid == 6)
+	/*if(oldinteriorid == 0 && newinteriorid == 6)
 	{
 		if(!IsPlayerInAnyVehicle(playerid))
 		{
 		    SetPlayerVirtualWorld(playerid, InteriorVW(playerid));
-		    SendClientMessage(playerid, 0xA9A9A9AA, "Welcome to 247");
+		    SendClientMessage(playerid, 0xA9A9A9AA, "Welcome to 24/7");
 	    }
 	}
 	if(oldinteriorid == 6 && newinteriorid == 0)
@@ -27988,9 +28541,9 @@ public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 		if(!IsPlayerInAnyVehicle(playerid))
 		{
 		    SetPlayerVirtualWorld(playerid, 0);
-		    SendClientMessage(playerid, 0xA9A9A9AA, "Thank you for shopping the 247");
+		    SendClientMessage(playerid, 0xA9A9A9AA, "Thank you for shopping the 24/7");
 	    }
-	}
+	}*/
 	return 1;
 }
 
@@ -29422,7 +29975,6 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid)
 	}
 	return 1;
 }
-
 forward Resetbase();
 public Resetbase()
 {
@@ -29435,7 +29987,6 @@ public Resetbase()
     MoveDynamicObject(SWATBoatGate, 668.05609131, -2078.04150391, 11.01789474, 2.0); //SWAT Boat Gate
     return 1;
 }
-
 public OnPlayerUpdate(playerid)
 {
     if(!IsPlayerConnected(playerid)) return 0;
@@ -29459,7 +30010,6 @@ public OnPlayerUpdate(playerid)
   	}
 	return 1;
 }
-
 public OnPlayerPickUpPickup(playerid, pickupid)
 {
     if(pickupid >= 6 && pickupid <= 12 && GetPlayerWantedLevel(playerid) >=1 && GetPlayerWantedLevel(playerid) <=9 && GotCopBriberecently[playerid] == 0)
@@ -29491,21 +30041,18 @@ public OnPlayerPickUpPickup(playerid, pickupid)
     }
 	return 1;
 }
-
 stock ShowLoginScreen(playerid)
 {
     new string[128];
     format(string, sizeof(string), "Welcome back %s\nBefore playing you must login\nEnter your password below and click login",PlayerName(playerid));
     ShowPlayerDialog(playerid,DIALOG_LOGIN,DIALOG_STYLE_PASSWORD,"Login required",string,"Login","Cancel");
 }
-
 stock ShowRegisterScreen(playerid)
 {
     new string[128];
     format(string, sizeof(string), "Welcome to the server %s\nThis server requires you to register an account before playing",PlayerName(playerid));
     ShowPlayerDialog(playerid,DIALOG_REGISTER,DIALOG_STYLE_INPUT,"Registration",string,"Register","Cancel");
 }
-
 CMD:world(playerid, params[])
 {
 	new string[32];
@@ -29513,7 +30060,6 @@ CMD:world(playerid, params[])
     SendClientMessage(playerid, 0xFFFFFFFF, string);
     return 1;
 }
-
 CMD:adgotocoord(playerid, params[])
 {
 	new Float:x, Float:y, Float:z;
@@ -29529,7 +30075,6 @@ CMD:adgotocoord(playerid, params[])
 	}
 	return 1;
 }
-
 CMD:sethealth(playerid, params[])
 {
 	if(PlayerInfo[playerid][AdminLevel] == 1337)
@@ -29580,8 +30125,6 @@ CMD:setwanted(playerid, params[])
 	}
 	return 1;
 }
-
-
 CMD:adjetpack(playerid, params[])
 {
 	if(PlayerInfo[playerid][AdminLevel] == 1337)
@@ -29604,8 +30147,6 @@ CMD:adjetpack(playerid, params[])
 	}
 	return 1;
 }
-
-
 CMD:sellweapon(playerid, params[])
 {
 	new giveplayerid;
@@ -29657,7 +30198,6 @@ CMD:sellweapon(playerid, params[])
     ShowPlayerDialog(playerid,7,DIALOG_STYLE_LIST,"{33CCFF}Sell Weapon","{FFFFFF}{33CCFF}1: {FFFFFF}Silenced 9mm $2500 [100 Ammo]\n{33CCFF}2: {FFFFFF}Tec9 $1000 [500 Ammo]\n{33CCFF}3: {FFFFFF}S/O ShotGun $3500 [30 Ammo]\n{33CCFF}4: {FFFFFF}Sniper Rifle $15000 [30 Ammo]\n{33CCFF}5: {FFFFFF}AK47 $8000 [200 Ammo]\n{33CCFF}6: {FFFFFF}Armour\n{33CCFF}7: {FFFFFF}3 Blocks Of C4 $3500","Ok","Cancel");
 	return 1;
 }
-
 CMD:adpm(playerid, params[])
 {
     if(PlayerInfo[playerid][AdminLevel] == 1337)
@@ -29686,12 +30226,10 @@ CMD:adpm(playerid, params[])
 	}
 	return 1;
 }
-
 /////////////For animations//////////
 LoopingAnim(playerid,animlib[],animname[], Float:Speed, looping, lockx, locky, lockz, lp)
 {
     gPlayerUsingLoopingAnim[playerid] = 1;
     ApplyAnimation(playerid, animlib, animname, Speed, looping, lockx, locky, lockz, lp);
 }
-
 //-------------------------------------------------
