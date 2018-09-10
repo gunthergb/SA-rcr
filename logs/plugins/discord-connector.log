@@ -763,3 +763,817 @@
 [10:45:53] [INFO] reconnect succeeded, resending request
 [10:45:54] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
 [10:45:54] [INFO] PAWN callback successfully executed.
+[11:28:33] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:28:34] [INFO] successfully created channel with id '1'
+[11:28:34] [INFO] successfully created guild with id '1'
+[11:28:46] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:28:46] [INFO] PAWN callback successfully executed.
+[11:29:36] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:29:36] [INFO] successfully created channel with id '1'
+[11:29:36] [INFO] successfully created guild with id '1'
+[11:29:45] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:29:45] [INFO] PAWN callback successfully executed.
+[11:45:03] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:45:05] [INFO] successfully created channel with id '1'
+[11:45:05] [INFO] successfully created guild with id '1'
+[11:45:10] [ERROR] can't update guild member presence: guild id "online" not cached
+[11:45:17] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:45:17] [INFO] PAWN callback successfully executed.
+[11:53:20] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[11:53:20] [INFO] trying reconnect #1...
+[11:53:20] [INFO] reconnect succeeded, resending request
+[11:53:21] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:53:21] [INFO] PAWN callback successfully executed.
+[12:05:03] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[12:05:05] [INFO] successfully created channel with id '1'
+[12:05:05] [INFO] successfully created guild with id '1'
+[12:05:10] [ERROR] can't update guild member presence: guild id "online" not cached
+[12:05:21] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:05:21] [INFO] PAWN callback successfully executed.
+[12:15:12] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[12:15:13] [INFO] successfully created channel with id '1'
+[12:15:13] [INFO] successfully created guild with id '1'
+[12:15:26] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:15:26] [INFO] PAWN callback successfully executed.
+[12:17:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[12:17:44] [ERROR] can't update guild member presence: guild id "online" not cached
+[12:30:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[12:49:02] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[12:49:02] [INFO] trying reconnect #1...
+[12:49:02] [INFO] reconnect succeeded, resending request
+[12:49:02] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:49:02] [INFO] PAWN callback successfully executed.
+[12:49:08] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[12:49:09] [INFO] successfully created channel with id '1'
+[12:49:09] [INFO] successfully created guild with id '1'
+[12:49:18] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:49:18] [INFO] PAWN callback successfully executed.
+[13:00:32] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:00:33] [INFO] successfully created channel with id '1'
+[13:00:33] [INFO] successfully created guild with id '1'
+[13:00:46] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:00:46] [INFO] PAWN callback successfully executed.
+[13:12:33] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:12:55] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:12:56] [INFO] successfully created channel with id '1'
+[13:12:56] [INFO] successfully created guild with id '1'
+[13:13:03] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:13:03] [INFO] PAWN callback successfully executed.
+[13:37:57] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:37:59] [INFO] successfully created channel with id '1'
+[13:37:59] [INFO] successfully created guild with id '1'
+[13:45:31] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:45:33] [INFO] successfully created channel with id '1'
+[13:45:33] [INFO] successfully created guild with id '1'
+[13:45:39] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:45:39] [INFO] PAWN callback successfully executed.
+[13:47:26] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:47:28] [INFO] successfully created channel with id '1'
+[13:47:28] [INFO] successfully created guild with id '1'
+[13:49:05] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:49:05] [INFO] PAWN callback successfully executed.
+[14:14:22] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:14:23] [INFO] successfully created channel with id '1'
+[14:14:23] [INFO] successfully created guild with id '1'
+[14:14:45] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:14:45] [INFO] PAWN callback successfully executed.
+[15:41:17] [ERROR] can't update guild member presence: guild id "online" not cached
+[15:41:28] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:41:28] [INFO] PAWN callback successfully executed.
+[15:43:17] [ERROR] can't update guild member presence: guild id "idle" not cached
+[15:47:23] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[15:47:23] [INFO] trying reconnect #1...
+[15:47:23] [INFO] reconnect succeeded, resending request
+[15:47:23] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:47:23] [INFO] PAWN callback successfully executed.
+[15:47:34] [ERROR] can't update guild member presence: guild id "online" not cached
+[15:47:41] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:47:41] [INFO] PAWN callback successfully executed.
+[15:48:07] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[15:48:08] [INFO] successfully created channel with id '1'
+[15:48:08] [INFO] successfully created guild with id '1'
+[15:48:22] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:48:22] [INFO] PAWN callback successfully executed.
+[15:48:36] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:48:36] [INFO] PAWN callback successfully executed.
+[15:48:52] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:48:52] [INFO] PAWN callback successfully executed.
+[15:48:55] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:48:55] [INFO] PAWN callback successfully executed.
+[15:49:34] [ERROR] can't update guild member presence: guild id "idle" not cached
+[16:03:40] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[16:03:40] [INFO] trying reconnect #1...
+[16:03:40] [INFO] reconnect succeeded, resending request
+[16:03:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[16:03:40] [INFO] PAWN callback successfully executed.
+[16:03:41] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[16:03:41] [INFO] PAWN callback successfully executed.
+[16:03:50] [ERROR] can't update guild member presence: guild id "online" not cached
+[16:11:16] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[16:11:16] [INFO] trying reconnect #1...
+[16:11:17] [INFO] reconnect succeeded, resending request
+[16:11:17] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[16:11:17] [INFO] PAWN callback successfully executed.
+[16:12:27] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[16:12:29] [INFO] successfully created channel with id '1'
+[16:12:29] [INFO] successfully created guild with id '1'
+[16:12:45] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[16:12:45] [INFO] PAWN callback successfully executed.
+[16:14:39] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[16:14:39] [INFO] PAWN callback successfully executed.
+[16:15:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[16:15:10] [ERROR] can't update guild member presence: guild id "online" not cached
+[16:17:10] [ERROR] can't update guild member presence: guild id "idle" not cached
+[17:01:01] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:01:02] [INFO] successfully created channel with id '1'
+[17:01:02] [INFO] successfully created guild with id '1'
+[17:02:02] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:02:02] [INFO] PAWN callback successfully executed.
+[17:10:23] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:10:24] [INFO] successfully created channel with id '1'
+[17:10:24] [INFO] successfully created guild with id '1'
+[17:10:39] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:10:39] [INFO] PAWN callback successfully executed.
+[17:12:27] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:12:28] [INFO] successfully created channel with id '1'
+[17:12:28] [INFO] successfully created guild with id '1'
+[17:14:55] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:14:55] [INFO] PAWN callback successfully executed.
+[17:16:18] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:16:19] [INFO] successfully created channel with id '1'
+[17:16:19] [INFO] successfully created guild with id '1'
+[17:16:46] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:16:46] [INFO] PAWN callback successfully executed.
+[17:18:34] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:18:36] [INFO] successfully created channel with id '1'
+[17:18:36] [INFO] successfully created guild with id '1'
+[17:18:43] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:18:43] [INFO] PAWN callback successfully executed.
+[17:20:26] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:20:27] [INFO] successfully created channel with id '1'
+[17:20:27] [INFO] successfully created guild with id '1'
+[17:20:36] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:20:36] [INFO] PAWN callback successfully executed.
+[17:22:25] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:22:26] [INFO] successfully created channel with id '1'
+[17:22:26] [INFO] successfully created guild with id '1'
+[17:22:48] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:22:48] [INFO] PAWN callback successfully executed.
+[17:30:39] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:30:41] [INFO] successfully created channel with id '1'
+[17:30:41] [INFO] successfully created guild with id '1'
+[17:31:18] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:31:18] [INFO] PAWN callback successfully executed.
+[17:51:53] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[17:51:54] [INFO] successfully created channel with id '1'
+[17:51:54] [INFO] successfully created guild with id '1'
+[17:52:09] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[17:52:09] [INFO] PAWN callback successfully executed.
+[18:11:52] [ERROR] can't update guild member presence: guild id "offline" not cached
+[18:12:16] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[18:12:17] [INFO] successfully created channel with id '1'
+[18:12:17] [INFO] successfully created guild with id '1'
+[18:12:35] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:12:35] [INFO] PAWN callback successfully executed.
+[18:13:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:13:15] [INFO] PAWN callback successfully executed.
+[18:13:35] [ERROR] can't update guild member presence: guild id "online" not cached
+[18:13:53] [ERROR] can't update guild member presence: guild id "offline" not cached
+[18:14:02] [ERROR] can't update guild member presence: guild id "offline" not cached
+[18:16:07] [ERROR] can't update guild member presence: guild id "offline" not cached
+[18:17:31] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[18:17:33] [INFO] successfully created channel with id '1'
+[18:17:33] [INFO] successfully created guild with id '1'
+[18:17:51] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:17:51] [INFO] PAWN callback successfully executed.
+[18:28:34] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[18:28:35] [INFO] successfully created channel with id '1'
+[18:28:35] [INFO] successfully created guild with id '1'
+[18:31:42] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:31:42] [INFO] PAWN callback successfully executed.
+[18:32:09] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[18:32:10] [INFO] successfully created channel with id '1'
+[18:32:10] [INFO] successfully created guild with id '1'
+[18:32:31] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:32:31] [INFO] PAWN callback successfully executed.
+[18:32:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[18:45:04] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[18:45:06] [INFO] successfully created channel with id '1'
+[18:45:06] [INFO] successfully created guild with id '1'
+[18:45:20] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:45:20] [INFO] PAWN callback successfully executed.
+[19:06:12] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[19:06:12] [INFO] trying reconnect #1...
+[19:06:13] [INFO] reconnect succeeded, resending request
+[19:06:13] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:06:13] [INFO] PAWN callback successfully executed.
+[19:55:15] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[19:55:15] [INFO] trying reconnect #1...
+[19:55:15] [INFO] reconnect succeeded, resending request
+[19:55:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:55:15] [INFO] PAWN callback successfully executed.
+[20:27:17] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[20:27:37] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[20:27:37] [INFO] successfully created channel with id '1'
+[20:27:37] [INFO] successfully created guild with id '1'
+[20:27:39] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:27:39] [INFO] PAWN callback successfully executed.
+[20:27:45] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:27:45] [INFO] PAWN callback successfully executed.
+[20:32:23] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[20:32:25] [INFO] successfully created channel with id '1'
+[20:32:25] [INFO] successfully created guild with id '1'
+[20:32:34] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:32:34] [INFO] PAWN callback successfully executed.
+[20:32:42] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:32:42] [INFO] PAWN callback successfully executed.
+[20:35:04] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[20:35:05] [INFO] successfully created channel with id '1'
+[20:35:05] [INFO] successfully created guild with id '1'
+[20:35:17] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:35:17] [INFO] PAWN callback successfully executed.
+[20:35:20] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:35:20] [INFO] PAWN callback successfully executed.
+[20:42:58] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[20:43:00] [INFO] successfully created channel with id '1'
+[20:43:00] [INFO] successfully created guild with id '1'
+[20:43:13] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:43:13] [INFO] PAWN callback successfully executed.
+[20:43:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:43:15] [INFO] PAWN callback successfully executed.
+[20:52:51] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[20:52:52] [INFO] successfully created channel with id '1'
+[20:52:52] [INFO] successfully created guild with id '1'
+[20:53:05] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:53:05] [INFO] PAWN callback successfully executed.
+[20:53:08] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:53:08] [INFO] PAWN callback successfully executed.
+[20:58:45] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[20:58:46] [INFO] successfully created channel with id '1'
+[20:58:46] [INFO] successfully created guild with id '1'
+[20:58:56] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:58:56] [INFO] PAWN callback successfully executed.
+[20:59:01] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:59:01] [INFO] PAWN callback successfully executed.
+[21:25:22] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[21:25:22] [INFO] trying reconnect #1...
+[21:25:22] [INFO] reconnect succeeded, resending request
+[21:25:22] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[21:25:22] [INFO] PAWN callback successfully executed.
+[22:24:14] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[22:24:14] [INFO] trying reconnect #1...
+[22:24:14] [INFO] reconnect succeeded, resending request
+[22:24:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:24:15] [INFO] PAWN callback successfully executed.
+[22:26:26] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:26:26] [INFO] PAWN callback successfully executed.
+[22:26:43] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[22:26:45] [INFO] successfully created channel with id '1'
+[22:26:45] [INFO] successfully created guild with id '1'
+[22:26:56] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:26:56] [INFO] PAWN callback successfully executed.
+[22:27:09] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:27:09] [INFO] PAWN callback successfully executed.
+[22:27:36] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:27:36] [INFO] PAWN callback successfully executed.
+[22:27:59] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:27:59] [INFO] PAWN callback successfully executed.
+[22:28:04] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:28:04] [INFO] PAWN callback successfully executed.
+[22:28:26] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:28:26] [INFO] PAWN callback successfully executed.
+[22:28:57] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:28:57] [INFO] PAWN callback successfully executed.
+[22:29:02] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:29:02] [INFO] PAWN callback successfully executed.
+[22:30:58] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[22:31:00] [INFO] successfully created channel with id '1'
+[22:31:00] [INFO] successfully created guild with id '1'
+[22:31:08] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:31:08] [INFO] PAWN callback successfully executed.
+[22:32:00] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:32:00] [INFO] PAWN callback successfully executed.
+[22:37:39] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[22:37:40] [INFO] successfully created channel with id '1'
+[22:37:40] [INFO] successfully created guild with id '1'
+[22:37:53] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:37:53] [INFO] PAWN callback successfully executed.
+[22:38:01] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:38:01] [INFO] PAWN callback successfully executed.
+[22:39:59] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:39:59] [INFO] PAWN callback successfully executed.
+[22:45:31] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[22:45:32] [INFO] successfully created channel with id '1'
+[22:45:32] [INFO] successfully created guild with id '1'
+[22:45:47] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:45:47] [INFO] PAWN callback successfully executed.
+[22:46:55] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:46:55] [INFO] PAWN callback successfully executed.
+[22:47:27] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:47:27] [INFO] PAWN callback successfully executed.
+[22:48:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:48:40] [INFO] PAWN callback successfully executed.
+[22:51:34] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:51:34] [INFO] PAWN callback successfully executed.
+[22:54:11] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:54:11] [INFO] PAWN callback successfully executed.
+[22:57:27] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:57:27] [INFO] PAWN callback successfully executed.
+[22:57:41] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[22:57:41] [INFO] PAWN callback successfully executed.
+[23:17:39] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[23:17:39] [INFO] trying reconnect #1...
+[23:17:39] [INFO] reconnect succeeded, resending request
+[23:17:39] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[23:17:39] [INFO] PAWN callback successfully executed.
+[23:17:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[23:17:40] [INFO] PAWN callback successfully executed.
+[06:56:43] [ERROR] can't update guild member presence: guild id "online" not cached
+[06:58:43] [ERROR] can't update guild member presence: guild id "idle" not cached
+[07:17:17] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[07:17:19] [INFO] successfully created channel with id '1'
+[07:17:19] [INFO] successfully created guild with id '1'
+[07:17:49] [ERROR] Discord terminated websocket connection; reason:  (0)
+[07:17:49] [INFO] websocket gateway connection terminated, attempting reconnect...
+[07:17:49] [WARNING] Error while sending WS close frame: The I/O operation has been aborted because of either a thread exit or an application request (995)
+[07:19:18] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[07:19:19] [INFO] successfully created channel with id '1'
+[07:19:19] [INFO] successfully created guild with id '1'
+[07:20:07] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[07:20:07] [INFO] PAWN callback successfully executed.
+[07:23:17] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[07:23:18] [INFO] successfully created channel with id '1'
+[07:23:18] [INFO] successfully created guild with id '1'
+[07:23:59] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[07:23:59] [INFO] PAWN callback successfully executed.
+[07:26:31] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[07:26:32] [INFO] successfully created channel with id '1'
+[07:26:32] [INFO] successfully created guild with id '1'
+[07:28:11] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[07:28:11] [INFO] PAWN callback successfully executed.
+[07:40:24] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[07:40:25] [INFO] successfully created channel with id '1'
+[07:40:25] [INFO] successfully created guild with id '1'
+[07:40:43] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[07:40:43] [INFO] PAWN callback successfully executed.
+[07:44:56] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[07:44:57] [INFO] successfully created channel with id '1'
+[07:44:57] [INFO] successfully created guild with id '1'
+[07:46:41] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[07:46:41] [INFO] PAWN callback successfully executed.
+[08:08:20] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:08:21] [INFO] successfully created channel with id '1'
+[08:08:21] [INFO] successfully created guild with id '1'
+[08:08:32] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:08:32] [INFO] PAWN callback successfully executed.
+[08:12:59] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:12:59] [INFO] successfully created channel with id '1'
+[08:12:59] [INFO] successfully created guild with id '1'
+[08:13:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:13:15] [INFO] PAWN callback successfully executed.
+[08:18:05] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:18:08] [INFO] successfully created channel with id '1'
+[08:18:08] [INFO] successfully created guild with id '1'
+[08:18:30] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:18:30] [INFO] PAWN callback successfully executed.
+[08:21:14] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:21:15] [INFO] successfully created channel with id '1'
+[08:21:15] [INFO] successfully created guild with id '1'
+[08:22:09] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:22:09] [INFO] PAWN callback successfully executed.
+[08:29:34] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:29:36] [INFO] successfully created channel with id '1'
+[08:29:36] [INFO] successfully created guild with id '1'
+[08:29:53] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:29:53] [INFO] PAWN callback successfully executed.
+[08:33:01] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:33:03] [INFO] successfully created channel with id '1'
+[08:33:03] [INFO] successfully created guild with id '1'
+[08:33:24] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:33:24] [INFO] PAWN callback successfully executed.
+[08:36:47] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:36:48] [INFO] successfully created channel with id '1'
+[08:36:48] [INFO] successfully created guild with id '1'
+[08:37:03] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:37:03] [INFO] PAWN callback successfully executed.
+[08:44:35] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:44:36] [INFO] successfully created channel with id '1'
+[08:44:36] [INFO] successfully created guild with id '1'
+[08:45:10] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:45:10] [INFO] PAWN callback successfully executed.
+[08:47:47] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:47:48] [INFO] successfully created channel with id '1'
+[08:47:48] [INFO] successfully created guild with id '1'
+[08:48:04] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:48:04] [INFO] PAWN callback successfully executed.
+[08:51:26] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[08:51:27] [INFO] successfully created channel with id '1'
+[08:51:27] [INFO] successfully created guild with id '1'
+[08:51:38] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[08:51:38] [INFO] PAWN callback successfully executed.
+[09:04:57] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:05:16] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:05:18] [INFO] successfully created channel with id '1'
+[09:05:18] [INFO] successfully created guild with id '1'
+[09:05:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:05:25] [INFO] PAWN callback successfully executed.
+[09:08:01] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:08:02] [INFO] successfully created channel with id '1'
+[09:08:02] [INFO] successfully created guild with id '1'
+[09:08:23] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:08:23] [INFO] PAWN callback successfully executed.
+[09:10:35] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:10:36] [INFO] successfully created channel with id '1'
+[09:10:36] [INFO] successfully created guild with id '1'
+[09:10:55] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:10:55] [INFO] PAWN callback successfully executed.
+[09:13:55] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:13:57] [INFO] successfully created channel with id '1'
+[09:13:57] [INFO] successfully created guild with id '1'
+[09:14:05] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:14:05] [INFO] PAWN callback successfully executed.
+[09:17:10] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:17:12] [INFO] successfully created channel with id '1'
+[09:17:12] [INFO] successfully created guild with id '1'
+[09:17:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:17:25] [INFO] PAWN callback successfully executed.
+[09:20:50] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:20:52] [INFO] successfully created channel with id '1'
+[09:20:52] [INFO] successfully created guild with id '1'
+[09:21:12] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:21:12] [INFO] PAWN callback successfully executed.
+[09:28:11] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:28:13] [INFO] successfully created channel with id '1'
+[09:28:13] [INFO] successfully created guild with id '1'
+[09:28:29] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:28:29] [INFO] PAWN callback successfully executed.
+[09:39:47] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[09:39:48] [INFO] successfully created channel with id '1'
+[09:39:48] [INFO] successfully created guild with id '1'
+[09:40:09] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[09:40:09] [INFO] PAWN callback successfully executed.
+[10:50:55] [WARNING] Error while sending WS close frame: stream truncated (1)
+[10:51:02] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[10:51:04] [INFO] successfully created channel with id '1'
+[10:51:04] [INFO] successfully created guild with id '1'
+[10:54:12] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[10:54:12] [INFO] PAWN callback successfully executed.
+[10:57:29] [ERROR] can't update guild member presence: guild id "online" not cached
+[11:09:14] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:09:16] [INFO] successfully created channel with id '1'
+[11:09:16] [INFO] successfully created guild with id '1'
+[11:09:36] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:09:36] [INFO] PAWN callback successfully executed.
+[11:09:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:09:40] [INFO] PAWN callback successfully executed.
+[11:10:02] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:10:02] [INFO] PAWN callback successfully executed.
+[11:10:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[11:11:28] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:11:28] [INFO] PAWN callback successfully executed.
+[11:11:30] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:11:30] [INFO] PAWN callback successfully executed.
+[11:12:34] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:12:35] [INFO] successfully created channel with id '1'
+[11:12:35] [INFO] successfully created guild with id '1'
+[11:13:04] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:13:04] [INFO] PAWN callback successfully executed.
+[11:13:13] [ERROR] can't update guild member presence: guild id "online" not cached
+[11:13:51] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:13:51] [INFO] PAWN callback successfully executed.
+[11:15:41] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:15:41] [INFO] PAWN callback successfully executed.
+[11:16:32] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:16:32] [INFO] PAWN callback successfully executed.
+[11:17:09] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:17:09] [INFO] PAWN callback successfully executed.
+[11:30:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[11:37:58] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:37:59] [INFO] successfully created channel with id '1'
+[11:37:59] [INFO] successfully created guild with id '1'
+[11:38:16] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:38:16] [INFO] PAWN callback successfully executed.
+[11:50:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[11:50:41] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:50:54] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[11:50:56] [INFO] successfully created channel with id '1'
+[11:50:56] [INFO] successfully created guild with id '1'
+[11:51:02] [ERROR] can't update guild member presence: guild id "online" not cached
+[11:51:32] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[11:51:32] [INFO] PAWN callback successfully executed.
+[12:02:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[12:29:31] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[12:29:33] [INFO] successfully created channel with id '1'
+[12:29:33] [INFO] successfully created guild with id '1'
+[12:31:57] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:31:57] [INFO] PAWN callback successfully executed.
+[12:32:09] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:32:09] [INFO] PAWN callback successfully executed.
+[12:42:31] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[12:42:33] [INFO] successfully created channel with id '1'
+[12:42:33] [INFO] successfully created guild with id '1'
+[12:42:42] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:42:42] [INFO] PAWN callback successfully executed.
+[12:43:11] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:43:11] [INFO] PAWN callback successfully executed.
+[12:43:18] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:43:18] [INFO] PAWN callback successfully executed.
+[12:43:18] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:43:18] [INFO] PAWN callback successfully executed.
+[12:45:24] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[12:45:26] [INFO] successfully created channel with id '1'
+[12:45:26] [INFO] successfully created guild with id '1'
+[12:45:48] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:45:48] [INFO] PAWN callback successfully executed.
+[12:49:13] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[12:49:13] [INFO] PAWN callback successfully executed.
+[12:52:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[12:59:43] [ERROR] can't update guild member presence: guild id "online" not cached
+[13:07:22] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[13:07:22] [INFO] trying reconnect #1...
+[13:07:23] [INFO] reconnect succeeded, resending request
+[13:07:24] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:07:24] [INFO] PAWN callback successfully executed.
+[13:20:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[13:29:18] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[13:29:18] [INFO] trying reconnect #1...
+[13:29:19] [INFO] reconnect succeeded, resending request
+[13:29:26] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:29:26] [INFO] PAWN callback successfully executed.
+[13:29:27] [ERROR] can't update guild member presence: guild id "online" not cached
+[13:40:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[13:42:19] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:42:26] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:42:27] [INFO] successfully created channel with id '1'
+[13:42:27] [INFO] successfully created guild with id '1'
+[13:42:53] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:42:53] [INFO] PAWN callback successfully executed.
+[13:44:59] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:44:59] [INFO] PAWN callback successfully executed.
+[13:47:35] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:47:36] [INFO] successfully created channel with id '1'
+[13:47:36] [INFO] successfully created guild with id '1'
+[13:47:57] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:47:57] [INFO] PAWN callback successfully executed.
+[13:48:49] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:48:49] [INFO] PAWN callback successfully executed.
+[13:55:17] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[13:55:20] [INFO] successfully created channel with id '1'
+[13:55:20] [INFO] successfully created guild with id '1'
+[13:55:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[13:55:40] [INFO] PAWN callback successfully executed.
+[14:01:08] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:01:10] [INFO] successfully created channel with id '1'
+[14:01:10] [INFO] successfully created guild with id '1'
+[14:01:28] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:01:28] [INFO] PAWN callback successfully executed.
+[14:15:27] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:15:28] [INFO] successfully created channel with id '1'
+[14:15:28] [INFO] successfully created guild with id '1'
+[14:15:48] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:15:48] [INFO] PAWN callback successfully executed.
+[14:19:19] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:19:21] [INFO] successfully created channel with id '1'
+[14:19:21] [INFO] successfully created guild with id '1'
+[14:19:31] [ERROR] can't update guild member presence: guild id "online" not cached
+[14:19:57] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:19:57] [INFO] PAWN callback successfully executed.
+[14:27:18] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:27:19] [INFO] successfully created channel with id '1'
+[14:27:19] [INFO] successfully created guild with id '1'
+[14:27:53] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:27:53] [INFO] PAWN callback successfully executed.
+[14:30:03] [ERROR] can't update guild member presence: guild id "idle" not cached
+[14:30:26] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:30:36] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:30:37] [INFO] successfully created channel with id '1'
+[14:30:37] [INFO] successfully created guild with id '1'
+[14:31:26] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:31:26] [INFO] PAWN callback successfully executed.
+[14:39:28] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[14:39:28] [INFO] trying reconnect #1...
+[14:39:28] [INFO] reconnect succeeded, resending request
+[14:39:29] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:39:29] [INFO] PAWN callback successfully executed.
+[14:43:27] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:43:27] [INFO] PAWN callback successfully executed.
+[14:43:30] [ERROR] can't update guild member presence: guild id "online" not cached
+[14:45:23] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:45:23] [INFO] PAWN callback successfully executed.
+[14:49:49] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:49:51] [INFO] successfully created channel with id '1'
+[14:49:51] [INFO] successfully created guild with id '1'
+[14:50:10] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:50:10] [INFO] PAWN callback successfully executed.
+[14:51:13] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:51:13] [INFO] PAWN callback successfully executed.
+[14:54:07] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:54:09] [INFO] successfully created channel with id '1'
+[14:54:09] [INFO] successfully created guild with id '1'
+[14:54:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:54:25] [INFO] PAWN callback successfully executed.
+[14:55:11] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:55:11] [INFO] PAWN callback successfully executed.
+[14:57:33] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[14:57:35] [INFO] successfully created channel with id '1'
+[14:57:35] [INFO] successfully created guild with id '1'
+[14:57:57] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:57:57] [INFO] PAWN callback successfully executed.
+[14:57:57] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[14:57:57] [INFO] PAWN callback successfully executed.
+[15:13:23] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[15:13:23] [INFO] trying reconnect #1...
+[15:13:23] [INFO] reconnect succeeded, resending request
+[15:13:23] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:13:23] [INFO] PAWN callback successfully executed.
+[15:13:23] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:13:23] [INFO] PAWN callback successfully executed.
+[15:13:36] [ERROR] can't update guild member presence: guild id "online" not cached
+[15:14:19] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:14:19] [INFO] PAWN callback successfully executed.
+[15:14:56] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:14:56] [INFO] PAWN callback successfully executed.
+[15:15:04] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:15:04] [INFO] PAWN callback successfully executed.
+[15:17:31] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:17:31] [INFO] PAWN callback successfully executed.
+[15:17:45] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:17:45] [INFO] PAWN callback successfully executed.
+[15:18:06] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:18:06] [INFO] PAWN callback successfully executed.
+[15:18:18] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:18:18] [INFO] PAWN callback successfully executed.
+[15:22:36] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:22:36] [INFO] PAWN callback successfully executed.
+[15:22:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:22:40] [INFO] PAWN callback successfully executed.
+[15:22:58] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:22:58] [INFO] PAWN callback successfully executed.
+[15:24:12] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:24:12] [INFO] PAWN callback successfully executed.
+[15:24:19] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:24:19] [INFO] PAWN callback successfully executed.
+[15:24:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:24:25] [INFO] PAWN callback successfully executed.
+[15:24:39] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:24:39] [INFO] PAWN callback successfully executed.
+[15:25:06] [ERROR] can't update guild member presence: guild id "idle" not cached
+[15:25:33] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:25:33] [INFO] PAWN callback successfully executed.
+[15:25:52] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:25:52] [INFO] PAWN callback successfully executed.
+[15:25:58] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:25:58] [INFO] PAWN callback successfully executed.
+[15:26:02] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:02] [INFO] PAWN callback successfully executed.
+[15:26:06] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:06] [INFO] PAWN callback successfully executed.
+[15:26:14] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:14] [INFO] PAWN callback successfully executed.
+[15:26:16] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:16] [INFO] PAWN callback successfully executed.
+[15:26:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:25] [INFO] PAWN callback successfully executed.
+[15:26:31] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:31] [INFO] PAWN callback successfully executed.
+[15:26:34] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:34] [INFO] PAWN callback successfully executed.
+[15:26:37] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:37] [INFO] PAWN callback successfully executed.
+[15:26:39] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:26:39] [INFO] PAWN callback successfully executed.
+[15:27:56] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:27:56] [INFO] PAWN callback successfully executed.
+[15:27:58] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:27:58] [INFO] PAWN callback successfully executed.
+[15:28:02] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:28:02] [INFO] PAWN callback successfully executed.
+[15:28:17] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:28:17] [INFO] PAWN callback successfully executed.
+[15:28:20] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:28:20] [INFO] PAWN callback successfully executed.
+[15:29:07] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:29:07] [INFO] PAWN callback successfully executed.
+[15:29:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:29:15] [INFO] PAWN callback successfully executed.
+[15:30:23] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:30:23] [INFO] PAWN callback successfully executed.
+[15:31:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:31:40] [INFO] PAWN callback successfully executed.
+[15:31:51] [ERROR] can't update guild member presence: guild id "online" not cached
+[15:32:08] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:32:08] [INFO] PAWN callback successfully executed.
+[15:35:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:35:25] [INFO] PAWN callback successfully executed.
+[15:38:00] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:38:00] [INFO] PAWN callback successfully executed.
+[15:40:47] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[15:40:47] [INFO] PAWN callback successfully executed.
+[15:52:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[16:40:05] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[16:40:05] [INFO] trying reconnect #1...
+[16:40:06] [INFO] reconnect succeeded, resending request
+[16:40:06] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[16:40:06] [INFO] PAWN callback successfully executed.
+[16:40:07] [ERROR] can't update guild member presence: guild id "online" not cached
+[16:52:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[18:01:37] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[18:01:39] [INFO] successfully created channel with id '1'
+[18:01:39] [INFO] successfully created guild with id '1'
+[18:29:53] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[18:29:54] [INFO] successfully created channel with id '1'
+[18:29:54] [INFO] successfully created guild with id '1'
+[18:43:35] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[18:43:35] [INFO] trying reconnect #1...
+[18:43:35] [INFO] reconnect succeeded, resending request
+[18:43:36] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:43:36] [INFO] PAWN callback successfully executed.
+[18:44:12] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:44:12] [INFO] PAWN callback successfully executed.
+[18:44:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:44:25] [INFO] PAWN callback successfully executed.
+[18:44:41] [ERROR] can't update guild member presence: guild id "online" not cached
+[18:45:37] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:45:37] [INFO] PAWN callback successfully executed.
+[18:51:51] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:51:51] [INFO] PAWN callback successfully executed.
+[18:51:51] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:51:51] [INFO] PAWN callback successfully executed.
+[18:53:35] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:53:35] [INFO] PAWN callback successfully executed.
+[18:54:03] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[18:54:03] [INFO] PAWN callback successfully executed.
+[18:59:16] [ERROR] can't update guild member presence: guild id "offline" not cached
+[19:00:47] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[19:00:47] [INFO] trying reconnect #1...
+[19:00:48] [INFO] reconnect succeeded, resending request
+[19:00:48] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:00:48] [INFO] PAWN callback successfully executed.
+[19:02:14] [ERROR] can't update guild member presence: guild id "offline" not cached
+[19:02:19] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:02:19] [INFO] PAWN callback successfully executed.
+[19:02:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[19:05:18] [ERROR] can't update guild member presence: guild id "offline" not cached
+[19:07:19] [ERROR] can't update guild member presence: guild id "offline" not cached
+[19:10:06] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[19:10:06] [INFO] trying reconnect #1...
+[19:10:07] [INFO] reconnect succeeded, resending request
+[19:10:07] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:10:07] [INFO] PAWN callback successfully executed.
+[19:15:46] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[19:15:48] [INFO] successfully created channel with id '1'
+[19:15:48] [INFO] successfully created guild with id '1'
+[19:17:04] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:17:04] [INFO] PAWN callback successfully executed.
+[19:17:11] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:17:11] [INFO] PAWN callback successfully executed.
+[19:19:04] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:19:04] [INFO] PAWN callback successfully executed.
+[19:31:14] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[19:31:14] [INFO] trying reconnect #1...
+[19:31:15] [INFO] reconnect succeeded, resending request
+[19:31:15] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:31:15] [INFO] PAWN callback successfully executed.
+[19:34:33] [ERROR] can't update guild member presence: guild id "online" not cached
+[19:46:29] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[19:46:29] [INFO] trying reconnect #1...
+[19:46:29] [INFO] reconnect succeeded, resending request
+[19:46:29] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:46:29] [INFO] PAWN callback successfully executed.
+[19:47:33] [ERROR] can't update guild member presence: guild id "idle" not cached
+[19:50:42] [INFO] changed log level from 'warning, error' to 'info, warning, error'
+[19:50:44] [INFO] successfully created channel with id '1'
+[19:50:44] [INFO] successfully created guild with id '1'
+[19:51:04] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:51:04] [INFO] PAWN callback successfully executed.
+[19:51:09] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:51:09] [INFO] PAWN callback successfully executed.
+[19:51:17] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:51:17] [INFO] PAWN callback successfully executed.
+[19:51:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:51:40] [INFO] PAWN callback successfully executed.
+[19:54:58] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:54:58] [INFO] PAWN callback successfully executed.
+[19:55:06] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:55:06] [INFO] PAWN callback successfully executed.
+[19:57:25] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:57:25] [INFO] PAWN callback successfully executed.
+[19:57:29] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:57:29] [INFO] PAWN callback successfully executed.
+[19:57:38] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:57:38] [INFO] PAWN callback successfully executed.
+[19:57:42] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:57:42] [INFO] PAWN callback successfully executed.
+[19:57:45] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:57:45] [INFO] PAWN callback successfully executed.
+[19:57:56] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[19:57:56] [INFO] PAWN callback successfully executed.
+[20:03:46] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:03:46] [INFO] PAWN callback successfully executed.
+[20:03:57] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:03:57] [INFO] PAWN callback successfully executed.
+[20:12:39] [ERROR] Error while retrieving HTTP POST response from '/api/v6/channels/487093414756876302/messages': end of stream
+[20:12:39] [INFO] trying reconnect #1...
+[20:12:40] [INFO] reconnect succeeded, resending request
+[20:12:40] [INFO] executing PAWN callback 'DCC_OnChannelMessage'...
+[20:12:40] [INFO] PAWN callback successfully executed.

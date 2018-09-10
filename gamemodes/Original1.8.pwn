@@ -9,7 +9,6 @@ Byrner scripted 1.7 && 1.8 etc
 #include <a_samp>
 #include <dprop>
 #include <sscanf2>
-#include <irc>
 #include <streamer>
 #include <zcmd>
 #include <a_npc>
@@ -48,6 +47,10 @@ Byrner scripted 1.7 && 1.8 etc
 #define COLOR_ERROR 0xD2691EAA
 #define COLOR_COCK 0xFF0000AA
 #define COLOR_LIGHTBLUE 0x00C7FFAA
+#define C_W "{FFFFFF}"
+#define C_R "{FF0000}"
+#define C_G "{33AA33}"
+#define C_LB "{33CCFF}"
 // Dialogs
 #define DIALOG_REGISTER 1335
 #define DIALOG_LOGIN 1336
@@ -67,6 +70,11 @@ Byrner scripted 1.7 && 1.8 etc
 #define DIALOG_SFAP 1368
 #define DIALOG_LVAP 1369
 #define DIALOG_YugoAP 1370
+#define DIALOG_247STORE 1371
+#define DIALOG_BANK 1372
+#define DIALOG_BANK_DEPOSIT 1373
+#define DIALOG_BANK_WITHDRAW 1374
+#define DIALOG_BANK_RECEIPT 1375
 // Teams
 #define TEAM_COP 1
 #define TEAM_ARMY 2
@@ -94,24 +102,8 @@ Byrner scripted 1.7 && 1.8 etc
 
 #define DISCORD_CHANNEL_ID "487093414756876302"
 
-// IRC Defines
-#define BOT_1_NICKNAME "[SArcr]Chode"
-#define BOT_1_REALNAME "Chode Fetish"
-#define BOT_1_USERNAME "CFAttack"
 
-#define BOT_2_NICKNAME "0r1g1n4l"
-#define BOT_2_REALNAME "One Ofakind"
-#define BOT_2_USERNAME "TheFirst"
-
-#define IRC_SERVER "irc.wyldryde.org"
-#define IRC_PORT (6667)
-#define IRC_CHANNEL "#sarcr"
-
-#define MAX_BOTS (2)
-
-#define PLUGIN_VERSION "1.4.2"
-// IRC Variables
-new gBotID[MAX_BOTS], gGroupID;
+//#define PLUGIN_VERSION "1.4.2"
 
 #define sversion "2.0.1"
 
@@ -190,6 +182,8 @@ new HasSWATRadio[MAX_PLAYERS];
 new FiremanRadio[MAX_PLAYERS];
 new FBIRadio[MAX_PLAYERS];
 new SWATRadio[MAX_PLAYERS];
+new HasArmyRadio[MAX_PLAYERS];
+new ArmyRadio[MAX_PLAYERS];
 new IsSpawned[MAX_PLAYERS];
 new RequestedBackup[MAX_PLAYERS];
 new RequestedBackupRecent[MAX_PLAYERS];
@@ -294,8 +288,13 @@ new gPlayerUsingLoopingAnim[MAX_PLAYERS];
 new Pilotonduty[MAX_PLAYERS];
 new robbingdrugs[MAX_PLAYERS];
 new HasDrugHouseKeys[MAX_PLAYERS];
+//Alkatraz
+new entranceAlkCP;
+new exitAlkCP;
+
 //24/7
-new CP_247;
+new robCP_247;
+new cp_yugo247;
 //YugoNude
 new YugoNude;
 new YugoNudeExit;
@@ -307,6 +306,7 @@ new RobbingCluckBell[MAX_PLAYERS];
 new NudeCP;
 new AbleToRobNudeCP[MAX_PLAYERS];
 new RobbingNudeCP[MAX_PLAYERS];
+
 //FBI
 new FBILift1;
 new FBIGate;
@@ -398,8 +398,8 @@ new FBIRefill;
 new LVDrughouse;
 new AbleToUseLVDrughouse[MAX_PLAYERS];
 //24/7
-new EastLV247;
-new AbleToShowLV247Menu[MAX_PLAYERS];
+//new EastLV247;
+//new AbleToShowLV247Dialog[MAX_PLAYERS];
 //Pizza
 new PizzaJob[256];
 //Yugoslavia Bank
@@ -647,8 +647,6 @@ new Menu:GrottiMenu;
 new Menu:GrottiBikesMenu;
 //Hospital
 new Menu:HospitalMenu;
-//24/7
-new Menu:StoreMenu;
 //vehicles
 new hydra1;
 new hydra2;
@@ -797,6 +795,38 @@ new PlayerInfo[MAX_PLAYERS][pInfo];
 //new AutoBahnCar2;
 // For DCMD
 #define COLOR_SYSTEM 0x9ACD32AA
+
+stock Float:restfloat(Float:dividend, Float:divisor)
+{
+    new r[2];
+    new s[10];
+    r[0] = floatround(1000 * dividend, floatround_ceil);
+    r[1] = floatround(1000 * divisor, floatround_ceil);
+    valstr(s, (r[0] % r[1]), false);
+    s[strlen(s)] = '0';
+    new len = strlen(s);
+    s[len-2] = s[len-3];
+    s[len-3] = s[len-4];
+    s[len-4] = '.';
+    return floatstr(s);
+}
+
+stock InteriorVW(playerid)
+{
+    new Float:PosX, Float:PosY, Float:PosZ; GetPlayerPos(playerid, PosX, PosY, PosZ);
+    new Float:PosSum = (PosX + PosY + PosZ) - restfloat((PosX + PosY + PosZ), 1);                       
+    new PosSumInt = 0;    
+    if (PosSum < 0)    
+    {
+        PosSumInt = floatround((0-PosSum), floatround_round);   
+    }    
+    else    
+    {
+        PosSumInt = floatround((PosSum), floatround_round);    
+    }
+    new VW = ((PosSumInt/10)%65999)*10;
+    return VW;
+}
 
 stock SystemMsg(playerid, msg[])
 {
@@ -1593,18 +1623,7 @@ public IsPlayerInArea(playerid, Float:data[4])
 
 public OnGameModeInit()
 {
-	gBotID[0] = IRC_Connect(IRC_SERVER, IRC_PORT, BOT_1_NICKNAME, BOT_1_REALNAME, BOT_1_USERNAME);
-	IRC_SetIntData(gBotID[0], E_IRC_CONNECT_DELAY, 20);
-	gBotID[1] = IRC_Connect(IRC_SERVER, IRC_PORT, BOT_2_NICKNAME, BOT_2_REALNAME, BOT_2_USERNAME);
-	IRC_SetIntData(gBotID[1], E_IRC_CONNECT_DELAY, 30);
-	gGroupID = IRC_CreateGroup();
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, "2####################################");
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, "2################");
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, "2San Andreas");
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, "2Roleplay/Cops/Robbers");
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, "2Version 2.0.1");
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, "2################");
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, "2####################################");
+	//DisableInteriorEnterExits();
 	SetGameModeText("[Sarcr] Gamemode");
 	SetTeamCount(1);
 	AllowInteriorWeapons(1);
@@ -1618,12 +1637,17 @@ public OnGameModeInit()
    	CreateDynamicObject(2184,-2169.45385742,643.47924805,1051.37500000,0.00000000,0.00000000,90.00000000);
    	CreateDynamicObject(1806,-2171.07031250,644.54174805,1051.37500000,0.00000000,0.00000000,270.00000000);
    	CreateDynamicObject(2269,-2168.14599609,640.49237061,1053.97485352,0.00000000,0.00000000,180.00000000);
+   	//Alkatraz Checkpoint
+   	entranceAlkCP = CreateDynamicCP(246.3767,107.5387,1003.2188, 3.0, -1, -1, -1, 50.0);
+   	exitAlkCP = CreateDynamicCP(3797.3198,460.4642,36.0641, 3.0, -1, -1, -1, 50.0);
 	//YugoNude
 	YugoNude = CreateDynamicCP(1211.5549,3526.5984,11, 3.0, -1, -1, -1, 50.0);
 	YugoNudeExit = CreateDynamicCP(-100.2406,-22.1767,1000.7188, 3.0, 2, -1, -1, 50.0);
    	// Terrorist
    	//24/7
-	CP_247 = CreateDynamicCP(-22.2730, -55.6667, 1003.5469, 3.0, -1, 6, -1, 100.0);
+   	//exit_247 = CreateDynamicCP(-27.1926,-58.2670,1003.5469, 3.0, -1, 6, -1, 10.0);
+   	//cp_247 = CreateDynamicCP(2194.3848, 1991.1100, 12.2969, 3.0, -1, -1, -1, 10.0);
+	robCP_247 = CreateDynamicCP(-22.2730, -55.6667, 1003.5469, 3.0, -1, 6, -1, 10.0);
    	//Drug House
    	//LV
    	LVDrughouse = CreateDynamicCP(2447.6409,742.5250,11.4609, 3.5, -1, -1, -1, 50.0);
@@ -1699,6 +1723,8 @@ public OnGameModeInit()
 	CluckBell = CreateDynamicCP(371.7746,-6.4389,1001.8589, 1.5, -1, -1, -1, 50.0);
 	//Nude CP
 	NudeCP = CreateDynamicCP(1207.2336,-31.7025,1000.9531, 1.5, -1, -1, -1, 50.0);
+	//Yugo 247 CP
+	cp_yugo247 = CreateDynamicCP(1410.7700,3262.2939,11.1141, 1.5, -1, -1, -1, 50.0);
 	//Csino CP
 	//Casino = CreateDynamicCP(1548.6815,3235.0647,11.0785, 5, -1, -1, -1, 100.0);
 	//Admin Base
@@ -4355,26 +4381,12 @@ public OnGameModeInit()
 	AddMenuItem(HospitalMenu,0,"Pump Stomach");
 	AddMenuItem(HospitalMenu,0,"Heal/Cure All");
 	//24/7
-	StoreMenu = CreateMenu("~b~24/7",1,15,150,200);
-	SetMenuColumnHeader(StoreMenu , 0, "~w~Please select one.");
-	AddMenuItem(StoreMenu,0,"Chainsaw");
-	AddMenuItem(StoreMenu,0,"Flowers");
-	AddMenuItem(StoreMenu,0,"Baseball Bat");
-	AddMenuItem(StoreMenu,0,"Beer");
-	AddMenuItem(StoreMenu,0,"Wallet");
-	AddMenuItem(StoreMenu,0,"Parachute");
-	AddMenuItem(StoreMenu,0,"Rope");
-	AddMenuItem(StoreMenu,0,"Sissors");
-	AddMenuItem(StoreMenu,0,"Briefcase");
-
 	return 1;
 }
 
 public OnGameModeExit()
 {
-	IRC_Quit(gBotID[0], "Gamemode exiting");
-	IRC_Quit(gBotID[1], "Gamemode exiting");
-	IRC_DestroyGroup(gGroupID);
+	
 }
 
 /*CMD:skill(playerid, params[])
@@ -4469,6 +4481,8 @@ CMD:robnude(playerid, params[])
 	return 1;
 }
 
+CMD:cmds(playerid, params[]) return cmd_commands(playerid, params);
+
 CMD:commands(playerid, params[])
 {
 	if(IsSpawned[playerid] == 0)
@@ -4478,16 +4492,22 @@ CMD:commands(playerid, params[])
 	}
 	if(gTeam[playerid] == TEAM_COP)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Police Officer Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/rp (id) [reason] - Report criminal activity");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/fine (id) - Issue a fine to a suspect. Suspect must be Yellow");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/pu (id) - Ask a player to pull over if in vehicle. Or freeze if on foot");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/taze (id) - Taze a suspect. Suspect must have a warrant issued");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/ar (id) - Arrest a suspect with a warrant");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/parole (id) - Release a player from jail");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cuff (id) - Place a suspect in handcuffs. /vc (id) - Report Visual contact");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/search (id) - Search a suspect for drugs. /cm (message) - Cop Message");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/radon - Turn Police radio on. /radoff - Turn Police radio off");
+	    new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/rp (id) [reason] - Report criminal activity.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/fine (id) - Issue a fine to a suspect. Suspect must be Yellow.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/pu (id) - Ask a player to pull over if in vehicle. Or freeze if on foot.\n",strlen(menudialog));
+	    strins(menudialog,"/taze (id) - Taze a suspect. Suspect must have a warrant issued.\n",strlen(menudialog));
+	    strins(menudialog,"/ar (id) - Arrest a suspect with a warrant.\n",strlen(menudialog));
+	    strins(menudialog,"/parole (id) - Release a player from jail.\n",strlen(menudialog));
+	    strins(menudialog,"/vc (id) - Report Visual contact\n",strlen(menudialog));
+	    strins(menudialog,"/cuff (id) - Place a suspect in handcuffs.\n",strlen(menudialog));
+	    strins(menudialog,"/cm (message) - Cop Message.\n",strlen(menudialog));
+	    strins(menudialog,"/search (id) - Search a suspect for drugs.\n",strlen(menudialog));
+	    strins(menudialog,"/radon - Turn Police radio on. \n",strlen(menudialog));
+	    strins(menudialog,"/radoff - Turn Police radio off.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Police Officer Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_ARMY)
 	{
@@ -4499,38 +4519,50 @@ CMD:commands(playerid, params[])
 		}
 		else
 		{
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "SA Army Commands");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/rp (id) [reason] - Report criminal activity");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/su (id) - Ask a suspect to freeze and surrender");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/fine (id) - Issue a fine to a suspect. Suspect must be Yellow");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/taze (id) - Taze a suspect. Suspect must have a warrant issued");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/ar (id) - Arrest a suspect with a warrant");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/cuff (id) - Place a suspect in handcuffs");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/search (id) - Search a suspect for drugs. /cm (message) - Cop Message");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/radon - Turn Law Enforcement radio on. /radoff - Turn radio off");
+			new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+		    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+		    strins(menudialog,"/rp (id) [reason] - Report criminal activity.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+		    strins(menudialog,"/fine (id) - Issue a fine to a suspect. Suspect must be Yellow.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+		    strins(menudialog,"/pu (id) - Ask a player to pull over if in vehicle. Or freeze if on foot.\n",strlen(menudialog));
+		    strins(menudialog,"/taze (id) - Taze a suspect. Suspect must have a warrant issued.\n",strlen(menudialog));
+		    strins(menudialog,"/ar (id) - Arrest a suspect with a warrant.\n",strlen(menudialog));
+		    strins(menudialog,"/cuff (id) - Place a suspect in handcuffs.\n",strlen(menudialog));
+		    strins(menudialog,"/am (message) - Army Message.\n",strlen(menudialog));
+		    strins(menudialog,"/search (id) - Search a suspect for drugs.\n",strlen(menudialog));
+		    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+			ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "SA Army Commands", menudialog, "Close", "");
 		}
 	}
 	else if(gTeam[playerid] == TEAM_MEDIC)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Medic Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/heal (id) - Restore a players health for a fee");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cure (id) - Cure a players infections for a fee");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/healme - Restore your own health");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cureme - Cure your own infections");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/cure (id) - Cure a players infections for a fee.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/heal (id) - Restore a players health for a fee.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/healme - Restore your own health.\n",strlen(menudialog));
+	    strins(menudialog,"/cureme - Cure your own infections.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Medic Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_CARFIX)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Vehicle Mechanic Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/fix (id) - Fix a players vehicle. The player must be the driver of a vehicle");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/break (id) - Pour sand into a players engine. Car will explode");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/fixme - Fix your own vehicle");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/fix (id) - Fix a players vehicle. The player must be the driver of a vehicle.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/break (id) - Pour sand into a players engine. Car will explode.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/fixme - Fix your own vehicle.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Vehicle Mechanic Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_CASSEC)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Casino Security Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cuff (id) - Hand cuff a player with a warrant untill Police arrive");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cm (msg) - Talk directly with the Police. You have a Police Radio");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/radon - Turn Police radio on. /radoff - Turn Police radio off");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/cuff (id) - Hand cuff a player with a warrant untill Police arrive.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/cm (msg) - Talk directly with the Police. You have a Police Radio.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/radon - Turn Police radio on. /radoff - Turn Police radio off.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Casino Security Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_SWAT)
 	{
@@ -4542,123 +4574,180 @@ CMD:commands(playerid, params[])
 		}
 		else
 		{
-		    SendClientMessage(playerid,COLOR_ROYALBLUE, "S.W.A.T Commands");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/cutchode to cut your chode for free");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/ms to put spikes on the road");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/ds to take out spikes from the road");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/swatgate to open main swat gate");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/swatcargate1 through 5 to open car swat gates");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/swatboatgate to open the gate to get a boat");
-			SendClientMessage(playerid,COLOR_ROYALBLUE, "/swatlift to operate the lift to get a helicopter");
+			new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+		    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+		    strins(menudialog,"/ms to put spikes on the road.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+		    strins(menudialog,"/heal (id) - Restore a players health for a fee.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+		    strins(menudialog,"/ds to take out spikes from the road.\n",strlen(menudialog));
+		    strins(menudialog,"/swatgate to open main swat gate.\n",strlen(menudialog));
+		    strins(menudialog,"/swatcargate1 through 5 to open car swat gates.\n",strlen(menudialog));
+		    strins(menudialog,"/swatboatgate to open the gate to get a boat.\n",strlen(menudialog));
+		    strins(menudialog,"/swatlift to operate the lift to get a helicopter.\n",strlen(menudialog));
+		    strins(menudialog,"/rp (id) [reason] - Report criminal activity.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+		    strins(menudialog,"/fine (id) - Issue a fine to a suspect. Suspect must be Yellow.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+		    strins(menudialog,"/pu (id) - Ask a player to pull over if in vehicle. Or freeze if on foot.\n",strlen(menudialog));
+		    strins(menudialog,"/taze (id) - Taze a suspect. Suspect must have a warrant issued.\n",strlen(menudialog));
+		    strins(menudialog,"/ar (id) - Arrest a suspect with a warrant.\n",strlen(menudialog));
+		    strins(menudialog,"/cuff (id) - Place a suspect in handcuffs.\n",strlen(menudialog));
+		    strins(menudialog,"/sm (message) - S.W.A.T Message.\n",strlen(menudialog));
+		    strins(menudialog,"/search (id) - Search a suspect for drugs.\n",strlen(menudialog));
+		    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+			ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "S.W.A.T Commands", menudialog, "Close", "");
 		}
 	}
 	else if(gTeam[playerid] == TEAM_DRIVER)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Driver Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Drivers do not have any commands. Players call your service with /driver");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Your passengers are charged $1 every 1 second if they get in your car");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "You can use criminal commands. Type /ccommands for details");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "You do not earn points or get your city paycheck if you have a wanted level");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/driver to advertise your service across San Andreas.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"Your passengers are charged $1 every 1 second if they get in your car.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"You do not earn points or get your city paycheck if you have a wanted level.\n",strlen(menudialog));
+	    strins(menudialog,"You can use criminal commands. Type /ccommands for details.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Driver Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_FIREMAN)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Fireman Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cuff (id) - Hand cuff a player with a warrant untill Police arrive");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cm (msg) - Talk directly with the Police. You have a Police Radio");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/fm (msg) - Talk directly with the Fire Station. You have a Fireman Radio");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/radon - Turn Police radio on. /radoff - Turn Police radio off");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/cuff (id) - Hand cuff a player with a warrant untill Police arrive.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/cm (msg) - Talk directly with the Police. You have a Law Enforcement Radio.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/fm (msg) - Talk directly with the Fire Station. You have a Fireman Radio.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Fireman Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_BISTRO)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Bistro Staff Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/sellfood (id) - Sell food to a player for a fee");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/Sellbadfood (id) - Sell bad food to a player. Player will be infected");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/sellfood (id) - Sell food to a player for a fee.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/Sellbadfood (id) - Sell bad food to a player. Player will be infected.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Bistro Staff Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_JAILTK)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Jail Turnkey Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/parole (id) - Release a player from jail");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/parole (id) - Release a player from jail.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Jail Turnkey Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_PVTMED)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Private Medic Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/heal (id) - Restore a players health for a fee");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cure (id) - Cure a players infections for a fee");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/healme - Restore your own health");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/cureme - Cure your own infections");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/infect (id) - Infect a player with a disease");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/heal (id) - Restore a players health for a fee.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/cure (id) - Cure a players infections for a fee.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/healme - Restore your own health.\n",strlen(menudialog));
+	    strins(menudialog,"/cureme - Cure your own infections.\n",strlen(menudialog));
+	    strins(menudialog,"/infect (id) - Infect a player with a disease.\n",strlen(menudialog));
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Private Medic Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_CIVIL)
 	{
-		SendClientMessage(playerid,COLOR_RED, "You do not have a skill or are not in a team");
-		SendClientMessage(playerid,COLOR_RED, "Use /skill to select a skill");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"You do not have a skill or are not in a team.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"Use /skill to select a skill.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Civilian Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_DRGDEL)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Drug Dealer Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/selldrugs (id) (amount per gram) - Offer to sell a player drugs for a set amount per gram");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/givedrugs (id) (grams) - give a player drugs. Remember to get paid");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/takedrugs (grams) - Take some drugs. Health refills when you are on drugs");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/selldrugs (id) (amount per gram) - Offer to sell a player drugs for a set amount per gram.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/givedrugs (id) (grams) - Give a player drugs. Remember to get paid.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/takedrugs (grams) - Take some drugs. Health refills when you are on drugs.\n",strlen(menudialog));
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Drug Dealer Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_HITMAN)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Hitman Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "You do not have any commands. Players will contact you if they want someone dead");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Make sure you get paid");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"You do not have any commands.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"Players will contact you if they want someone dead.\n",strlen(menudialog));
+	    strins(menudialog,"Make sure you get paid.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Hitman Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_GUNDEL)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Gun Dealer Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/offerweapons (id) - Offer to sell a player guns");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/sellweapon (id) (itemnumber) - Sell a player a weapon");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/offerweapons (id) - Offer to sell a player guns.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/sellweapon (id) (itemnumber) - Sell a player a weapon.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Gun Dealer Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_SNITCH)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Snitch (Police Informant) Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "You do not have any commands. If you are in the area when crimes are commited..");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Then the police will be informed and you will earn some cash");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"You do not have any commands. If you are in the area when crimes are commited.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"Then the police will be informed and you will earn some cash.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Snitch (Police Informant) Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_PILOT)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Pilot Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/pduty To go on duty as a driver");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/offpduty to go off duty");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/pduty To go on duty as a Pilot.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/offpduty to go off duty.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Pilot Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_RAPIST)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Rapist Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/rape (id) - Rape a player and give them STD/Infection");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/rape (id) - Rape a player and give them STD/Infection.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Rapist Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_BOUNTY)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Bounty Hunter Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/bounty - See a list of players who are on your bounty list");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/bounty - See a list of players who are on your bounty list.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Bounty Hunter Commands", menudialog, "Close", "");
 	}
 	else if(gTeam[playerid] == TEAM_KIDNAP)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Kidnapper Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/kidnap - Drags a player into your vehicle.");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/tie - Tie the passenger in your car up in rope");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/untie - Unties a kidnapped player if you feel sorry for them or your penis is simply too sore from raping.");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/kidnap - Drags a player into your vehicle.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/tie - Tie the passenger in your car up in rope.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/untie - Unties a kidnapped player if you feel sorry for them or your penis is simply too sore from raping.\n",strlen(menudialog));
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Kidnapper Commands", menudialog, "Close", "");
 	}
 	// Terrorist
 	else if(gTeam[playerid] == TEAM_TERRORIST)
 	{
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "Terrorist Commands");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/blowcar - Plants a bomb in the car that you are driving");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/blowself - Ends your life with a bang");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "/plantbomb - Plants explosives at the designated building/structure");
-		SendClientMessage(playerid,COLOR_ROYALBLUE, "See also /ccommands for criminal commands you can use");
+		new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+	    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+	    strins(menudialog,"/blowcar - Plants a bomb in the car that you are driving.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+	    strins(menudialog,"/blowself - Ends your life with a bang.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+	    strins(menudialog,"/plantbomb - Plants explosives at the designated building/structure.\n",strlen(menudialog));
+	    strins(menudialog,"See also /ccommands for criminal commands you can use.\n",strlen(menudialog));
+	    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+		ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Terrorist Commands", menudialog, "Close", "");
 	}
 	return 1;
 	// End of Terrorist
@@ -5397,7 +5486,7 @@ CMD:cry(playerid, params[])
 	GetPlayerName(playerid,cryer,sizeof(cryer));
 	format(string, sizeof(string),"* %s(%d) cries. Get a Tissue!",cryer,playerid);
 	SendClientMessageToAll(GetPlayerColor(playerid),string);
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	DCC_SendChannelMessage(discordChannel, string);
 	HasCried[playerid] =10;
 	return 1;
 }
@@ -5755,7 +5844,7 @@ CMD:search(playerid, params[])
 		plwl = GetPlayerWantedLevel(giveplayerid);
 		format(string, sizeof(string), "Officer %s(%d) has siezed 3 Blocks of C4 from %s(%d)",officername,playerid,civilname,giveplayerid);
 		SendClientMessageToAll(0x00C7FFAA, string);
-		IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		DCC_SendChannelMessage(discordChannel, string);
 	    printf("%s", string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_Crime Commited_|");
 		format(string, sizeof(string), "(EXPLOSIVES POSSESION) Wanted Level %d",plwl);
@@ -6143,7 +6232,7 @@ CMD:robcasino(playerid, params[])
 		GetPlayerName(playerid, pname, 30);
 	    format(string, sizeof(string), "%s(%d) Has robbed $%d from the Four Dragons casino",pname,playerid,mrand);
 		SendClientMessageToAll(0x00C7FFAA, string);
-		IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		DCC_SendChannelMessage(discordChannel, string);
 		format(string, sizeof(string), "%s(%d) Has robbed $%d from the Four Dragons casino",pname,playerid,mrand);
 		printf("%s", string);
 		format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU ROBBED~n~~r~ $%d~n~~w~FROM THE CASINO", mrand);
@@ -6209,7 +6298,7 @@ CMD:robcasino(playerid, params[])
 			GetPlayerName(playerid, pname, 30);
 			format(string, sizeof(string), "%s(%d) Has robbed $%d from BMUK's Casino",pname,playerid,mrand);
 			SendClientMessageToAll(0x00C7FFAA, string);
-			IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			DCC_SendChannelMessage(discordChannel, string);
 			format(string, sizeof(string), "%s(%d) Has robbed $%d from BMUK's Casino",pname,playerid,mrand);
 			printf("%s", string);
 			format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU ROBBED~n~~r~ $%d~n~~w~FROM BMUK's CASINO", mrand);
@@ -6263,7 +6352,7 @@ CMD:robcasino(playerid, params[])
 		GetPlayerName(playerid, pname, 30);
 	    format(string, sizeof(string), "%s(%d) Has robbed $%d from the Redsands Casino",pname,playerid,mrand);
 		SendClientMessageToAll(0x00C7FFAA, string);
-		IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		DCC_SendChannelMessage(discordChannel, string);
 		format(string, sizeof(string), "%s(%d) Has robbed $%d from the Redsands casino",pname,playerid,mrand);
 		printf("%s", string);
 		format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU ROBBED~n~~r~ $%d~n~~w~FROM THE CASINO", mrand);
@@ -6391,64 +6480,70 @@ CMD:fixme(playerid, params[])
     return 1;
 }
 
-CMD:ccomands(playerid, params[])
+CMD:ccmds(playerid, params[]) return cmd_ccommands(playerid, params);
+
+CMD:ccommands(playerid, params[])
 {
 	if(IsSpawned[playerid] == 0)
 	{
 		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
 	    return 1;
     }
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "Criminal Commands");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/rob  (id) - Attempt to rob another player");
-    SendClientMessage(playerid,COLOR_ROYALBLUE, "/rape (id) - Attempt to rape another player");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robcasino - Attempt to rob a casino");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robbank - Attempt to rob LV City Bank");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robatm - Attempt to rob a ATM Machine");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robstore - Attempt to rob a 24/7 Store");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robhall - Attempt to rob LV City Hall");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/robab - Attempt to rob AutoBahn");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/takedrugs (grams) - Use drugs");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/sur - Surrender when wanted");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/giveC4 - Give a player C4");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/ta - Throws away any illegal items");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "See /gcommands for general gameplay commands");
+    new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+    strins(menudialog,"/rob  (id) - Attempt to rob another player.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+    strins(menudialog,"/takedrugs (grams) - Use drugs.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+    strins(menudialog,"/sur - Surrender when wanted.\n",strlen(menudialog));
+    strins(menudialog,"/giveC4 - Give a player C4.\n",strlen(menudialog));
+    strins(menudialog,"/ta - Throws away any illegal items.\n",strlen(menudialog));
+    strins(menudialog,"/drugs - Call a drugs dealer.\n",strlen(menudialog));// ALWAYS WRITE WITH \ n End To Jump In Line
+    strins(menudialog,"/weapons - Call a weapons dealer.\n",strlen(menudialog));
+    strins(menudialog,"/hit (id) (amount) - Place a hit contract on another player.\n",strlen(menudialog));
+    strins(menudialog,"For general commands use /gcommands.\n",strlen(menudialog));
+	ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "Criminal Commands", menudialog, "Close", "");
     return 1;
 }
 
-CMD:gcomands(playerid, params[])
+CMD:gcmds(playerid, params[]) return cmd_gcommands(playerid, params);
+
+CMD:gcommands(playerid, params[])
 {
 	if(IsSpawned[playerid] == 0)
 	{
 		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
 	    return 1;
     }
-   	SendClientMessage(playerid,COLOR_ROYALBLUE, "General Gameplay Commands");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/food - Call a food delivery worker");
-    SendClientMessage(playerid,COLOR_ROYALBLUE, "/drugs - Call a drugs dealer");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/hit (id) (amount) - Place a hit contract on another player");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/gc (id) (amount) - Give another player cash");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/pm (id) (msg) - Send a Personal Message /pmoff - Refuse PMs");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/ej - Eject you from vehicle /ejall - Eject all from vehicle");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/ej (id) - Eject a player from your vehicle");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/cry - Cry like a big girl");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/foff (ID)- Tell a player to Fuck Off");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/bail (ID) bail a player from prision for 25k");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "/rc - Speak so only Regular Players can see");
-	SendClientMessage(playerid,COLOR_ROYALBLUE, "See /ccommands for criminal commands");
+    new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+    strins(menudialog,"/food - Call a food delivery worker.\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+    strins(menudialog,"/gc (id) (amount) - Give another player cash.\n",strlen(menudialog));
+    strins(menudialog,"/pm (id) (msg) - Send a Personal Message.\n",strlen(menudialog));
+    strins(menudialog,"/pmoff - Refuse PMs.\n",strlen(menudialog));
+    strins(menudialog,"/ej - Eject you from vehicle.\n",strlen(menudialog));
+    strins(menudialog,"/ejall - Eject all from vehicle.\n",strlen(menudialog));
+    strins(menudialog,"/cry - Cry like a big girl.\n",strlen(menudialog));
+    strins(menudialog,"/foff (ID)- Tell a player to Fuck Off.\n",strlen(menudialog));
+    strins(menudialog,"/bail (ID) bail a player from prision for 25k.\n",strlen(menudialog));
+    strins(menudialog,"/rc - Speak so only Regular Players can see.\n",strlen(menudialog));
+    strins(menudialog,"/info - To see your player stats/information.\n",strlen(menudialog));
+    strins(menudialog,"For criminal commands use /ccommands.\n",strlen(menudialog));
+	ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "General Gameplay Commands", menudialog, "Close", "");
     return 1;
 }
 
 CMD:credits(playerid, params[])
 {
-	SendClientMessage(playerid, 0xA9A9A9AA, "|_San Andreas Roleplay/Cops/Robbers -(CREDITS)-_|");
-	SendClientMessage(playerid,COLOR_WHITE, "The people mentioned here are thanked and are given due credit!");
-    SendClientMessage(playerid,COLOR_YELLOW, "1 - BMUK - Creating the original GM");
-	SendClientMessage(playerid,COLOR_YELLOW, "2 - Sc0pe - Scripted 2.0.1 and Mapped out Yugoslavia.");
-	SendClientMessage(playerid,COLOR_YELLOW, "3 - Natox - Scripted 2.0.1 and Mapping out various places.");
-	SendClientMessage(playerid,COLOR_YELLOW, "4 - Time - Mapping out the SWAT base.");
-	SendClientMessage(playerid,COLOR_YELLOW, "5 - All the admins");
-	SendClientMessage(playerid,COLOR_LIGHTBLUE, "A more in-depth look at our server's credits is on the forums at www.sa-rcr.com");
-	SendClientMessage(playerid,COLOR_DEADCONNECT, "If you think your name should be in the Credits... Visit the forums: www.sa-rcr.com");
+	new menudialog[1000]; // DEFINING CHARACTERISTICS OF THE NUMBER BELOW !
+    strins(menudialog,"\n",strlen(menudialog)); // Use Of \n Be Or skip blank line
+    strins(menudialog,"The people mentioned here are thanked and are given due credit!\n",strlen(menudialog)); // ALWAYS WRITE WITH \n End To Jump In Line
+    strins(menudialog,"1 - BMUK - Creating the original GM.\n",strlen(menudialog));
+    strins(menudialog,"2 - Sc0pe - Scripted 2.0.1 and Mapped out Yugoslavia.\n",strlen(menudialog));
+    strins(menudialog,"3 - Natox - Scripted 2.0.1 and Mapping out various places.\n",strlen(menudialog));
+    strins(menudialog,"4 - Time - Mapping out the SWAT base.\n",strlen(menudialog));
+    strins(menudialog,"5 - All the admins.\n",strlen(menudialog));
+    strins(menudialog,"A more in-depth look at our server's credits is on the forums at www.sa-rcr.com\n",strlen(menudialog));
+    strins(menudialog,"If you think your name should be in the Credits... Visit the forums: www.sa-rcr.com\n",strlen(menudialog));
+	ShowPlayerDialog(playerid,6, DIALOG_STYLE_MSGBOX, "|_San Andreas Roleplay/Cops/Robbers -(CREDITS)-_|", menudialog, "Close", "");
    	return 1;
 }
 
@@ -6678,7 +6773,7 @@ CMD:gc(playerid, params[])
     SendClientMessage(giveplayerid, 0x00C7FFAA, string);
     format(string, sizeof(string), "Admin %s(%d) Has sent $%d to receiver %s(%d)",sendername,playerid,Amount,receivername,giveplayerid);
     printf("%s",string);
-    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+    DCC_SendChannelMessage(discordChannel, string);
     if(GetPlayerMoney(giveplayerid) + Amount >= 1000001)
 	{
 	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Send Failed_|");
@@ -7389,40 +7484,48 @@ CMD:atmloc(playerid, params[])
 
 CMD:radon(playerid, params[])
 {
-	if(HasLawEnforcementRadio[playerid] == 0)
+	if(HasLawEnforcementRadio[playerid] == 0 || HasArmyRadio[playerid] == 0 || HasFBIRadio[playerid] == 0 || HasFiremanRadio[playerid] == 0 || HasSWATRadio[playerid] == 0 )
 	{
-		SendClientMessage(playerid,COLOR_WHITE,"You dont have a police radio");
+		SendClientMessage(playerid,COLOR_WHITE,"You don't have a Law Enforcement Radio");
 		return 1;
 	}
-	if(LawEnforcementRadio[playerid] == 1)
+	if(HasLawEnforcementRadio[playerid] == 1 || HasArmyRadio[playerid] == 1 || HasFBIRadio[playerid] == 1 || HasFiremanRadio[playerid] == 1 || HasSWATRadio[playerid] == 1)
 	{
 		SendClientMessage(playerid,COLOR_WHITE,"Radio is already on");
 		return 1;
 	}
-	if(LawEnforcementRadio[playerid] == 0)
+	if(HasLawEnforcementRadio[playerid] == 0 || HasArmyRadio[playerid] == 0 || HasFBIRadio[playerid] == 0 || HasFiremanRadio[playerid] == 0 || HasSWATRadio[playerid] == 0)
 	{
 		SendClientMessage(playerid,COLOR_WHITE,"Radio is now on. You will receive alerts from dispatch about crimes");
-		LawEnforcementRadio[playerid] = 1;
+		HasLawEnforcementRadio[playerid] = 1;
+		HasArmyRadio[playerid] = 1;
+		HasFBIRadio[playerid] = 1;
+		HasSWATRadio[playerid] = 1;
+		HasFiremanRadio[playerid] = 1;
 	}
 	return 1;
 }
 
 CMD:radoff(playerid, params[])
 {
-	if(HasLawEnforcementRadio[playerid] == 0)
+	if(HasLawEnforcementRadio[playerid] == 0 || HasArmyRadio[playerid] == 0 || HasFBIRadio[playerid] == 0 || HasFiremanRadio[playerid] == 0 || HasSWATRadio[playerid] == 0)
 	{
-		SendClientMessage(playerid,COLOR_WHITE,"You dont have a police radio");
+		SendClientMessage(playerid,COLOR_WHITE,"You dont have a Law Enforcement radio");
 		return 1;
 	}
-	if(LawEnforcementRadio[playerid] == 0)
+	if(HasLawEnforcementRadio[playerid] == 0 || HasArmyRadio[playerid] == 0 || HasFBIRadio[playerid] == 0 || HasFiremanRadio[playerid] == 0 || HasSWATRadio[playerid] == 0)
 	{
 		SendClientMessage(playerid,COLOR_WHITE,"Radio is already off");
 		return 1;
 	}
-	if(LawEnforcementRadio[playerid] == 1)
+	if(HasLawEnforcementRadio[playerid] == 1 || HasArmyRadio[playerid] == 1 || HasFBIRadio[playerid] == 1 || HasFiremanRadio[playerid] == 1 || HasSWATRadio[playerid] == 1)
 	{
 		SendClientMessage(playerid,COLOR_WHITE,"Radio is now off");
-		LawEnforcementRadio[playerid] = 0;
+		HasLawEnforcementRadio[playerid] = 0;
+		HasArmyRadio[playerid] = 0;
+		HasFBIRadio[playerid] = 0;
+		HasSWATRadio[playerid] = 0;
+		HasFiremanRadio[playerid] = 0;
 	}
 	return 1;
 }
@@ -9928,7 +10031,7 @@ CMD:rp(playerid, params[])
    		}
 	    printf("(POLICE REPORT) Officer %s(%d) has reported suspect %s(%d) Reason: (%s)",oname,playerid,pname,giveplayerid,output);
 	    format(string, sizeof(string), "**(POLICE REPORT)** Officer %s(%d) has reported suspect %s(%d) Reason: (%s)",oname,playerid,pname,giveplayerid,output);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    new plwl = GetPlayerWantedLevel(giveplayerid);
 	    new pcol = GetPlayerColor(giveplayerid);
 	    SetPlayerWantedLevel(giveplayerid, plwl +1);
@@ -10185,7 +10288,7 @@ CMD:adkick(playerid, params[])
 		    SendClientMessageToAll(COLOR_ADMIN, string);
 		    printf("%s", string);
 		    format(string, 100, "\2;**(ADMIN KICK)** %s(%d) %s\2;", string,giveplayerid,output);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    Kicking[giveplayerid] = 1;
 		    SetTimer("KickPlayer",700,0);
     	}
@@ -10227,7 +10330,7 @@ CMD:adgiveweapon(playerid, params[])
 		print(string);
 		GivePlayerWeapon(giveplayerid,weaponid,ammo);
 		format(string, 100, "\2;**(ADMIN GIVE WEAPON)** %s(%d) Admin Gave Player %s, Weapon: %s, with ammo: %s\2;", string, giveplayerid,weaponid,ammo);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 		return 1;
 	}
 	return 1;
@@ -10414,7 +10517,7 @@ CMD:adkill(playerid, params[])
 	new giveplayerid;
     if(PlayerInfo[playerid][AdminLevel] == 1337)
 	{
-	    if(sscanf(params, "iz[128]", giveplayerid, msg))
+	    if(sscanf(params, "is[128]", giveplayerid, msg))
 		{
 		    SendClientMessage(playerid,COLOR_ERROR,"USAGE: /adkill [Playerid] [Message]");
 		    return 1;
@@ -10616,7 +10719,7 @@ CMD:adinfo(playerid, params[])
 	    GetPlayerArmour(giveplayerid,parmor);
 	    printf("**(ADMIN INFO)** Server Admin %s(%d) has requested to view the information of %s(%d)",adminname,playerid,pname,giveplayerid);
 	    format(string, sizeof(string), "**(ADMIN INFO)** Server Admin %s(%d) has requested to view the information of %s(%d)",adminname,playerid,pname,giveplayerid);
-		IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		DCC_SendChannelMessage(discordChannel, string);
 		format(string, sizeof(string), "(ADMIN INFO) %s(%d)",pname,giveplayerid);
 	    SendClientMessage(playerid,COLOR_ADMIN, string);
 	    format(string, sizeof(string), "ID: %d IP: %s PING: %d",giveplayerid,ipstring,pping);
@@ -10795,10 +10898,6 @@ CMD:adweb(playerid, params[])
 		SendClientMessageToAll(0x87CEEBAA, "www.sa-rcr.com");
 		GameTextForAll("~w~www.sa-rcr.com", 6000, 0);
    	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -10816,10 +10915,6 @@ CMD:adan(playerid, params[])
 	    for(new i=0;i<MAX_PLAYERS;i++)
 		GameTextForAll(msg,4000,0);
    	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -10842,10 +10937,6 @@ CMD:adoff(playerid, params[])
 	    InAdminMode[playerid] =0;
 	    SendClientMessage(playerid,COLOR_ADMIN,"(ADMIN MODE OFF) You are no longer in Admin Mode");
    	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -10869,10 +10960,6 @@ CMD:adon(playerid, params[])
 		InAdminMode[playerid] =1337;
 		SendClientMessage(playerid,COLOR_ADMIN,"(ADMIN MODE ON) You are now in Admin Mode");
    	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -10890,10 +10977,6 @@ CMD:adarea51(playerid, params[])
 		    SetPlayerFacingAngle(playerid,301.9305);
 		    SetCameraBehindPlayer(playerid);
 		}
-	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	}
 	return 1;
 }
@@ -10914,10 +10997,6 @@ CMD:adyugo(playerid, params[])
 		}
 		SetTimerEx("Unfreeze",1000,0,"d",playerid);
 	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -10935,10 +11014,6 @@ CMD:adrpl(playerid, params[])
 		    SetPlayerFacingAngle(playerid,88.7433);
 		    SetCameraBehindPlayer(playerid);
 		}
-	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	}
 	return 1;
 }
@@ -10958,7 +11033,6 @@ CMD:adhq(playerid, params[])
 		    SetCameraBehindPlayer(playerid);
 		}
 	}
-	else SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	return 1;
 }
 
@@ -10979,11 +11053,6 @@ CMD:adderbyclose(playerid, params[])
 			format(str, sizeof(str), "**(ADMIN CLOSE)** The LV Stadium has been closed by Admin: %s(%d)", pname,playerid);
 			SendClientMessageToAll(COLOR_ADMIN, str);
 			DerbyOpen =0;
-			return 1;
-		}
-		else
-		{
-			SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 			return 1;
 		}
 	}
@@ -11007,11 +11076,6 @@ CMD:adderbyopen(playerid, params[])
 			SendClientMessageToAll(COLOR_ADMIN, sstring);
 			SendClientMessageToAll(COLOR_ADMIN, "Destruction Derby will begin soon - Do ya want to enter?");
 			DerbyOpen =1;
-			return 1;
-		}
-		else
-		{
-			SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 			return 1;
 		}
 	}
@@ -11049,11 +11113,6 @@ CMD:adcmds(playerid, params[])
 		SendClientMessage(playerid,COLOR_ADMIN,"/adreg [id] /adautobahn -Teleport to Autobahn /adnoob Warns a player for being a noob");
 		SendClientMessage(playerid,COLOR_ADMIN,"/addmer warns a player for DM  /adautobahn Teles to AB /adgc (ID) (Amount)");
    	}
-	else
-	{
-   		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-		return 1;
-	}
 	return 1;
 }
 
@@ -11317,11 +11376,6 @@ CMD:adap(playerid, params[])
 	    SetPlayerPos(playerid,1548.7792,1745.0867,10.8203);
 	    SetCameraBehindPlayer(playerid);
    	}
-	else
-	{
-	    SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	    return 1;
-	}
 	return 1;
 }
 
@@ -11813,7 +11867,7 @@ CMD:kill(playerid, params[])
 	    GetPlayerName(playerid, str, 24);
 	    format(str, 100, "%s(%d) Has commited suicide using /kill", str,playerid);
 	    SendClientMessageToAll(0xEE82EEAA, str);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
+	    DCC_SendChannelMessage(discordChannel, str);
 		oscore = GetPlayerScore(playerid);
 	    SetPlayerScore(playerid, oscore -1);
 	    SetPlayerHealth(playerid,0);
@@ -12140,11 +12194,6 @@ CMD:adautobahn(playerid, params[])
 	    SetPlayerPos(playerid,2158.3606,1419.1886,10.8203);
 	    SetCameraBehindPlayer(playerid);
   	}
-	else
-	{
-    	SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-    	return 1;
-	}
 	return 1;
 }
 
@@ -12565,10 +12614,6 @@ CMD:swathelp(playerid, params[])
 	    strins(menudialog,"{FFFF00}/SWATLift - Moving the S.W.A.T. Lift.\n",strlen(menudialog));
 		ShowPlayerDialog(playerid,1233, DIALOG_STYLE_MSGBOX, "{A0522D}S.W.A.T. Base Commands:", menudialog, "Ok","Cancel");
 	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -12579,10 +12624,6 @@ CMD:swatgate(playerid, params[])
 	    SendClientMessage(playerid, COLOR_SWAT, "The S.W.A.T. Gate are now moving.");
 		MoveDynamicObject(SWATGate, 648.17480469, -2000.21386719, 5.2062435150146, 2.0); //SWAT Gate
 		SetTimer("Resetbase", 10000, false);
-	}
-	else
-	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	}
 	return 1;
 }
@@ -12599,10 +12640,6 @@ CMD:swatcargate(playerid,params[])
 		SetTimer("Resetbase", 5000, false);
 		return 1;
 	}
-	else
-	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -12615,10 +12652,6 @@ CMD:swatlift(playerid, params[])
 		SetTimer("Resetbase", 5000, false);
 		return 1;
 	}
-	else
-	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -12629,10 +12662,6 @@ CMD:swatboatgate(playerid, params[])
 	    SendClientMessage(playerid, COLOR_SWAT, "The S.W.A.T. Boat Gate are now moving.");
 		MoveDynamicObject(SWATBoatGate, 660.25610351563, -2078.0415039063, 11.017894744873, 2.0); //SWAT Boat Gate
 		SetTimer("Resetbase", 5000, false);
-	}
-	else
-	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	}
 	return 1;
 }
@@ -12676,65 +12705,11 @@ CMD:adgc(playerid, params[])
 	    SendClientMessage(giveplayerid, 0x00C7FFAA, string);
 	    format(string, sizeof(string), "Admin %s(%d) Has sent $%d to receiver %s(%d)",sendername,playerid,Amount,receivername,giveplayerid);
 	    printf("%s",string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 		return 1;
-	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	}
 	return 1;
 }
-
-/*CMD:adgc(playerid, params[])
-{
-	new string[128];
-	new giveplayerid;
-	new Amount;
-	if(PlayerInfo[playerid][AdminLevel] == 1337)
-	{
-	    if(sscanf(params, "ii", giveplayerid, Amount))
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"USAGE: /adgc [Playerid] [Amount]");
-		    return 1;
-		}
-	 	if(!IsPlayerConnected(giveplayerid))
-		{
-			format(string,sizeof(string),"The Player ID (%d) is not connected to the server. You cannot give money to him.",giveplayerid);
-	        SendClientMessage(playerid,COLOR_ERROR,string);
-			return 1;
-		}
-		if(giveplayerid == playerid)
-		{
-		    SendClientMessage(playerid,COLOR_ERROR,"You cannot give yourself money");
-		    return 1;
-		}
-		if(Amount > 150000)
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "I am sorry but you can't give that much of cash");
-		}
-		if(Amount <= 0)
-		{
-		    SendClientMessage(playerid, COLOR_ERROR, "You have to send money");
-		}
-	    new sendername[24];
-	    new receivername[24];
-	    GetPlayerName(playerid,sendername, 24);
-		GetPlayerName(giveplayerid,receivername, 24);
-	    GivePlayerMoney(giveplayerid,Amount);
-	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Cash Sent_|");
-		format(string, sizeof(string), "You have sent $%d to %s(%d)",Amount,receivername,giveplayerid);
-	    SendClientMessage(playerid, 0x00C7FFAA, string);
-	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_Cash Received From Admin_|");
-		format(string, sizeof(string), "%s(%d) Has sent you $%d",sendername,playerid,Amount);
-	    SendClientMessage(giveplayerid, 0x00C7FFAA, string);
-	    format(string, sizeof(string), "Admin %s(%d) Has sent $%d to receiver %s(%d)",sendername,playerid,Amount,receivername,giveplayerid);
-	    printf("%s",string);
-	    ircSay(EchoConnection, EchoChan,string);
-		return 1;
-	}
-	else return SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-}*/
 
 CMD:withdraw(playerid, params[])
 {
@@ -12794,7 +12769,7 @@ CMD:withdraw(playerid, params[])
 			SendClientMessage(playerid,0x808080AA,string);
 			SendClientMessage(playerid,0x808080AA,"Minimum/Maximum amounts are $1 - $500000");
 			format(string, sizeof(string), "**(Bank F Transaction)** %s(%d) Has attempted to withdraw $%d from bank account",pname,playerid,moneystowithdraw);
-	        IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	        DCC_SendChannelMessage(discordChannel, string);
 			printf("%s",string);
 			UsedBankRecently[playerid] =5;
 			return 1;
@@ -12807,7 +12782,7 @@ CMD:withdraw(playerid, params[])
 			format(string, sizeof(string), "|** Transaction Failed. You do not have enough bank funds");
 			SendClientMessage(playerid,0x808080AA,string);
 			format(string, sizeof(string), "**(Bank NEF Transaction** %s(%d) Has attempted to withdraw $%d from bank account",pname,playerid,moneystowithdraw);
-	        IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	        DCC_SendChannelMessage(discordChannel, string);
 			printf("%s",string);
 			UsedBankRecently[playerid] =5;
 			return 1;
@@ -12833,7 +12808,7 @@ CMD:withdraw(playerid, params[])
 			dUserSetINT(PlayerName(playerid)).("bankcash",BankCash[playerid]);
 			format(string, sizeof(string), "**(Bank Transaction)** %s(%d) Has withdrawn $%d from bank account",pname,playerid,moneystowithdraw);
 			printf("%s",string);
-			IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			DCC_SendChannelMessage(discordChannel, string);
 			UsedBankRecently[playerid] =5;
 			return 1;
   		}
@@ -12857,7 +12832,7 @@ CMD:withdraw(playerid, params[])
 			SendClientMessage(playerid,0x808080AA,string);
 			SendClientMessage(playerid,0x808080AA,"Minimum/Maximum amounts are $1 - $500000");
 			format(string, sizeof(string), "**(Bank F Transaction)** %s(%d) Has attempted to withdraw $%d from bank account",pname,playerid,moneystowithdraw);
-	        IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	        DCC_SendChannelMessage(discordChannel, string);
 			printf("%s",string);
 			UsedBankRecently[playerid] =5;
 			return 1;
@@ -12870,7 +12845,7 @@ CMD:withdraw(playerid, params[])
 			format(string, sizeof(string), "|** Transaction Failed. You do not have enough bank funds");
 			SendClientMessage(playerid,0x808080AA,string);
 			format(string, sizeof(string), "**(Bank NEF Transaction** %s(%d) Has attempted to withdraw $%d from bank account",pname,playerid,moneystowithdraw);
-	        IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	        DCC_SendChannelMessage(discordChannel, string);
 			printf("%s",string);
 			UsedBankRecently[playerid] =5;
 			return 1;
@@ -12896,7 +12871,7 @@ CMD:withdraw(playerid, params[])
 			dUserSetINT(PlayerName(playerid)).("bankcash",BankCash[playerid]);
 			format(string, sizeof(string), "**(Bank Transaction)** %s(%d) Has withdrawn $%d from bank account",pname,playerid,moneystowithdraw);
 			printf("%s",string);
-			IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			DCC_SendChannelMessage(discordChannel, string);
 			UsedBankRecently[playerid] =5;
 			return 1;
   		}
@@ -12992,7 +12967,7 @@ CMD:deposit(playerid, params[])
 			dUserSetINT(PlayerName(playerid)).("bankcash",BankCash[playerid]);
 			format(string, sizeof(string), "**(Bank Transaction)** %s(%d) Has made a deposit of $%d into bank account",pname,playerid,moneystodeposit);
 			printf("%s",string);
-			IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			DCC_SendChannelMessage(discordChannel, string);
 			UsedBankRecently[playerid] =10;
 			return 1;
 		}
@@ -13046,7 +13021,7 @@ CMD:deposit(playerid, params[])
 			dUserSetINT(PlayerName(playerid)).("bankcash",BankCash[playerid]);
 			format(string, sizeof(string), "**(Bank Transaction)** %s(%d) Has made a deposit of $%d into bank account",pname,playerid,moneystodeposit);
 			printf("%s",string);
-			IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			DCC_SendChannelMessage(discordChannel, string);
 			UsedBankRecently[playerid] =10;
 			return 1;
 		}
@@ -13290,6 +13265,44 @@ CMD:cm(playerid, params[])
     return 1;
 }
 
+CMD:am(playerid, params[])
+{
+	new string[128];
+	new msg[128];
+    if(sscanf(params, "s[128]", msg)) return SendClientMessage(playerid, COLOR_ERROR, "Usage: /am (msg)");
+    if(IsSpawned[playerid] == 0)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
+	    return 1;
+   	}
+   	if(Jailed[playerid] == 1)
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "You cannot use this command in jail");
+   		return 1;
+   	}
+   	if(HasArmyRadio[playerid] == 0)
+	{
+	    SendClientMessage(playerid,COLOR_ERROR,"You do not have a Law Enforcement radio");
+	    return 1;
+   	}
+	else
+	{
+		new pname[24];
+		GetPlayerName(playerid, pname, 24);
+	    format(string, sizeof(string), "ARMY MESSAGE: %s(%d) %s",pname,playerid,msg);
+	    printf("%s", string);
+	    for(new i=0;i<MAX_PLAYERS;i++)
+		{
+	    	if(ArmyRadio[i] == 1)
+			{
+			    format(string, sizeof(string), "ARMY MESSAGE: %s(%d) %s",pname,playerid,msg);
+			    SendClientMessage(i,COLOR_PURPLE,string);
+   			}
+   		}
+   	}
+    return 1;
+}
+
 CMD:fm(playerid, params[])
 {
 	new string[128];
@@ -13332,7 +13345,7 @@ CMD:sm(playerid, params[])
 {
 	new string[128];
 	new msg[128];
-    if(sscanf(params, "s[128]", msg)) return SendClientMessage(playerid, COLOR_ERROR, "Usage: /sc (msg)");
+    if(sscanf(params, "s[128]", msg)) return SendClientMessage(playerid, COLOR_ERROR, "Usage: /sm (msg)");
     if(IsSpawned[playerid] == 0)
 	{
 		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
@@ -13358,7 +13371,7 @@ CMD:sm(playerid, params[])
 		{
    			if(SWATRadio[i] == 1)
 			{
-			    if(PlayerInfo[playerid][SWATRank] == 1)
+			    if(PlayerInfo[playerid][SWATRank] >= 0)
 			    {
 			    	format(string, sizeof(string), "S.W.A.T. MESSAGE: Private %s(%d) %s, over.",pname,playerid,msg);
 			    	SendClientMessage(i,COLOR_SWAT,string);
@@ -13459,7 +13472,7 @@ CMD:weaponsoff(playerid, params[])
    	}
     if(gTeam[playerid] == TEAM_GUNDEL)
 	{
-        SendClientMessage(playerid, COLOR_ERROR, "Bad Command. Type /commands for available commands depending on your chosen job/skill");
+        SendClientMessage(playerid, COLOR_ERROR, "You are not a gun dealer. Type /commands to see your commands.");
         return 1;
 	}
 	if(Wantsguns[playerid] == 0)
@@ -13585,10 +13598,6 @@ CMD:eee(playerid,params[])
         SetCameraBehindPlayer(playerid);
         return true;
 	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -13607,7 +13616,7 @@ CMD:sell(playerid, params[]) // sellcar
 	    format(str, 100, "%s(%d) Has found and sold the bonus nrg-500 for $100000 at AutoBahn", str,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, str);
 	    printf("%s",str);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
+	    DCC_SendChannelMessage(discordChannel, str);
 	    GivePlayerMoney(playerid,100000);
 	    new playerScore = GetPlayerScore(playerid);
 		SetPlayerScore(playerid, playerScore+ 1);
@@ -13629,7 +13638,7 @@ CMD:sell(playerid, params[]) // sellcar
 	    format(str, 100, "%s(%d) Has found and sold the bonus Bullet for $100000 at AutoBahn.", str,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, str);
 	    printf("%s",str);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
+	    DCC_SendChannelMessage(discordChannel, str);
 		GivePlayerMoney(playerid,100000);
 	    new playerScore = GetPlayerScore(playerid);
 		SetPlayerScore(playerid, playerScore+ 1);
@@ -13656,7 +13665,7 @@ CMD:sell(playerid, params[]) // sellcar
 	    GetPlayerName(playerid, str, 24);
 		format(str, 100, "%s(%d) Has sold a vehicle for $25000 at AutoBahn.", str,playerid);
 	    printf("%s",str);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
+	    DCC_SendChannelMessage(discordChannel, str);
    	}
 	else if(GetPlayerVehicleID(playerid) == adminElegy || GetPlayerVehicleID(playerid) == adminTurismo || GetPlayerVehicleID(playerid) == adminSultan ||  GetPlayerVehicleID(playerid) == adminUranus)
 	{
@@ -13743,10 +13752,6 @@ CMD:clearchat(playerid, params[])
 		SendClientMessage(playerid, COLOR_GREEN, "CHAT CLEARED");
 	    return 1;
     }
-    else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -14605,7 +14610,7 @@ CMD:rob(playerid, params[])
     new pcash = random(GetPlayerMoney(giveplayerid));
     format(string, sizeof(string), "%s(%d) Has robbed $%d from %s(%d)",PlayerName(playerid),playerid,pcash,PlayerName(giveplayerid),giveplayerid);
 	printf("%s", string);
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	DCC_SendChannelMessage(discordChannel, string);
     GivePlayerMoney(playerid,pcash);
     GivePlayerMoney(giveplayerid, -pcash);
     SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_Robbery Victim_|");
@@ -14749,7 +14754,7 @@ CMD:rape(playerid, params[])
 	    SetPlayerWantedLevel(playerid,plwl +1);
 		format(string, sizeof(string), "%s(%d) Has raped %s(%d)'s dead, rotting corpse",rapername,playerid,victimname,giveplayerid);
 		SendClientMessageToAll(0xB22222AA, string);
-		IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		DCC_SendChannelMessage(discordChannel, string);
 		SpamStrings[playerid] ++;
 		if(Chlamydia[playerid] == 0)
 		{
@@ -14773,7 +14778,7 @@ CMD:rape(playerid, params[])
 		SetPlayerScore(playerid, oscore +1);
 	    format(string, sizeof(string), "%s(%d) Has been raped to death by rapist %s(%d)",victimname,giveplayerid,rapername,playerid);
 	    SendClientMessageToAll(0xB22222AA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    new plwl = GetPlayerWantedLevel(playerid);
 		new pcol = GetPlayerColor(playerid);
 	    SetPlayerWantedLevel(playerid,plwl +10);
@@ -14808,14 +14813,14 @@ CMD:rape(playerid, params[])
 	    Chlamydia[giveplayerid] =1;
 	    format(string, sizeof(string), "%s(%d) Has been infected with Chlamydia",victimname,giveplayerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
     }
     if(gTeam[playerid] != TEAM_RAPIST && Chlamydia[playerid] == 1)
 	{
 	    Chlamydia[giveplayerid] =1;
 	    format(string, sizeof(string), "%s(%d) Has been infected with Chlamydia",victimname,giveplayerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    format(string, sizeof(string), "You have infected %s(%d) with Chlamydia",victimname,giveplayerid);
 	    SendClientMessage(playerid,0x00C7FFAA, string);
     }
@@ -14828,7 +14833,7 @@ CMD:rape(playerid, params[])
     RapedPlyRecent[playerid] =1;
     format(string, sizeof(string), "%s(%d) Has raped %s(%d)",rapername,playerid,victimname,giveplayerid);
 	printf("%s", string);
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	DCC_SendChannelMessage(discordChannel, string);
 	PlayerPlaySound(giveplayerid, 1190, 0.0, 0.0, 0.0);
 	commitedcrimerecently[playerid] +=120;
     new current_zone;
@@ -14928,7 +14933,7 @@ CMD:parole(playerid, params[])
     SendClientMessageToAll(0x00C7FFAA, string);
     format(string, sizeof(string), "%s(%d) Has released %s(%d) from jail early",turnkeyname,playerid,prisonername,giveplayerid);
     printf("%s",string);
-    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+    DCC_SendChannelMessage(discordChannel, string);
     oscore = GetPlayerScore(playerid);
     SetPlayerScore(playerid, oscore +1);
     return 1;
@@ -15236,7 +15241,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, AlcatrazArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Bounty Hunter %s(%d) has re-captured Escaped Convict %s(%d) and has sent the suspect to Alcatraz",oname,playerid,pname,giveplayerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Busted By A Bounty Hunter_|");
 	    format(string, sizeof(string), "You have been sent to Alcatraz by Bounty Hunter %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15274,7 +15279,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, AlcatrazArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Escaped Convict %s(%d) has been re-arrested and sent to Alcatraz by Officer %s(%d) ",pname,giveplayerid,oname,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Arrested_|");
 	    format(string, sizeof(string), "You have been sent to Alcatraz by Officer %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15310,7 +15315,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, ArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Wanted suspect %s(%d) has been arrested by Officer %s(%d) ",pname,giveplayerid,oname,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Arrested_|");
 	    format(string, sizeof(string), "You were Arrested by Officer %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15344,7 +15349,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, ArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Wanted suspect %s(%d) has been arrested by Officer %s(%d) ",pname,giveplayerid,oname,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Arrested_|");
 	    format(string, sizeof(string), "You were Arrested by Officer %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15378,7 +15383,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, ArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Wanted suspect %s(%d) has been arrested by Officer %s(%d) ",pname,giveplayerid,oname,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Arrested_|");
 	    format(string, sizeof(string), "You were Arrested by Officer %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15412,7 +15417,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, AlcatrazArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Most Wanted suspect %s(%d) has been sent to Alcatraz by Officer %s(%d) ",pname,giveplayerid,oname,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Arrested_|");
 	    format(string, sizeof(string), "You have been sent to Alcatraz by Officer %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15447,7 +15452,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, AlcatrazArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Most Wanted suspect %s(%d) has been sent to Alcatraz by Officer %s(%d) ",pname,giveplayerid,oname,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Arrested_|");
 	    format(string, sizeof(string), "You have been sent to Alcatraz by Officer %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15482,7 +15487,7 @@ CMD:ar(playerid, params[])
 	    SetPlayerFacingAngle(giveplayerid, AlcatrazArrestedSpawn[rnd][3]);
 	    format(string, sizeof(string), "Most Wanted suspect %s(%d) has been sent to Alcatraz by Officer %s(%d) ",pname,giveplayerid,oname,playerid);
 	    SendClientMessageToAll(0x00C7FFAA, string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 	    SendClientMessage(giveplayerid, 0xA9A9A9AA, "|_You Have Been Arrested_|");
 	    format(string, sizeof(string), "You have been sent to Alcatraz by Officer %s(%d)",oname,playerid);
 	    SendClientMessage(giveplayerid,0x00C7FFAA, string);
@@ -15645,295 +15650,6 @@ CMD:cureme(playerid, params[])
 	Salmonella[playerid] =0;
     return 1;
 }
-
-CMD:robstore(playerid, params[])
-{
-	new string[128];
-	if(IsSpawned[playerid] == 0)
-	{
-		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-	    return 1;
-	}
-	if(Jailed[playerid] == 1)
-	{
-		SendClientMessage(playerid, COLOR_ERROR, "You are dead. You cannot use this command");
-	    return 1;
-	}
-	if(cuffed[playerid] == 1)
-	{
-		SendClientMessage(playerid, COLOR_ERROR, "You cannot use this command while you are handcuffed");
-		return 1;
-	}
-	if(!IsPlayerInDynamicCP(playerid, CP_247))
-	{
-	    SendClientMessage(playerid,COLOR_ERROR,"You are not in any store main checkpoint");
-	    return 1;
-    }
-    if(gTeam[playerid] == TEAM_COP || gTeam[playerid] == TEAM_FIREMAN || gTeam[playerid] == TEAM_ARMY || gTeam[playerid] == TEAM_SWAT || gTeam[playerid] == TEAM_FBI || gTeam[playerid] == TEAM_MEDIC || gTeam[playerid] == TEAM_CASSEC || gTeam[playerid] == TEAM_JAILTK)
-	{
-		SendClientMessage(playerid,COLOR_ERROR,"You cannot rob any store");
-		return 1;
- 	}
- 	if(GetPlayerVirtualWorld(playerid) == 0)
-	{
-		SendClientMessage(playerid,COLOR_ERROR,"You cannot rob this store. You can only rob 24/7 stores at gas stations in LV");
-	 	return 1;
- 	}
- 	new roobrand = random(5000);
- 	if(roobrand >=0 && roobrand <=50)
-	{
-	 	SendClientMessage(playerid, 0xA9A9A9AA, "|_Store Robbery Failed_|");
-	 	SendClientMessage(playerid,COLOR_ERROR,"Your attempt to rob the store has failed");
-	 	return 1;
- 	}
- 	else if(roobrand >=51 && roobrand <=5000)
-	{
-    	if(IsPlayerInDynamicCP(playerid, CP_247))
-    	{
-			if(GetPlayerVirtualWorld(playerid) == 1 && twofoursevenrobbed1 >= 1)
-			{
-				SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
-		 		return 1;
- 			}
-        	if(GetPlayerVirtualWorld(playerid) == 1 && twofoursevenrobbed1 == 0)
-			{
-		        new robbber[30];
-		        new pcol = GetPlayerColor(playerid);
-		        GetPlayerName(playerid,robbber,30);
-		        new plwl = GetPlayerWantedLevel(playerid);
-			    SetPlayerWantedLevel(playerid, plwl +4);
-				robbingstore[playerid] =20;
-				twofoursevenrobbed1 = 240;
-				SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
-				SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
-				plwl = GetPlayerWantedLevel(playerid);
-				SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
-				format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
-				SendClientMessage(playerid,pcol,string);
-				commitedcrimerecently[playerid] +=120;
-				printf("%s(%d) has started a 24/7 robbery in Redsands East",robbber,playerid);
-				for(new i=0;i<MAX_PLAYERS;i++)
-				{
-        			if(LawEnforcementRadio[i] == 1)
-					{
-				        new string1[256];
-				        new string2[256];
-						format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
-						format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Redsands East and arrest %s(%d)", robbber,playerid);
-						SendClientMessage(i, COLOR_ROYALBLUE, string1);
-						SendClientMessage(i, COLOR_ROYALBLUE, string2);
-	    			}
-	    		}
-				return 1;
- 			}
-			if(GetPlayerVirtualWorld(playerid) == 2 && twofoursevenrobbed2 >= 1)
-			{
-				SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
-		 		return 1;
-	 		}
-	        if(GetPlayerVirtualWorld(playerid) == 2 && twofoursevenrobbed2 == 0)
-			{
-		        new robbber[30];
-		        new pcol = GetPlayerColor(playerid);
-		        GetPlayerName(playerid,robbber,30);
-		        new plwl = GetPlayerWantedLevel(playerid);
-			    SetPlayerWantedLevel(playerid, plwl +4);
-				robbingstore[playerid] =20;
-				twofoursevenrobbed2 = 240;
-				SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
-				SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
-				plwl = GetPlayerWantedLevel(playerid);
-				SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
-				format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
-				SendClientMessage(playerid,pcol,string);
-				commitedcrimerecently[playerid] +=120;
-				if(PlayerInfo[playerid][RobRank] <=39)
-				{
-			    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
-			    	PlayerInfo[playerid][RobRank] +=1;
-				}
-				printf("%s(%d) has started a 24/7 robbery in Emerald Isle",robbber,playerid);
-				for(new i=0;i<MAX_PLAYERS;i++)
-				{
-	        		if(LawEnforcementRadio[i] == 1)
-					{
-				        new string1[256];
-				        new string2[256];
-						format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
-						format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Emerald Isle and arrest %s(%d)", robbber,playerid);
-						SendClientMessage(i, COLOR_ROYALBLUE, string1);
-						SendClientMessage(i, COLOR_ROYALBLUE, string2);
-		    		}
-		    	}
-				return 1;
-	 		}
-			if(GetPlayerVirtualWorld(playerid) == 3 && twofoursevenrobbed3 >= 1)
-			{
-				SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
-		 		return 1;
-	 		}
-	        if(GetPlayerVirtualWorld(playerid) == 3 && twofoursevenrobbed3 == 0)
-			{
-		        new robbber[30];
-		        new pcol = GetPlayerColor(playerid);
-		        GetPlayerName(playerid,robbber,30);
-		        new plwl = GetPlayerWantedLevel(playerid);
-			    SetPlayerWantedLevel(playerid, plwl +4);
-				robbingstore[playerid] =20;
-				twofoursevenrobbed3 = 240;
-				SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
-				SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
-				plwl = GetPlayerWantedLevel(playerid);
-				SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
-				format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
-				SendClientMessage(playerid,pcol,string);
-				commitedcrimerecently[playerid] +=120;
-				if(PlayerInfo[playerid][RobRank] <=39)
-				{
-			    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
-			    	PlayerInfo[playerid][RobRank] +=1;
-				}
-				printf("%s(%d) has started a 24/7 robbery in South East Las Venturas",robbber,playerid);
-				for(new i=0;i<MAX_PLAYERS;i++)
-				{
-		        	if(LawEnforcementRadio[i] == 1)
-					{
-					    new string1[256];
-					    new string2[256];
-						format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
-						format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in South East Las Venturas and arrest %s(%d)", robbber,playerid);
-						SendClientMessage(i, COLOR_ROYALBLUE, string1);
-						SendClientMessage(i, COLOR_ROYALBLUE, string2);
-					}
-		    	}
-				return 1;
-	 		}
-	 		if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed4 >= 1)
-			{
-				SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
-		 		return 1;
-	 		}
-	        if(GetPlayerVirtualWorld(playerid) == 4 && twofoursevenrobbed4 == 0)
-			{
-		        new robbber[30];
-		        new pcol = GetPlayerColor(playerid);
-		        GetPlayerName(playerid,robbber,30);
-		        new plwl = GetPlayerWantedLevel(playerid);
-			    SetPlayerWantedLevel(playerid, plwl +4);
-				robbingstore[playerid] =20;
-				twofoursevenrobbed4 = 240;
-				SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
-				SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
-				plwl = GetPlayerWantedLevel(playerid);
-				SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
-				format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
-				SendClientMessage(playerid,pcol,string);
-				commitedcrimerecently[playerid] +=120;
-				if(PlayerInfo[playerid][RobRank] <=39)
-				{
-			    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
-			    	PlayerInfo[playerid][RobRank] +=1;
-				}
-				printf("%s(%d) has started a 24/7 robbery in South Las Venturas",robbber,playerid);
-				for(new i=0;i<MAX_PLAYERS;i++)
-				{
-	        		if(LawEnforcementRadio[i] == 1)
-					{
-				        new string1[256];
-				        new string2[256];
-						format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
-						format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in South Las Venturas and arrest %s(%d)", robbber,playerid);
-						SendClientMessage(i, COLOR_ROYALBLUE, string1);
-						SendClientMessage(i, COLOR_ROYALBLUE, string2);
-		    		}
-		    	}
-				return 1;
-	 		}
-			if(GetPlayerVirtualWorld(playerid) == 5 && twofoursevenrobbed5 >= 1)
-			{
-				SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
-		 		return 1;
-	 		}
-	        if(GetPlayerVirtualWorld(playerid) == 5 && twofoursevenrobbed5 == 0)
-			{
-		        new robbber[30];
-		        new pcol = GetPlayerColor(playerid);
-		        GetPlayerName(playerid,robbber,30);
-		        new plwl = GetPlayerWantedLevel(playerid);
-			    SetPlayerWantedLevel(playerid, plwl +4);
-				robbingstore[playerid] =20;
-				twofoursevenrobbed5 = 240;
-				SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
-				SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
-				plwl = GetPlayerWantedLevel(playerid);
-				SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
-				format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
-				SendClientMessage(playerid,pcol,string);
-				commitedcrimerecently[playerid] +=120;
-				if(PlayerInfo[playerid][RobRank] <=39)
-				{
-			    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
-			    	PlayerInfo[playerid][RobRank] +=1;
-				}
-				printf("%s(%d) has started a 24/7 robbery in Bone County",robbber,playerid);
-				for(new i=0;i<MAX_PLAYERS;i++)
-				{
-	        		if(LawEnforcementRadio[i] == 1)
-					{
-				        new string1[256];
-				        new string2[256];
-						format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
-						format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Bone County and arrest %s(%d)", robbber,playerid);
-						SendClientMessage(i, COLOR_ROYALBLUE, string1);
-						SendClientMessage(i, COLOR_ROYALBLUE, string2);
-		    		}
-		    	}
-				return 1;
- 			}
-  			if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed6 >= 1)
-			{
-				SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
-		 		return 1;
- 			}
-        	if(GetPlayerVirtualWorld(playerid) == 6 && twofoursevenrobbed6 == 0)
-			{
-		        new robbber[30];
-		        new pcol = GetPlayerColor(playerid);
-		        GetPlayerName(playerid,robbber,30);
-		        new plwl = GetPlayerWantedLevel(playerid);
-			    SetPlayerWantedLevel(playerid, plwl +4);
-				robbingstore[playerid] =20;
-				twofoursevenrobbed6 = 240;
-				SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
-				SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
-				plwl = GetPlayerWantedLevel(playerid);
-				SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
-				format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
-				SendClientMessage(playerid,pcol,string);
-				commitedcrimerecently[playerid] +=120;
-				if(PlayerInfo[playerid][RobRank] <=39)
-				{
-			    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
-		    		PlayerInfo[playerid][RobRank] +=1;
-				}
-				printf("%s(%d) has started a 24/7 robbery in Spiny Bed",robbber,playerid);
-				for(new i=0;i<MAX_PLAYERS;i++)
-				{
-	        		if(LawEnforcementRadio[i] == 1)
-					{
-				        new string1[256];
-				        new string2[256];
-						format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
-						format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Spiny Bed and arrest %s(%d)", robbber,playerid);
-						SendClientMessage(i, COLOR_ROYALBLUE, string1);
-						SendClientMessage(i, COLOR_ROYALBLUE, string2);
-		    		}
-				}
-	    	}
-	    }
-	}
-	return 1;
-}
 	
 CMD:heal(playerid, params[])
 {
@@ -16011,231 +15727,6 @@ CMD:heal(playerid, params[])
     return 1;
 }
 
-// IRC Callbacks
-public IRC_OnConnect(botid, ip[], port)
-{
-	printf("*** IRC_OnConnect: Bot ID %d connected to %s:%d", botid, ip, port);
-	IRC_JoinChannel(botid, IRC_CHANNEL);
-	IRC_AddToGroup(gGroupID, botid);
-	return 1;
-}
-
-public IRC_OnDisconnect(botid, ip[], port, reason[])
-{
-	printf("*** IRC_OnDisconnect: Bot ID %d disconnected from %s:%d (%s)", botid, ip, port, reason);
-	IRC_RemoveFromGroup(gGroupID, botid);
-	return 1;
-}
-
-public IRC_OnConnectAttempt(botid, ip[], port)
-{
-	printf("*** IRC_OnConnectAttempt: Bot ID %d attempting to connect to %s:%d...", botid, ip, port);
-	return 1;
-}
-
-public IRC_OnConnectAttemptFail(botid, ip[], port, reason[])
-{
-	printf("*** IRC_OnConnectAttemptFail: Bot ID %d failed to connect to %s:%d (%s)", botid, ip, port, reason);
-	return 1;
-}
-
-public IRC_OnJoinChannel(botid, channel[])
-{
-	printf("*** IRC_OnJoinChannel: Bot ID %d joined channel %s", botid, channel);
-	return 1;
-}
-
-public IRC_OnLeaveChannel(botid, channel[], message[])
-{
-	printf("*** IRC_OnLeaveChannel: Bot ID %d left channel %s (%s)", botid, channel, message);
-	IRC_JoinChannel(botid, channel);
-	return 1;
-}
-
-public IRC_OnKickedFromChannel(botid, channel[], oppeduser[], oppedhost[], message[])
-{
-	printf("*** IRC_OnKickedFromChannel: Bot ID %d kicked by %s (%s) from channel %s (%s)", botid, oppeduser, oppedhost, channel, message);
-	IRC_JoinChannel(botid, channel);
-	return 1;
-}
-
-public IRC_OnUserDisconnect(botid, user[], host[], message[])
-{
-	printf("*** IRC_OnUserDisconnect (Bot ID %d): User %s (%s) disconnected (%s)", botid, user, host, message);
-	return 1;
-}
-
-public IRC_OnUserJoinChannel(botid, channel[], user[], host[])
-{
-	printf("*** IRC_OnUserJoinChannel (Bot ID %d): User %s (%s) joined channel %s", botid, user, host, channel);
-	return 1;
-}
-
-public IRC_OnUserLeaveChannel(botid, channel[], user[], host[], message[])
-{
-	printf("*** IRC_OnUserLeaveChannel (Bot ID %d): User %s (%s) left channel %s (%s)", botid, user, host, channel, message);
-	return 1;
-}
-
-public IRC_OnUserKickedFromChannel(botid, channel[], kickeduser[], oppeduser[], oppedhost[], message[])
-{
-	printf("*** IRC_OnUserKickedFromChannel (Bot ID %d): User %s kicked by %s (%s) from channel %s (%s)", botid, kickeduser, oppeduser, oppedhost, channel, message);
-}
-
-public IRC_OnUserNickChange(botid, oldnick[], newnick[], host[])
-{
-	printf("*** IRC_OnUserNickChange (Bot ID %d): User %s (%s) changed his/her nick to %s", botid, oldnick, host, newnick);
-	return 1;
-}
-
-public IRC_OnUserSetChannelMode(botid, channel[], user[], host[], mode[])
-{
-	printf("*** IRC_OnUserSetChannelMode (Bot ID %d): User %s (%s) on %s set mode: %s", botid, user, host, channel, mode);
-	return 1;
-}
-
-public IRC_OnUserSetChannelTopic(botid, channel[], user[], host[], topic[])
-{
-	printf("*** IRC_OnUserSetChannelTopic (Bot ID %d): User %s (%s) on %s set topic: %s", botid, user, host, channel, topic);
-	return 1;
-}
-
-public IRC_OnUserSay(botid, recipient[], user[], host[], message[])
-{
-	printf("*** IRC_OnUserSay (Bot ID %d): User %s (%s) sent message to %s: %s", botid, user, host, recipient, message);
-	if (!strcmp(recipient, BOT_1_NICKNAME))
-	{
-		IRC_Say(botid, user, "You sent me a PM!");
-	}
-	return 1;
-}
-
-public IRC_OnUserNotice(botid, recipient[], user[], host[], message[])
-{
-	printf("*** IRC_OnUserNotice (Bot ID %d): User %s (%s) sent notice to %s: %s", botid, user, host, recipient, message);
-	if (!strcmp(recipient, BOT_2_NICKNAME))
-	{
-		IRC_Notice(botid, user, "You sent me a notice!");
-	}
-	return 1;
-}
-
-public IRC_OnUserRequestCTCP(botid, user[], host[], message[])
-{
-	printf("*** IRC_OnUserRequestCTCP (Bot ID %d): User %s (%s) sent CTCP request: %s", botid, user, host, message);
-	if (!strcmp(message, "VERSION"))
-	{
-		IRC_ReplyCTCP(botid, user, "VERSION SA-MP IRC Plugin v" #PLUGIN_VERSION "");
-	}
-	return 1;
-}
-
-public IRC_OnUserReplyCTCP(botid, user[], host[], message[])
-{
-	printf("*** IRC_OnUserReplyCTCP (Bot ID %d): User %s (%s) sent CTCP reply: %s", botid, user, host, message);
-	return 1;
-}
-
-public IRC_OnReceiveRaw(botid, message[])
-{
-	new File:file;
-	if (!fexist("irc_log.txt"))
-	{
-		file = fopen("irc_log.txt", io_write);
-	}
-	else
-	{
-		file = fopen("irc_log.txt", io_append);
-	}
-	if (file)
-	{
-		fwrite(file, message);
-		fwrite(file, "\r\n");
-		fclose(file);
-	}
-	return 1;
-}
-
-// IRC Commands
-IRCCMD:say(botid, channel[], user[], host[], params[])
-{
-	if (IRC_IsVoice(botid, channel, user))
-	{
-		if (!isnull(params))
-		{
-			new msg[128];
-			format(msg, sizeof(msg), "02*** %s on IRC: %s", user, params);
-			IRC_GroupSay(gGroupID, channel, msg);
-			format(msg, sizeof(msg), "*** %s on IRC: %s", user, params);
-			SendClientMessageToAll(0x0000FFFF, msg);
-		}
-	}
-	return 1;
-}
-
-IRCCMD:kick(botid, channel[], user[], host[], params[])
-{
-	if (IRC_IsHalfop(botid, channel, user))
-	{
-		new playerid, reason[64];
-		if (sscanf(params, "dS(No reason)[64]", playerid, reason))
-		{
-			return 1;
-		}
-		if (IsPlayerConnected(playerid))
-		{
-			new msg[128], name[MAX_PLAYER_NAME];
-			GetPlayerName(playerid, name, sizeof(name));
-			format(msg, sizeof(msg), "02*** %s has been kicked by %s on IRC. (%s)", name, user, reason);
-			IRC_GroupSay(gGroupID, channel, msg);
-			format(msg, sizeof(msg), "*** %s has been kicked by %s on IRC. (%s)", name, user, reason);
-			SendClientMessageToAll(0x0000FFFF, msg);
-			Kick(playerid);
-		}
-	}
-	return 1;
-}
-
-IRCCMD:ban(botid, channel[], user[], host[], params[])
-{
-	if (IRC_IsOp(botid, channel, user))
-	{
-		new playerid, reason[64];
-		if (sscanf(params, "dS(No reason)[64]", playerid, reason))
-		{
-			return 1;
-		}
-		if (IsPlayerConnected(playerid))
-		{
-			new msg[128], name[MAX_PLAYER_NAME];
-			GetPlayerName(playerid, name, sizeof(name));
-			format(msg, sizeof(msg), "02*** %s has been banned by %s on IRC. (%s)", name, user, reason);
-			IRC_GroupSay(gGroupID, channel, msg);
-			format(msg, sizeof(msg), "*** %s has been banned by %s on IRC. (%s)", name, user, reason);
-			SendClientMessageToAll(0x0000FFFF, msg);
-			BanEx(playerid, reason);
-		}
-	}
-	return 1;
-}
-
-IRCCMD:rcon(botid, channel[], user[], host[], params[])
-{
-	if (IRC_IsOp(botid, channel, user))
-	{
-		if (!isnull(params))
-		{
-			if (strcmp(params, "exit", true) != 0 && strfind(params, "loadfs irc", true) == -1)
-			{
-				new msg[128];
-				format(msg, sizeof(msg), "RCON command %s has been executed.", params);
-				IRC_GroupSay(gGroupID, channel, msg);
-				SendRconCommand(params);
-			}
-		}
-	}
-	return 1;
-}
 
 forward announcement();
 public announcement()
@@ -16281,7 +15772,7 @@ public RobbingDrugsCountdown()
                	GetPlayerName(i,pname,30);
                	format(string, sizeof(string), "%s(%d) Has robbed %d grams of drugs from the Drug House",pname,i,drugrobrand);
                 SendClientMessageToAll(0x00C7FFAA,string);
-                IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+                DCC_SendChannelMessage(discordChannel, string);
                 format(string, sizeof(string), "~b~DRUG HOUSE~n~~y~ROBBERY COMPLETE~n~~w~%d GRAMS STOLEN!",drugrobrand);
                 GameTextForPlayer(i, string, 5000,3);
  				oscore = GetPlayerScore(i);
@@ -16774,6 +16265,565 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 		return 1;
 	}
+	if(dialogid == DIALOG_247STORE)
+	{
+  		if (response == 0)
+	    {
+	        SendClientMessage(playerid, COLOR_ERROR, "You canceled");
+	        return 1;
+		}
+		switch(listitem)
+   		{
+			case 0:
+			{
+			    if(GetPlayerMoney(playerid) <= 1499)
+				{
+					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+					SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Chainsaw ($2000)");
+					return 1;
+				}
+				GivePlayerMoney(playerid,-1500);
+				SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+				SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Chainsaw. You were charged $1500");
+				GivePlayerWeapon(playerid,9,1);
+			}
+			case 1:
+			{
+		    	if(GetPlayerMoney(playerid) <= 4)
+				{
+					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+					SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy flowers ($5)");
+					return 1;
+				}
+				GivePlayerMoney(playerid,-5);
+				SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+				SendClientMessage(playerid, 0x00C7FFAA, "You have bought flowers. You were charged $5");
+				GivePlayerWeapon(playerid,14,1);
+			}
+			case 2:
+			{
+			    if(GetPlayerMoney(playerid) <= 99)
+			    {
+					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+			   		SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Baseball Bat ($100)");
+			   		return 1;
+				}
+				GivePlayerMoney(playerid,-100);
+			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Baseball Bat. You were charged $100");
+			    GivePlayerWeapon(playerid,5,1);
+			}
+			case 3:
+			{
+			    if(GetPlayerMoney(playerid) <= 19)
+				{
+				   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+				   SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy Beer ($20)");
+				   return 1;
+				}
+			    GivePlayerMoney(playerid,-20);
+			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought Beer. You were charged $20");
+			    new Float:beerhealth;
+		        GetPlayerHealth(playerid,beerhealth);
+			    if(beerhealth <=95)
+			    {
+					SetPlayerHealth(playerid,beerhealth+5);
+    		    }
+			}
+			case 4:
+			{
+			    if(GetPlayerMoney(playerid) <= 999)
+			    {
+				   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+				   SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Wallet ($1000)");
+				   return 1;
+				}
+                if(HasWallet[playerid] >= 1)
+			    {
+				   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+				   SendClientMessage(playerid, COLOR_ERROR, "You already have a Wallet");
+				   return 1;
+				}
+			    GivePlayerMoney(playerid,-1000);
+			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Wallet. You were charged $1000");
+			    SendClientMessage(playerid, 0x00C7FFAA, "You can be robbed upto 3 times and not loose any cash");
+			    HasWallet[playerid] =3;
+			}
+			case 5:
+			{
+			    if(GetPlayerMoney(playerid) <= 499)
+				{
+					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+					SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Parachute ($500)");
+			   		return 1;
+				}
+				GivePlayerMoney(playerid,-500);
+				SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+				SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Parachute. You were charged $500");
+				GivePlayerWeapon(playerid,46,1);
+			}
+			case 6:
+			{
+			    if(GetPlayerMoney(playerid) <= 3999)
+			    {
+				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+				    SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy some rope ($4000)");
+				    return 1;
+				}
+				if(gotRope[playerid] == 1)
+				{
+					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+					SendClientMessage(playerid, 0x00C7FFAA, "You already have some rope.");
+				}
+			    GivePlayerMoney(playerid,-4000);
+			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought some rope. You were charged $4000");
+			    gotRope[playerid] =1;
+			}
+			case 7:
+			{
+			    if(GetPlayerMoney(playerid) <= 999)
+				{
+			   		SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+		   			SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a pair of rusty sissors. ($1000)");
+			   		return 1;
+				}
+			    GivePlayerMoney(playerid,-1000);
+			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought rusty sissors.. You were charged $1000");
+			    gotSissors[playerid] =1;
+			}
+			case 8:
+			{
+			    if(GetPlayerMoney(playerid) <= 2500000)
+			    {
+				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+				    SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Briefcase. ($2500000)");
+				    return 1;
+				}
+                if(PlayerInfo[playerid][HasBriefcase] == 1)
+				{
+					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
+					SendClientMessage(playerid, COLOR_ERROR, "You already have a Briefcase.");
+					return 1;
+				}
+			    GivePlayerMoney(playerid,-2500000);
+			    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
+			    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Briefcase. You were charged $250000");
+			    PlayerInfo[playerid][HasBriefcase] =1;
+			}
+			case 9:
+			{
+				new string[128];
+				if(cuffed[playerid] == 1)
+				{
+					SendClientMessage(playerid, COLOR_ERROR, "You cannot use this command while you are handcuffed");
+					return 1;
+				}
+			    if(gTeam[playerid] == TEAM_COP || gTeam[playerid] == TEAM_FIREMAN || gTeam[playerid] == TEAM_ARMY || gTeam[playerid] == TEAM_SWAT || gTeam[playerid] == TEAM_FBI || gTeam[playerid] == TEAM_MEDIC || gTeam[playerid] == TEAM_CASSEC || gTeam[playerid] == TEAM_JAILTK)
+				{
+					SendClientMessage(playerid,COLOR_ERROR,"You cannot rob any store");
+					return 1;
+			 	}
+			 	new roobrand = random(5000);
+			 	if(roobrand >=0 && roobrand <=50)
+				{
+				 	SendClientMessage(playerid, 0xA9A9A9AA, "|_Store Robbery Failed_|");
+				 	SendClientMessage(playerid,COLOR_ERROR,"Your attempt to rob the store has failed");
+				 	return 1;
+			 	}
+			 	else if(roobrand >=51 && roobrand <=5000)
+				{
+			    	if(IsPlayerInDynamicCP(playerid, robCP_247))
+			    	{
+			    		for(new x = 0; x < MAX_PLAYERS; x++)
+						{	
+							if(GetPlayerVirtualWorld(playerid) == 4190 && twofoursevenrobbed1 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+				 			}
+				        	if(GetPlayerVirtualWorld(playerid) == 4190 && twofoursevenrobbed1 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed1 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								printf("%s(%d) has started a 24/7 robbery in West Startfish Casino",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+				        			if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in West Startfish Casino and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+					    			}
+					    		}
+								return 1;
+				 			}
+
+				 			if(GetPlayerVirtualWorld(playerid) == 4650 && twofoursevenrobbed1 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+				 			}
+				        	if(GetPlayerVirtualWorld(playerid) == 4650 && twofoursevenrobbed1 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed1 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								printf("%s(%d) has started a 24/7 robbery in Roca Escalante",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+				        			if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Roca Escalante and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+					    			}
+					    		}
+								return 1;
+				 			}
+
+				 			if(GetPlayerVirtualWorld(playerid) == 4529 && twofoursevenrobbed1 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+				 			}
+				        	if(GetPlayerVirtualWorld(playerid) == 4520 && twofoursevenrobbed1 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed1 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								printf("%s(%d) has started a 24/7 robbery in East Startfish Casino",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+				        			if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in East Startfish Casino and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+					    			}
+					    		}
+								return 1;
+				 			}
+
+				 			if(GetPlayerVirtualWorld(playerid) == 4250 && twofoursevenrobbed1 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+				 			}
+				        	if(GetPlayerVirtualWorld(playerid) == 4250 && twofoursevenrobbed1 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed1 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								printf("%s(%d) has started a 24/7 robbery in RedSands East",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+				        			if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in RedSands East and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+					    			}
+					    		}
+								return 1;
+				 			}
+
+							if(GetPlayerVirtualWorld(playerid) == 4330 && twofoursevenrobbed2 >= 1)
+							{
+								SendClientMessage(playerid,COLOR_ERROR,"This store has been robbed recently. Try again later");
+						 		return 1;
+					 		}
+					        if(GetPlayerVirtualWorld(playerid) == 4330 && twofoursevenrobbed2 == 0)
+							{
+						        new robbber[30];
+						        new pcol = GetPlayerColor(playerid);
+						        GetPlayerName(playerid,robbber,30);
+						        new plwl = GetPlayerWantedLevel(playerid);
+							    SetPlayerWantedLevel(playerid, plwl +4);
+								robbingstore[playerid] =20;
+								twofoursevenrobbed2 = 240;
+								SendClientMessage(playerid,0x00C7FFAA,"Starting robbery. The Police have been advised and will be dispatched to this store");
+								SendClientMessage(playerid,0x00C7FFAA,"Stay in the checkpoint to complete the robbery...");
+								plwl = GetPlayerWantedLevel(playerid);
+								SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+								format(string, sizeof(string), "(24/7 STORE ROBBERY) Wanted Level %d",plwl);
+								SendClientMessage(playerid,pcol,string);
+								commitedcrimerecently[playerid] +=120;
+								if(PlayerInfo[playerid][RobRank] <=39)
+								{
+							    	SendClientMessage(playerid,COLOR_WHITE,"Your robbing skill level has been increased. Type /robskill for more info");
+							    	PlayerInfo[playerid][RobRank] +=1;
+								}
+								printf("%s(%d) has started a 24/7 robbery in Emerald Isle",robbber,playerid);
+								for(new i=0;i<MAX_PLAYERS;i++)
+								{
+					        		if(LawEnforcementRadio[i] == 1)
+									{
+								        new string1[256];
+								        new string2[256];
+										format(string1, sizeof(string1), "DISPATCH: (STORE ROBBERY IN PROGRESS) Suspect: %s(%d)", robbber,playerid);
+										format(string2, sizeof(string2), "ALL UNITS: Please respond to the 24/7 store in Emerald Isle and arrest %s(%d)", robbber,playerid);
+										SendClientMessage(i, COLOR_ROYALBLUE, string1);
+										SendClientMessage(i, COLOR_ROYALBLUE, string2);
+						    		}
+						    	}
+								return 1;
+					 		}
+					    }
+				    } 
+				}
+			}
+		}
+		return 1;
+	}
+
+	if(dialogid == DIALOG_BANK_DEPOSIT && response)
+	{
+		if(!strlen(inputtext)) return ShowPlayerDialog(playerid, DIALOG_BANK_DEPOSIT, DIALOG_STYLE_INPUT, "{33CCFF}Deposit", "{FFFFFF}Please choose an amount of money you would like to deposit.\n{33CCFF}Note: {FFFFFF}This amount can not be more than the amount you currently have on you player\nand the min amount you can deposit is {33AA33}$1.", "{33AA33}Deposit", "{FF0000}Cancel");
+		if(strval(inputtext) > GetPlayerMoney(playerid) || strval(inputtext) < 1) return ShowPlayerDialog(playerid, DIALOG_BANK_DEPOSIT, DIALOG_STYLE_INPUT, "{33CCFF}Deposit", "{FF0000}Invalid Amount!\n{33CCFF}Note: {FFFFFF}This amount can not be more than the amount you currently have on you player\nand the min amount you can deposit is {33AA33}$1.", "{33AA33}Deposit", "{FF0000}Cancel");
+		//if(strlen(inputtext) > GetPlayerMoney(playerid)) return ShowPlayerDialog(playerid, DIALOG_BANK_DEPOSIT, DIALOG_STYLE_INPUT, "Deposit", "You dont have that value of money try again {FFFFFF}choose the value of money you want to deposite!.", "Deposit", "Cancel");
+		new str[128];
+		BankCash[playerid] = dUserINT(PlayerName(playerid)).("bankcash");
+		GivePlayerMoney(playerid, -strval(inputtext));
+		BankCash[playerid] += strval(inputtext);
+		dUserSetINT(PlayerName(playerid)).("bankcash",BankCash[playerid]);
+		PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
+		format(str, sizeof str, ""C_W"You have deposited: "C_G"$%d\n\n"C_W"Your new bank balance is "C_G"$%d", strval(inputtext), dUserINT(PlayerName(playerid)).("bankcash"));
+		ShowPlayerDialog(playerid, DIALOG_BANK_RECEIPT, DIALOG_STYLE_MSGBOX, ""C_LB"Deposited", str, ""C_G"Ok", "");
+		UsedBankRecently[playerid] =10;
+	}
+
+	if(dialogid == DIALOG_BANK_WITHDRAW && response)
+	{
+		if(!strlen(inputtext)) return ShowPlayerDialog(playerid, DIALOG_BANK_DEPOSIT, DIALOG_STYLE_INPUT, "{33CCFF}Deposit", "{FFFFFF}Please choose an amount of money you would like to withdraw.\n{33CCFF}Note: {FFFFFF}This amount can not be more than the amount you currently have on you player\nand the min amount you can deposit is {33AA33}$1.", "{33AA33}Withdraw", "{FF0000}Cancel");
+		if(strval(inputtext) > GetPlayerMoney(playerid) || strval(inputtext) < 1) return ShowPlayerDialog(playerid, DIALOG_BANK_DEPOSIT, DIALOG_STYLE_INPUT, "{33CCFF}Withdraw", "{FF0000}Invalid Amount!\n{33CCFF}Note: {FFFFFF}This amount can not be more than the amount you currently have on you player\nand the min amount you can deposit is {33AA33}$1.", "{33AA33}Withdraw", "{FF0000}Cancel");
+		//if(strlen(inputtext) > GetPlayerMoney(playerid)) return ShowPlayerDialog(playerid, DIALOG_BANK_DEPOSIT, DIALOG_STYLE_INPUT, "Deposit", "You dont have that value of money try again {FFFFFF}choose the value of money you want to deposite!.", "Deposit", "Cancel");
+		new str[128];
+		BankCash[playerid] -=strval(inputtext);
+		GivePlayerMoney(playerid, strval(inputtext));
+		dUserSetINT(PlayerName(playerid)).("bankcash",BankCash[playerid]);
+		PlayerPlaySound(playerid, 1057, 0.0, 0.0, 0.0);
+		format(str, sizeof str, ""C_W"You have withdrawn: "C_G"$%d\n\n"C_W"Your new bank balance is "C_G"$%d", strval(inputtext), dUserINT(PlayerName(playerid)).("bankcash"));
+		ShowPlayerDialog(playerid, DIALOG_BANK_RECEIPT, DIALOG_STYLE_MSGBOX, ""C_LB"Deposited", str, ""C_G"Ok", "");
+		UsedBankRecently[playerid] =5;
+	}
+
+	if(dialogid == DIALOG_BANK)
+	{
+  		if (response == 0)
+	    {
+	        SendClientMessage(playerid, COLOR_ERROR, "You canceled");
+	        return 1;
+		}
+		switch(listitem)
+   		{
+			case 0:
+			{
+			    if(AbleToUseYugoBank[playerid] == 1)
+			    {
+			    	new str[128];
+			        new pname[30];
+			        GetPlayerName(playerid,pname,30);
+					format(str, sizeof str, ""C_W"Account Holder: "C_G"%s\n\n"C_W"Branch: "C_G"Yugoslavia\n\n"C_W"Current Balance: "C_G"$%d\n\n", pname, dUserINT(PlayerName(playerid)).("bankcash"));
+					ShowPlayerDialog(playerid, DIALOG_BANK_RECEIPT, DIALOG_STYLE_MSGBOX, ""C_LB"Mode: Account Statement", str, ""C_G"Ok", "");
+
+			    }
+			    if(AbleToUseLVBank[playerid] == 1)
+			    {
+			    	new str[128];
+			        new pname[30];
+			        GetPlayerName(playerid,pname,30);
+			        format(str, sizeof str, ""C_W"Account Holder: "C_G"%s\n\n"C_W"Branch: "C_G"Las Venturas\n\n"C_W"Current Balance: "C_G"$%d\n\n", pname, dUserINT(PlayerName(playerid)).("bankcash"));
+					ShowPlayerDialog(playerid, DIALOG_BANK_RECEIPT, DIALOG_STYLE_MSGBOX, ""C_LB"Mode: Account Statement", str, ""C_G"Ok", "");
+			    }
+			}
+			case 1:
+			{
+		    	ShowPlayerDialog(playerid, DIALOG_BANK_DEPOSIT, DIALOG_STYLE_INPUT, "{33CCFF}Bank Deposit", "{FFFFFF}Please choose an amount of money you would like to deposit.\n{33CCFF}Note: {FFFFFF}This amount can not be more than the amount you currently have on you player\nand the min amount you can deposit is {33AA33}$1.", "{33AA33}Deposit", "{FF0000}Cancel");
+			}
+			case 2:
+			{
+			    ShowPlayerDialog(playerid, DIALOG_BANK_WITHDRAW, DIALOG_STYLE_INPUT, ""C_LB"Bank Withdraw", ""C_W"Please choose an amount of money you would like to withdraw.\n"C_LB"Note: "C_W"This amount can not be more than the amount you currently have in your bank account\nand the min amount you can withdraw is "C_G"$1.", ""C_G"Withdraw", ""C_R"Cancel");
+			}
+			case 3:
+			{
+			    SendClientMessage(playerid, 0x00C7FFAA, "This has not been implemented yet...");
+			}
+			case 4:
+			{
+			    if(AbleToUseYugoBank[playerid] == 1)
+			   	{
+				    new robbername[30];
+				   	GetPlayerName(playerid,robbername,30);
+				    new bankrand = random(1000);
+					if(bankrand >=0 && bankrand <=500)
+					{
+						new string[128];
+						new plwl = GetPlayerWantedLevel(playerid);
+					    new pcol = GetPlayerColor(playerid);
+				        SetPlayerWantedLevel(playerid,plwl +4);
+				        plwl = GetPlayerWantedLevel(playerid);
+				        SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+					    format(string, sizeof(string), "(ATTEMPTED BANK ROBBERY) Wanted Level %d",plwl);
+				        SendClientMessage(playerid,pcol,string);
+				        SendClientMessage(playerid,COLOR_ERROR,"Your attempted to rob Yugoslavian bank has failed. The police have been advised");
+				        Playerrobbedbankrecent[playerid] =120;
+				        UsedBankRecently[playerid] =120;
+				        format(string, sizeof(string), "%s(%d) has attempted to rob the Yugoslavian bank. Attempt failed",robbername,playerid);
+					    printf("%s",string);
+					    commitedcrimerecently[playerid] +=200;
+					    return 1;
+				 	}
+					if(bankrand >=500 && bankrand <=1000)
+					{
+						new string[128];
+						new bankrobbber[30];
+					    new pcol = GetPlayerColor(playerid);
+					    GetPlayerName(playerid,bankrobbber,30);
+					    new plwl = GetPlayerWantedLevel(playerid);
+						SetPlayerWantedLevel(playerid, plwl +4);
+						robbingYugoBank[playerid] =10;
+						SendClientMessage(playerid,0x00C7FFAA,"You are now robbing the Yugoslavian Bank. The Police have been dispatched and will be on route right now");
+						TogglePlayerControllable(playerid,0);
+						plwl = GetPlayerWantedLevel(playerid);
+						BankRobbedRecently = 240;
+						SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+						format(string, sizeof(string), "(YUGOSLAVIAN BANK ROBBERY) Wanted Level %d",plwl);
+						SendClientMessage(playerid,pcol,string);
+						commitedcrimerecently[playerid] +=120;
+						printf("%s(%d) has started a Yugoslavian Bank robbery",bankrobbber,playerid);
+						for(new i=0;i<MAX_PLAYERS;i++)
+						{
+					       	if(LawEnforcementRadio[i] == 1)
+							{
+					       		new string1[256];
+					       		new string2[256];
+								format(string1, sizeof(string1), "DISPATCH: (ROBBERY IN PROGRESS) Suspect: %s(%d)",bankrobbber,playerid);
+								format(string2, sizeof(string2), "ALL UNITS: Please respond to Yugoslavian Bank and arrest %s(%d)",bankrobbber,playerid);
+								SendClientMessage(i, COLOR_ROYALBLUE, string1);
+								SendClientMessage(i, COLOR_ROYALBLUE, string2);
+							}
+						}
+					}
+				}
+				if(AbleToUseLVBank[playerid] == 1)
+				{
+					new string[128];
+				    new robbername[30];
+				   	GetPlayerName(playerid,robbername,30);
+					new banksrand = random(1000);
+					if(banksrand >=0 && banksrand <=500)
+					{
+						new plwl = GetPlayerWantedLevel(playerid);
+					    new pcol = GetPlayerColor(playerid);
+				        SetPlayerWantedLevel(playerid,plwl +4);
+				        plwl = GetPlayerWantedLevel(playerid);
+				        SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+					    format(string, sizeof(string), "(ATTEMPTED BANK ROBBERY) Wanted Level %d",plwl);
+				        SendClientMessage(playerid,pcol,string);
+				        SendClientMessage(playerid,COLOR_ERROR,"Your attempted to rob Las Venturas City Bank bank has failed. The police have been advised");
+				        Playerrobbedbankrecent[playerid] =120;
+				        UsedBankRecently[playerid] =120;
+				        format(string, sizeof(string), "%s(%d) has attempted to rob the Las Venturas City Bank. Attempt failed",robbername,playerid);
+					    printf("%s",string);
+					    commitedcrimerecently[playerid] +=200;
+					    return 1;
+				 	}
+					if(banksrand >=500 && banksrand <=1000)
+					{
+						new bankrobbber[30];
+					    new pcol = GetPlayerColor(playerid);
+					    GetPlayerName(playerid,bankrobbber,30);
+					    new plwl = GetPlayerWantedLevel(playerid);
+						SetPlayerWantedLevel(playerid, plwl +4);
+						robbingCityBank[playerid] =10;
+						SendClientMessage(playerid,0x00C7FFAA,"You are now robbing the Las Venturas City Bank. The Police have been dispatched and will be on route right now");
+						TogglePlayerControllable(playerid,0);
+						plwl = GetPlayerWantedLevel(playerid);
+						BankRobbedRecently = 240;
+						SendClientMessage(playerid, 0xA9A9A9AA, "|_Crime Commited_|");
+						format(string, sizeof(string), "(LAS VENTURAS CITY BANK ROBBERY) Wanted Level %d",plwl);
+						SendClientMessage(playerid,pcol,string);
+						commitedcrimerecently[playerid] +=120;
+						printf("%s(%d) has started a Las Venturas City Bank robbery",bankrobbber,playerid);
+						for(new i=0;i<MAX_PLAYERS;i++)
+						{
+					       	if(LawEnforcementRadio[i] == 1)
+							{
+					       		new string1[256];
+					       		new string2[256];
+								format(string1, sizeof(string1), "DISPATCH: (ROBBERY IN PROGRESS) Suspect: %s(%d)",bankrobbber,playerid);
+								format(string2, sizeof(string2), "ALL UNITS: Please respond to Las Venturas City Bank and arrest %s(%d)",bankrobbber,playerid);
+								SendClientMessage(i, COLOR_ROYALBLUE, string1);
+								SendClientMessage(i, COLOR_ROYALBLUE, string2);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	if(dialogid == 3)
 	{
   		if (response == 0)
@@ -17695,7 +17745,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						    GetPlayerName(playerid, pname, 30);
 						    format(string, sizeof(string), "%s(%d) Has robbed $%d from the AirPort",pname,playerid,mrand);
 							SendClientMessageToAll(0x00C7FFAA, string);
-							IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+							DCC_SendChannelMessage(discordChannel, string);
 							format(string, sizeof(string), "%s(%d) Has robbed $%d from the AirPort",pname,playerid,mrand);
 							printf("%s", string);
 							format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU ROBBED~n~~r~ $%d~n~~w~FROM THE AIRPORT", mrand);
@@ -18858,7 +18908,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    	format(string, 100, "**(ADMIN KICK)** %s(%d) [Reason: N/A]", PlayerName(ClickedPlayerID[playerid]), ClickedPlayerID[playerid]);
 		    	SendClientMessageToAll(COLOR_ADMIN, string);
 		    	format(string, 100, "\2;**(ADMIN KICK)** %s(%d) [Reason: N/A]\2;", string,ClickedPlayerID[playerid]);
-		    	IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    	DCC_SendChannelMessage(discordChannel, string);
 		    	printf("%s", string);
 		   		Kicking[ClickedPlayerID[playerid]] = 1;
 		    	SetTimer("KickPlayer",700,0);
@@ -18876,7 +18926,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		    	SendClientMessageToAll(COLOR_ADMIN, string);
 		    	printf("%s", string);
 		    	format(string, 100, "\2;**(ADMIN KICK)** %s(%d) %s\2;", string,ClickedPlayerID[playerid],reason);
-		   		IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		   		DCC_SendChannelMessage(discordChannel, string);
 		   		Kicking[ClickedPlayerID[playerid]] = 1;
 		    	SetTimer("KickPlayer",700,0);
 		    }
@@ -19462,7 +19512,7 @@ public RobbingCityHallCountdown()
                 GetPlayerName(i,hrobbber,30);
                 format(string, sizeof(string), "%s(%d) Has robbed $%d from LV City Hall",hrobbber,i,hallrobrand);
                 SendClientMessageToAll(0x00C7FFAA,string);
-                IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+                DCC_SendChannelMessage(discordChannel, string);
                 format(string, sizeof(string), "~b~CITY HALL~n~~y~ROBBERY COMPLETE~n~~w~$%d",hallrobrand);
                 GameTextForPlayer(i, string, 5000,3);
                 GivePlayerMoney(i,hallrobrand);
@@ -19515,7 +19565,7 @@ public robbingstorecountdown()
 				}
                 printf("%s(%d) has robbed $%d in a 24/7 robbery",robbber,i,storerobrand);
                 format(string, sizeof(string), "%s(%d) Has robbed $%d in a 24/7 robbery",robbber,i,storerobrand);
-                IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+                DCC_SendChannelMessage(discordChannel, string);
 			}
 		}
 	}
@@ -19936,7 +19986,7 @@ public AntiJetpack()
 				GetPlayerName(i, pname, 30);
 				format(string, sizeof(string), "**(AUTO BAN)** %s(%d) Our Anti-Cheat has detected a hax0r",pname,i);
 				SendClientMessageToAll(COLOR_ADMIN, string);
-				IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+				DCC_SendChannelMessage(discordChannel, string);
 				SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN DETECTED AS A CHEATER/HACKER");
 				SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN BANNED FROM THIS SERVER");
 				SendClientMessage(i,COLOR_RED,"If you think this is a mistake. Visit http://www.sa-rcr.com to appeal this ban");
@@ -19985,7 +20035,7 @@ public WantedLevelReduce()
 	                 		SendClientMessage(i, pcol, string);
 	                 		format(string, sizeof(string), "**(Reduced Wanted Level)** %s(%d) New Wanted Level: %d",criminal,i,plwl);
 	                 		printf("%s",string);
-	                 		IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	                 		DCC_SendChannelMessage(discordChannel, string);
 						}
 					}
 				}
@@ -20123,7 +20173,7 @@ public AutoUnjailAlcatraz()
                  	SendClientMessage(i,0x00C7FFAA,"You have been auto-released from Alcatraz. You are free to leave Alcatraz Island");
                  	format(string, sizeof(string), "%s(%d) Has been auto-released from Alcatraz. Time Served: %d Seconds",pname,i,timeserved);
                  	SendClientMessageToAll(0x00C7FFAA, string);
-                 	IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+                 	DCC_SendChannelMessage(discordChannel, string);
                  	Jailed[i] = 0;
                  	InAlcatraz[i] =0;
                  	JailTimeServed[i] =0;
@@ -20227,7 +20277,7 @@ public AutoUnjail()
                  	SendClientMessage(i,0x00C7FFAA,"You have been auto-released from jail. You are free to leave the Police Station");
                  	format(string, sizeof(string), "%s(%d) Has been auto-released from jail. JailTime Served: %d Seconds",pname,i,timeserved);
                  	SendClientMessageToAll(0x00C7FFAA, string);
-                 	IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+                 	DCC_SendChannelMessage(discordChannel, string);
                  	Jailed[i] = 0;
                  	JailTimeServed[i] =0;
                  	dUserSetINT(PlayerName(i)).("jailed",Jailed[i]);
@@ -20429,12 +20479,11 @@ public CashCheck()
 				GetPlayerName(i,pname,30);
 				printf("**(CASH INCREASE)** %s(%d) money has increased from $%d to $%d (%d) (%d)",pname,i,OldCash[i],GetPlayerMoney(i),difference,GetPlayerInterior(i));
                 format(string, sizeof(string), "**(CASH INCREASE)** %s(%d) money has increased from $%d to $%d (%d) (%d)",pname,i,OldCash[i],GetPlayerMoney(i),difference,GetPlayerInterior(i));
-				IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
 				if(difference >= 1500000 && PlayerInfo[i][AdminLevel] != 1337)
 				{
 					format(string, sizeof(string), "**(AUTO BAN)** %s(%d) Our Anti-Cheat has detected a hax0r",pname,i);
 					SendClientMessageToAll(COLOR_ADMIN, string);
-					IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+					DCC_SendChannelMessage(discordChannel, string);
 					SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN DETECTED AS A CHEATER/HACKER");
 					SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN BANNED FROM THIS SERVER");
 					SendClientMessage(i,COLOR_RED,"If you think this is a mistake. Visit www.sa-rcr.com to appeal this ban");
@@ -20486,7 +20535,7 @@ public TheEffectsOfDrugs()
 			            GetPlayerName(i,druggiename,30);
 			            format(string, sizeof(string), "**(Predicted Increase)** %s(%d)'s health has increased (Drugs)",druggiename,i);
 			            printf("%s",string);
-			            IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			            DCC_SendChannelMessage(discordChannel, string);
             		}
             	}
         	}
@@ -21193,7 +21242,7 @@ public WeaponAntiCheat()
 			        GetPlayerName(i, pname, 30);
 			        format(string, sizeof(string), "**(AUTO BAN)** %s(%d) Our Anti-Cheat has detected a hax0r",pname,i);
 			        SendClientMessageToAll(COLOR_ADMIN, string);
-			        IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			        DCC_SendChannelMessage(discordChannel, string);
 			        SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN DETECTED AS A CHEATER/HACKER");
 			        SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN BANNED FROM THIS SERVER");
 			        SendClientMessage(i,COLOR_RED,"If you think this is a mistake. Visit www.sa-rcr.com to appeal this ban");
@@ -21234,7 +21283,7 @@ public CashAntiCheat()
 		            GetPlayerName(i, pname, 24);
 		            format(string, sizeof(string), "**(AUTO BAN)** %s(%d) Our Anti-Cheat has detected a hax0r",pname,i,pcash);
 		            SendClientMessageToAll(COLOR_ADMIN, string);
-		            IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		            DCC_SendChannelMessage(discordChannel, string);
 		            SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN DETECTED AS A CHEATER/HACKER");
 		            SendClientMessage(i,COLOR_RED,"YOU HAVE BEEN BANNED FROM THIS SERVER");
 		            SendClientMessage(i,COLOR_RED,"If you think this is a mistake. Visit www.sa-rcr.com to appeal this ban");
@@ -21380,14 +21429,10 @@ SetPlayerTeamFromClass(playerid, classid)
 	{
 	    gTeam[playerid] = TEAM_CASSEC;
 	}
-	else if(classid == 12)
+	else if(classid == 13)
 	{
 	    gTeam[playerid] = TEAM_JAILTK;
 	}
-    else if(classid == 13)
-	{
-	    gTeam[playerid] = TEAM_CASSEC;
-    }
 	else if(classid == 14)
 	{
 	    gTeam[playerid] = TEAM_FIREMAN;
@@ -21535,7 +21580,6 @@ public OnPlayerConnect(playerid)
     GetPlayerName(playerid, name, 24);
     format(str, sizeof str, "%s(%d) Has Joined San Andreas Roleplay/Cops/Robbers v%s", name, playerid, sversion);
     SendClientMessageToAll(0x808080AA, str);
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
 	printf("%s(%d) Has Joined San Andreas Roleplay/Cops/Robbers v%s (IP: %s)", str,playerid,sversion,ipstring);
     InShamal[playerid] = 0;
     SetPlayerColor(playerid,COLOR_DEADCONNECT);
@@ -21602,9 +21646,11 @@ public OnPlayerConnect(playerid)
     HasFiremanRadio[playerid] = 0;
     HasFBIRadio[playerid] = 0;
     HasSWATRadio[playerid] = 0;
+    HasArmyRadio[playerid] = 0;
     FiremanRadio[playerid] = 0;
     FBIRadio[playerid] = 0;
     SWATRadio[playerid] = 0;
+    ArmyRadio[playerid] = 0;
     RequestedBackup[playerid] = 0;
     RequestedBackupRecent[playerid] = 0;
     ReportedRecent[playerid] = 0;
@@ -21774,10 +21820,6 @@ public OnPlayerDisconnect(playerid, reason)
 
 	format(leaveMsg, sizeof leaveMsg, "Player %s has left the server. (%s)", name, reasonMsg);
 	DCC_SendChannelMessage(discordChannel, leaveMsg);
-	
-	GetPlayerName(playerid, name, sizeof(name));
-	format(leaveMsg, sizeof(leaveMsg), "02[%d] 03*** %s has left the server. (%s)", playerid, name, reasonMsg);
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, leaveMsg);
     zoneupdates[playerid] = 0;
 	player_zone[playerid] = -1;
 	Banning[playerid] = 0;
@@ -23017,7 +23059,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	{
 		if(IsPlayerInAnyVehicle(playerid))
 		{
-        	SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
         }
 	    else
 	    {
@@ -23037,10 +23079,60 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		SetPlayerInterior(playerid, 0);
 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for visiting the Yugoslavian Sex-Shop, have a nice day.");
 	}
-	if(checkpointid == EastLV247)
+	if(checkpointid == entranceAlkCP)
 	{
-	    AbleToShowLV247Menu[playerid] =1;
-        ShowMenuForPlayer(StoreMenu, playerid);
+		SendClientMessage(playerid, 0xA9A9A9AA, "|_Alcatraz Island_|");
+		SendClientMessage(playerid, 0x00C7FFAA, "You have entered Alcatraz building. Prisoners in Alcatraz cannot be released early");
+	    SetPlayerInterior(playerid,10);
+	    SetPlayerPos(playerid,246.2731,112.8218,1003.2188);
+	    SetPlayerFacingAngle(playerid,358.8193);
+	    SetCameraBehindPlayer(playerid);
+	}
+	if(checkpointid == exitAlkCP)
+	{
+		SendClientMessage(playerid, 0xA9A9A9AA, "|_Alcatraz Island_|");
+		SendClientMessage(playerid, 0x00C7FFAA, "You have left the Alcatraz building");
+		SetPlayerInterior(playerid,0);
+		SetPlayerPos(playerid,3792.1602,471.8931,36.4192);
+		SetPlayerFacingAngle(playerid,89.9220);
+		SetCameraBehindPlayer(playerid);
+	}
+	// if(checkpointid == cp_247)
+	// {
+	// 	GetPlayerVirtualWorld(playerid);
+	// 	SetPlayerVirtualWorld(playerid, 1);
+ //  		SetPlayerPos(playerid, -27.4271,-52.9404,1003.5469);
+ //  		SetPlayerFacingAngle(playerid, 355.0557);
+	// 	SetPlayerInterior(playerid, 6);
+	// 	SendClientMessage(playerid, COLOR_GREEN, "Welcome to Natox's 24/7 store");
+	// 	SetCameraBehindPlayer(playerid);
+	// }
+	// if(checkpointid == exit_247)
+	// {
+	// 	if(GetPlayerVirtualWorld(playerid) == 1 && twofoursevenrobbed1 >= 1)
+	// 	{
+	// 		GetPlayerVirtualWorld(playerid);
+	// 		SetPlayerVirtualWorld(playerid, 0);
+	//   		SetPlayerPos(playerid, 2189.1675,1991.4669,10.8203);
+	//   		SetPlayerFacingAngle(playerid,88.4299);
+	// 		SetPlayerInterior(playerid, 0);
+	// 		SendClientMessage(playerid,COLOR_ERROR,"...And stay out!");
+	// 		SetCameraBehindPlayer(playerid);
+	// 	}
+	// 	else
+	// 	{
+	// 		GetPlayerVirtualWorld(playerid);
+	// 		SetPlayerVirtualWorld(playerid, 0);
+	//   		SetPlayerPos(playerid, 2189.1675,1991.4669,10.8203);
+	//   		SetPlayerFacingAngle(playerid,88.4299);
+	// 		SetPlayerInterior(playerid, 0);
+	// 		SendClientMessage(playerid, COLOR_GREEN, "Thank you for shopping!");
+	// 		SetCameraBehindPlayer(playerid);
+	// 	}
+	// }
+	if(checkpointid == robCP_247)
+	{
+	    ShowPlayerDialog(playerid, DIALOG_247STORE, DIALOG_STYLE_LIST, "{33CCFF}24/7 Store","{33CCFF}1. {FFFFFF}Chainsaw ($1500)\n{33CCFF}2. {FFFFFF}Flowers ($5)\n{33CCFF}3. {FFFFFF}Baseball Bat ($100)\n{33CCFF}4. {FFFFFF}Beer ($20)\n{33CCFF}5. {FFFFFF}Wallet ($1000)\n{33CCFF}6. {FFFFFF}Parachute ($500)\n{33CCFF}7. {FFFFFF}Rope ($4000)\n{33CCFF}8. {FFFFFF}Rusty Sissors ($1000)\n{33CCFF}9. {FFFFFF}Briefcase ($250000)\n{33CCFF}10. {FFFFFF}Rob Store","Okay","Cancel");
 	}
 	if(checkpointid == FBIRefill)
 	{
@@ -23125,7 +23217,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		    SetPlayerFacingAngle(playerid, AlcatrazArrestedSpawn[rnd][3]);
 		    format(string, sizeof(string), "Escaped Convict %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    SendClientMessage(playerid,0x00C7FFAA,"You will be auto-released from Alcatraz once you have served your sentence");
 		    SendClientMessage(playerid,0x00C7FFAA,"If Alcatraz life sucks for you... Why not ask a friend to visit you? /reqvisit (id)");
 		    format(string, sizeof(string), "Escaped Convict %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
@@ -23154,7 +23246,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 			SetPlayerFacingAngle(playerid, ArrestedSpawn[rnd][3]);
 			format(string, sizeof(string), "Wanted suspect %s(%d) has handed himself into LVPD and has been detained by police",wantedsuspect,playerid);
 			SendClientMessageToAll(0x00C7FFAA, string);
-			IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+			DCC_SendChannelMessage(discordChannel, string);
 			SendClientMessage(playerid,0x00C7FFAA,"You will be auto-released from jail or a Police Officer/Jail Turnkey can release you early");
 		    format(string, sizeof(string), "Wanted suspect %s(%d) has handed himself into LVPD and has been detained by police",wantedsuspect,playerid);
 		    printf("%s", string);
@@ -23181,7 +23273,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		    SetPlayerFacingAngle(playerid, ArrestedSpawn[rnd][3]);
 		    format(string, sizeof(string), "Wanted suspect %s(%d) has handed himself into LVPD and has been detained by police",wantedsuspect,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    SendClientMessage(playerid,0x00C7FFAA,"You will be auto-released from jail or a Police Officer/Jail Turnkey can release you early");
 		    format(string, sizeof(string), "Wanted suspect %s(%d) has handed himself into LVPD and has been detained by police",wantedsuspect,playerid);
 		    printf("%s", string);
@@ -23210,7 +23302,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		    SendClientMessage(playerid,0x00C7FFAA,"You will be auto-released from jail or a Police Officer/Jail Turnkey can release you early");
 		    format(string, sizeof(string), "Wanted suspect %s(%d) has handed himself into LVPD and has been detained by police",wantedsuspect,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    format(string, sizeof(string), "Wanted suspect %s(%d) has handed himself into LVPD and has been detained by police",wantedsuspect,playerid);
 		    printf("%s", string);
 		    SendClientMessage(playerid,COLOR_ADMIN,"If you leave the server while you are in jail you WILL be banned");
@@ -23239,7 +23331,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		    SendClientMessage(playerid,0x00C7FFAA,"If Alcatraz life sucks for you... Why not ask a friend to visit you? /reqvisit (id)");
 			format(string, sizeof(string), "Most Wanted suspect %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    format(string, sizeof(string), "Most Wanted suspect %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
 		    printf("%s", string);
 		    SendClientMessage(playerid,COLOR_ADMIN,"If you leave the server while you are in jail you WILL be banned");
@@ -23269,7 +23361,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		    SendClientMessage(playerid,0x00C7FFAA,"If Alcatraz life sucks for you... Why not ask a friend to visit you? /reqvisit (id)");
 		    format(string, sizeof(string), "Most Wanted suspect %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    format(string, sizeof(string), "Most Wanted suspect %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
 		    printf("%s", string);
 		    SendClientMessage(playerid,COLOR_ADMIN,"If you leave the server while you are in jail you WILL be banned");
@@ -23299,7 +23391,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		    SendClientMessage(playerid,0x00C7FFAA,"If Alcatraz life sucks for you... Why not ask a friend to visit you? /reqvisit (id)");
 		    format(string, sizeof(string), "Most Wanted suspect %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    format(string, sizeof(string), "Most Wanted suspect %s(%d) has handed himself into LVPD and has been sent to Alcatraz",wantedsuspect,playerid);
 		    printf("%s", string);
 		    SendClientMessage(playerid,COLOR_ADMIN,"If you leave the server while you are in jail you WILL be banned");
@@ -23341,7 +23433,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 					GetPlayerName(playerid,caligsname, 30);
 					format(string, sizeof(string), "%s(%d) Has robbed $%d from the Caligulas Casino vault",caligsname,playerid,crobrand);
 					SendClientMessageToAll(0x00C7FFAA, string);
-					IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+					DCC_SendChannelMessage(discordChannel, string);
 					format(string, sizeof(string), "%s(%d) Has robbed $%d from Caligulas casino",caligsname,playerid,crobrand);
 					printf("%s", string);
 					format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU HAVE ROBBED~n~~r~ $%d~n~~w~FROM THE CASINO VAULT",crobrand);
@@ -23538,7 +23630,7 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		        SendClientMessage(playerid,0x00C7FFAA,"Welcome To The RPL. You are a Regular Player!");
 		        SendClientMessage(playerid,0x00C7FFAA,"There are some pickups and some cash etc laying around, help ya'self ");
 		        format(string, sizeof(string), "%s(%d) Has entered the Regular Players Lounge! (Score: %d)",pname,playerid,GetPlayerScore(playerid));
-		        IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		        DCC_SendChannelMessage(discordChannel, string);
 		        InAdminHQ[playerid] =1;
       		}
 		}
@@ -23628,6 +23720,21 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		    SendClientMessage(playerid, 0xA9A9A9AA, "|_Nude Strippers Daily_|");
 	    	SendClientMessage(playerid,0x00C7FFAA,"Type /robnude to attempt a robbery at the Nude Strippers Daily.");
 			AbleToRobNudeCP[playerid] =1;
+		}
+	}
+	if(checkpointid == cp_yugo247)
+	{
+	    if(IsPlayerInAnyVehicle(playerid))
+		{
+	        SendClientMessage(playerid,COLOR_WHITE,"CHECKPOINT HELP: You are in a vehicle. Please get out of the vehicle and re-enter the checkpoint.");
+        }
+	    else
+	    {
+			GetPlayerVirtualWorld(playerid);
+			SetPlayerVirtualWorld(playerid, 4);
+  			SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
+			SetPlayerInterior(playerid, 6);
+			SendClientMessage(playerid, COLOR_GREEN, "Welcome to Yugoslavia 24/7");
 		}
 	}
 	if(checkpointid == CluckBell)
@@ -23725,13 +23832,16 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 		}
   		else
   		{
-  		    SetPlayerInterior(playerid, 14);
-			SetPlayerVirtualWorld(playerid, 3);
-  		    TogglePlayerControllable(playerid, 0);
-  		    SetTimerEx("Unfreeze", 1000, 0, "d", playerid);
-  		    SetPlayerPos(playerid, -1884.5706, 58.3830, 1055.1887);
-  		    SetPlayerFacingAngle(playerid, 270.0);
-			SetCameraBehindPlayer(playerid);
+  			if(GetPlayerVirtualWorld(playerid) == 0)
+  			{
+  				SetPlayerInterior(playerid, 14);
+				SetPlayerVirtualWorld(playerid, 3);
+	  		    TogglePlayerControllable(playerid, 0);
+	  		    SetTimerEx("Unfreeze", 1000, 0, "d", playerid);
+	  		    SetPlayerPos(playerid, -1884.5706, 58.3830, 1055.1887);
+	  		    SetPlayerFacingAngle(playerid, 270.0);
+				SetCameraBehindPlayer(playerid);
+  			}
        	}
 	}
 	if(checkpointid == CPYugoAirport)
@@ -23862,24 +23972,12 @@ public OnPlayerEnterDynamicCP(playerid, checkpointid)
 	}
 	if(checkpointid == YugoslaviaBank)
 	{
-	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Yugoslavian Bank_|");
-	   	SendClientMessage(playerid, 0x808080AA, "Use the following commands to make financial transactions");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /bankstate to check your bank account.");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /deposit (amount) to put money in in your bank account.");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /withdraw (amount) to retrieve money from your bank account.");
- 	 	SendClientMessage(playerid, 0x808080AA, "Type /robyugobank to attempt to rob the bank");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /buyinsure to cover your bank account against theft");
+	    ShowPlayerDialog(playerid, DIALOG_BANK, DIALOG_STYLE_LIST, "{33CCFF}|_Yugoslavian Bank_|","{33CCFF}1. {FFFFFF}Bank Statement\n{33CCFF}2. {FFFFFF}Deposit Money\n{33CCFF}3. {FFFFFF}Withdraw Money\n{33CCFF}4. {FFFFFF}Buy Insurance ($20)\n{33CCFF}5. {FFFFFF}Rob Bank","Okay","Cancel");
 	   	AbleToUseYugoBank[playerid] =1;
 	}
 	if(checkpointid == LasVenturasBankRobbery)
 	{
-	    SendClientMessage(playerid, 0xA9A9A9AA, "|_Las Venturas City Bank_|");
-	   	SendClientMessage(playerid, 0x808080AA, "Use the following commands to make financial transactions");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /bankstate to check your bank account.");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /deposit (amount) to put money in in your bank account.");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /withdraw (amount) to retrieve money from your bank account.");
- 	 	SendClientMessage(playerid, 0x808080AA, "Type /robbank to attempt to rob the bank");
-	   	SendClientMessage(playerid, 0x808080AA, "Type /buyinsure to cover your bank account against theft");
+		ShowPlayerDialog(playerid, DIALOG_BANK, DIALOG_STYLE_LIST, "{33CCFF}|_Las Venturas City Bank_|","{33CCFF}1. {FFFFFF}Bank Statement\n{33CCFF}2. {FFFFFF}Deposit Money\n{33CCFF}3. {FFFFFF}Withdraw Money\n{33CCFF}4. {FFFFFF}Buy Insurance ($20)\n{33CCFF}5. {FFFFFF}Rob Bank","Okay","Cancel");
 	   	AbleToUseLVBank[playerid] =1;
 	}
 	if(checkpointid == RobArmy)
@@ -23960,10 +24058,8 @@ public OnPlayerLeaveDynamicCP(playerid, checkpointid)
 	{
 	    AbleToRobCaligsCasino[playerid] = 0;
 	}
-	if(checkpointid == EastLV247)
+	if(checkpointid == robCP_247)
 	{
-	    AbleToShowLV247Menu[playerid] = 0;
-		HideMenuForPlayer(StoreMenu, playerid);
 	}
 	if(checkpointid == BlowBank)
 	{
@@ -24188,6 +24284,8 @@ public OnPlayerSpawn(playerid)
 		GivePlayerWeapon(playerid, 34, 500);
 		SetPlayerArmour(playerid,100);
         HasLawEnforcementRadio[playerid] =1;
+        HasArmyRadio[playerid] = 1;
+        ArmyRadio[playerid] = 1;
 		LawEnforcementRadio[playerid] =1;
 		CopWaitBetweenRefills[playerid] =120;
 		BankRobInsurance[playerid] =1;
@@ -24208,9 +24306,9 @@ public OnPlayerSpawn(playerid)
         HasLawEnforcementRadio[playerid] =1;
 		LawEnforcementRadio[playerid] =1;
 		CopWaitBetweenRefills[playerid] =120;
-		BankRobInsurance[playerid] =1;
 		HasSWATRadio[playerid] =1;
 		SWATRadio[playerid] =1;
+		BankRobInsurance[playerid] =1;
 	}
 	else if(gTeam[playerid] == TEAM_FBI)
 	{
@@ -24553,18 +24651,18 @@ public OnPlayerDeath(playerid, killerid, reason)
 			case 51: reasonMsg = "Explosion";
 			default: reasonMsg = "Unknown";
 		}
-		format(msg, sizeof(msg), "04*** %s killed %s. (%s)", killerName, playerName, reasonMsg);
+		format(msg, sizeof(msg), "%s killed %s. (%s)", killerName, playerName, reasonMsg);
 	}
 	else
 	{
 		switch (reason)
 		{
-			case 53: format(msg, sizeof(msg), "04*** %s died. (Drowned)", playerName);
-			case 54: format(msg, sizeof(msg), "04*** %s died. (Collision)", playerName);
-			default: format(msg, sizeof(msg), "04*** %s died.", playerName);
+			case 53: format(msg, sizeof(msg), "%s died. (Drowned)", playerName);
+			case 54: format(msg, sizeof(msg), "%s died. (Collision)", playerName);
+			default: format(msg, sizeof(msg), "%s died.", playerName);
 		}
 	}
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, msg);
+	DCC_SendChannelMessage(discordChannel, msg);
 	
     InShamal[playerid] = 0;
 	TextDrawHideForPlayer(playerid,txtTypeSkill);
@@ -24588,9 +24686,11 @@ public OnPlayerDeath(playerid, killerid, reason)
 	HasFiremanRadio[playerid] =0;
 	HasFBIRadio[playerid] =0;
 	HasSWATRadio[playerid] =0;
+	HasArmyRadio[playerid] =0;
 	FiremanRadio[playerid] =0;
 	FBIRadio[playerid] =0;
 	SWATRadio[playerid] =0;
+	ArmyRadio[playerid] =0;
     Jailed[playerid] = 0;
     JailTime[playerid] =0;
     HasKidnapped[playerid]  =0;
@@ -24657,7 +24757,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 		SendClientMessage(killerid,COLOR_ADMIN,string);
 	    format(string, sizeof(string),"Server Admin %s(%d) has killed %s(%d) While in Admin Mode",killername,killerid,killedname,playerid);
 	    printf("%s",string);
-	    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+	    DCC_SendChannelMessage(discordChannel, string);
 		return 1;
 	}
     if(gTeam[killerid] == TEAM_HITMAN && HasHitOnHim[playerid] >=1)
@@ -24750,7 +24850,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 		    GetPlayerName(killerid, str, 24);
 			format(str, 100, "**(AUTO KICK)** %s(%d) Too Many Team Kills (TeamKiller)", str,killerid);
 			SendClientMessageToAll(COLOR_ADMIN, str);
-			IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
+			DCC_SendChannelMessage(discordChannel, str);
 			printf("%s", str);
 			SetPlayerInterior(killerid,10);
 			SetPlayerPos(killerid,219.6257,111.2549,999.0156);
@@ -24781,7 +24881,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 			    GetPlayerName(killerid, str, 24);
 				format(str, 100, "**(AUTO KICK)** %s(%d) Too Many Innocent Kills", str,killerid);
 				SendClientMessageToAll(COLOR_ADMIN, str);
-				IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
+				DCC_SendChannelMessage(discordChannel, str);
 				printf("%s", str);
 				SetPlayerInterior(killerid,10);
 				SetPlayerPos(killerid,219.6257,111.2549,999.0156);
@@ -24809,7 +24909,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 			    GetPlayerName(killerid, str, 24);
 				format(str, 100, "**(AUTO KICK)** %s(%d) Too Many Low Wanted Kills", str,killerid);
 				SendClientMessageToAll(COLOR_ADMIN, str);
-				IRC_GroupSay(gGroupID, IRC_CHANNEL, str);
+				DCC_SendChannelMessage(discordChannel, str);
 				printf("%s", str);
 				SetPlayerInterior(killerid,10);
 				SetPlayerPos(killerid,219.6257,111.2549,999.0156);
@@ -24836,7 +24936,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 			GetPlayerName(killerid, killer, 24);
 			format(string, sizeof(string), "Officer %s(%d) has taken suspect %s(%d) down using deadly force",killer,killerid,victim,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    printf("%s", string);
 		    SendDeathMessage(killerid,playerid,reason);
 		    SetPlayerColor(playerid,COLOR_DEADCONNECT);
@@ -24850,7 +24950,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 			GetPlayerName(killerid, killer, 24);
 			format(string, sizeof(string), "Officer %s(%d) has taken Most Wanted suspect %s(%d) down using deadly force",killer,killerid,victim,playerid);
 		    SendClientMessageToAll(0x00C7FFAA, string);
-		    IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+		    DCC_SendChannelMessage(discordChannel, string);
 		    printf("%s", string);
 		    if(gTeam[killerid] == TEAM_ARMY)
 			{
@@ -24963,7 +25063,7 @@ public OnPlayerPrivateMessage(playerid, recieverid, text[])
 	GetPlayerName(playerid,priname, sizeof(priname));
 	GetPlayerName(recieverid,prinamee, sizeof(prinamee));
 	format(pmsg, sizeof(pmsg), "2**(PM)** From \2;%s(%i)\2; To \2;%s(%i)\2; - %s",priname,playerid,prinamee,recieverid,text); // [0] <jacob> hi
-	IRC_GroupSay(gGroupID, IRC_CHANNEL, pmsg);
+	DCC_SendChannelMessage(discordChannel, pmsg);
 	return 1;
 }
 
@@ -26094,7 +26194,7 @@ public OnPlayerSelectedMenuRow(playerid, row)
 						GetPlayerName(playerid, pname, 30);
 					    format(string, sizeof(string), "%s(%d) Has robbed $%d from Autobahn",pname,playerid,mrand);
 						SendClientMessageToAll(0x00C7FFAA, string);
-						IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+						DCC_SendChannelMessage(discordChannel, string);
 						format(string, sizeof(string), "%s(%d) Has robbed $%d from Autobahn",pname,playerid,mrand);
 						printf("%s", string);
 						format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU ROBBED~n~~r~ $%d~n~~w~FROM Autobahn", mrand);
@@ -27122,7 +27222,7 @@ public OnPlayerSelectedMenuRow(playerid, row)
 						GetPlayerName(playerid, pname, 30);
 					    format(string, sizeof(string), "%s(%d) Has robbed $%d from Grotti",pname,playerid,mrand);
 						SendClientMessageToAll(0x00C7FFAA, string);
-						IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+						DCC_SendChannelMessage(discordChannel, string);
 						format(string, sizeof(string), "%s(%d) Has robbed $%d from Grotti",pname,playerid,mrand);
 						printf("%s", string);
 						format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU ROBBED~n~~r~ $%d~n~~w~FROM Grotti", mrand);
@@ -27756,201 +27856,6 @@ public OnPlayerSelectedMenuRow(playerid, row)
 			}
 		}
 	}
-	if(AbleToShowLV247Menu[playerid] == 1)
-	{
-		if(GetPlayerMenu(playerid) == StoreMenu)
-		{
-			TogglePlayerControllable(playerid, 1);
-			switch(row)
-			{
-	   			case 0:
-				{
-				    if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-				    if(GetPlayerMoney(playerid) <= 1499)
-					{
-					   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-					   SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Chainsaw ($2000)");
-					   return 1;
-					}
-					GivePlayerMoney(playerid,-1500);
-				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Chainsaw. You were charged $1500");
-				    GivePlayerWeapon(playerid,9,1);
-				}
-				case 1:
-				{
-			    	if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-			    	if(GetPlayerMoney(playerid) <= 4)
-					{
-						SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-						SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy flowers ($5)");
-						return 1;
-					}
-					GivePlayerMoney(playerid,-5);
-					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-					SendClientMessage(playerid, 0x00C7FFAA, "You have bought flowers. You were charged $5");
-					GivePlayerWeapon(playerid,14,1);
-				}
-				case 2:
-				{
-					if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-			    	if(GetPlayerMoney(playerid) <= 99)
-				    {
-						SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-				   		SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Baseball Bat ($100)");
-				   		return 1;
-					}
-					GivePlayerMoney(playerid,-100);
-				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Baseball Bat. You were charged $100");
-				    GivePlayerWeapon(playerid,5,1);
-				}
-				case 3:
-				{
-					if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-			    	if(GetPlayerMoney(playerid) <= 19)
-					{
-					   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-					   SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy Beer ($20)");
-					   return 1;
-					}
-				    GivePlayerMoney(playerid,-20);
-				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You have bought Beer. You were charged $20");
-				    new Float:beerhealth;
-			        GetPlayerHealth(playerid,beerhealth);
-				    if(beerhealth <=95)
-				    {
-						SetPlayerHealth(playerid,beerhealth+5);
-	    		    }
-				}
-				case 4:
-				{
-				    if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-				    if(GetPlayerMoney(playerid) <= 999)
-				    {
-					   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-					   SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Wallet ($1000)");
-					   return 1;
-					}
-	                if(HasWallet[playerid] >= 1)
-				    {
-					   SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-					   SendClientMessage(playerid, COLOR_ERROR, "You already have a Wallet");
-					   return 1;
-					}
-				    GivePlayerMoney(playerid,-1000);
-				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Wallet. You were charged $1000");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You can be robbed upto 3 times and not loose any cash");
-				    HasWallet[playerid] =3;
-			    }
-			    case 5:
-				{
-				    if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-				    if(GetPlayerMoney(playerid) <= 499)
-					{
-						SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-						SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Parachute ($500)");
-				   		return 1;
-					}
-					GivePlayerMoney(playerid,-500);
-					SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-					SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Parachute. You were charged $500");
-					GivePlayerWeapon(playerid,46,1);
-			    }
-			    case 6:
-				{
-				    if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-				    if(GetPlayerMoney(playerid) <= 3999)
-				    {
-					    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-					    SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy some rope ($4000)");
-					    return 1;
-					}
-					if(gotRope[playerid] == 1)
-					{
-						SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-						SendClientMessage(playerid, 0x00C7FFAA, "You already have some rope.");
-					}
-				    GivePlayerMoney(playerid,-4000);
-				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You have bought some rope. You were charged $4000");
-				    gotRope[playerid] =1;
-				}
-				case 7:
-				{
-				    if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-				    if(GetPlayerMoney(playerid) <= 999)
-					{
-				   		SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-			   			SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a pair of rusty sissors. ($1000)");
-				   		return 1;
-					}
-				    GivePlayerMoney(playerid,-1000);
-				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You have bought rusty sissors.. You were charged $1000");
-				    gotSissors[playerid] =1;
-				}
-				case 8:
-				{
-				    if(!IsPlayerInDynamicCP(playerid, EastLV247))
-					{
-					    SendClientMessage(playerid, COLOR_ERROR, "You are not at any 24/7 store");
-					    return 1;
-					}
-				    if(GetPlayerMoney(playerid) <= 2500000)
-				    {
-					    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-					    SendClientMessage(playerid, COLOR_ERROR, "You cannot afford to buy a Briefcase. ($2500000)");
-					    return 1;
-					}
-	                if(PlayerInfo[playerid][HasBriefcase] == 1)
-					{
-						SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase Failed_|");
-						SendClientMessage(playerid, COLOR_ERROR, "You already have a Briefcase.");
-						return 1;
-					}
-				    GivePlayerMoney(playerid,-2500000);
-				    SendClientMessage(playerid, 0xA9A9A9AA, "|_24/7 Purchase_|");
-				    SendClientMessage(playerid, 0x00C7FFAA, "You have bought a Briefcase. You were charged $250000");
-				    PlayerInfo[playerid][HasBriefcase] =1;
-				}
-			}
-		}
-	}
 	return 1;
 }
 //==============================================================================
@@ -28070,70 +27975,23 @@ public OnPlayerExitVehicle(playerid, vehicleid)
 
 public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 {
-	if(oldinteriorid == 6 && newinteriorid == 0)
+	if(oldinteriorid == 0 && newinteriorid == 6)
 	{
-		if(GetPlayerVirtualWorld(playerid) == 1)
+		if(!IsPlayerInAnyVehicle(playerid))
 		{
-			SetPlayerVirtualWorld(playerid,0);
-	    	SetPlayerPos(playerid,1592.2305,2214.1846,10.8203);
-	    	SetPlayerFacingAngle(playerid,187.0764);
-	    	SetCameraBehindPlayer(playerid);
-	    	LeftTwoFourSeven[playerid] =1;
-	    	TimeToMoveTwoFourSeven[playerid] =3;
-	    	TogglePlayerControllable(playerid, 0);
-	   	}
-	    if(GetPlayerVirtualWorld(playerid) == 2)
-		{
-	    	SetPlayerVirtualWorld(playerid,0);
-	    	SetPlayerPos(playerid,2191.6472,2476.4624,10.8203);
-	    	SetPlayerFacingAngle(playerid,272.7751);
-	    	SetCameraBehindPlayer(playerid);
-	    	LeftTwoFourSeven[playerid] =2;
-	    	TimeToMoveTwoFourSeven[playerid] =3;
-	    	TogglePlayerControllable(playerid, 0);
-	    }
-	    if(GetPlayerVirtualWorld(playerid) == 3)
-		{
-	    	SetPlayerVirtualWorld(playerid,0);
-	    	SetPlayerPos(playerid,2630.5876,1124.3673,10.8203);
-	    	SetPlayerFacingAngle(playerid,177.8683);
-	    	SetCameraBehindPlayer(playerid);
-	    	LeftTwoFourSeven[playerid] =3;
-	    	TimeToMoveTwoFourSeven[playerid] =3;
-	    	TogglePlayerControllable(playerid, 0);
-	    }
-	    if(GetPlayerVirtualWorld(playerid) == 4)
-		{
-	    	SetPlayerVirtualWorld(playerid,0);
-	    	SetPlayerPos(playerid,2108.0222,901.5873,10.8203);
-	    	SetPlayerFacingAngle(playerid,2.9187);
-	    	SetCameraBehindPlayer(playerid);
-	    	LeftTwoFourSeven[playerid] =4;
-	    	TimeToMoveTwoFourSeven[playerid] =3;
-	        TogglePlayerControllable(playerid, 0);
-	    }
-	    if(GetPlayerVirtualWorld(playerid) == 5)
-		{
-	    	SetPlayerVirtualWorld(playerid,0);
-	    	SetPlayerPos(playerid,664.9492,1726.6813,6.9922);
-	    	SetPlayerFacingAngle(playerid,42.5792);
-	    	SetCameraBehindPlayer(playerid);
-	    	LeftTwoFourSeven[playerid] =5;
-	    	TimeToMoveTwoFourSeven[playerid] =3;
-	    	TogglePlayerControllable(playerid, 0);
-	    }
-	    if(GetPlayerVirtualWorld(playerid) == 6)
-		{
-	    	SetPlayerVirtualWorld(playerid,0);
-	    	SetPlayerPos(playerid,2142.6326,2739.4309,10.8203);
-	    	SetPlayerFacingAngle(playerid,5.6754);
-	    	SetCameraBehindPlayer(playerid);
-	    	LeftTwoFourSeven[playerid] =6;
-	    	TimeToMoveTwoFourSeven[playerid] =3;
-	    	TogglePlayerControllable(playerid, 0);
+		    SetPlayerVirtualWorld(playerid, InteriorVW(playerid));
+		    SendClientMessage(playerid, 0xA9A9A9AA, "Welcome to 247");
 	    }
 	}
-	return 0;
+	if(oldinteriorid == 6 && newinteriorid == 0)
+	{
+		if(!IsPlayerInAnyVehicle(playerid))
+		{
+		    SetPlayerVirtualWorld(playerid, 0);
+		    SendClientMessage(playerid, 0xA9A9A9AA, "Thank you for shopping the 247");
+	    }
+	}
+	return 1;
 }
 
 public OnPlayerClickPlayer(playerid, clickedplayerid, source)
@@ -28828,73 +28686,6 @@ public OnPlayerEnterCheckpoint(playerid)
 			SetCameraBehindPlayer(playerid);
 		}
 	}
-    if(GetCheckpointType(playerid) == 83 && GetCheckpointType(playerid) == 83)
-    {
-	    if(!IsPlayerInAnyVehicle(playerid))
-	    {
-		    SetPlayerVirtualWorld(playerid,1);
-		    SetPlayerInterior(playerid,6);
-		    SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-		    SetPlayerFacingAngle(playerid,0.0000);
-		    SetCameraBehindPlayer(playerid);
-	    }
-    }
-    if(GetCheckpointType(playerid) == 84 && GetCheckpointType(playerid) == 84)
-    {
-    	if(!IsPlayerInAnyVehicle(playerid))
-    	{
-		    SetPlayerVirtualWorld(playerid,2);
-		    SetPlayerInterior(playerid,6);
-		    SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-		    SetPlayerFacingAngle(playerid,0.0000);
-		    SetCameraBehindPlayer(playerid);
-	    }
-    }
-    if(GetCheckpointType(playerid) == 85 && GetCheckpointType(playerid) == 85)
-    {
-    	if(!IsPlayerInAnyVehicle(playerid))
-    	{
-		    SetPlayerVirtualWorld(playerid,3);
-		    SetPlayerInterior(playerid,6);
-		    SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-		    SetPlayerFacingAngle(playerid,0.0000);
-		    SetCameraBehindPlayer(playerid);
-    	}
-    }
-    if(GetCheckpointType(playerid) == 86 && GetCheckpointType(playerid) == 86)
-    {
-    	if(!IsPlayerInAnyVehicle(playerid))
-    	{
-		    SetPlayerVirtualWorld(playerid,4);
-		    SetPlayerInterior(playerid,6);
-		    SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-		    SetPlayerFacingAngle(playerid,0.0000);
-		    SetCameraBehindPlayer(playerid);
-    	}
-    }
-    
-    if(GetCheckpointType(playerid) == 87 && GetCheckpointType(playerid) == 87)
-    {
-    	if(!IsPlayerInAnyVehicle(playerid))
-    	{
-		    SetPlayerVirtualWorld(playerid,5);
-		    SetPlayerInterior(playerid,6);
-		    SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-		    SetPlayerFacingAngle(playerid,0.0000);
-		    SetCameraBehindPlayer(playerid);
-    	}
-    }
-    if(GetCheckpointType(playerid) == 88 && GetCheckpointType(playerid) == 88)
-    {
-    	if(!IsPlayerInAnyVehicle(playerid))
-    	{
-		    SetPlayerVirtualWorld(playerid,6);
-		    SetPlayerInterior(playerid,6);
-		    SetPlayerPos(playerid,-26.6916,-55.7149,1003.5469);
-		    SetPlayerFacingAngle(playerid,0.0000);
-		    SetCameraBehindPlayer(playerid);
-    	}
-    }
  	if(GetCheckpointType(playerid) == 42 && GetCheckpointType(playerid) == 42)
     {
     	if(GetPlayerMoney(playerid) >= 25)
@@ -28982,7 +28773,7 @@ public OnPlayerEnterCheckpoint(playerid)
 				GetPlayerName(playerid,caligsname, 30);
 				format(string, sizeof(string), "%s(%d) Has robbed $%d from the Caligulas Casino vault",caligsname,playerid,crobrand);
 				SendClientMessageToAll(0x00C7FFAA, string);
-				IRC_GroupSay(gGroupID, IRC_CHANNEL, string);
+				DCC_SendChannelMessage(discordChannel, string);
 				format(string, sizeof(string), "%s(%d) Has robbed $%d from Caligulas casino",caligsname,playerid,crobrand);
 				printf("%s", string);
 				format(string, sizeof(string), "~w~ROBBERY ~b~COMPLETE~n~~w~YOU HAVE ROBBED~n~~r~ $%d~n~~w~FROM THE CASINO VAULT",crobrand);
@@ -29136,7 +28927,7 @@ public OnPlayerEnterCheckpoint(playerid)
 	   		}
 		}
 	}
-	if(GetCheckpointType(playerid) == 35 && GetCheckpointType(playerid) == 35)
+	if(GetCheckpointType(playerid) == CP_ALKATRAZ1 && GetCheckpointType(playerid) == CP_ALKATRAZ1)
 	{
 		if(!IsPlayerInAnyVehicle(playerid))
 		{
@@ -29169,7 +28960,7 @@ public OnPlayerEnterCheckpoint(playerid)
 		}
 		return 1;
 	}
-	if(GetCheckpointType(playerid) == 36 && GetCheckpointType(playerid) == 36)
+	if(GetCheckpointType(playerid) == CP_ALKATRAZ2 && GetCheckpointType(playerid) == CP_ALKATRAZ2)
 	{
 		if(!IsPlayerInAnyVehicle(playerid))
 		{
@@ -29715,6 +29506,30 @@ stock ShowRegisterScreen(playerid)
     ShowPlayerDialog(playerid,DIALOG_REGISTER,DIALOG_STYLE_INPUT,"Registration",string,"Register","Cancel");
 }
 
+CMD:world(playerid, params[])
+{
+	new string[32];
+	format(string, sizeof(string), "Your virtual world: %i", GetPlayerVirtualWorld(playerid));
+    SendClientMessage(playerid, 0xFFFFFFFF, string);
+    return 1;
+}
+
+CMD:adgotocoord(playerid, params[])
+{
+	new Float:x, Float:y, Float:z;
+	new interior, virtualworld;
+	if(sscanf(params, "fffii", x, y, z, interior, virtualworld))
+	{
+		SendClientMessage(playerid, COLOR_ERROR, "ERROR: Usage /adgotocoord [x] [y] [z] [interior] [virtualworld]");
+	}
+	else{
+		SetPlayerPos(playerid, x, y, z);
+		SetPlayerInterior(playerid, interior);
+		SetPlayerVirtualWorld(playerid, virtualworld);
+	}
+	return 1;
+}
+
 CMD:sethealth(playerid, params[])
 {
 	if(PlayerInfo[playerid][AdminLevel] == 1337)
@@ -29741,10 +29556,6 @@ CMD:sethealth(playerid, params[])
 			return 1;
 		}
 	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 CMD:setwanted(playerid, params[])
@@ -29766,10 +29577,6 @@ CMD:setwanted(playerid, params[])
 			SendClientMessage(playerid, 0x00FF00AA, string);
 			return 1;
 		}
-	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	}
 	return 1;
 }
@@ -29794,10 +29601,6 @@ CMD:adjetpack(playerid, params[])
 			SetPlayerSpecialAction(playerid, SPECIAL_ACTION_USEJETPACK);
 			return 1;
 		}
-	}
-	else
-	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
 	}
 	return 1;
 }
@@ -29881,10 +29684,6 @@ CMD:adpm(playerid, params[])
 			return 1;
 		}
 	}
-	else
- 	{
-		SendClientMessage(playerid,0xFF0000AA,"Bad Command. Type /commands for available commands depending on your chosen job/skill");
-	}
 	return 1;
 }
 
@@ -29896,9 +29695,3 @@ LoopingAnim(playerid,animlib[],animname[], Float:Speed, looping, lockx, locky, l
 }
 
 //-------------------------------------------------
-
-/*StopLoopingAnim(playerid)
-{
-	gPlayerUsingLoopingAnim[playerid] = 0;
-    ApplyAnimation(playerid, "CARRY", "crry_prtial", 4.0, 0, 0, 0, 0, 0);
-}*/

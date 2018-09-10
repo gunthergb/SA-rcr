@@ -1,6 +1,6 @@
 password_hash=441189331
-money=129619
-bankcash=5000
+money=810123
+bankcash=815123
 loancash=0
 cashinsured=0
 AutobahnOwner=0
@@ -66,5 +66,5 @@ BriefcaseWeaponSlot2=0
 BriefcaseWeaponAmmoSlot2=0
 BriefcaseWeaponSlot3=0
 BriefcaseWeaponAmmoSlot3=0
-Briefcase=0
+Briefcase=1
 TazeRank=0
